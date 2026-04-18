@@ -97,6 +97,7 @@ th:first-child, td:first-child {
 }
 th:first-child { z-index: 3; background: var(--bg); }
 tbody tr:hover td:first-child { background: var(--bg-hover); }
+td.fav-cell { width: 30px; max-width: 30px; padding: 4px !important; }
 td.ticker { font-weight: 700; color: var(--accent); }
 td.num { font-variant-numeric: tabular-nums; }
 td.signal-cell { font-weight: 600; }
@@ -289,7 +290,6 @@ td.advice { font-size: 12px; min-width: 140px; max-width: 200px; white-space: no
         <select id="filter-scan"><option value="latest" id="opt-latest"></option></select>
       </div>
       <button id="btn-today" style="background:var(--accent);color:#0f172a;font-weight:700;border:none;border-radius:6px;padding:8px 16px;cursor:pointer;font-size:13px;align-self:flex-end"></button>
-      <button id="btn-export-tv" style="background:#2962FF;color:#fff;font-weight:700;border:none;border-radius:6px;padding:8px 16px;cursor:pointer;font-size:13px;align-self:flex-end" onclick="exportTradingView()"></button>
       <div class="filter">
         <label id="lbl-v2status"></label>
         <select id="filter-v2status">
@@ -305,6 +305,10 @@ td.advice { font-size: 12px; min-width: 140px; max-width: 200px; white-space: no
       </div>
     </div>
   </header>
+
+  <div style="display:flex;justify-content:flex-end;margin-bottom:12px">
+    <button id="btn-export-tv" style="background:#2962FF;color:#fff;font-weight:700;border:none;border-radius:6px;padding:10px 20px;cursor:pointer;font-size:14px" onclick="exportTradingView()"></button>
+  </div>
 
   <section class="kpi-row">
     <div class="kpi"><div class="label" id="kpi-total-label"></div><div class="value" id="kpi-total">0</div><div class="hint" id="kpi-total-hint"></div></div>
@@ -360,7 +364,19 @@ const INTENT_LABELS = {
   unknown:       T.intent_unknown,
 };
 
+// ★ 星號收藏
+const FAV_KEY = "finvz_favorites";
+function getFavs() { try { return JSON.parse(localStorage.getItem(FAV_KEY)) || {}; } catch(e) { return {}; } }
+function saveFavs(f) { try { localStorage.setItem(FAV_KEY, JSON.stringify(f)); } catch(e) {} }
+function toggleFav(ticker) {
+  const f = getFavs();
+  if (f[ticker]) delete f[ticker]; else f[ticker] = 1;
+  saveFavs(f);
+  if (window._dash) window._dash.renderTable();
+}
+
 const COLUMNS = [
+  { key: "fav",           label: "★",             cls: "fav-cell" },
   { key: "ticker",        label: T.col_ticker,    cls: "ticker" },
   { key: "v2_status",     label: T.col_v2_status, cls: "signal-cell" },
   { key: "v2_advice",     label: T.col_v2_advice },
@@ -572,7 +588,11 @@ class Dash {
     } catch(e) { console.warn("Chart render skipped:", e); }
   }
   renderTable() {
+    const favs = getFavs();
     const rows = [...this.filtered].sort((a, b) => {
+      // 星號置頂
+      const fa = favs[a.ticker] ? 1 : 0, fb = favs[b.ticker] ? 1 : 0;
+      if (fa !== fb) return fb - fa;
       const av = a[this.sortKey], bv = b[this.sortKey];
       if (av == null && bv == null) return 0;
       if (av == null) return 1;
@@ -626,8 +646,10 @@ class Dash {
         else { rsiColor = "var(--text)"; }
       }
       const zone = (r.zone_low != null && r.zone_high != null) ? "$" + r.zone_low.toFixed(2) + "–$" + r.zone_high.toFixed(2) : "—";
+      const isFav = getFavs()[r.ticker];
       return `<div class="stock-card v2-${r.v2_status}">
         <div class="sc-header">
+          <span style="cursor:pointer;font-size:20px;margin-right:4px" onclick="toggleFav('${r.ticker}')">${isFav ? "⭐" : "☆"}</span>
           <a href="https://www.tradingview.com/chart/?symbol=${r.ticker}" target="_blank" class="sc-ticker">${r.ticker} ↗</a>
           <span class="badge ${v2.cls}">${v2.text}</span>
         </div>
@@ -714,6 +736,10 @@ function renderPositionBar(r) {
 
 function renderCell(r, c) {
   const cls = c.cls || "";
+  if (c.key === "fav") {
+    const isFav = getFavs()[r.ticker];
+    return `<td class="${cls}" style="cursor:pointer;font-size:18px;text-align:center;width:30px" onclick="toggleFav('${r.ticker}')">${isFav ? "⭐" : "☆"}</td>`;
+  }
   if (c.key === "ticker") {
     return `<td class="${cls}"><a href="https://www.tradingview.com/chart/?symbol=${r.ticker}" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:700">${r.ticker} ↗</a></td>`;
   }
@@ -834,6 +860,7 @@ try {
 let dash;
 try {
   dash = new Dash(DATA);
+  window._dash = dash;
 } catch(e) { console.error("Dash init error:", e); }
 
 // 「今日最新」按鈕
