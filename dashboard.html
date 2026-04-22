@@ -903,8 +903,9 @@ function renderCell(r, c) {
     const opt = OPTIONS[r.ticker];
     if (!opt) return `<td class="${cls}" style="color:var(--text-muted)">—</td>`;
     const f = opt.net_flow;
+    if (f == null) return `<td class="${cls}" style="color:var(--text-muted)">—</td>`;
     const abs = Math.abs(f);
-    let label = abs >= 1e6 ? (f/1e6).toFixed(1)+"M" : abs >= 1e3 ? (f/1e3).toFixed(0)+"K" : f.toFixed(0);
+    let label = abs >= 1e6 ? (f/1e6).toFixed(1)+"M" : abs >= 1e3 ? (f/1e3).toFixed(0)+"K" : Math.round(f).toString();
     if (f > 0) label = "+" + label;
     const color = f > 0 ? "var(--positive)" : f < 0 ? "var(--negative)" : "var(--text-muted)";
     return `<td class="${cls}" style="color:${color};font-size:11px;font-weight:600;white-space:nowrap">$${label}</td>`;
