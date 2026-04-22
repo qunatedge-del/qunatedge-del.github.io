@@ -23,6 +23,13 @@ header { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var
 header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
 header .sub { font-size: 13px; color: var(--text-dim); }
 .back-link { display: inline-block; margin-bottom: 16px; font-size: 13px; }
+.lang-btn {
+  padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;
+  border: 1px solid var(--border); background: transparent; color: var(--text-dim);
+  cursor: pointer; transition: all 0.2s;
+}
+.lang-btn:hover { border-color: var(--accent); color: var(--accent); }
+.lang-btn.active { background: var(--accent) !important; color: #0f172a !important; border-color: var(--accent); }
 
 /* KPI row */
 .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 20px; }
@@ -89,77 +96,234 @@ footer {
 </head>
 <body>
 <div class="container">
-  <a href="dashboard.html" class="back-link">← 返回篩選儀表板</a>
+  <a href="dashboard.html" class="back-link" id="back-link"></a>
   <header>
-    <h1>🔀 期權 × 篩選器 交叉信號分析</h1>
-    <div class="sub">篩選器狀態與期權資金流的雙重確認 · 2026-04-21 17:05</div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <h1 id="header-title"></h1>
+      <div style="display:flex;gap:4px">
+        <button class="lang-btn active" data-lang="zh" onclick="switchLang('zh')">中文</button>
+        <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+      </div>
+    </div>
+    <div class="sub" id="header-sub"></div>
   </header>
 
   <section class="kpi-row">
-    <div class="kpi"><div class="label">共 64 支重疊標的</div><div class="value">64</div></div>
-    <div class="kpi bull"><div class="label">雙重看多</div><div class="value">8</div></div>
-    <div class="kpi bear"><div class="label">雙重看空</div><div class="value">8</div></div>
-    <div class="kpi conflict"><div class="label">信號衝突</div><div class="value">10</div></div>
+    <div class="kpi"><div class="label" id="kpi-total-label"></div><div class="value" id="kpi-total-val"></div></div>
+    <div class="kpi bull"><div class="label" id="kpi-bull-label"></div><div class="value" id="kpi-bull-val"></div></div>
+    <div class="kpi bear"><div class="label" id="kpi-bear-label"></div><div class="value" id="kpi-bear-val"></div></div>
+    <div class="kpi conflict"><div class="label" id="kpi-conflict-label"></div><div class="value" id="kpi-conflict-val"></div></div>
   </section>
 
-  <div class="tabs">
-    <div class="tab active" onclick="showTab('bull')">🟢 雙重看多</div>
-    <div class="tab" onclick="showTab('bear')">🔴 雙重看空</div>
-    <div class="tab" onclick="showTab('conflict')">⚡ 信號衝突</div>
-    <div class="tab" onclick="showTab('opts_only')">📊 僅有期權數據</div>
-  </div>
+  <div class="tabs" id="tabs-bar"></div>
 
   <div id="section-bull" class="table-section active">
-    <div class="table-desc">篩選器買點 + 期權看多 → 高確信做多</div>
-    <div class="table-wrap"><table><thead><tr><th>代碼</th><th>現價</th><th>篩選器狀態</th><th>操作建議</th><th>策略</th><th>主力意圖</th><th>RSI</th><th>期權方向</th><th>期權評分</th><th>淨資金流</th><th>IV Rank</th><th>PCR</th><th>異常活動</th><th>期權建議</th></tr></thead><tbody><tr class="align-row"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=TSLA" target="_blank" style="color:var(--accent);font-weight:700">TSLA ↗</a></td><td style="font-variant-numeric:tabular-nums">$392.56</td><td><span class="badge buy">buy</span></td><td>進入區間，觀察反轉 K 線</td><td>M</td><td>consolidation</td><td style="color:var(--text);font-weight:600" data-sort="56.4">56.4</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="4">★★★ (4)</td><td class="flow-pos" data-sort="8497058.0">$+8.5M</td><td style="color:var(--positive);font-weight:600" data-sort="15.6">15.6%</td><td style="color:var(--text);font-weight:600" data-sort="0.73">0.73</td><td style="color:var(--warning)" data-sort="251">251</td><td>BUY CALL</td></tr><tr class="align-row"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=MSTR" target="_blank" style="color:var(--accent);font-weight:700">MSTR ↗</a></td><td style="font-variant-numeric:tabular-nums">$170.49</td><td><span class="badge buy">buy</span></td><td>主力護盤，分批進場</td><td>L</td><td>accumulation</td><td style="color:var(--negative);font-weight:600" data-sort="73.6">73.6 🔥</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="3">★★☆ (3)</td><td class="flow-pos" data-sort="77596845.0">$+77.6M</td><td style="color:var(--text);font-weight:600" data-sort="41.4">41.4%</td><td style="color:var(--positive);font-weight:600" data-sort="0.37">0.37</td><td style="color:var(--warning)" data-sort="81">81</td><td>BUY CALL</td></tr><tr class="align-row"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=ORCL" target="_blank" style="color:var(--accent);font-weight:700">ORCL ↗</a></td><td style="font-variant-numeric:tabular-nums">$178.09</td><td><span class="badge wait">wait</span></td><td>等待跌回需求區</td><td>M</td><td>accumulation</td><td style="color:var(--text);font-weight:600" data-sort="68.3">68.3</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="3">★★☆ (3)</td><td class="flow-pos" data-sort="352130585.0">$+352.1M</td><td style="color:var(--text);font-weight:600" data-sort="52.2">52.2%</td><td style="color:var(--positive);font-weight:600" data-sort="0.49">0.49</td><td style="color:var(--text)" data-sort="49">49</td><td>BUY CALL</td></tr><tr class="align-row"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=TSM" target="_blank" style="color:var(--accent);font-weight:700">TSM ↗</a></td><td style="font-variant-numeric:tabular-nums">$366.60</td><td><span class="badge wait">wait</span></td><td>等待跌回需求區</td><td>M</td><td>consolidation</td><td style="color:var(--text);font-weight:600" data-sort="56.0">56.0</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="3">★★☆ (3)</td><td class="flow-pos" data-sort="1001445.0">$+1.0M</td><td style="color:var(--text);font-weight:600" data-sort="56.9">56.9%</td><td style="color:var(--positive);font-weight:600" data-sort="0.59">0.59</td><td style="color:var(--text)" data-sort="21">21</td><td>BUY CALL</td></tr><tr class="align-row"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=AVGO" target="_blank" style="color:var(--accent);font-weight:700">AVGO ↗</a></td><td style="font-variant-numeric:tabular-nums">$399.70</td><td><span class="badge wait">wait</span></td><td>RSI超買，回調機率高，耐心等</td><td>M</td><td>consolidation</td><td style="color:var(--negative);font-weight:600" data-sort="74.0">74.0 🔥</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="2">★★☆ (2)</td><td class="flow-pos" data-sort="752240.0">$+752K</td><td style="color:var(--positive);font-weight:600" data-sort="25.8">25.8%</td><td style="color:var(--negative);font-weight:600" data-sort="1.12">1.12</td><td style="color:var(--text)" data-sort="44">44</td><td>BUY CALL</td></tr><tr class="align-row"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=JPM" target="_blank" style="color:var(--accent);font-weight:700">JPM ↗</a></td><td style="font-variant-numeric:tabular-nums">$317.04</td><td><span class="badge buy">buy</span></td><td>進入區間，觀察反轉 K 線</td><td>M</td><td>consolidation</td><td style="color:var(--text);font-weight:600" data-sort="66.8">66.8</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="2">★★☆ (2)</td><td class="flow-pos" data-sort="634280.0">$+634K</td><td style="color:var(--positive);font-weight:600" data-sort="28.3">28.3%</td><td style="color:var(--positive);font-weight:600" data-sort="0.54">0.54</td><td style="color:var(--text)" data-sort="12">12</td><td>BUY CALL</td></tr><tr class="align-row"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=SNDK" target="_blank" style="color:var(--accent);font-weight:700">SNDK ↗</a></td><td style="font-variant-numeric:tabular-nums">$913.75</td><td><span class="badge wait">wait</span></td><td>等待跌回需求區</td><td>A</td><td>accumulation</td><td style="color:var(--text);font-weight:600" data-sort="66.5">66.5</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="2">★★☆ (2)</td><td class="flow-pos" data-sort="449000.0">$+449K</td><td style="color:var(--negative);font-weight:600" data-sort="87.0">87.0%</td><td style="color:var(--negative);font-weight:600" data-sort="1.29">1.29</td><td style="color:var(--text)" data-sort="15">15</td><td>BUY CALL</td></tr><tr class="align-row"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=AAOI" target="_blank" style="color:var(--accent);font-weight:700">AAOI ↗</a></td><td style="font-variant-numeric:tabular-nums">$163.73</td><td><span class="badge wait">wait</span></td><td>RSI超買，回調機率高，耐心等</td><td>C_HIGH</td><td>consolidation</td><td style="color:var(--negative);font-weight:600" data-sort="71.7">71.7 🔥</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="1">★☆☆ (1)</td><td class="flow-pos" data-sort="634500.0">$+634K</td><td style="color:var(--negative);font-weight:600" data-sort="90.4">90.4%</td><td style="color:var(--negative);font-weight:600" data-sort="1.35">1.35</td><td style="color:var(--text)" data-sort="3">3</td><td>WATCH CALL</td></tr></tbody></table></div>
+    <div class="table-desc" id="desc-bull"></div>
+    <div class="table-wrap" id="table-bull"></div>
   </div>
   <div id="section-bear" class="table-section">
-    <div class="table-desc">篩選器賣出 + 期權看空 → 高確信做空</div>
-    <div class="table-wrap"><table><thead><tr><th>代碼</th><th>現價</th><th>篩選器狀態</th><th>操作建議</th><th>策略</th><th>主力意圖</th><th>RSI</th><th>期權方向</th><th>期權評分</th><th>淨資金流</th><th>IV Rank</th><th>PCR</th><th>異常活動</th><th>期權建議</th></tr></thead><tbody><tr class="align-row-bear"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=BAC" target="_blank" style="color:var(--accent);font-weight:700">BAC ↗</a></td><td style="font-variant-numeric:tabular-nums">$53.88</td><td><span class="badge sell">sell_confirmed</span></td><td>主力已出貨，趨勢反轉</td><td>M</td><td>distribution</td><td style="color:var(--text);font-weight:600" data-sort="68.2">68.2</td><td><span class="badge bearish">🔴 BEARISH</span></td><td data-sort="4">★★★ (4)</td><td class="flow-neg" data-sort="-2250259.0">$-2.3M</td><td style="color:var(--positive);font-weight:600" data-sort="18.9">18.9%</td><td style="color:var(--negative);font-weight:600" data-sort="1.02">1.02</td><td style="color:var(--text)" data-sort="21">21</td><td>BUY PUT</td></tr><tr class="align-row-bear"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=NVDA" target="_blank" style="color:var(--accent);font-weight:700">NVDA ↗</a></td><td style="font-variant-numeric:tabular-nums">$202.09</td><td><span class="badge sell">sell</span></td><td>🛑 RSI超買+高檔出貨，極度危險</td><td>M</td><td>distribution</td><td style="color:var(--negative);font-weight:600" data-sort="71.6">71.6 🔥</td><td><span class="badge bearish">🔴 BEARISH</span></td><td data-sort="4">★★★ (4)</td><td class="flow-neg" data-sort="-2786408.0">$-2.8M</td><td style="color:var(--positive);font-weight:600" data-sort="24.8">24.8%</td><td style="color:var(--positive);font-weight:600" data-sort="0.6">0.60</td><td style="color:var(--warning)" data-sort="237">237</td><td>BUY PUT</td></tr><tr class="align-row-bear"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=AMZN" target="_blank" style="color:var(--accent);font-weight:700">AMZN ↗</a></td><td style="font-variant-numeric:tabular-nums">$255.00</td><td><span class="badge sell">sell</span></td><td>🛑 RSI超買+高檔出貨，極度危險</td><td>M</td><td>distribution</td><td style="color:var(--negative);font-weight:600" data-sort="73.1">73.1 🔥</td><td><span class="badge bearish">🔴 BEARISH</span></td><td data-sort="3">★★☆ (3)</td><td class="flow-neg" data-sort="-11943215.0">$-11.9M</td><td style="color:var(--text);font-weight:600" data-sort="62.7">62.7%</td><td style="color:var(--positive);font-weight:600" data-sort="0.67">0.67</td><td style="color:var(--warning)" data-sort="121">121</td><td>BUY PUT</td></tr><tr class="align-row-bear"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=GOOGL" target="_blank" style="color:var(--accent);font-weight:700">GOOGL ↗</a></td><td style="font-variant-numeric:tabular-nums">$337.82</td><td><span class="badge sell">sell_wait</span></td><td>極高位階，不建議追多</td><td>M</td><td>distribution</td><td style="color:var(--text);font-weight:600" data-sort="68.1">68.1</td><td><span class="badge bearish">🔴 BEARISH</span></td><td data-sort="3">★★☆ (3)</td><td class="flow-neg" data-sort="-140298557.0">$-140.3M</td><td style="color:var(--text);font-weight:600" data-sort="49.5">49.5%</td><td style="color:var(--text);font-weight:600" data-sort="0.81">0.81</td><td style="color:var(--warning)" data-sort="57">57</td><td>BUY PUT</td></tr><tr class="align-row-bear"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=INTC" target="_blank" style="color:var(--accent);font-weight:700">INTC ↗</a></td><td style="font-variant-numeric:tabular-nums">$66.08</td><td><span class="badge sell">sell_wait</span></td><td>🛑 RSI超買+頂部出貨，準備下跌</td><td>M</td><td>distribution</td><td style="color:var(--negative);font-weight:600" data-sort="70.2">70.2 🔥</td><td><span class="badge bearish">🔴 BEARISH</span></td><td data-sort="3">★★☆ (3)</td><td class="flow-neg" data-sort="-1172470.0">$-1.2M</td><td style="color:var(--negative);font-weight:600" data-sort="88.7">88.7%</td><td style="color:var(--negative);font-weight:600" data-sort="1.01">1.01</td><td style="color:var(--warning)" data-sort="89">89</td><td>BUY PUT</td></tr><tr class="align-row-bear"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=GOOG" target="_blank" style="color:var(--accent);font-weight:700">GOOG ↗</a></td><td style="font-variant-numeric:tabular-nums">$335.79</td><td><span class="badge sell">sell_wait</span></td><td>極高位階，不建議追多</td><td>M</td><td>distribution</td><td style="color:var(--text);font-weight:600" data-sort="68.5">68.5</td><td><span class="badge bearish">🔴 BEARISH</span></td><td data-sort="2">★★☆ (2)</td><td class="flow-neg" data-sort="-648530.0">$-649K</td><td style="color:var(--text);font-weight:600" data-sort="48.6">48.6%</td><td style="color:var(--positive);font-weight:600" data-sort="0.64">0.64</td><td style="color:var(--text)" data-sort="32">32</td><td>BUY PUT</td></tr><tr class="align-row-bear"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=TXN" target="_blank" style="color:var(--accent);font-weight:700">TXN ↗</a></td><td style="font-variant-numeric:tabular-nums">$234.00</td><td><span class="badge sell">sell_wait</span></td><td>🛑 RSI超買+頂部出貨，準備下跌</td><td>C_HIGH</td><td>distribution</td><td style="color:var(--negative);font-weight:600" data-sort="76.1">76.1 🔥</td><td><span class="badge bearish">🔴 BEARISH</span></td><td data-sort="2">★★☆ (2)</td><td class="flow-neg" data-sort="-1062000.0">$-1.1M</td><td style="color:var(--negative);font-weight:600" data-sort="79.5">79.5%</td><td style="color:var(--positive);font-weight:600" data-sort="0.68">0.68</td><td style="color:var(--text)" data-sort="1">1</td><td>BUY PUT</td></tr><tr class="align-row-bear"><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=GFS" target="_blank" style="color:var(--accent);font-weight:700">GFS ↗</a></td><td style="font-variant-numeric:tabular-nums">$58.80</td><td><span class="badge sell">sell</span></td><td>🛑 RSI超買+高檔出貨，極度危險</td><td>C_HIGH</td><td>distribution</td><td style="color:var(--negative);font-weight:600" data-sort="78.0">78.0 🔥</td><td><span class="badge bearish">🔴 BEARISH</span></td><td data-sort="1">★☆☆ (1)</td><td class="flow-neg" data-sort="-312000">$-312K</td><td style="color:var(--positive);font-weight:600" data-sort="26.9">26.9%</td><td style="color:var(--positive);font-weight:600" data-sort="0.08">0.08</td><td style="color:var(--text)" data-sort="2">2</td><td>WATCH PUT</td></tr></tbody></table></div>
+    <div class="table-desc" id="desc-bear"></div>
+    <div class="table-wrap" id="table-bear"></div>
   </div>
   <div id="section-conflict" class="table-section">
-    <div class="table-desc">篩選器與期權方向相反 → 需謹慎判斷</div>
-    <div class="table-wrap"><table><thead><tr><th>代碼</th><th>現價</th><th>篩選器狀態</th><th>操作建議</th><th>策略</th><th>主力意圖</th><th>RSI</th><th>期權方向</th><th>期權評分</th><th>淨資金流</th><th>IV Rank</th><th>PCR</th><th>異常活動</th><th>期權建議</th></tr></thead><tbody><tr><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=NFLX" target="_blank" style="color:var(--accent);font-weight:700">NFLX ↗</a></td><td style="font-variant-numeric:tabular-nums">$94.61</td><td><span class="badge sell">sell_confirmed</span></td><td>主力已出貨，趨勢反轉</td><td>M</td><td>distribution</td><td style="color:var(--text);font-weight:600" data-sort="44.2">44.2</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="5">★★★ (5)</td><td class="flow-pos" data-sort="2419940.0">$+2.4M</td><td style="color:var(--positive);font-weight:600" data-sort="3.2">3.2%</td><td style="color:var(--positive);font-weight:600" data-sort="0.55">0.55</td><td style="color:var(--warning)" data-sort="164">164</td><td>BUY CALL</td></tr><tr><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=AAPL" target="_blank" style="color:var(--accent);font-weight:700">AAPL ↗</a></td><td style="font-variant-numeric:tabular-nums">$272.00</td><td><span class="badge sell">sell</span></td><td>⚠️ 高檔出貨陷阱，多單快逃</td><td>M</td><td>distribution</td><td style="color:var(--text);font-weight:600" data-sort="66.5">66.5</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="3">★★☆ (3)</td><td class="flow-pos" data-sort="4415224.0">$+4.4M</td><td style="color:var(--text);font-weight:600" data-sort="42.6">42.6%</td><td style="color:var(--positive);font-weight:600" data-sort="0.38">0.38</td><td style="color:var(--warning)" data-sort="136">136</td><td>BUY CALL</td></tr><tr><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=AMD" target="_blank" style="color:var(--accent);font-weight:700">AMD ↗</a></td><td style="font-variant-numeric:tabular-nums">$274.98</td><td><span class="badge sell">sell</span></td><td>🛑 RSI超買+高檔出貨，極度危險</td><td>M</td><td>distribution</td><td style="color:var(--negative);font-weight:600" data-sort="76.9">76.9 🔥</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="3">★★☆ (3)</td><td class="flow-pos" data-sort="19027266.0">$+19.0M</td><td style="color:var(--text);font-weight:600" data-sort="59.4">59.4%</td><td style="color:var(--positive);font-weight:600" data-sort="0.63">0.63</td><td style="color:var(--warning)" data-sort="96">96</td><td>BUY CALL</td></tr><tr><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=MU" target="_blank" style="color:var(--accent);font-weight:700">MU ↗</a></td><td style="font-variant-numeric:tabular-nums">$448.15</td><td><span class="badge sell">sell</span></td><td>⚠️ 高檔出貨陷阱，多單快逃</td><td>M</td><td>distribution</td><td style="color:var(--text);font-weight:600" data-sort="60.3">60.3</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="3">★★☆ (3)</td><td class="flow-pos" data-sort="13863926.0">$+13.9M</td><td style="color:var(--text);font-weight:600" data-sort="67.2">67.2%</td><td style="color:var(--text);font-weight:600" data-sort="0.84">0.84</td><td style="color:var(--warning)" data-sort="84">84</td><td>BUY CALL</td></tr><tr><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=PLTR" target="_blank" style="color:var(--accent);font-weight:700">PLTR ↗</a></td><td style="font-variant-numeric:tabular-nums">$145.56</td><td><span class="badge sell">sell_confirmed</span></td><td>主力已出貨，趨勢反轉</td><td>M</td><td>distribution</td><td style="color:var(--text);font-weight:600" data-sort="51.7">51.7</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="3">★★☆ (3)</td><td class="flow-pos" data-sort="121998419.0">$+122.0M</td><td style="color:var(--text);font-weight:600" data-sort="37.5">37.5%</td><td style="color:var(--positive);font-weight:600" data-sort="0.63">0.63</td><td style="color:var(--warning)" data-sort="68">68</td><td>BUY CALL</td></tr><tr><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=UNH" target="_blank" style="color:var(--accent);font-weight:700">UNH ↗</a></td><td style="font-variant-numeric:tabular-nums">$324.41</td><td><span class="badge sell">sell_confirmed</span></td><td>主力已出貨，趨勢反轉</td><td>M</td><td>distribution</td><td style="color:var(--negative);font-weight:600" data-sort="71.8">71.8 🔥</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="3">★★☆ (3)</td><td class="flow-pos" data-sort="982800">$+983K</td><td style="color:var(--positive);font-weight:600" data-sort="21.2">21.2%</td><td style="color:var(--text);font-weight:600" data-sort="0.9">0.90</td><td style="color:var(--text)" data-sort="47">47</td><td>BUY CALL</td></tr><tr><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=CRWV" target="_blank" style="color:var(--accent);font-weight:700">CRWV ↗</a></td><td style="font-variant-numeric:tabular-nums">$117.09</td><td><span class="badge buy">buy</span></td><td>進入區間，觀察反轉 K 線</td><td>L</td><td>consolidation</td><td style="color:var(--negative);font-weight:600" data-sort="71.8">71.8 🔥</td><td><span class="badge bearish">🔴 BEARISH</span></td><td data-sort="2">★★☆ (2)</td><td class="flow-neg" data-sort="-748440.0">$-748K</td><td style="color:var(--text);font-weight:600" data-sort="30.5">30.5%</td><td style="color:var(--text);font-weight:600" data-sort="0.7">0.70</td><td style="color:var(--text)" data-sort="40">40</td><td>BUY PUT</td></tr><tr><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=MRVL" target="_blank" style="color:var(--accent);font-weight:700">MRVL ↗</a></td><td style="font-variant-numeric:tabular-nums">$151.54</td><td><span class="badge sell">sell_wait</span></td><td>🛑 RSI超買+頂部出貨，準備下跌</td><td>L</td><td>distribution</td><td style="color:var(--negative);font-weight:600" data-sort="85.0">85.0 🔥</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="2">★★☆ (2)</td><td class="flow-pos" data-sort="313150.0">$+313K</td><td style="color:var(--text);font-weight:600" data-sort="59.4">59.4%</td><td style="color:var(--text);font-weight:600" data-sort="0.75">0.75</td><td style="color:var(--warning)" data-sort="55">55</td><td>BUY CALL</td></tr><tr><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=SATS" target="_blank" style="color:var(--accent);font-weight:700">SATS ↗</a></td><td style="font-variant-numeric:tabular-nums">$135.11</td><td><span class="badge sell">sell_wait</span></td><td>極高位階，不建議追多</td><td>C_HIGH</td><td>distribution</td><td style="color:var(--text);font-weight:600" data-sort="65.7">65.7</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="2">★★☆ (2)</td><td class="flow-pos" data-sort="350000">$+350K</td><td style="color:var(--positive);font-weight:600" data-sort="14.6">14.6%</td><td style="color:var(--positive);font-weight:600" data-sort="0.23">0.23</td><td style="color:var(--text)" data-sort="4">4</td><td>BUY CALL</td></tr><tr><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=VRT" target="_blank" style="color:var(--accent);font-weight:700">VRT ↗</a></td><td style="font-variant-numeric:tabular-nums">$316.45</td><td><span class="badge sell">sell_wait</span></td><td>極高位階，不建議追多</td><td>C_HIGH</td><td>distribution</td><td style="color:var(--text);font-weight:600" data-sort="67.6">67.6</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="1">★☆☆ (1)</td><td class="flow-pos" data-sort="350000">$+350K</td><td style="color:var(--text);font-weight:600" data-sort="54.4">54.4%</td><td style="color:var(--negative);font-weight:600" data-sort="1.35">1.35</td><td style="color:var(--text)" data-sort="4">4</td><td>WATCH CALL</td></tr></tbody></table></div>
+    <div class="table-desc" id="desc-conflict"></div>
+    <div class="table-wrap" id="table-conflict"></div>
   </div>
   <div id="section-opts_only" class="table-section">
-    <div class="table-desc">有期權數據但篩選器未選到的高分標的</div>
-    <div class="table-wrap"><table><thead><tr><th>代碼</th><th>現價</th><th>期權方向</th><th>期權評分</th><th>淨資金流</th><th>IV Rank</th><th>PCR</th><th>異常活動</th><th>期權建議</th></tr></thead><tbody><tr><td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=SOFI" target="_blank" style="color:var(--accent);font-weight:700">SOFI ↗</a></td><td style="font-variant-numeric:tabular-nums">$19.51</td><td><span class="badge bullish">🟢 BULLISH</span></td><td data-sort="4">★★★ (4)</td><td class="flow-pos" data-sort="2731530.0">$+2.7M</td><td style="color:var(--text);font-weight:600" data-sort="50.7">50.7%</td><td style="color:var(--positive);font-weight:600" data-sort="0.63">0.63</td><td style="color:var(--warning)" data-sort="54">54</td><td>BUY CALL</td></tr></tbody></table></div>
+    <div class="table-desc" id="desc-opts_only"></div>
+    <div class="table-wrap" id="table-opts_only"></div>
   </div>
 
-  <footer>資料來源：FINVIZ Elite + OptionCharts.io</footer>
+  <footer id="footer-text"></footer>
 </div>
 
 <script>
-function showTab(name) {
-  document.querySelectorAll('.tab').forEach((t,i) => {
-    const tabs = ['bull','bear','conflict','opts_only'];
-    t.classList.toggle('active', tabs[i] === name);
+const I18N_ALL = {"zh": {"page_title": "期權 × 篩選器 交叉分析", "header_title": "🔀 期權 × 篩選器 交叉信號分析", "subtitle": "篩選器狀態與期權資金流的雙重確認", "tab_bull": "🟢 雙重看多", "tab_bear": "🔴 雙重看空", "tab_conflict": "⚡ 信號衝突", "tab_opts_only": "📊 僅有期權數據", "bull_desc": "篩選器買點 + 期權看多 → 高確信做多", "bear_desc": "篩選器賣出 + 期權看空 → 高確信做空", "conflict_desc": "篩選器與期權方向相反 → 需謹慎判斷", "opts_only_desc": "有期權數據但篩選器未選到的高分標的", "col_ticker": "代碼", "col_price": "現價", "col_screener": "篩選器狀態", "col_advice": "操作建議", "col_opt_dir": "期權方向", "col_opt_score": "期權評分", "col_net_flow": "淨資金流", "col_iv_rank": "IV Rank", "col_pcr": "PCR", "col_unusual": "異常活動", "col_action": "期權建議", "col_strategy": "策略", "col_intent": "主力意圖", "col_rsi": "RSI", "back_link": "← 返回篩選儀表板", "summary_total": "共 {n} 支重疊標的", "summary_bull": "雙重看多", "summary_bear": "雙重看空", "summary_conflict": "信號衝突", "no_data": "無數據", "footer": "資料來源：FINVIZ Elite + OptionCharts.io"}, "en": {"page_title": "Options × Screener Cross Analysis", "header_title": "🔀 Options × Screener Cross-Signal Analysis", "subtitle": "Dual confirmation from screener status and options flow", "tab_bull": "🟢 Dual Bullish", "tab_bear": "🔴 Dual Bearish", "tab_conflict": "⚡ Conflicting", "tab_opts_only": "📊 Options Only", "bull_desc": "Screener buy + Options bullish → High conviction long", "bear_desc": "Screener sell + Options bearish → High conviction short", "conflict_desc": "Screener and options disagree → Proceed with caution", "opts_only_desc": "High-scoring options signals not in screener results", "col_ticker": "Ticker", "col_price": "Price", "col_screener": "Screener Status", "col_advice": "Advice", "col_opt_dir": "Options Dir", "col_opt_score": "Opt Score", "col_net_flow": "Net Flow", "col_iv_rank": "IV Rank", "col_pcr": "PCR", "col_unusual": "Unusual", "col_action": "Opt Action", "col_strategy": "Strategy", "col_intent": "Intent", "col_rsi": "RSI", "back_link": "← Back to Screener Dashboard", "summary_total": "{n} overlapping tickers", "summary_bull": "Dual Bullish", "summary_bear": "Dual Bearish", "summary_conflict": "Conflicting", "no_data": "No data", "footer": "Data: FINVIZ Elite + OptionCharts.io"}};
+const DATA = {"bull": [{"ticker": "TSLA", "price": 392.56, "opt_dir": "BULLISH", "stars": "★★★", "score_num": 4, "net_flow_raw": 8497057.813600004, "iv_rank_val": 15.56051125016643, "pcr_val": 0.73, "unusual_val": 251, "opt_action": "BUY CALL", "v2_status": "buy", "v2_advice": "進入區間，觀察反轉 K 線", "strategy": "M", "intent": "consolidation", "rsi_val": 53.5, "category": "bull"}, {"ticker": "MSTR", "price": 170.49, "opt_dir": "BULLISH", "stars": "★★☆", "score_num": 3, "net_flow_raw": 77596844.83520007, "iv_rank_val": 41.40630560102485, "pcr_val": 0.37, "unusual_val": 81, "opt_action": "BUY CALL", "v2_status": "buy", "v2_advice": "主力護盤，分批進場", "strategy": "L", "intent": "accumulation", "rsi_val": 66.8, "category": "bull"}, {"ticker": "TSM", "price": 366.6, "opt_dir": "BULLISH", "stars": "★★☆", "score_num": 3, "net_flow_raw": 1001444.9558, "iv_rank_val": 56.92773065035836, "pcr_val": 0.59, "unusual_val": 21, "opt_action": "BUY CALL", "v2_status": "wait", "v2_advice": "等待跌回需求區", "strategy": "M", "intent": "consolidation", "rsi_val": 56.8, "category": "bull"}, {"ticker": "AVGO", "price": 399.7, "opt_dir": "BULLISH", "stars": "★★☆", "score_num": 2, "net_flow_raw": 752239.9990000001, "iv_rank_val": 25.78842868356653, "pcr_val": 1.12, "unusual_val": 44, "opt_action": "BUY CALL", "v2_status": "wait", "v2_advice": "RSI超買，回調機率高，耐心等", "strategy": "M", "intent": "consolidation", "rsi_val": 74.6, "category": "bull"}, {"ticker": "SNDK", "price": 913.75, "opt_dir": "BULLISH", "stars": "★★☆", "score_num": 2, "net_flow_raw": 449000.0153, "iv_rank_val": 87.00626784853324, "pcr_val": 1.29, "unusual_val": 15, "opt_action": "BUY CALL", "v2_status": "wait", "v2_advice": "等待跌回需求區", "strategy": "A", "intent": "accumulation", "rsi_val": 65.0, "category": "bull"}, {"ticker": "AAOI", "price": 163.73, "opt_dir": "BULLISH", "stars": "★☆☆", "score_num": 1, "net_flow_raw": 634499.9924, "iv_rank_val": 90.43899593252208, "pcr_val": 1.35, "unusual_val": 3, "opt_action": "WATCH CALL", "v2_status": "wait", "v2_advice": "等待跌回需求區", "strategy": "C_HIGH", "intent": "consolidation", "rsi_val": 63.3, "category": "bull"}], "bear": [{"ticker": "BAC", "price": 53.88, "opt_dir": "BEARISH", "stars": "★★★", "score_num": 4, "net_flow_raw": -2250258.968100004, "iv_rank_val": 18.91319155377282, "pcr_val": 1.02, "unusual_val": 21, "opt_action": "BUY PUT", "v2_status": "sell_confirmed", "v2_advice": "主力已出貨，趨勢反轉", "strategy": "M", "intent": "distribution", "rsi_val": 64.2, "category": "bear"}, {"ticker": "NVDA", "price": 202.09, "opt_dir": "BEARISH", "stars": "★★★", "score_num": 4, "net_flow_raw": -2786408.025699999, "iv_rank_val": 24.75423649471025, "pcr_val": 0.6, "unusual_val": 237, "opt_action": "BUY PUT", "v2_status": "sell", "v2_advice": "⚠️ 高檔出貨陷阱，多單快逃", "strategy": "M", "intent": "distribution", "rsi_val": 67.6, "category": "bear"}, {"ticker": "AMZN", "price": 255.0, "opt_dir": "BEARISH", "stars": "★★☆", "score_num": 3, "net_flow_raw": -11943214.7445, "iv_rank_val": 62.7107144721048, "pcr_val": 0.67, "unusual_val": 121, "opt_action": "BUY PUT", "v2_status": "sell", "v2_advice": "🛑 RSI超買+高檔出貨，極度危險", "strategy": "M", "intent": "distribution", "rsi_val": 74.0, "category": "bear"}, {"ticker": "GOOGL", "price": 337.82, "opt_dir": "BEARISH", "stars": "★★☆", "score_num": 3, "net_flow_raw": -140298557.1771, "iv_rank_val": 49.48861311877815, "pcr_val": 0.81, "unusual_val": 57, "opt_action": "BUY PUT", "v2_status": "sell", "v2_advice": "⚠️ 高檔出貨陷阱，多單快逃", "strategy": "M", "intent": "distribution", "rsi_val": 63.0, "category": "bear"}, {"ticker": "INTC", "price": 66.08, "opt_dir": "BEARISH", "stars": "★★☆", "score_num": 3, "net_flow_raw": -1172470.197799999, "iv_rank_val": 88.662005696741, "pcr_val": 1.01, "unusual_val": 89, "opt_action": "BUY PUT", "v2_status": "sell_wait", "v2_advice": "🛑 RSI超買+頂部出貨，準備下跌", "strategy": "M", "intent": "distribution", "rsi_val": 70.9, "category": "bear"}, {"ticker": "GOOG", "price": 335.79, "opt_dir": "BEARISH", "stars": "★★☆", "score_num": 2, "net_flow_raw": -648529.9931000001, "iv_rank_val": 48.5898468976632, "pcr_val": 0.64, "unusual_val": 32, "opt_action": "BUY PUT", "v2_status": "sell", "v2_advice": "⚠️ 高檔出貨陷阱，多單快逃", "strategy": "M", "intent": "distribution", "rsi_val": 63.4, "category": "bear"}, {"ticker": "TXN", "price": 234.0, "opt_dir": "BEARISH", "stars": "★★☆", "score_num": 2, "net_flow_raw": -1062000.0172, "iv_rank_val": 79.52980982382452, "pcr_val": 0.68, "unusual_val": 1, "opt_action": "BUY PUT", "v2_status": "sell_wait", "v2_advice": "🛑 RSI超買+頂部出貨，準備下跌", "strategy": "C_HIGH", "intent": "distribution", "rsi_val": 75.3, "category": "bear"}, {"ticker": "GFS", "price": 58.8, "opt_dir": "BEARISH", "stars": "★☆☆", "score_num": 1, "net_flow_raw": -312000.0, "iv_rank_val": 26.87991467153589, "pcr_val": 0.08, "unusual_val": 2, "opt_action": "WATCH PUT", "v2_status": "sell", "v2_advice": "🛑 RSI超買+高檔出貨，極度危險", "strategy": "C_HIGH", "intent": "distribution", "rsi_val": 78.5, "category": "bear"}], "conflict": [{"ticker": "NFLX", "price": 94.61, "opt_dir": "BULLISH", "stars": "★★★", "score_num": 5, "net_flow_raw": 2419939.91830001, "iv_rank_val": 3.212302811315767, "pcr_val": 0.55, "unusual_val": 164, "opt_action": "BUY CALL", "v2_status": "sell_confirmed", "v2_advice": "主力已出貨，趨勢反轉", "strategy": "M", "intent": "distribution", "rsi_val": 40.7, "category": "conflict"}, {"ticker": "AAPL", "price": 272.0, "opt_dir": "BULLISH", "stars": "★★☆", "score_num": 3, "net_flow_raw": 4415223.765699999, "iv_rank_val": 42.55252100840337, "pcr_val": 0.38, "unusual_val": 136, "opt_action": "BUY CALL", "v2_status": "sell_confirmed", "v2_advice": "主力已出貨，趨勢反轉", "strategy": "M", "intent": "distribution", "rsi_val": 56.7, "category": "conflict"}, {"ticker": "AMD", "price": 274.98, "opt_dir": "BULLISH", "stars": "★★☆", "score_num": 3, "net_flow_raw": 19027265.84070001, "iv_rank_val": 59.43297727090196, "pcr_val": 0.63, "unusual_val": 96, "opt_action": "BUY CALL", "v2_status": "sell_wait", "v2_advice": "🛑 RSI超買+頂部出貨，準備下跌", "strategy": "M", "intent": "distribution", "rsi_val": 79.4, "category": "conflict"}, {"ticker": "MU", "price": 448.15, "opt_dir": "BULLISH", "stars": "★★☆", "score_num": 3, "net_flow_raw": 13863926.0155, "iv_rank_val": 67.19664422719124, "pcr_val": 0.84, "unusual_val": 84, "opt_action": "BUY CALL", "v2_status": "sell", "v2_advice": "⚠️ 高檔出貨陷阱，多單快逃", "strategy": "M", "intent": "distribution", "rsi_val": 60.5, "category": "conflict"}, {"ticker": "PLTR", "price": 145.56, "opt_dir": "BULLISH", "stars": "★★☆", "score_num": 3, "net_flow_raw": 121998418.599, "iv_rank_val": 37.47974606210323, "pcr_val": 0.63, "unusual_val": 68, "opt_action": "BUY CALL", "v2_status": "sell_confirmed", "v2_advice": "主力已出貨，趨勢反轉", "strategy": "M", "intent": "distribution", "rsi_val": 51.8, "category": "conflict"}, {"ticker": "UNH", "price": 324.41, "opt_dir": "BULLISH", "stars": "★★☆", "score_num": 3, "net_flow_raw": 982800.0, "iv_rank_val": 21.21100579736817, "pcr_val": 0.9, "unusual_val": 47, "opt_action": "BUY CALL", "v2_status": "sell", "v2_advice": "🛑 RSI超買+高檔出貨，極度危險", "strategy": "M", "intent": "distribution", "rsi_val": 79.5, "category": "conflict"}, {"ticker": "BABA", "price": 140.2, "opt_dir": "BEARISH", "stars": "★★☆", "score_num": 2, "net_flow_raw": -394000.0153, "iv_rank_val": 52.9700148215711, "pcr_val": 0.42, "unusual_val": 22, "opt_action": "BUY PUT", "v2_status": "buy", "v2_advice": "主力護盤，分批進場", "strategy": "M", "intent": "accumulation", "rsi_val": 54.1, "category": "conflict"}, {"ticker": "CRWV", "price": 117.09, "opt_dir": "BEARISH", "stars": "★★☆", "score_num": 2, "net_flow_raw": -748440.033, "iv_rank_val": 30.54090054850639, "pcr_val": 0.7, "unusual_val": 40, "opt_action": "BUY PUT", "v2_status": "buy", "v2_advice": "進入區間，觀察反轉 K 線", "strategy": "L", "intent": "consolidation", "rsi_val": 68.7, "category": "conflict"}, {"ticker": "MRVL", "price": 151.54, "opt_dir": "BULLISH", "stars": "★★☆", "score_num": 2, "net_flow_raw": 313150.0393000001, "iv_rank_val": 59.4366655812439, "pcr_val": 0.75, "unusual_val": 55, "opt_action": "BUY CALL", "v2_status": "sell_wait", "v2_advice": "🛑 RSI超買+頂部出貨，準備下跌", "strategy": "L", "intent": "distribution", "rsi_val": 86.0, "category": "conflict"}, {"ticker": "AMAT", "price": 391.5, "opt_dir": "BULLISH", "stars": "★☆☆", "score_num": 1, "net_flow_raw": 429660.0088, "iv_rank_val": 87.95146952830946, "pcr_val": 0.97, "unusual_val": 0, "opt_action": "WATCH CALL", "v2_status": "sell_wait", "v2_advice": "極高位階，不建議追多", "strategy": "A", "intent": "distribution", "rsi_val": 61.4, "category": "conflict"}, {"ticker": "VRT", "price": 316.45, "opt_dir": "BULLISH", "stars": "★☆☆", "score_num": 1, "net_flow_raw": 350000.0, "iv_rank_val": 54.40952004070326, "pcr_val": 1.35, "unusual_val": 4, "opt_action": "WATCH CALL", "v2_status": "sell_wait", "v2_advice": "極高位階，不建議追多", "strategy": "C_HIGH", "intent": "distribution", "rsi_val": 66.4, "category": "conflict"}], "opts_only": [{"ticker": "SOFI", "price": 19.51, "opt_dir": "BULLISH", "stars": "★★★", "score_num": 4, "net_flow_raw": 2731529.833099999, "iv_rank_val": 50.67853974304208, "pcr_val": 0.63, "unusual_val": 54, "opt_action": "BUY CALL", "category": "opts_only"}]};
+const COUNTS = {"overlap": 65, "bull": 6, "bear": 8, "conflict": 11};
+const UPDATED = "2026-04-22 14:14";
+
+const LANG_KEY = "finvz_lang";
+let currentLang = (function(){ try { return localStorage.getItem(LANG_KEY) || "zh"; } catch(e){ return "zh"; } })();
+let T = I18N_ALL[currentLang] || I18N_ALL["zh"];
+
+const TAB_KEYS = ["bull","bear","conflict","opts_only"];
+let activeTab = "bull";
+
+function switchLang(lang) {
+  currentLang = lang;
+  T = I18N_ALL[lang] || I18N_ALL["zh"];
+  try { localStorage.setItem(LANG_KEY, lang); } catch(e) {}
+  document.querySelectorAll(".lang-btn").forEach(b => {
+    b.classList.toggle("active", b.dataset.lang === lang);
   });
-  document.querySelectorAll('.table-section').forEach(s => s.classList.remove('active'));
-  const sec = document.getElementById('section-' + name);
-  if (sec) sec.classList.add('active');
+  document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+  document.title = T.page_title;
+  renderAll();
 }
-// Sortable tables
-document.querySelectorAll('table').forEach(table => {
-  const headers = table.querySelectorAll('th');
-  let sortCol = -1, sortDir = 1;
-  headers.forEach((th, idx) => {
-    th.addEventListener('click', () => {
-      if (sortCol === idx) sortDir *= -1;
-      else { sortCol = idx; sortDir = 1; }
-      const tbody = table.querySelector('tbody');
-      const rows = Array.from(tbody.querySelectorAll('tr'));
-      rows.sort((a, b) => {
-        const at = a.cells[idx]?.getAttribute('data-sort') || a.cells[idx]?.textContent || '';
-        const bt = b.cells[idx]?.getAttribute('data-sort') || b.cells[idx]?.textContent || '';
-        const an = parseFloat(at), bn = parseFloat(bt);
-        if (!isNaN(an) && !isNaN(bn)) return (an - bn) * sortDir;
-        return at.localeCompare(bt) * sortDir;
+
+function fmtFlow(f) {
+  if (f == null) return "\u2014";
+  var af = Math.abs(f), label;
+  if (af >= 1e6) label = (f/1e6).toFixed(1) + "M";
+  else if (af >= 1e3) label = Math.round(f/1e3) + "K";
+  else label = Math.round(f) + "";
+  if (f > 0) label = "+" + label;
+  return "$" + label;
+}
+
+function buildTable(rows, showScreener) {
+  if (!rows || rows.length === 0) return '<div style="padding:40px;text-align:center;color:#64748b">' + T.no_data + '</div>';
+
+  var cols = [["col_ticker","ticker"],["col_price","price"]];
+  if (showScreener) {
+    cols = cols.concat([["col_screener","v2_status"],["col_advice","v2_advice"],["col_strategy","strategy"],["col_intent","intent"],["col_rsi","rsi"]]);
+  }
+  cols = cols.concat([["col_opt_dir","opt_dir"],["col_opt_score","opt_score"],["col_net_flow","net_flow"],["col_iv_rank","iv_rank"],["col_pcr","pcr"],["col_unusual","unusual"],["col_action","opt_action"]]);
+
+  var thead = "<thead><tr>" + cols.map(function(c){ return "<th>" + (T[c[0]] || c[0]) + "</th>"; }).join("") + "</tr></thead>";
+
+  var bodyRows = rows.map(function(r) {
+    var tds = cols.map(function(c) {
+      var dk = c[1], val = r[dk];
+      if (dk === "ticker") {
+        return '<td class="ticker"><a href="https://www.tradingview.com/chart/?symbol=' + val + '" target="_blank" style="color:var(--accent);font-weight:700">' + val + ' \u2197</a></td>';
+      }
+      if (dk === "price") {
+        return (val && val !== "\u2014") ? '<td style="font-variant-numeric:tabular-nums">$' + Number(val).toFixed(2) + '</td>' : '<td style="color:var(--text-muted)">\u2014</td>';
+      }
+      if (dk === "v2_status") {
+        var cm = {buy:"buy",sell:"sell",sell_wait:"sell",sell_confirmed:"sell",wait:"wait",fail:"fail"};
+        return '<td><span class="badge ' + (cm[val] || "neutral") + '">' + (val || "\u2014") + '</span></td>';
+      }
+      if (dk === "opt_dir") {
+        var icon = val === "BULLISH" ? "\ud83d\udfe2" : val === "BEARISH" ? "\ud83d\udd34" : "\u26aa";
+        var cls = val === "BULLISH" ? "bullish" : val === "BEARISH" ? "bearish" : "neutral";
+        return '<td><span class="badge ' + cls + '">' + icon + ' ' + val + '</span></td>';
+      }
+      if (dk === "net_flow") {
+        var fv = r.net_flow_raw || 0;
+        var lbl = fmtFlow(fv);
+        var fc = fv > 0 ? "flow-pos" : fv < 0 ? "flow-neg" : "";
+        return '<td class="' + fc + '" data-sort="' + fv + '">' + lbl + '</td>';
+      }
+      if (dk === "opt_score") {
+        return '<td data-sort="' + (r.score_num || 0) + '">' + (r.stars || "") + ' (' + (r.score_num || 0) + ')</td>';
+      }
+      if (dk === "iv_rank") {
+        var iv = r.iv_rank_val;
+        if (iv != null) {
+          var cl = iv < 30 ? "var(--positive)" : iv > 70 ? "var(--negative)" : "var(--text)";
+          return '<td style="color:' + cl + ';font-weight:600" data-sort="' + iv + '">' + iv.toFixed(1) + '%</td>';
+        }
+        return '<td style="color:var(--text-muted)">\u2014</td>';
+      }
+      if (dk === "pcr") {
+        var pc = r.pcr_val;
+        if (pc != null) {
+          var cl2 = pc > 1.0 ? "var(--negative)" : pc < 0.7 ? "var(--positive)" : "var(--text)";
+          return '<td style="color:' + cl2 + ';font-weight:600" data-sort="' + pc + '">' + pc.toFixed(2) + '</td>';
+        }
+        return '<td style="color:var(--text-muted)">\u2014</td>';
+      }
+      if (dk === "unusual") {
+        var u = r.unusual_val || 0;
+        var uc = u > 50 ? "var(--warning)" : "var(--text)";
+        return '<td style="color:' + uc + '" data-sort="' + u + '">' + u + '</td>';
+      }
+      if (dk === "rsi") {
+        var rv = r.rsi_val;
+        if (rv != null) {
+          var rc = rv >= 70 ? "var(--negative)" : rv <= 30 ? "var(--positive)" : "var(--text)";
+          var tag = rv >= 70 ? " \ud83d\udd25" : rv <= 30 ? " \u2744\ufe0f" : "";
+          return '<td style="color:' + rc + ';font-weight:600" data-sort="' + rv + '">' + rv.toFixed(1) + tag + '</td>';
+        }
+        return '<td style="color:var(--text-muted)">\u2014</td>';
+      }
+      return '<td>' + (val || "\u2014") + '</td>';
+    });
+    var rc = r.category === "bull" ? ' class="align-row"' : r.category === "bear" ? ' class="align-row-bear"' : "";
+    return "<tr" + rc + ">" + tds.join("") + "</tr>";
+  });
+
+  return "<table>" + thead + "<tbody>" + bodyRows.join("") + "</tbody></table>";
+}
+
+function attachSort() {
+  document.querySelectorAll('table').forEach(function(table) {
+    var headers = table.querySelectorAll('th');
+    var sortCol = -1, sortDir = 1;
+    headers.forEach(function(th, idx) {
+      th.addEventListener('click', function() {
+        if (sortCol === idx) sortDir *= -1;
+        else { sortCol = idx; sortDir = 1; }
+        var tbody = table.querySelector('tbody');
+        var rows = Array.from(tbody.querySelectorAll('tr'));
+        rows.sort(function(a, b) {
+          var at = (a.cells[idx] && a.cells[idx].getAttribute('data-sort')) || (a.cells[idx] && a.cells[idx].textContent) || '';
+          var bt = (b.cells[idx] && b.cells[idx].getAttribute('data-sort')) || (b.cells[idx] && b.cells[idx].textContent) || '';
+          var an = parseFloat(at), bn = parseFloat(bt);
+          if (!isNaN(an) && !isNaN(bn)) return (an - bn) * sortDir;
+          return at.localeCompare(bt) * sortDir;
+        });
+        rows.forEach(function(r){ tbody.appendChild(r); });
       });
-      rows.forEach(r => tbody.appendChild(r));
     });
   });
-});
+}
+
+function showTab(name) {
+  activeTab = name;
+  document.querySelectorAll('.tab').forEach(function(t, i) {
+    t.classList.toggle('active', TAB_KEYS[i] === name);
+  });
+  document.querySelectorAll('.table-section').forEach(function(s){ s.classList.remove('active'); });
+  var sec = document.getElementById('section-' + name);
+  if (sec) sec.classList.add('active');
+}
+
+function renderAll() {
+  document.getElementById("back-link").textContent = T.back_link;
+  document.getElementById("header-title").textContent = T.header_title;
+  document.getElementById("header-sub").textContent = T.subtitle + " \u00b7 " + UPDATED;
+  document.getElementById("footer-text").textContent = T.footer;
+
+  // KPIs
+  document.getElementById("kpi-total-label").textContent = T.summary_total.replace("{n}", COUNTS.overlap);
+  document.getElementById("kpi-total-val").textContent = COUNTS.overlap;
+  document.getElementById("kpi-bull-label").textContent = T.summary_bull;
+  document.getElementById("kpi-bull-val").textContent = COUNTS.bull;
+  document.getElementById("kpi-bear-label").textContent = T.summary_bear;
+  document.getElementById("kpi-bear-val").textContent = COUNTS.bear;
+  document.getElementById("kpi-conflict-label").textContent = T.summary_conflict;
+  document.getElementById("kpi-conflict-val").textContent = COUNTS.conflict;
+
+  // Tabs
+  var tabsBar = document.getElementById("tabs-bar");
+  tabsBar.innerHTML = TAB_KEYS.map(function(k, i) {
+    var label = T["tab_" + k] || k;
+    var cls = k === activeTab ? "tab active" : "tab";
+    return '<div class="' + cls + '" onclick="showTab(\'' + k + '\')">' + label + '</div>';
+  }).join("");
+
+  // Descriptions
+  document.getElementById("desc-bull").textContent = T.bull_desc;
+  document.getElementById("desc-bear").textContent = T.bear_desc;
+  document.getElementById("desc-conflict").textContent = T.conflict_desc;
+  document.getElementById("desc-opts_only").textContent = T.opts_only_desc;
+
+  // Tables
+  document.getElementById("table-bull").innerHTML = buildTable(DATA.bull, true);
+  document.getElementById("table-bear").innerHTML = buildTable(DATA.bear, true);
+  document.getElementById("table-conflict").innerHTML = buildTable(DATA.conflict, true);
+  document.getElementById("table-opts_only").innerHTML = buildTable(DATA.opts_only, false);
+
+  attachSort();
+}
+
+// Init
+renderAll();
+if (currentLang !== "zh") switchLang(currentLang);
 </script>
 </body>
 </html>
