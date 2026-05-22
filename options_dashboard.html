@@ -570,14 +570,6 @@ li { margin-bottom: 4px; }
       <th>Net Flow</th><th>Sweeps</th><th>Score</th><th>Action</th><th>Agreement</th>
     </tr></thead><tbody><tr>
           <td class="stars">★★☆</td>
-          <td><strong>INTU</strong></td>
-          <td>$nan</td><td>-</td><td>-</td>
-          <td class="bear">$-20.8M</td>
-          <td>0</td><td>2</td>
-          <td><span class="badge badge-put">BUY PUT</span></td>
-          <td class="aligned">ALIGNED</td>
-        </tr><tr>
-          <td class="stars">★★☆</td>
           <td><strong>BAC</strong></td>
           <td>$nan</td><td>-</td><td>-</td>
           <td class="bull">$14.0M</td>
@@ -600,6 +592,14 @@ li { margin-bottom: 4px; }
           <td>0</td><td>2</td>
           <td><span class="badge badge-call">BUY CALL</span></td>
           <td class="aligned">ALIGNED</td>
+        </tr><tr>
+          <td class="stars">★★☆</td>
+          <td><strong>INTU</strong></td>
+          <td>$nan</td><td>-</td><td>-</td>
+          <td class="bear">$-20.8M</td>
+          <td>0</td><td>2</td>
+          <td><span class="badge badge-put">BUY PUT</span></td>
+          <td class="aligned">ALIGNED</td>
         </tr></tbody></table></div>
 </details>
 
@@ -610,7 +610,7 @@ li { margin-bottom: 4px; }
 // JS filter — 在支援 JS 的瀏覽器中啟用搜尋/篩選功能
 // 在 iOS 檔案預覽中不執行 JS，但表格已經預渲染為靜態 HTML
 try {
-  let allData = [{"ticker": "INTU", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": NaN, "options_volume": NaN, "open_interest": NaN, "adv_pct": NaN, "bull_flow": 0.0, "bear_flow": 20819600.28, "net_flow": -20819600.28, "sweeps": 0, "blocks": 0, "unusual_contracts": 1, "score": 2, "stars": 2, "direction": "BEARISH", "action": "BUY PUT", "pcr_direction": "NEUTRAL", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "BAC", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": NaN, "options_volume": NaN, "open_interest": NaN, "adv_pct": NaN, "bull_flow": 13950000.29, "bear_flow": 0.0, "net_flow": 13950000.29, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "NEUTRAL", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "META", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.45, "options_volume": 428268.0, "open_interest": NaN, "adv_pct": 77.75, "bull_flow": 23714320.58, "bear_flow": 0.0, "net_flow": 23714320.58, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "BULLISH", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "MSFT", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.27, "options_volume": 632135.0, "open_interest": NaN, "adv_pct": 75.56, "bull_flow": 11522899.63, "bear_flow": 0.0, "net_flow": 11522899.63, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "BULLISH", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}];
+  let allData = [{"ticker": "BAC", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": NaN, "options_volume": NaN, "open_interest": NaN, "adv_pct": NaN, "bull_flow": 13950000.29, "bear_flow": 0.0, "net_flow": 13950000.29, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "NEUTRAL", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "META", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.45, "options_volume": 428268.0, "open_interest": NaN, "adv_pct": 77.75, "bull_flow": 23714320.58, "bear_flow": 0.0, "net_flow": 23714320.58, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "BULLISH", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "MSFT", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.27, "options_volume": 632135.0, "open_interest": NaN, "adv_pct": 75.56, "bull_flow": 11522899.63, "bear_flow": 0.0, "net_flow": 11522899.63, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "BULLISH", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "INTU", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": NaN, "options_volume": NaN, "open_interest": NaN, "adv_pct": NaN, "bull_flow": 0.0, "bear_flow": 20819600.28, "net_flow": -20819600.28, "sweeps": 0, "blocks": 0, "unusual_contracts": 1, "score": 2, "stars": 2, "direction": "BEARISH", "action": "BUY PUT", "pcr_direction": "NEUTRAL", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}];
 
   function fmt(n, prefix) {
     if (n === null || n === undefined || isNaN(n)) return '-';
