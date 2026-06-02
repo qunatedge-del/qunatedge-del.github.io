@@ -97,11 +97,11 @@ li { margin-bottom: 4px; }
 
 <div class="kpi-row">
   <div class="kpi green"><div class="kpi-value">3</div><div class="kpi-label">BUY CALL 信號</div></div>
-  <div class="kpi red"><div class="kpi-value">0</div><div class="kpi-label">BUY PUT 信號</div></div>
+  <div class="kpi red"><div class="kpi-value">1</div><div class="kpi-label">BUY PUT 信號</div></div>
   <div class="kpi seller"><div class="kpi-value">0</div><div class="kpi-label">賣方策略</div></div>
   <div class="kpi whale"><div class="kpi-value">20</div><div class="kpi-label">大戶異動</div></div>
-  <div class="kpi orange"><div class="kpi-value">0</div><div class="kpi-label">信號矛盾</div></div>
-  <div class="kpi purple"><div class="kpi-value">3</div><div class="kpi-label">有信號股票</div></div>
+  <div class="kpi orange"><div class="kpi-value">1</div><div class="kpi-label">信號矛盾</div></div>
+  <div class="kpi purple"><div class="kpi-value">4</div><div class="kpi-label">有信號股票</div></div>
   <div class="kpi"><div class="kpi-value">$0.1B</div><div class="kpi-label">總資金流</div></div>
 </div>
 
@@ -113,7 +113,7 @@ li { margin-bottom: 4px; }
       NEUTRAL — 市場中性 — 1 個看漲 vs 0 個看跌信號，方向不明確
     </div>
     <div class="signal-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px;">
-      <div><h4 style="color: #22c55e;">🟢 看漲信號 (1)</h4><ul style="font-size: 12px; color: #94a3b8; list-style: disc; padding-left: 16px;"><li>NDX flow net +$118.6M (tech bullish)</li></ul></div>
+      <div><h4 style="color: #22c55e;">🟢 看漲信號 (1)</h4><ul style="font-size: 12px; color: #94a3b8; list-style: disc; padding-left: 16px;"><li>SPX flow net +$13.2M (institutional bullish)</li></ul></div>
       <div><h4 style="color: #ef4444;">🔴 看跌信號 (0)</h4><ul style="font-size: 12px; color: #94a3b8; list-style: disc; padding-left: 16px;"></ul></div>
       <div><h4 style="color: #94a3b8;">⚪ 中性 (0)</h4><ul style="font-size: 12px; color: #94a3b8; list-style: disc; padding-left: 16px;"></ul></div>
     </div>
@@ -124,25 +124,25 @@ li { margin-bottom: 4px; }
               <td>-</td>
               <td>-</td>
               <td>-</td>
-              <td>1.40</td>
-              <td class="neutral">$0</td>
-              <td class="neutral">NEUTRAL</td>
+              <td>1.34</td>
+              <td class="bull">$13.2M</td>
+              <td class="bull">BULLISH</td>
               <td>0</td>
             </tr><tr>
               <td><strong>$NDX</strong></td>
               <td>-</td>
               <td>-</td>
               <td>-</td>
-              <td>1.00</td>
-              <td class="bull">$118.6M</td>
-              <td class="bull">BULLISH</td>
+              <td>1.05</td>
+              <td class="neutral">$0</td>
+              <td class="neutral">NEUTRAL</td>
               <td>0</td>
             </tr><tr>
               <td><strong>$RUT</strong></td>
               <td>-</td>
               <td>-</td>
               <td>-</td>
-              <td>2.78</td>
+              <td>3.01</td>
               <td class="neutral">$0</td>
               <td class="neutral">N/A</td>
               <td>0</td>
@@ -169,7 +169,7 @@ li { margin-bottom: 4px; }
               <td>-</td>
               <td>-</td>
               <td>-</td>
-              <td>3.31</td>
+              <td>3.24</td>
               <td class="neutral">$0</td>
               <td class="neutral">N/A</td>
               <td>0</td>
@@ -185,6 +185,14 @@ li { margin-bottom: 4px; }
       <th>Net Flow</th><th>Sweeps</th><th>Score</th><th>Action</th><th>Agreement</th>
     </tr></thead><tbody><tr>
           <td class="stars">★★☆</td>
+          <td><strong>META</strong></td>
+          <td>$nan</td><td>-</td><td>0.39</td>
+          <td class="bull">$35.8M</td>
+          <td>0</td><td>2</td>
+          <td><span class="badge badge-call">BUY CALL</span></td>
+          <td class="aligned">ALIGNED</td>
+        </tr><tr>
+          <td class="stars">★★☆</td>
           <td><strong>BAC</strong></td>
           <td>$nan</td><td>-</td><td>-</td>
           <td class="bull">$14.0M</td>
@@ -194,16 +202,8 @@ li { margin-bottom: 4px; }
         </tr><tr>
           <td class="stars">★★☆</td>
           <td><strong>MU</strong></td>
-          <td>$nan</td><td>-</td><td>0.94</td>
-          <td class="bull">$15.2M</td>
-          <td>0</td><td>2</td>
-          <td><span class="badge badge-call">BUY CALL</span></td>
-          <td class="aligned">ALIGNED</td>
-        </tr><tr>
-          <td class="stars">★★☆</td>
-          <td><strong>META</strong></td>
-          <td>$nan</td><td>-</td><td>0.30</td>
-          <td class="bull">$35.8M</td>
+          <td>$nan</td><td>-</td><td>1.07</td>
+          <td class="bull">$31.8M</td>
           <td>0</td><td>2</td>
           <td><span class="badge badge-call">BUY CALL</span></td>
           <td class="aligned">ALIGNED</td>
@@ -212,7 +212,18 @@ li { margin-bottom: 4px; }
 
 <details class="section" open>
   <summary class="red">策略二：BUY PUT — 看跌信號</summary>
-  <div class="section-body"><p style="padding:16px;color:#94a3b8;">沒有符合條件的信號</p></div>
+  <div class="section-body"><table><thead><tr>
+      <th>Rating</th><th>Ticker</th><th>Price</th><th>IV Rank</th><th>PCR</th>
+      <th>Net Flow</th><th>Sweeps</th><th>Score</th><th>Action</th><th>Agreement</th>
+    </tr></thead><tbody><tr>
+          <td class="stars">★★☆</td>
+          <td><strong>TSLA</strong></td>
+          <td>$nan</td><td>-</td><td>0.51</td>
+          <td class="bear">$-12.4M</td>
+          <td>0</td><td>2</td>
+          <td><span class="badge badge-put">BUY PUT</span></td>
+          <td class="conflict">CONFLICT</td>
+        </tr></tbody></table></div>
 </details>
 
 <details class="section" open>
@@ -225,18 +236,25 @@ li { margin-bottom: 4px; }
   <div class="section-body"><table><thead><tr>
       <th>Ticker</th><th>Type</th><th>Sentiment</th><th>Value</th><th>Size</th><th>Contract</th>
     </tr></thead><tbody><tr>
+          <td><strong>AMZN</strong></td>
+          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
+          <td class="neutral">NEUTRAL</td>
+          <td><strong>$540.0M</strong></td>
+          <td>200,000</td>
+          <td></td>
+        </tr><tr>
+          <td><strong>AMZN</strong></td>
+          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
+          <td class="neutral">NEUTRAL</td>
+          <td><strong>$389.7M</strong></td>
+          <td>100,000</td>
+          <td></td>
+        </tr><tr>
           <td><strong>AAPL</strong></td>
           <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
           <td class="neutral">NEUTRAL</td>
           <td><strong>$227.4M</strong></td>
           <td>39,991</td>
-          <td></td>
-        </tr><tr>
-          <td><strong>NVDA</strong></td>
-          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
-          <td class="neutral">NEUTRAL</td>
-          <td><strong>$202.2M</strong></td>
-          <td>58,000</td>
           <td></td>
         </tr><tr>
           <td><strong>AAPL</strong></td>
@@ -251,20 +269,6 @@ li { margin-bottom: 4px; }
           <td class="neutral">NEUTRAL</td>
           <td><strong>$55.9M</strong></td>
           <td>4,904</td>
-          <td></td>
-        </tr><tr>
-          <td><strong>MSTR</strong></td>
-          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
-          <td class="neutral">NEUTRAL</td>
-          <td><strong>$54.1M</strong></td>
-          <td>4,962</td>
-          <td></td>
-        </tr><tr>
-          <td><strong>MU</strong></td>
-          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
-          <td class="neutral">NEUTRAL</td>
-          <td><strong>$38.4M</strong></td>
-          <td>1,250</td>
           <td></td>
         </tr><tr>
           <td><strong>META</strong></td>
@@ -288,6 +292,13 @@ li { margin-bottom: 4px; }
           <td>750</td>
           <td></td>
         </tr><tr>
+          <td><strong>MU</strong></td>
+          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
+          <td class="neutral">NEUTRAL</td>
+          <td><strong>$22.4M</strong></td>
+          <td>8,000</td>
+          <td></td>
+        </tr><tr>
           <td><strong>MSFT</strong></td>
           <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
           <td class="neutral">NEUTRAL</td>
@@ -295,39 +306,11 @@ li { margin-bottom: 4px; }
           <td>7,874</td>
           <td></td>
         </tr><tr>
-          <td><strong>AMZN</strong></td>
-          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
-          <td class="neutral">NEUTRAL</td>
-          <td><strong>$20.4M</strong></td>
-          <td>5,000</td>
-          <td></td>
-        </tr><tr>
-          <td><strong>MU</strong></td>
-          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
-          <td class="neutral">NEUTRAL</td>
-          <td><strong>$20.3M</strong></td>
-          <td>529</td>
-          <td></td>
-        </tr><tr>
           <td><strong>MSFT</strong></td>
           <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
           <td class="neutral">NEUTRAL</td>
           <td><strong>$19.8M</strong></td>
           <td>8,000</td>
-          <td></td>
-        </tr><tr>
-          <td><strong>QXO</strong></td>
-          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
-          <td class="neutral">NEUTRAL</td>
-          <td><strong>$17.6M</strong></td>
-          <td>10,000</td>
-          <td></td>
-        </tr><tr>
-          <td><strong>AMD</strong></td>
-          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
-          <td class="neutral">NEUTRAL</td>
-          <td><strong>$17.1M</strong></td>
-          <td>1,000</td>
           <td></td>
         </tr><tr>
           <td><strong>AMD</strong></td>
@@ -340,7 +323,14 @@ li { margin-bottom: 4px; }
           <td><strong>MU</strong></td>
           <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
           <td class="bull">BULLISH</td>
-          <td><strong>$15.2M</strong></td>
+          <td><strong>$16.4M</strong></td>
+          <td>197</td>
+          <td></td>
+        </tr><tr>
+          <td><strong>MU</strong></td>
+          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
+          <td class="bull">BULLISH</td>
+          <td><strong>$15.3M</strong></td>
           <td>200</td>
           <td></td>
         </tr><tr>
@@ -351,18 +341,39 @@ li { margin-bottom: 4px; }
           <td>1,000</td>
           <td></td>
         </tr><tr>
-          <td><strong>GS</strong></td>
-          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
-          <td class="neutral">NEUTRAL</td>
-          <td><strong>$14.8M</strong></td>
-          <td>850</td>
-          <td></td>
-        </tr><tr>
           <td><strong>BAC</strong></td>
           <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
           <td class="bull">BULLISH</td>
           <td><strong>$14.0M</strong></td>
           <td>15,000</td>
+          <td></td>
+        </tr><tr>
+          <td><strong>META</strong></td>
+          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
+          <td class="neutral">NEUTRAL</td>
+          <td><strong>$13.0M</strong></td>
+          <td>215</td>
+          <td></td>
+        </tr><tr>
+          <td><strong>NVDA</strong></td>
+          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
+          <td class="neutral">NEUTRAL</td>
+          <td><strong>$12.9M</strong></td>
+          <td>1,000</td>
+          <td></td>
+        </tr><tr>
+          <td><strong>TSLA</strong></td>
+          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
+          <td class="bear">BEARISH</td>
+          <td><strong>$12.4M</strong></td>
+          <td>10,000</td>
+          <td></td>
+        </tr><tr>
+          <td><strong>AAPL</strong></td>
+          <td><span class="badge" style="background:#334155;color:#94a3b8;">LARGE</span></td>
+          <td class="neutral">NEUTRAL</td>
+          <td><strong>$11.7M</strong></td>
+          <td>7,000</td>
           <td></td>
         </tr></tbody></table></div>
 </details>
@@ -385,10 +396,10 @@ li { margin-bottom: 4px; }
         </tr><tr>
           <td><strong>MU</strong></td>
           <td>大盤</td>
-          <td>$961.57</td>
-          <td class="bull">$15.2M</td>
+          <td>$1023.65</td>
+          <td class="bull">$31.8M</td>
           <td class="bear">$0</td>
-          <td class="bull"><strong>$15.2M</strong></td>
+          <td class="bull"><strong>$31.8M</strong></td>
           <td>100%</td>
           <td class="bull"><strong>BULLISH</strong></td>
           <td>0</td>
@@ -402,6 +413,16 @@ li { margin-bottom: 4px; }
           <td>100%</td>
           <td class="bull"><strong>BULLISH</strong></td>
           <td>0</td>
+        </tr><tr>
+          <td><strong>TSLA</strong></td>
+          <td>大盤</td>
+          <td>$439.58</td>
+          <td class="bull">$0</td>
+          <td class="bear">$12.4M</td>
+          <td class="bear"><strong>$-12.4M</strong></td>
+          <td>0%</td>
+          <td class="bear"><strong>BEARISH</strong></td>
+          <td>0</td>
         </tr></tbody></table></div>
 </details>
 
@@ -410,116 +431,127 @@ li { margin-bottom: 4px; }
   <div class="section-body"><table><thead><tr>
       <th>Ticker</th><th>Type</th><th>Volume</th><th>Open Interest</th><th>Vol/OI</th><th>Contract</th>
     </tr></thead><tbody><tr>
-          <td><strong>PLTR</strong></td>
+          <td><strong>TSLA</strong></td>
           <td class="bear"></td>
-          <td>40,499</td>
-          <td>13</td>
-          <td><strong>3115x</strong></td>
+          <td>77,471</td>
+          <td>35</td>
+          <td><strong>2213x</strong></td>
           <td></td>
         </tr><tr>
-          <td><strong>DELL</strong></td>
+          <td><strong>BTDR</strong></td>
           <td class="bear"></td>
-          <td>19,916</td>
-          <td>10</td>
-          <td><strong>1992x</strong></td>
+          <td>22,499</td>
+          <td>17</td>
+          <td><strong>1323x</strong></td>
           <td></td>
         </tr><tr>
-          <td><strong>SMCI</strong></td>
+          <td><strong>AMZN</strong></td>
           <td class="bear"></td>
-          <td>15,688</td>
-          <td>15</td>
-          <td><strong>1046x</strong></td>
+          <td>27,194</td>
+          <td>23</td>
+          <td><strong>1182x</strong></td>
           <td></td>
         </tr><tr>
-          <td><strong>SMCI</strong></td>
+          <td><strong>META</strong></td>
           <td class="bear"></td>
-          <td>14,911</td>
-          <td>25</td>
-          <td><strong>596x</strong></td>
+          <td>18,141</td>
+          <td>23</td>
+          <td><strong>789x</strong></td>
           <td></td>
         </tr><tr>
-          <td><strong>HPE</strong></td>
+          <td><strong>TSLA</strong></td>
           <td class="bear"></td>
-          <td>8,836</td>
-          <td>15</td>
-          <td><strong>589x</strong></td>
+          <td>18,752</td>
+          <td>24</td>
+          <td><strong>781x</strong></td>
           <td></td>
         </tr><tr>
-          <td><strong>IBM</strong></td>
+          <td><strong>UPS</strong></td>
           <td class="bear"></td>
-          <td>5,639</td>
-          <td>10</td>
-          <td><strong>564x</strong></td>
+          <td>34,205</td>
+          <td>46</td>
+          <td><strong>744x</strong></td>
           <td></td>
         </tr><tr>
-          <td><strong>HPE</strong></td>
+          <td><strong>GOOGL</strong></td>
           <td class="bear"></td>
-          <td>5,424</td>
-          <td>10</td>
-          <td><strong>542x</strong></td>
+          <td>24,681</td>
+          <td>39</td>
+          <td><strong>633x</strong></td>
           <td></td>
         </tr><tr>
-          <td><strong>PLTR</strong></td>
+          <td><strong>TSLA</strong></td>
           <td class="bear"></td>
-          <td>38,822</td>
-          <td>73</td>
-          <td><strong>532x</strong></td>
-          <td></td>
-        </tr><tr>
-          <td><strong>LOGI</strong></td>
-          <td class="bear"></td>
-          <td>9,514</td>
-          <td>18</td>
-          <td><strong>529x</strong></td>
+          <td>166,655</td>
+          <td>271</td>
+          <td><strong>615x</strong></td>
           <td></td>
         </tr><tr>
           <td><strong>MSFT</strong></td>
           <td class="bear"></td>
-          <td>17,940</td>
-          <td>37</td>
-          <td><strong>485x</strong></td>
+          <td>13,988</td>
+          <td>24</td>
+          <td><strong>583x</strong></td>
           <td></td>
         </tr><tr>
-          <td><strong>SMCI</strong></td>
+          <td><strong>PURR</strong></td>
           <td class="bear"></td>
-          <td>17,771</td>
-          <td>39</td>
-          <td><strong>456x</strong></td>
+          <td>6,569</td>
+          <td>12</td>
+          <td><strong>547x</strong></td>
           <td></td>
         </tr><tr>
-          <td><strong>HPE</strong></td>
+          <td><strong>RLAY</strong></td>
           <td class="bear"></td>
-          <td>9,165</td>
-          <td>21</td>
+          <td>5,000</td>
+          <td>10</td>
+          <td><strong>500x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>DRAM</strong></td>
+          <td class="bear"></td>
+          <td>5,042</td>
+          <td>11</td>
+          <td><strong>458x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>META</strong></td>
+          <td class="bear"></td>
+          <td>21,225</td>
+          <td>47</td>
+          <td><strong>452x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>MU</strong></td>
+          <td class="bear"></td>
+          <td>4,792</td>
+          <td>11</td>
           <td><strong>436x</strong></td>
           <td></td>
         </tr><tr>
-          <td><strong>NOW</strong></td>
+          <td><strong>NVDA</strong></td>
           <td class="bear"></td>
-          <td>12,480</td>
-          <td>30</td>
-          <td><strong>416x</strong></td>
-          <td></td>
-        </tr><tr>
-          <td><strong>MSFT</strong></td>
-          <td class="bear"></td>
-          <td>12,053</td>
-          <td>29</td>
-          <td><strong>416x</strong></td>
-          <td></td>
-        </tr><tr>
-          <td><strong>TDOC</strong></td>
-          <td class="bear"></td>
-          <td>16,802</td>
-          <td>43</td>
-          <td><strong>391x</strong></td>
+          <td>18,200</td>
+          <td>47</td>
+          <td><strong>387x</strong></td>
           <td></td>
         </tr></tbody></table></div>
 </details>
 
 <details class="section">
   <summary class="orange">⚠️ 信號矛盾 — 機構 vs 散戶方向不一致</summary>
-  <div class="section-body"><p style="padding:16px;color:#94a3b8;">沒有符合條件的信號</p></div>
+  <div class="section-body"><table><thead><tr>
+      <th>Rating</th><th>Ticker</th><th>Price</th><th>IV Rank</th><th>PCR</th>
+      <th>Net Flow</th><th>Sweeps</th><th>Score</th><th>Action</th><th>Agreement</th>
+    </tr></thead><tbody><tr>
+          <td class="stars">★★☆</td>
+          <td><strong>TSLA</strong></td>
+          <td>$nan</td><td>-</td><td>0.51</td>
+          <td class="bear">$-12.4M</td>
+          <td>0</td><td>2</td>
+          <td><span class="badge badge-put">BUY PUT</span></td>
+          <td class="conflict">CONFLICT</td>
+        </tr></tbody></table></div>
 </details>
 
 <details class="section">
@@ -549,6 +581,14 @@ li { margin-bottom: 4px; }
       <th>Net Flow</th><th>Sweeps</th><th>Score</th><th>Action</th><th>Agreement</th>
     </tr></thead><tbody><tr>
           <td class="stars">★★☆</td>
+          <td><strong>META</strong></td>
+          <td>$nan</td><td>-</td><td>0.39</td>
+          <td class="bull">$35.8M</td>
+          <td>0</td><td>2</td>
+          <td><span class="badge badge-call">BUY CALL</span></td>
+          <td class="aligned">ALIGNED</td>
+        </tr><tr>
+          <td class="stars">★★☆</td>
           <td><strong>BAC</strong></td>
           <td>$nan</td><td>-</td><td>-</td>
           <td class="bull">$14.0M</td>
@@ -557,17 +597,17 @@ li { margin-bottom: 4px; }
           <td class="aligned">ALIGNED</td>
         </tr><tr>
           <td class="stars">★★☆</td>
-          <td><strong>MU</strong></td>
-          <td>$nan</td><td>-</td><td>0.94</td>
-          <td class="bull">$15.2M</td>
+          <td><strong>TSLA</strong></td>
+          <td>$nan</td><td>-</td><td>0.51</td>
+          <td class="bear">$-12.4M</td>
           <td>0</td><td>2</td>
-          <td><span class="badge badge-call">BUY CALL</span></td>
-          <td class="aligned">ALIGNED</td>
+          <td><span class="badge badge-put">BUY PUT</span></td>
+          <td class="conflict">CONFLICT</td>
         </tr><tr>
           <td class="stars">★★☆</td>
-          <td><strong>META</strong></td>
-          <td>$nan</td><td>-</td><td>0.30</td>
-          <td class="bull">$35.8M</td>
+          <td><strong>MU</strong></td>
+          <td>$nan</td><td>-</td><td>1.07</td>
+          <td class="bull">$31.8M</td>
           <td>0</td><td>2</td>
           <td><span class="badge badge-call">BUY CALL</span></td>
           <td class="aligned">ALIGNED</td>
@@ -581,7 +621,7 @@ li { margin-bottom: 4px; }
 // JS filter — 在支援 JS 的瀏覽器中啟用搜尋/篩選功能
 // 在 iOS 檔案預覽中不執行 JS，但表格已經預渲染為靜態 HTML
 try {
-  let allData = [{"ticker": "BAC", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": NaN, "options_volume": NaN, "open_interest": NaN, "adv_pct": NaN, "bull_flow": 13950000.29, "bear_flow": 0.0, "net_flow": 13950000.29, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "NEUTRAL", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "MU", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.94, "options_volume": 1312124.0, "open_interest": NaN, "adv_pct": 159.44, "bull_flow": 15240999.76, "bear_flow": 0.0, "net_flow": 15240999.76, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "NEUTRAL", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "META", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.3, "options_volume": 735941.0, "open_interest": NaN, "adv_pct": 126.45, "bull_flow": 35784600.89, "bear_flow": 0.0, "net_flow": 35784600.89, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "BULLISH", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}];
+  let allData = [{"ticker": "META", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.39, "options_volume": 1134262.0, "open_interest": NaN, "adv_pct": 187.21, "bull_flow": 35784600.89, "bear_flow": 0.0, "net_flow": 35784600.89, "sweeps": 0, "blocks": 0, "unusual_contracts": 2, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "BULLISH", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "BAC", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": NaN, "options_volume": NaN, "open_interest": NaN, "adv_pct": NaN, "bull_flow": 13950000.29, "bear_flow": 0.0, "net_flow": 13950000.29, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "NEUTRAL", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "TSLA", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.51, "options_volume": 3018427.0, "open_interest": NaN, "adv_pct": 88.78, "bull_flow": 0.0, "bear_flow": 12350000.38, "net_flow": -12350000.38, "sweeps": 0, "blocks": 0, "unusual_contracts": 5, "score": 2, "stars": 2, "direction": "BEARISH", "action": "BUY PUT", "pcr_direction": "BULLISH", "agreement": "CONFLICT", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "MU", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 1.07, "options_volume": 810038.0, "open_interest": NaN, "adv_pct": 93.91, "bull_flow": 31774875.0, "bear_flow": 0.0, "net_flow": 31774875.0, "sweeps": 0, "blocks": 0, "unusual_contracts": 1, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "NEUTRAL", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}];
 
   function fmt(n, prefix) {
     if (n === null || n === undefined || isNaN(n)) return '-';
