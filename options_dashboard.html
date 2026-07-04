@@ -93,7 +93,7 @@ li { margin-bottom: 4px; }
 <body>
 <div class="container">
 <h1>Options Intelligence Dashboard 期權情報儀表板</h1>
-<div class="subtitle">Capital: $50,000 | Risk: 3.0% | Files: most_active, flow | Market: NEUTRAL</div>
+<div class="subtitle">Capital: $50,000 | Risk: 3.0% | Files: most_active, unusual_activity, flow | Market: NEUTRAL</div>
 
 <div class="kpi-row">
   <div class="kpi green"><div class="kpi-value">1</div><div class="kpi-label">BUY CALL 信號</div></div>
@@ -392,7 +392,114 @@ li { margin-bottom: 4px; }
 
 <details class="section">
   <summary class="voi">Volume/OI 異常 — 新倉位大量湧入 (可能有消息)</summary>
-  <div class="section-body"><p style="padding:16px;color:#94a3b8;">沒有異常 Volume/OI</p></div>
+  <div class="section-body"><table><thead><tr>
+      <th>Ticker</th><th>Type</th><th>Volume</th><th>Open Interest</th><th>Vol/OI</th><th>Contract</th>
+    </tr></thead><tbody><tr>
+          <td><strong>AAPL</strong></td>
+          <td class="bear"></td>
+          <td>33,057</td>
+          <td>11</td>
+          <td><strong>3005x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>HOOD</strong></td>
+          <td class="bear"></td>
+          <td>15,110</td>
+          <td>19</td>
+          <td><strong>795x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>RIVN</strong></td>
+          <td class="bear"></td>
+          <td>9,826</td>
+          <td>15</td>
+          <td><strong>655x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>AAPL</strong></td>
+          <td class="bear"></td>
+          <td>125,595</td>
+          <td>207</td>
+          <td><strong>607x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>Q</strong></td>
+          <td class="bear"></td>
+          <td>5,513</td>
+          <td>10</td>
+          <td><strong>551x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>IREN</strong></td>
+          <td class="bear"></td>
+          <td>12,349</td>
+          <td>23</td>
+          <td><strong>537x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>HOOD</strong></td>
+          <td class="bear"></td>
+          <td>9,927</td>
+          <td>22</td>
+          <td><strong>451x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>IREN</strong></td>
+          <td class="bear"></td>
+          <td>5,748</td>
+          <td>14</td>
+          <td><strong>411x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>CC</strong></td>
+          <td class="bear"></td>
+          <td>4,016</td>
+          <td>10</td>
+          <td><strong>402x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>BTDR</strong></td>
+          <td class="bear"></td>
+          <td>4,000</td>
+          <td>10</td>
+          <td><strong>400x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>CIFR</strong></td>
+          <td class="bear"></td>
+          <td>10,975</td>
+          <td>28</td>
+          <td><strong>392x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>TSLA</strong></td>
+          <td class="bear"></td>
+          <td>5,094</td>
+          <td>13</td>
+          <td><strong>392x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>CSCO</strong></td>
+          <td class="bear"></td>
+          <td>7,032</td>
+          <td>19</td>
+          <td><strong>370x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>INCY</strong></td>
+          <td class="bear"></td>
+          <td>5,000</td>
+          <td>14</td>
+          <td><strong>357x</strong></td>
+          <td></td>
+        </tr><tr>
+          <td><strong>AMZN</strong></td>
+          <td class="bear"></td>
+          <td>4,954</td>
+          <td>14</td>
+          <td><strong>354x</strong></td>
+          <td></td>
+        </tr></tbody></table></div>
 </details>
 
 <details class="section">
@@ -427,19 +534,19 @@ li { margin-bottom: 4px; }
       <th>Net Flow</th><th>Sweeps</th><th>Score</th><th>Action</th><th>Agreement</th>
     </tr></thead><tbody><tr>
           <td class="stars">★★☆</td>
-          <td><strong>BABA</strong></td>
-          <td>$nan</td><td>-</td><td>-</td>
-          <td class="bear">$-15.2M</td>
-          <td>0</td><td>2</td>
-          <td><span class="badge badge-put">BUY PUT</span></td>
-          <td class="aligned">ALIGNED</td>
-        </tr><tr>
-          <td class="stars">★★☆</td>
           <td><strong>TSLA</strong></td>
           <td>$nan</td><td>-</td><td>0.78</td>
           <td class="bull">$10.3M</td>
           <td>0</td><td>2</td>
           <td><span class="badge badge-call">BUY CALL</span></td>
+          <td class="aligned">ALIGNED</td>
+        </tr><tr>
+          <td class="stars">★★☆</td>
+          <td><strong>BABA</strong></td>
+          <td>$nan</td><td>-</td><td>-</td>
+          <td class="bear">$-15.2M</td>
+          <td>0</td><td>2</td>
+          <td><span class="badge badge-put">BUY PUT</span></td>
           <td class="aligned">ALIGNED</td>
         </tr></tbody></table></div>
 </details>
@@ -451,7 +558,7 @@ li { margin-bottom: 4px; }
 // JS filter — 在支援 JS 的瀏覽器中啟用搜尋/篩選功能
 // 在 iOS 檔案預覽中不執行 JS，但表格已經預渲染為靜態 HTML
 try {
-  let allData = [{"ticker": "BABA", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": NaN, "options_volume": NaN, "open_interest": NaN, "adv_pct": NaN, "bull_flow": 0.0, "bear_flow": 15176200.52, "net_flow": -15176200.52, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BEARISH", "action": "BUY PUT", "pcr_direction": "NEUTRAL", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "TSLA", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.78, "options_volume": 4586826.0, "open_interest": NaN, "adv_pct": 156.51, "bull_flow": 10282500.46, "bear_flow": 0.0, "net_flow": 10282500.46, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "NEUTRAL", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}];
+  let allData = [{"ticker": "TSLA", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.78, "options_volume": 4586826.0, "open_interest": NaN, "adv_pct": 156.51, "bull_flow": 10282500.46, "bear_flow": 0.0, "net_flow": 10282500.46, "sweeps": 0, "blocks": 0, "unusual_contracts": 2, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "NEUTRAL", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "BABA", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": NaN, "options_volume": NaN, "open_interest": NaN, "adv_pct": NaN, "bull_flow": 0.0, "bear_flow": 15176200.52, "net_flow": -15176200.52, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BEARISH", "action": "BUY PUT", "pcr_direction": "NEUTRAL", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}];
 
   function fmt(n, prefix) {
     if (n === null || n === undefined || isNaN(n)) return '-';
