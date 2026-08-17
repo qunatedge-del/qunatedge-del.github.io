@@ -201,14 +201,6 @@ li { margin-bottom: 4px; }
       <th>Net Flow</th><th>Sweeps</th><th>Score</th><th>Action</th><th>Agreement</th>
     </tr></thead><tbody><tr>
           <td class="stars">★★☆</td>
-          <td><strong>INTC</strong></td>
-          <td>$nan</td><td>-</td><td>0.48</td>
-          <td class="bear">$-65.5M</td>
-          <td>0</td><td>2</td>
-          <td><span class="badge badge-put">BUY PUT</span></td>
-          <td class="conflict">CONFLICT</td>
-        </tr><tr>
-          <td class="stars">★★☆</td>
           <td><strong>MSTR</strong></td>
           <td>$nan</td><td>-</td><td>0.61</td>
           <td class="bear">$-16.6M</td>
@@ -220,6 +212,14 @@ li { margin-bottom: 4px; }
           <td><strong>GOOGL</strong></td>
           <td>$nan</td><td>-</td><td>0.36</td>
           <td class="bear">$-14.5M</td>
+          <td>0</td><td>2</td>
+          <td><span class="badge badge-put">BUY PUT</span></td>
+          <td class="conflict">CONFLICT</td>
+        </tr><tr>
+          <td class="stars">★★☆</td>
+          <td><strong>INTC</strong></td>
+          <td>$nan</td><td>-</td><td>0.48</td>
+          <td class="bear">$-65.5M</td>
           <td>0</td><td>2</td>
           <td><span class="badge badge-put">BUY PUT</span></td>
           <td class="conflict">CONFLICT</td>
@@ -545,14 +545,6 @@ li { margin-bottom: 4px; }
       <th>Net Flow</th><th>Sweeps</th><th>Score</th><th>Action</th><th>Agreement</th>
     </tr></thead><tbody><tr>
           <td class="stars">★★☆</td>
-          <td><strong>INTC</strong></td>
-          <td>$nan</td><td>-</td><td>0.48</td>
-          <td class="bear">$-65.5M</td>
-          <td>0</td><td>2</td>
-          <td><span class="badge badge-put">BUY PUT</span></td>
-          <td class="conflict">CONFLICT</td>
-        </tr><tr>
-          <td class="stars">★★☆</td>
           <td><strong>MSTR</strong></td>
           <td>$nan</td><td>-</td><td>0.61</td>
           <td class="bear">$-16.6M</td>
@@ -564,6 +556,14 @@ li { margin-bottom: 4px; }
           <td><strong>GOOGL</strong></td>
           <td>$nan</td><td>-</td><td>0.36</td>
           <td class="bear">$-14.5M</td>
+          <td>0</td><td>2</td>
+          <td><span class="badge badge-put">BUY PUT</span></td>
+          <td class="conflict">CONFLICT</td>
+        </tr><tr>
+          <td class="stars">★★☆</td>
+          <td><strong>INTC</strong></td>
+          <td>$nan</td><td>-</td><td>0.48</td>
+          <td class="bear">$-65.5M</td>
           <td>0</td><td>2</td>
           <td><span class="badge badge-put">BUY PUT</span></td>
           <td class="conflict">CONFLICT</td>
@@ -597,25 +597,9 @@ li { margin-bottom: 4px; }
       <th>Net Flow</th><th>Sweeps</th><th>Score</th><th>Action</th><th>Agreement</th>
     </tr></thead><tbody><tr>
           <td class="stars">★★☆</td>
-          <td><strong>INTC</strong></td>
-          <td>$nan</td><td>-</td><td>0.48</td>
-          <td class="bear">$-65.5M</td>
-          <td>0</td><td>2</td>
-          <td><span class="badge badge-put">BUY PUT</span></td>
-          <td class="conflict">CONFLICT</td>
-        </tr><tr>
-          <td class="stars">★★☆</td>
           <td><strong>MSTR</strong></td>
           <td>$nan</td><td>-</td><td>0.61</td>
           <td class="bear">$-16.6M</td>
-          <td>0</td><td>2</td>
-          <td><span class="badge badge-put">BUY PUT</span></td>
-          <td class="conflict">CONFLICT</td>
-        </tr><tr>
-          <td class="stars">★★☆</td>
-          <td><strong>GOOGL</strong></td>
-          <td>$nan</td><td>-</td><td>0.36</td>
-          <td class="bear">$-14.5M</td>
           <td>0</td><td>2</td>
           <td><span class="badge badge-put">BUY PUT</span></td>
           <td class="conflict">CONFLICT</td>
@@ -627,6 +611,22 @@ li { margin-bottom: 4px; }
           <td>0</td><td>2</td>
           <td><span class="badge badge-call">BUY CALL</span></td>
           <td class="aligned">ALIGNED</td>
+        </tr><tr>
+          <td class="stars">★★☆</td>
+          <td><strong>GOOGL</strong></td>
+          <td>$nan</td><td>-</td><td>0.36</td>
+          <td class="bear">$-14.5M</td>
+          <td>0</td><td>2</td>
+          <td><span class="badge badge-put">BUY PUT</span></td>
+          <td class="conflict">CONFLICT</td>
+        </tr><tr>
+          <td class="stars">★★☆</td>
+          <td><strong>INTC</strong></td>
+          <td>$nan</td><td>-</td><td>0.48</td>
+          <td class="bear">$-65.5M</td>
+          <td>0</td><td>2</td>
+          <td><span class="badge badge-put">BUY PUT</span></td>
+          <td class="conflict">CONFLICT</td>
         </tr></tbody></table></div>
 </details>
 
@@ -637,7 +637,7 @@ li { margin-bottom: 4px; }
 // JS filter — 在支援 JS 的瀏覽器中啟用搜尋/篩選功能
 // 在 iOS 檔案預覽中不執行 JS，但表格已經預渲染為靜態 HTML
 try {
-  let allData = [{"ticker": "INTC", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.48, "options_volume": 708675.0, "open_interest": NaN, "adv_pct": 87.42, "bull_flow": 0.0, "bear_flow": 65450002.67, "net_flow": -65450002.67, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BEARISH", "action": "BUY PUT", "pcr_direction": "BULLISH", "agreement": "CONFLICT", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "MSTR", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.61, "options_volume": 559984.0, "open_interest": NaN, "adv_pct": 158.68, "bull_flow": 0.0, "bear_flow": 16559269.75, "net_flow": -16559269.75, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BEARISH", "action": "BUY PUT", "pcr_direction": "BULLISH", "agreement": "CONFLICT", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "GOOGL", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.36, "options_volume": 452526.0, "open_interest": NaN, "adv_pct": 81.65, "bull_flow": 0.0, "bear_flow": 14460900.36, "net_flow": -14460900.36, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BEARISH", "action": "BUY PUT", "pcr_direction": "BULLISH", "agreement": "CONFLICT", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "SNDK", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.65, "options_volume": 535546.0, "open_interest": NaN, "adv_pct": 227.55, "bull_flow": 17494400.27, "bear_flow": 13501799.56, "net_flow": 3992600.709999999, "sweeps": 0, "blocks": 0, "unusual_contracts": 3, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "BULLISH", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}];
+  let allData = [{"ticker": "MSTR", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.61, "options_volume": 559984.0, "open_interest": NaN, "adv_pct": 158.68, "bull_flow": 0.0, "bear_flow": 16559269.75, "net_flow": -16559269.75, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BEARISH", "action": "BUY PUT", "pcr_direction": "BULLISH", "agreement": "CONFLICT", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "SNDK", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.65, "options_volume": 535546.0, "open_interest": NaN, "adv_pct": 227.55, "bull_flow": 17494400.27, "bear_flow": 13501799.56, "net_flow": 3992600.709999999, "sweeps": 0, "blocks": 0, "unusual_contracts": 3, "score": 2, "stars": 2, "direction": "BULLISH", "action": "BUY CALL", "pcr_direction": "BULLISH", "agreement": "ALIGNED", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "GOOGL", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.36, "options_volume": 452526.0, "open_interest": NaN, "adv_pct": 81.65, "bull_flow": 0.0, "bear_flow": 14460900.36, "net_flow": -14460900.36, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BEARISH", "action": "BUY PUT", "pcr_direction": "BULLISH", "agreement": "CONFLICT", "premium_est": 0, "max_contracts": 1, "total_risk": 0}, {"ticker": "INTC", "price": NaN, "iv_rank": NaN, "iv_30d": NaN, "pcr": 0.48, "options_volume": 708675.0, "open_interest": NaN, "adv_pct": 87.42, "bull_flow": 0.0, "bear_flow": 65450002.67, "net_flow": -65450002.67, "sweeps": 0, "blocks": 0, "unusual_contracts": 0, "score": 2, "stars": 2, "direction": "BEARISH", "action": "BUY PUT", "pcr_direction": "BULLISH", "agreement": "CONFLICT", "premium_est": 0, "max_contracts": 1, "total_risk": 0}];
 
   function fmt(n, prefix) {
     if (n === null || n === undefined || isNaN(n)) return '-';
