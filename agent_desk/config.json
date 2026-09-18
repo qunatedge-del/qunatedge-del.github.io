@@ -1,0 +1,28 @@
+{
+  "watchlist": ["SPY", "QQQ", "AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "META"],
+  "initial_cash": 100000,
+  "approval_required": true,
+  "auto_execute_exits": true,
+  "approval_ttl_days": 2,
+  "slippage_bps": 5,
+  "risk": {
+    "risk_per_trade_pct": 0.01,
+    "max_position_pct": 0.10,
+    "max_gross_exposure_pct": 0.60,
+    "max_positions": 6,
+    "max_daily_loss_pct": 0.02,
+    "max_drawdown_pct": 0.10,
+    "stop_loss_atr": 2.0,
+    "take_profit_atr": 4.0,
+    "cooldown_days": 3,
+    "min_trade_notional": 500
+  },
+  "llm": {
+    "enabled": true,
+    "model": "claude-opus-5",
+    "max_calls_per_day": 20,
+    "sentiment_effort": "low",
+    "report_effort": "medium",
+    "max_headlines_per_symbol": 8
+  }
+}

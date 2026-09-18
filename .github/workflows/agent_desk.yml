@@ -1,0 +1,76 @@
+# Agent Desk：紙上交易桌的排程執行與手機審核入口
+#
+# - 每個交易日美股收盤後自動跑一輪（抓資料 → 情緒 → 訊號 → 風控 → 紙上執行 → 日報）
+# - 也可以在 GitHub 的 Actions 頁面（手機 App 也行）手動觸發：approve / reject / killswitch
+# - 結果（data/agent_desk.json、data/agent_desk_state.json）直接 commit 回 repo，
+#   GitHub Pages 上的 agent_desk.html 就會更新
+#
+# 需要的 secret（可選）：ANTHROPIC_API_KEY。沒有的話情緒為中性、日報用模板。
+name: Agent Desk
+
+on:
+  schedule:
+    - cron: "45 21 * * 1-5"   # 週一到週五 21:45 UTC（美東收盤後 1 小時 45 分）
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "要執行的指令"
+        type: choice
+        default: run
+        options: [run, approve, approve-all, reject, killswitch-on, killswitch-off, status]
+      order_id:
+        description: "approve / reject 用的單號，例如 ORD-00012"
+        required: false
+        default: ""
+
+concurrency:
+  group: agent-desk
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  desk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Run agent desk
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set -e
+          CMD="${{ github.event.inputs.command || 'run' }}"
+          OID="${{ github.event.inputs.order_id }}"
+          case "$CMD" in
+            run)            python -m agent_desk run ;;
+            approve)        python -m agent_desk approve "$OID" ;;
+            approve-all)    python -m agent_desk approve --all ;;
+            reject)         python -m agent_desk reject "$OID" ;;
+            killswitch-on)  python -m agent_desk killswitch on ;;
+            killswitch-off) python -m agent_desk killswitch off ;;
+            status)         python -m agent_desk status ;;
+          esac
+
+      - name: Commit results
+        run: |
+          git config user.name "agent-desk-bot"
+          git config user.email "agent-desk-bot@users.noreply.github.com"
+          git add data/agent_desk.json data/agent_desk_state.json
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "🤖 Agent Desk: ${{ github.event.inputs.command || 'run' }} $(date -u +'%Y-%m-%d %H:%M')"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin HEAD:"${GITHUB_REF_NAME}"
+          fi

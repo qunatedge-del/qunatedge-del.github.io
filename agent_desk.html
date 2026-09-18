@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Desk 監控台</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1"></script>
+<style>
+:root {
+  --bg: #0f172a; --bg-card: #1e293b; --bg-hover: #334155; --border: #334155;
+  --text: #e2e8f0; --text-dim: #94a3b8; --text-muted: #64748b;
+  --accent: #38bdf8; --positive: #22c55e; --warning: #f59e0b; --negative: #ef4444; --neutral: #94a3b8;
+  --purple: #a855f7; --radius: 10px; --gap: 14px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.5; font-size: 14px; padding: 16px; }
+.container { max-width: 1500px; margin: 0 auto; }
+header { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center;
+  margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+header h1 { font-size: 22px; font-weight: 700; }
+header h1 .sub { font-size: 13px; color: var(--text-dim); font-weight: 400; margin-left: 8px; }
+.hdr-right { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+  background: rgba(148,163,184,.15); color: var(--neutral); }
+.pill.ok { background: rgba(34,197,94,.15); color: var(--positive); }
+.pill.warn { background: rgba(245,158,11,.15); color: var(--warning); }
+.pill.bad { background: rgba(239,68,68,.18); color: var(--negative); }
+.pill.demo { background: rgba(168,85,247,.18); color: var(--purple); }
+.btn { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; font-size: 13px; cursor: pointer; }
+.btn:hover { background: var(--bg-hover); }
+a { color: var(--accent); text-decoration: none; }
+.banner { background: rgba(168,85,247,.12); border: 1px solid rgba(168,85,247,.4); border-radius: var(--radius);
+  padding: 10px 16px; margin-bottom: var(--gap); font-size: 13px; color: #d8b4fe; }
+.banner.bad { background: rgba(239,68,68,.12); border-color: rgba(239,68,68,.5); color: #fca5a5; }
+.kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: var(--gap); margin-bottom: var(--gap); }
+.kpi { background: var(--bg-card); border-radius: var(--radius); padding: 14px 18px; border-left: 4px solid var(--neutral); }
+.kpi.pos { border-left-color: var(--positive); } .kpi.neg { border-left-color: var(--negative); }
+.kpi.acc { border-left-color: var(--accent); } .kpi.warn { border-left-color: var(--warning); } .kpi.pur { border-left-color: var(--purple); }
+.kpi .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .5px; }
+.kpi .value { font-size: 26px; font-weight: 700; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.kpi .hint { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.pipeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-bottom: var(--gap); }
+.stage { background: var(--bg-card); border-radius: 8px; padding: 10px 12px; border-top: 3px solid var(--border); }
+.stage.llm { border-top-color: var(--purple); } .stage.rule { border-top-color: var(--accent); } .stage.hard { border-top-color: var(--negative); }
+.stage .n { font-size: 12px; font-weight: 700; } .stage .k { font-size: 11px; color: var(--text-muted); }
+.stage .t { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-bottom: var(--gap); }
+@media (max-width: 900px) { .row2 { grid-template-columns: 1fr; } }
+.card { background: var(--bg-card); border-radius: var(--radius); padding: 16px 18px; margin-bottom: var(--gap); }
+.card h3 { font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+.card h3 .cnt { font-size: 11px; color: var(--text-muted); text-transform: none; letter-spacing: 0; }
+.chart-wrap { position: relative; height: 240px; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+th { color: var(--text-dim); font-size: 11px; text-transform: uppercase; letter-spacing: .5px; position: sticky; top: 0; background: var(--bg-card); }
+tbody tr:hover { background: var(--bg-hover); }
+td.num { font-variant-numeric: tabular-nums; text-align: right; } th.num { text-align: right; }
+td.sym { font-weight: 700; color: var(--accent); }
+td.wrap { white-space: normal; min-width: 260px; max-width: 520px; color: var(--text-dim); font-size: 12px; }
+.up { color: var(--positive); } .dn { color: var(--negative); } .mut { color: var(--text-muted); }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+.badge.BUY { background: rgba(34,197,94,.15); color: var(--positive); }
+.badge.SELL { background: rgba(239,68,68,.15); color: var(--negative); }
+.badge.HOLD, .badge.none { background: rgba(148,163,184,.15); color: var(--neutral); }
+.badge.pending { background: rgba(245,158,11,.15); color: var(--warning); }
+.badge.approved { background: rgba(34,197,94,.15); color: var(--positive); }
+.badge.rejected, .badge.expired { background: rgba(148,163,184,.15); color: var(--neutral); }
+.sent { display: inline-block; width: 70px; height: 8px; background: var(--border); border-radius: 4px; position: relative; vertical-align: middle; margin-right: 6px; }
+.sent i { position: absolute; top: 0; bottom: 0; border-radius: 4px; }
+code { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 2px 6px; font-size: 12px; color: #fbbf24; }
+.empty { padding: 24px; text-align: center; color: var(--text-muted); }
+.report { white-space: pre-wrap; font-size: 13px; line-height: 1.6; color: var(--text); }
+.report strong { color: #fbbf24; }
+.log { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; max-height: 320px; overflow-y: auto; }
+.log div { padding: 3px 0; border-bottom: 1px dashed var(--border); color: var(--text-dim); }
+.log .ts { color: var(--text-muted); margin-right: 8px; } .log .ag { color: var(--accent); margin-right: 8px; }
+.log .warn { color: var(--warning); } .log .critical { color: var(--negative); font-weight: 700; }
+details.section { background: var(--bg-card); border-radius: var(--radius); margin-bottom: var(--gap); overflow: hidden; }
+details.section > summary { padding: 12px 18px; font-weight: 600; font-size: 14px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; }
+details.section > summary::-webkit-details-marker { display: none; }
+details.section > summary::after { content: '▶'; font-size: 11px; color: var(--text-dim); }
+details.section[open] > summary::after { content: '▼'; }
+details.section .inner { padding: 0 18px 16px; }
+footer { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>Agent Desk<span class="sub">多代理紙上交易監控台</span></h1>
+  <div class="hdr-right">
+    <span class="pill" id="modePill">載入中</span>
+    <span class="pill" id="ksPill">Kill switch</span>
+    <span class="pill" id="genPill">—</span>
+    <button class="btn" onclick="load()">重新整理</button>
+    <a class="btn" href="dashboard.html">篩選儀表板</a>
+    <a class="btn" href="options_dashboard.html">選擇權</a>
+  </div>
+</header>
+
+<div id="banner"></div>
+
+<div class="kpi-row" id="kpis"></div>
+
+<div class="pipeline" id="pipeline"></div>
+
+<div class="row2">
+  <div class="card"><h3>權益曲線 <span class="cnt" id="eqHint"></span></h3><div class="chart-wrap"><canvas id="eqChart"></canvas></div></div>
+  <div class="card"><h3>回撤 <span class="cnt" id="ddHint"></span></h3><div class="chart-wrap"><canvas id="ddChart"></canvas></div></div>
+</div>
+
+<div class="card" id="pendingCard">
+  <h3>待人工審核 <span class="cnt" id="pendingCnt"></span></h3>
+  <div class="table-wrap" id="pending"></div>
+</div>
+
+<div class="row2">
+  <div class="card"><h3>持倉 <span class="cnt" id="posCnt"></span></h3><div class="table-wrap" id="positions"></div></div>
+  <div class="card"><h3>最新日報 <span class="cnt" id="repSrc"></span></h3><div class="report" id="report"></div></div>
+</div>
+
+<div class="card"><h3>觀察清單：訊號與新聞情緒</h3><div class="table-wrap" id="watch"></div></div>
+
+<details class="section"><summary>成交紀錄 <span id="trdCnt" class="mut"></span></summary><div class="inner table-wrap" id="trades"></div></details>
+<details class="section"><summary>已處理的審核單</summary><div class="inner table-wrap" id="decided"></div></details>
+<details class="section" open><summary>告警</summary><div class="inner log" id="alerts"></div></details>
+<details class="section"><summary>代理執行紀錄</summary><div class="inner log" id="runlog"></div></details>
+<details class="section"><summary>風控參數</summary><div class="inner" id="riskcfg"></div></details>
+
+<footer>
+  <span>資料來源：<code>data/agent_desk.json</code>，由 <code>python -m agent_desk run</code> 產生。紙上交易，非真實資金。</span>
+  <span id="footGen"></span>
+</footer>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const fmt = (n, d = 0) => n == null ? '—' : Number(n).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+const pct = (n, d = 1) => n == null ? '—' : (n * 100).toFixed(d) + '%';
+const sgn = n => n > 0 ? 'up' : n < 0 ? 'dn' : 'mut';
+const signed = (n, d = 0) => n == null ? '—' : (n > 0 ? '+' : '') + fmt(n, d);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const ts = s => s ? String(s).replace('T', ' ').replace(/\+00:00$/, 'Z') : '';
+let eqChart, ddChart;
+
+const STAGES = [
+  ['data', '資料層', 'K 線 / 新聞', 'rule'], ['sentiment', '新聞情緒', 'LLM・事件觸發', 'llm'],
+  ['signal', '訊號層', '純規則', 'rule'], ['risk', '風控', '硬上限・不可繞過', 'hard'],
+  ['execution', '執行層', '紙上・人工閘門', 'hard'], ['monitor', '監控', '規則告警', 'rule'], ['report', '日報', 'LLM・每日一次', 'llm'],
+];
+
+async function load() {
+  let d;
+  try {
+    const r = await fetch('data/agent_desk.json?ts=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error(r.status + ' ' + r.statusText);
+    d = await r.json();
+  } catch (e) {
+    $('banner').innerHTML = `<div class="banner bad">讀不到 <code>data/agent_desk.json</code>（${esc(e.message)}）。先在終端機執行 <code>python -m agent_desk run</code>，或用本機 HTTP 伺服器開這個頁面（<code>python3 -m http.server</code>）。</div>`;
+    $('modePill').textContent = '無資料'; $('modePill').className = 'pill bad';
+    return;
+  }
+  render(d);
+}
+
+function render(d) {
+  const k = d.kpi, ks = k.kill_switch || {};
+  const demo = /demo/i.test(d.mode || '');
+  $('modePill').textContent = demo ? '離線示範資料' : '紙上交易';
+  $('modePill').className = 'pill ' + (demo ? 'demo' : 'ok');
+  $('ksPill').textContent = ks.active ? 'KILL SWITCH 啟動' : 'Kill switch 未啟動';
+  $('ksPill').className = 'pill ' + (ks.active ? 'bad' : 'ok');
+  $('genPill').textContent = '更新 ' + ts(d.generated);
+  $('footGen').textContent = '模型 ' + (d.config.llm.model || '—') + '・每日上限 ' + d.config.llm.max_calls_per_day + ' 次';
+  $('banner').innerHTML = (demo ? `<div class="banner">這是用合成行情跑出來的離線示範資料，用來確認頁面和流程。在本機執行 <code>python -m agent_desk run</code> 後會換成真實行情（仍是紙上交易）。</div>` : '')
+    + (ks.active ? `<div class="banner bad">Kill switch 啟動中：${esc(ks.reason)}（自 ${ts(ks.since)}）。系統不再開新倉，需人工執行 <code>python -m agent_desk killswitch off</code> 解除。</div>` : '');
+
+  const u = k.llm_usage || {};
+  $('kpis').innerHTML = [
+    ['權益', fmt(k.equity), `初始 ${fmt(d.config.initial_cash)}・總報酬 ${pct(k.total_return)}`, k.total_return >= 0 ? 'pos' : 'neg'],
+    ['當日損益', signed(k.daily_pnl), '交易日 ' + (k.last_trade_date || '—'), sgn(k.daily_pnl) === 'up' ? 'pos' : sgn(k.daily_pnl) === 'dn' ? 'neg' : ''],
+    ['回撤', pct(k.drawdown), `峰值 ${fmt(k.peak_equity)}・上限 ${pct(d.config.risk.max_drawdown_pct, 0)}・歷史最大 ${pct(k.max_drawdown)}`, k.drawdown >= d.config.risk.max_drawdown_pct * 0.7 ? 'warn' : 'acc'],
+    ['現金', fmt(k.cash), `曝險 ${fmt(k.exposure)}（${pct(k.equity ? k.exposure / k.equity : 0, 0)}，上限 ${pct(d.config.risk.max_gross_exposure_pct, 0)}）`, 'acc'],
+    ['持倉 / 待審核', `${k.n_positions} <span class="mut" style="font-size:14px">/ ${k.n_pending}</span>`, `最多 ${d.config.risk.max_positions} 檔`, k.n_pending ? 'warn' : ''],
+    ['成交 / 勝率', `${k.n_trades} <span class="mut" style="font-size:14px">/ ${k.win_rate == null ? '—' : pct(k.win_rate, 0)}</span>`, `已實現 ${signed(k.realized_pnl)}（${k.n_closed} 筆平倉）`, k.realized_pnl >= 0 ? 'pos' : 'neg'],
+    ['LLM 今日', `${u.calls ?? 0} <span class="mut" style="font-size:14px">/ ${d.config.llm.max_calls_per_day}</span>`, `約 $${(u.est_cost_usd ?? 0).toFixed(2)}・${fmt(u.input_tokens)} in / ${fmt(u.output_tokens)} out`, 'pur'],
+  ].map(([l, v, h, c]) => `<div class="kpi ${c}"><div class="label">${l}</div><div class="value">${v}</div><div class="hint">${h}</div></div>`).join('');
+
+  const lastRun = {};
+  (d.run_log || []).forEach(r => { if (!lastRun[r.agent]) lastRun[r.agent] = r; });
+  $('pipeline').innerHTML = STAGES.map(([key, name, kind, cls]) => {
+    const r = lastRun[key];
+    return `<div class="stage ${cls}"><div class="n">${name}</div><div class="k">${kind}</div><div class="t">${r ? esc(r.detail) || esc(r.event) : '尚未執行'}</div></div>`;
+  }).join('');
+
+  drawCharts(d.equity_curve || []);
+  renderPending(d.pending || [], d);
+  renderPositions(d.positions || []);
+  renderReport(d.reports?.[0]);
+  renderWatch(d.watchlist || []);
+  renderTrades(d.trades || []);
+  renderDecided(d.decided || []);
+  $('alerts').innerHTML = (d.alerts || []).map(a => `<div class="${a.level}"><span class="ts">${ts(a.ts)}</span><span class="ag">${esc(a.agent)}</span>${esc(a.msg)}</div>`).join('') || '<div class="empty">沒有告警</div>';
+  $('runlog').innerHTML = (d.run_log || []).map(r => `<div><span class="ts">${ts(r.ts)}</span><span class="ag">${esc(r.agent)}</span>${esc(r.event)} ${esc(r.detail)}</div>`).join('');
+  const R = d.config.risk;
+  $('riskcfg').innerHTML = `<div class="table-wrap"><table><tbody>${Object.entries(R).map(([k, v]) => `<tr><td>${k}</td><td class="num">${v}</td></tr>`).join('')}
+    <tr><td>approval_required</td><td class="num">${d.config.approval_required}</td></tr><tr><td>auto_execute_exits</td><td class="num">${d.config.auto_execute_exits}</td></tr></tbody></table></div>`;
+}
+
+function drawCharts(curve) {
+  if (typeof Chart === 'undefined') { $('eqHint').textContent = 'Chart.js 未載入（離線）'; $('ddHint').textContent = ''; return; }
+  const labels = curve.map(c => c.date);
+  const grid = { color: 'rgba(51,65,85,.6)' }, tick = { color: '#94a3b8', font: { size: 11 } };
+  const common = { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { display: false }, tooltip: { backgroundColor: '#0f172a', borderColor: '#334155', borderWidth: 1 } },
+    scales: { x: { grid: { display: false }, ticks: { ...tick, maxTicksLimit: 8 } }, y: { grid, ticks: tick } } };
+  if (eqChart) eqChart.destroy(); if (ddChart) ddChart.destroy();
+  $('eqHint').textContent = curve.length ? `${labels[0]} → ${labels[labels.length - 1]}（${curve.length} 個交易日）` : '尚無資料';
+  const worst = curve.reduce((m, c) => Math.max(m, c.drawdown), 0);
+  $('ddHint').textContent = curve.length ? `最大 ${pct(worst)}` : '';
+  eqChart = new Chart($('eqChart'), { type: 'line', data: { labels, datasets: [
+    { label: '權益', data: curve.map(c => c.equity), borderColor: '#38bdf8', borderWidth: 2, pointRadius: 0, pointHoverRadius: 5, tension: .15, fill: false } ] },
+    options: { ...common, plugins: { ...common.plugins, tooltip: { ...common.plugins.tooltip, callbacks: { label: c => ` 權益 ${fmt(c.parsed.y)}　當日 ${signed(curve[c.dataIndex].daily_pnl)}　現金 ${fmt(curve[c.dataIndex].cash)}` } } } } });
+  ddChart = new Chart($('ddChart'), { type: 'line', data: { labels, datasets: [
+    { label: '回撤', data: curve.map(c => -c.drawdown * 100), borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,.18)', borderWidth: 2, pointRadius: 0, pointHoverRadius: 5, fill: 'origin', tension: .1 } ] },
+    options: { ...common, scales: { ...common.scales, y: { grid, ticks: { ...tick, callback: v => v + '%' }, max: 0 } },
+      plugins: { ...common.plugins, tooltip: { ...common.plugins.tooltip, callbacks: { label: c => ` 回撤 ${(-c.parsed.y).toFixed(2)}%` } } } } });
+}
+
+function renderPending(p, d) {
+  $('pendingCnt').textContent = p.length ? `${p.length} 張・在終端機執行 approve / reject` : '沒有待審核單';
+  if (!p.length) { $('pending').innerHTML = '<div class="empty">目前沒有待審核的進場單。系統只會在訊號出現且風控放行時提出。</div>'; return; }
+  $('pending').innerHTML = `<table><thead><tr><th>單號</th><th>方向</th><th>標的</th><th class="num">股數</th><th class="num">參考價</th><th class="num">名目</th><th class="num">停損</th><th class="num">停利</th><th>到期</th><th>理由</th><th>指令</th></tr></thead><tbody>` +
+    p.map(o => `<tr><td>${o.id}</td><td><span class="badge ${o.side}">${o.side}</span></td><td class="sym">${o.symbol}</td><td class="num">${o.qty}</td><td class="num">${fmt(o.price_ref, 2)}</td><td class="num">${fmt(o.notional)}</td><td class="num">${fmt(o.stop, 2)}</td><td class="num">${fmt(o.target, 2)}</td><td>${o.expires}</td><td class="wrap">${esc(o.reason)}</td>
+      <td><code>python -m agent_desk approve ${o.id}</code></td></tr>`).join('') + '</tbody></table>';
+}
+
+function renderPositions(p) {
+  $('posCnt').textContent = p.length ? `${p.length} 檔` : '空手';
+  if (!p.length) { $('positions').innerHTML = '<div class="empty">目前沒有持倉</div>'; return; }
+  $('positions').innerHTML = `<table><thead><tr><th>標的</th><th class="num">股數</th><th class="num">成本</th><th class="num">現價</th><th class="num">未實現</th><th class="num">%</th><th class="num">停損</th><th class="num">停利</th><th>進場日</th></tr></thead><tbody>` +
+    p.map(x => `<tr><td class="sym">${x.symbol}</td><td class="num">${x.qty}</td><td class="num">${fmt(x.avg_price, 2)}</td><td class="num">${fmt(x.last_price, 2)}</td><td class="num ${sgn(x.unrealized)}">${signed(x.unrealized)}</td><td class="num ${sgn(x.unrealized)}">${pct(x.unrealized_pct)}</td><td class="num">${fmt(x.stop, 2)}</td><td class="num">${fmt(x.target, 2)}</td><td>${x.opened}</td></tr>`).join('') + '</tbody></table>';
+}
+
+function renderReport(r) {
+  if (!r) { $('report').innerHTML = '<div class="empty">還沒有日報</div>'; $('repSrc').textContent = ''; return; }
+  $('repSrc').textContent = `${r.date}・${r.source === 'llm' ? 'LLM 撰寫' : '模板'}`;
+  let html = esc(r.text).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/^#+\s*(.+)$/gm, '<strong>$1</strong>').replace(/^- /gm, '• ');
+  $('report').innerHTML = html;
+}
+
+function sentBar(s) {
+  if (s == null) return '<span class="mut">—</span>';
+  const w = Math.abs(s) * 35, left = s >= 0 ? 35 : 35 - w, col = s > 0.1 ? '#22c55e' : s < -0.1 ? '#ef4444' : '#94a3b8';
+  return `<span class="sent"><i style="left:${left}px;width:${w}px;background:${col}"></i></span>${s > 0 ? '+' : ''}${s.toFixed(2)}`;
+}
+
+function renderWatch(w) {
+  $('watch').innerHTML = `<table><thead><tr><th>標的</th><th class="num">價格</th><th>訊號</th><th class="num">強度</th><th class="num">RSI</th><th class="num">SMA20</th><th class="num">SMA50</th><th>訊號理由</th><th>新聞情緒</th><th class="num">信心</th><th>事件</th><th>LLM 判讀</th></tr></thead><tbody>` +
+    w.map(x => { const i = x.indicators || {}; return `<tr><td class="sym">${x.symbol}</td><td class="num">${fmt(x.price, 2)}</td><td><span class="badge ${x.side === '—' ? 'none' : x.side}">${x.side}</span></td><td class="num">${x.strength ?? '—'}</td>
+      <td class="num">${i.rsi == null ? '—' : i.rsi.toFixed(0)}</td><td class="num">${fmt(i.sma20, 2)}</td><td class="num">${fmt(i.sma50, 2)}</td><td class="wrap">${esc(x.reason)}</td>
+      <td>${sentBar(x.sentiment)}</td><td class="num">${x.confidence == null ? '—' : x.confidence.toFixed(1)}</td><td>${esc(x.event_type || '—')}</td>
+      <td class="wrap" title="${esc((x.headlines || []).join('\n'))}">${esc(x.rationale)}</td></tr>`; }).join('') + '</tbody></table>';
+}
+
+function renderTrades(t) {
+  $('trdCnt').textContent = t.length ? `（最近 ${t.length} 筆）` : '';
+  if (!t.length) { $('trades').innerHTML = '<div class="empty">還沒有成交</div>'; return; }
+  $('trades').innerHTML = `<table><thead><tr><th>日期</th><th>單號</th><th>方向</th><th>標的</th><th class="num">股數</th><th class="num">價格</th><th class="num">名目</th><th class="num">損益</th><th>方式</th><th>理由</th></tr></thead><tbody>` +
+    t.map(x => `<tr><td>${x.trade_date}</td><td class="mut">${x.id}</td><td><span class="badge ${x.side}">${x.side}</span></td><td class="sym">${x.symbol}</td><td class="num">${x.qty}</td><td class="num">${fmt(x.price, 2)}</td><td class="num">${fmt(x.notional)}</td><td class="num ${x.side === 'SELL' ? sgn(x.pnl) : 'mut'}">${x.side === 'SELL' ? signed(x.pnl) : '—'}</td><td>${esc(x.how)}</td><td class="wrap">${esc(x.reason)}</td></tr>`).join('') + '</tbody></table>';
+}
+
+function renderDecided(p) {
+  if (!p.length) { $('decided').innerHTML = '<div class="empty">尚無紀錄</div>'; return; }
+  $('decided').innerHTML = `<table><thead><tr><th>單號</th><th>狀態</th><th>方向</th><th>標的</th><th class="num">股數</th><th class="num">參考價</th><th>提出</th><th>決定</th><th>理由</th></tr></thead><tbody>` +
+    p.slice().reverse().map(o => `<tr><td>${o.id}</td><td><span class="badge ${o.status}">${o.status}</span></td><td><span class="badge ${o.side}">${o.side}</span></td><td class="sym">${o.symbol}</td><td class="num">${o.qty}</td><td class="num">${fmt(o.price_ref, 2)}</td><td>${o.trade_date}</td><td>${ts(o.decided)}</td><td class="wrap">${esc(o.reason)} ${esc(o.note || '')}</td></tr>`).join('') + '</tbody></table>';
+}
+
+load();
+</script>
+</body>
+</html>
