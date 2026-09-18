@@ -103,6 +103,12 @@ def test_full_loop_with_approvals_trades_and_exports(desk):
     payload = json.loads(out.read_text())
     assert payload["kpi"]["equity"] == pytest.approx(d.state.equity(), rel=1e-6)
     assert payload["watchlist"][0]["symbol"] == "AAA"
+    k = payload["kpi"]
+    closed = [t for t in s["trades"] if t["side"] == "SELL"]
+    if any(t["pnl"] > 0 for t in closed) and any(t["pnl"] <= 0 for t in closed):
+        assert k["payoff_ratio"] == pytest.approx(k["avg_win"] / k["avg_loss"], rel=1e-2)
+        assert k["profit_factor"] > 0 and k["n_wins"] + k["n_losses"] == k["n_closed"]
+        assert k["expectancy"] == pytest.approx(k["realized_pnl"] / k["n_closed"], rel=1e-2)
 
 
 def test_kill_switch_blocks_new_entries(desk):

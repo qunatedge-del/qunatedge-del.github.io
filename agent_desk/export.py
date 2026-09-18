@@ -21,10 +21,20 @@ def export_dashboard(cfg, state, bars: dict | None = None, mode: str = "paper") 
             "stop": p["stop"], "target": p["target"], "opened": p["opened"],
         })
     closed = [t for t in s["trades"] if t["side"] == "SELL"]
-    wins = [t for t in closed if t["pnl"] > 0]
+    wins = [t["pnl"] for t in closed if t["pnl"] > 0]
+    losses = [-t["pnl"] for t in closed if t["pnl"] <= 0]
+    avg_win = sum(wins) / len(wins) if wins else None
+    avg_loss = sum(losses) / len(losses) if losses else None
     stats = {
         "n_trades": len(s["trades"]), "n_closed": len(closed),
+        "n_wins": len(wins), "n_losses": len(losses),
         "win_rate": round(len(wins) / len(closed), 3) if closed else None,
+        "avg_win": round(avg_win, 2) if avg_win is not None else None,
+        "avg_loss": round(avg_loss, 2) if avg_loss is not None else None,
+        # 盈虧比：平均獲利 / 平均虧損；獲利因子：總獲利 / 總虧損；期望值：每筆平均損益
+        "payoff_ratio": round(avg_win / avg_loss, 2) if avg_win and avg_loss else None,
+        "profit_factor": round(sum(wins) / sum(losses), 2) if wins and losses else None,
+        "expectancy": round((sum(wins) - sum(losses)) / len(closed), 2) if closed else None,
         "realized_pnl": round(sum(t["pnl"] for t in closed), 2),
         "max_drawdown": round(max((c["drawdown"] for c in curve), default=0.0), 4),
         "total_return": round(equity / s["initial_cash"] - 1, 4) if s["initial_cash"] else 0.0,
