@@ -71,9 +71,10 @@ open agent_desk.html              # 監控頁（或推上 GitHub Pages 後直接
 
 沒有任何資料送到 Anthropic 以外的服務。送給模型的只有新聞標題和你的紙上部位摘要。
 
-## 用 GitHub Actions 自動跑、用手機審核
+## 用 GitHub Actions 手動跑、用手機審核
 
-`.github/workflows/agent_desk.yml` 會在每個交易日收盤後自動 `run` 並把結果 commit 回 repo。
+`.github/workflows/agent_desk.yml` 預設**沒有排程**，只在你到 Actions 頁面按 Run workflow 時才執行，
+跑完把結果 commit 回 repo。想改成每個交易日自動跑，把檔案裡 `schedule` 那兩行的註解拿掉。
 在 repo 的 Settings → Secrets 加 `ANTHROPIC_API_KEY` 就會啟用 LLM。
 
 審核可以不用開電腦：GitHub App → Actions → Agent Desk → Run workflow，

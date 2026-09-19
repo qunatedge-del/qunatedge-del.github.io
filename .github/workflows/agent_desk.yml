@@ -1,7 +1,8 @@
 # Agent Desk：紙上交易桌的排程執行與手機審核入口
 #
-# - 每個交易日美股收盤後自動跑一輪（抓資料 → 情緒 → 訊號 → 風控 → 紙上執行 → 日報）
-# - 也可以在 GitHub 的 Actions 頁面（手機 App 也行）手動觸發：approve / reject / killswitch
+# - 只在你手動觸發時才跑：GitHub 的 Actions 頁面（手機 App 也行）→ Run workflow
+#   選 run / approve / reject / killswitch。沒有排程，不會自己動。
+# - 想改成每個交易日自動跑，把下面 schedule 那兩行的 # 拿掉即可。
 # - 結果（data/agent_desk.json、data/agent_desk_state.json）直接 commit 回 repo，
 #   GitHub Pages 上的 agent_desk.html 就會更新
 #
@@ -9,8 +10,8 @@
 name: Agent Desk
 
 on:
-  schedule:
-    - cron: "45 21 * * 1-5"   # 週一到週五 21:45 UTC（美東收盤後 1 小時 45 分）
+  # schedule:
+  #   - cron: "45 21 * * 1-5"   # 週一到週五 21:45 UTC（美東收盤後 1 小時 45 分）
   workflow_dispatch:
     inputs:
       command:
