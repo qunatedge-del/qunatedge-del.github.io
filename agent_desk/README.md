@@ -25,6 +25,16 @@ DataAgent ──(news.new)──▶ SentimentAgent(LLM) ─┐
 
 ## 安裝（Mac）
 
+最快的方式：打開終端機，貼這一行，它會自動下載、建環境、裝套件、跑第一輪、開監控頁。
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/qunatedge-del/qunatedge-del.github.io/main/install.sh | bash
+```
+
+裝好後程式在 `~/agent-desk`，以後用 `./desk run`、`./desk pending`、`./desk approve ORD-xxxxx`、`./desk web` 操作。
+
+手動安裝的話：
+
 ```bash
 git clone https://github.com/qunatedge-del/qunatedge-del.github.io.git
 cd qunatedge-del.github.io
