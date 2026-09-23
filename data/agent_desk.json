@@ -1,0 +1,3440 @@
+{
+ "generated": "2026-09-18T04:21:00+00:00",
+ "mode": "paper-offline-demo",
+ "config": {
+  "watchlist": [
+   "SPY",
+   "QQQ",
+   "AAPL",
+   "MSFT",
+   "NVDA",
+   "AMZN",
+   "GOOGL",
+   "META"
+  ],
+  "initial_cash": 100000,
+  "approval_required": true,
+  "auto_execute_exits": true,
+  "risk": {
+   "risk_per_trade_pct": 0.01,
+   "max_position_pct": 0.1,
+   "max_gross_exposure_pct": 0.6,
+   "max_positions": 6,
+   "max_daily_loss_pct": 0.02,
+   "max_drawdown_pct": 0.1,
+   "stop_loss_atr": 2.0,
+   "take_profit_atr": 4.0,
+   "cooldown_days": 3,
+   "min_trade_notional": 500
+  },
+  "llm": {
+   "model": "claude-opus-5",
+   "max_calls_per_day": 20,
+   "enabled": true
+  }
+ },
+ "kpi": {
+  "equity": 105458.1,
+  "cash": 84216.12,
+  "exposure": 21241.98,
+  "daily_pnl": -128.38,
+  "drawdown": 0.0012,
+  "peak_equity": 105586.47727860542,
+  "n_positions": 2,
+  "n_pending": 3,
+  "kill_switch": {
+   "active": false,
+   "reason": "",
+   "since": ""
+  },
+  "last_trade_date": "2026-09-18",
+  "llm_usage": {
+   "date": "2026-09-18",
+   "calls": 0,
+   "input_tokens": 0,
+   "output_tokens": 0,
+   "est_cost_usd": 0.0
+  },
+  "n_trades": 72,
+  "n_closed": 35,
+  "n_wins": 14,
+  "n_losses": 21,
+  "win_rate": 0.4,
+  "avg_win": 829.78,
+  "avg_loss": 331.48,
+  "payoff_ratio": 2.5,
+  "profit_factor": 1.67,
+  "expectancy": 133.02,
+  "realized_pnl": 4655.85,
+  "max_drawdown": 0.0158,
+  "total_return": 0.0546
+ },
+ "equity_curve": [
+  {
+   "date": "2026-03-23",
+   "equity": 99999.47,
+   "cash": 80060.07,
+   "exposure": 19939.4,
+   "daily_pnl": -0.53,
+   "drawdown": 0.0,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-03-24",
+   "equity": 99887.01,
+   "cash": 89871.92,
+   "exposure": 10015.09,
+   "daily_pnl": -112.46,
+   "drawdown": 0.0011,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-03-25",
+   "equity": 99883.12,
+   "cash": 89871.92,
+   "exposure": 10011.2,
+   "daily_pnl": -3.89,
+   "drawdown": 0.0012,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-03-26",
+   "equity": 99830.15,
+   "cash": 89871.92,
+   "exposure": 9958.22,
+   "daily_pnl": -52.97,
+   "drawdown": 0.0017,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-03-27",
+   "equity": 99964.83,
+   "cash": 89871.92,
+   "exposure": 10092.91,
+   "daily_pnl": 134.68,
+   "drawdown": 0.0004,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-03-30",
+   "equity": 100147.97,
+   "cash": 79941.3,
+   "exposure": 20206.67,
+   "daily_pnl": 183.14,
+   "drawdown": 0.0,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-03-31",
+   "equity": 100191.27,
+   "cash": 79941.3,
+   "exposure": 20249.97,
+   "daily_pnl": 43.3,
+   "drawdown": 0.0,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-04-01",
+   "equity": 100293.32,
+   "cash": 69985.25,
+   "exposure": 30308.07,
+   "daily_pnl": 102.05,
+   "drawdown": 0.0,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-04-02",
+   "equity": 99893.41,
+   "cash": 60054.64,
+   "exposure": 39838.77,
+   "daily_pnl": -399.91,
+   "drawdown": 0.004,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-04-03",
+   "equity": 99793.67,
+   "cash": 60054.64,
+   "exposure": 39739.03,
+   "daily_pnl": -99.74,
+   "drawdown": 0.005,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-04-06",
+   "equity": 99691.56,
+   "cash": 60054.64,
+   "exposure": 39636.91,
+   "daily_pnl": -102.11,
+   "drawdown": 0.006,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-04-07",
+   "equity": 99392.39,
+   "cash": 60054.64,
+   "exposure": 39337.75,
+   "daily_pnl": -299.17,
+   "drawdown": 0.009,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-04-08",
+   "equity": 99681.35,
+   "cash": 60054.64,
+   "exposure": 39626.71,
+   "daily_pnl": 288.96,
+   "drawdown": 0.0061,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-04-09",
+   "equity": 99890.13,
+   "cash": 60054.64,
+   "exposure": 39835.49,
+   "daily_pnl": 208.78,
+   "drawdown": 0.004,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-04-10",
+   "equity": 99605.74,
+   "cash": 60054.64,
+   "exposure": 39551.1,
+   "daily_pnl": -284.39,
+   "drawdown": 0.0069,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-04-13",
+   "equity": 99117.74,
+   "cash": 69608.05,
+   "exposure": 29509.69,
+   "daily_pnl": -488.0,
+   "drawdown": 0.0117,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-04-14",
+   "equity": 99147.23,
+   "cash": 69608.05,
+   "exposure": 29539.18,
+   "daily_pnl": 29.49,
+   "drawdown": 0.0114,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-04-15",
+   "equity": 99134.42,
+   "cash": 69608.05,
+   "exposure": 29526.37,
+   "daily_pnl": -12.81,
+   "drawdown": 0.0116,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-04-16",
+   "equity": 98993.89,
+   "cash": 69608.05,
+   "exposure": 29385.84,
+   "daily_pnl": -140.53,
+   "drawdown": 0.013,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-04-17",
+   "equity": 99546.83,
+   "cash": 69608.05,
+   "exposure": 29938.78,
+   "daily_pnl": 552.94,
+   "drawdown": 0.0074,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-04-20",
+   "equity": 99718.54,
+   "cash": 69608.05,
+   "exposure": 30110.49,
+   "daily_pnl": 171.71,
+   "drawdown": 0.0057,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-04-21",
+   "equity": 99985.82,
+   "cash": 69608.05,
+   "exposure": 30377.76,
+   "daily_pnl": 267.28,
+   "drawdown": 0.0031,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-04-22",
+   "equity": 99573.49,
+   "cash": 69608.05,
+   "exposure": 29965.44,
+   "daily_pnl": -412.33,
+   "drawdown": 0.0072,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-04-23",
+   "equity": 99739.95,
+   "cash": 59631.93,
+   "exposure": 40108.03,
+   "daily_pnl": 166.46,
+   "drawdown": 0.0055,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-04-24",
+   "equity": 99716.28,
+   "cash": 49693.73,
+   "exposure": 50022.55,
+   "daily_pnl": -23.67,
+   "drawdown": 0.0058,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-04-27",
+   "equity": 99580.48,
+   "cash": 49693.73,
+   "exposure": 49886.75,
+   "daily_pnl": -135.8,
+   "drawdown": 0.0071,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-04-28",
+   "equity": 99018.45,
+   "cash": 59272.73,
+   "exposure": 39745.72,
+   "daily_pnl": -562.03,
+   "drawdown": 0.0127,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-04-29",
+   "equity": 98937.96,
+   "cash": 68798.77,
+   "exposure": 30139.2,
+   "daily_pnl": -80.49,
+   "drawdown": 0.0135,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-04-30",
+   "equity": 99080.15,
+   "cash": 68798.77,
+   "exposure": 30281.38,
+   "daily_pnl": 142.19,
+   "drawdown": 0.0121,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-05-01",
+   "equity": 98973.23,
+   "cash": 68798.77,
+   "exposure": 30174.46,
+   "daily_pnl": -106.92,
+   "drawdown": 0.0132,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-05-04",
+   "equity": 98854.25,
+   "cash": 68798.77,
+   "exposure": 30055.49,
+   "daily_pnl": -118.98,
+   "drawdown": 0.0144,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-05-05",
+   "equity": 99296.22,
+   "cash": 68798.77,
+   "exposure": 30497.45,
+   "daily_pnl": 441.97,
+   "drawdown": 0.0099,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-05-06",
+   "equity": 99689.74,
+   "cash": 58946.17,
+   "exposure": 40743.56,
+   "daily_pnl": 393.52,
+   "drawdown": 0.006,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-05-07",
+   "equity": 100090.01,
+   "cash": 58946.17,
+   "exposure": 41143.84,
+   "daily_pnl": 400.27,
+   "drawdown": 0.002,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-05-08",
+   "equity": 100685.29,
+   "cash": 58946.17,
+   "exposure": 41739.12,
+   "daily_pnl": 595.28,
+   "drawdown": 0.0,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-05-11",
+   "equity": 101058.3,
+   "cash": 90333.05,
+   "exposure": 10725.25,
+   "daily_pnl": 373.01,
+   "drawdown": 0.0,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-05-12",
+   "equity": 100968.37,
+   "cash": 90333.05,
+   "exposure": 10635.32,
+   "daily_pnl": -89.93,
+   "drawdown": 0.0009,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-05-13",
+   "equity": 100982.63,
+   "cash": 90333.05,
+   "exposure": 10649.58,
+   "daily_pnl": 14.26,
+   "drawdown": 0.0007,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-05-14",
+   "equity": 101224.31,
+   "cash": 90333.05,
+   "exposure": 10891.26,
+   "daily_pnl": 241.68,
+   "drawdown": 0.0,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-05-15",
+   "equity": 101524.68,
+   "cash": 91480.32,
+   "exposure": 10044.36,
+   "daily_pnl": 300.37,
+   "drawdown": 0.0,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-05-18",
+   "equity": 101672.13,
+   "cash": 81333.98,
+   "exposure": 20338.14,
+   "daily_pnl": 147.45,
+   "drawdown": 0.0,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-05-19",
+   "equity": 101483.72,
+   "cash": 80922.94,
+   "exposure": 20560.77,
+   "daily_pnl": -188.41,
+   "drawdown": 0.0019,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-05-20",
+   "equity": 101423.06,
+   "cash": 80922.94,
+   "exposure": 20500.12,
+   "daily_pnl": -60.66,
+   "drawdown": 0.0025,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-05-21",
+   "equity": 101226.97,
+   "cash": 80922.94,
+   "exposure": 20304.03,
+   "daily_pnl": -196.09,
+   "drawdown": 0.0044,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-05-22",
+   "equity": 101246.5,
+   "cash": 50746.31,
+   "exposure": 50500.18,
+   "daily_pnl": 19.53,
+   "drawdown": 0.0042,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-05-25",
+   "equity": 101311.02,
+   "cash": 50746.31,
+   "exposure": 50564.71,
+   "daily_pnl": 64.52,
+   "drawdown": 0.0036,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-05-26",
+   "equity": 101184.74,
+   "cash": 51009.43,
+   "exposure": 50175.32,
+   "daily_pnl": -126.28,
+   "drawdown": 0.0048,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-05-27",
+   "equity": 100979.26,
+   "cash": 60422.24,
+   "exposure": 40557.02,
+   "daily_pnl": -205.48,
+   "drawdown": 0.0068,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-05-28",
+   "equity": 100776.67,
+   "cash": 60422.24,
+   "exposure": 40354.43,
+   "daily_pnl": -202.59,
+   "drawdown": 0.0088,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-05-29",
+   "equity": 100856.5,
+   "cash": 71282.69,
+   "exposure": 29573.81,
+   "daily_pnl": 79.83,
+   "drawdown": 0.008,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-06-01",
+   "equity": 100764.96,
+   "cash": 61362.06,
+   "exposure": 39402.9,
+   "daily_pnl": -91.54,
+   "drawdown": 0.0089,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-06-02",
+   "equity": 101063.86,
+   "cash": 51412.82,
+   "exposure": 49651.04,
+   "daily_pnl": 298.9,
+   "drawdown": 0.006,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-06-03",
+   "equity": 101338.72,
+   "cash": 51225.22,
+   "exposure": 50113.5,
+   "daily_pnl": 274.86,
+   "drawdown": 0.0033,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-06-04",
+   "equity": 101178.63,
+   "cash": 60730.5,
+   "exposure": 40448.13,
+   "daily_pnl": -160.09,
+   "drawdown": 0.0049,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-06-05",
+   "equity": 100712.43,
+   "cash": 60730.5,
+   "exposure": 39981.93,
+   "daily_pnl": -466.2,
+   "drawdown": 0.0094,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-06-08",
+   "equity": 100144.58,
+   "cash": 60176.93,
+   "exposure": 39967.65,
+   "daily_pnl": -567.85,
+   "drawdown": 0.015,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-06-09",
+   "equity": 100218.85,
+   "cash": 60176.93,
+   "exposure": 40041.92,
+   "daily_pnl": 74.27,
+   "drawdown": 0.0143,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-06-10",
+   "equity": 100720.4,
+   "cash": 60176.93,
+   "exposure": 40543.47,
+   "daily_pnl": 501.55,
+   "drawdown": 0.0094,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-06-11",
+   "equity": 101070.28,
+   "cash": 60176.93,
+   "exposure": 40893.35,
+   "daily_pnl": 349.88,
+   "drawdown": 0.0059,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-06-12",
+   "equity": 101433.33,
+   "cash": 50157.94,
+   "exposure": 51275.39,
+   "daily_pnl": 363.05,
+   "drawdown": 0.0024,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-06-15",
+   "equity": 101132.83,
+   "cash": 59791.98,
+   "exposure": 41340.86,
+   "daily_pnl": -300.5,
+   "drawdown": 0.0053,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-06-16",
+   "equity": 100979.5,
+   "cash": 59791.98,
+   "exposure": 41187.53,
+   "daily_pnl": -153.33,
+   "drawdown": 0.0068,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-06-17",
+   "equity": 101481.34,
+   "cash": 49803.62,
+   "exposure": 51677.71,
+   "daily_pnl": 501.84,
+   "drawdown": 0.0019,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-06-18",
+   "equity": 101168.95,
+   "cash": 49803.62,
+   "exposure": 51365.33,
+   "daily_pnl": -312.39,
+   "drawdown": 0.005,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-06-19",
+   "equity": 100876.68,
+   "cash": 49803.62,
+   "exposure": 51073.05,
+   "daily_pnl": -292.27,
+   "drawdown": 0.0078,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-06-22",
+   "equity": 100989.86,
+   "cash": 49803.62,
+   "exposure": 51186.24,
+   "daily_pnl": 113.18,
+   "drawdown": 0.0067,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-06-23",
+   "equity": 100410.82,
+   "cash": 49803.62,
+   "exposure": 50607.2,
+   "daily_pnl": -579.04,
+   "drawdown": 0.0124,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-06-24",
+   "equity": 100161.55,
+   "cash": 40422.55,
+   "exposure": 59739.0,
+   "daily_pnl": -249.27,
+   "drawdown": 0.0149,
+   "n_positions": 6
+  },
+  {
+   "date": "2026-06-25",
+   "equity": 101001.36,
+   "cash": 40422.55,
+   "exposure": 60578.81,
+   "daily_pnl": 839.81,
+   "drawdown": 0.0066,
+   "n_positions": 6
+  },
+  {
+   "date": "2026-06-26",
+   "equity": 101213.8,
+   "cash": 40422.55,
+   "exposure": 60791.25,
+   "daily_pnl": 212.44,
+   "drawdown": 0.0045,
+   "n_positions": 6
+  },
+  {
+   "date": "2026-06-29",
+   "equity": 101577.35,
+   "cash": 40422.55,
+   "exposure": 61154.8,
+   "daily_pnl": 363.55,
+   "drawdown": 0.0009,
+   "n_positions": 6
+  },
+  {
+   "date": "2026-06-30",
+   "equity": 101971.88,
+   "cash": 51403.16,
+   "exposure": 50568.72,
+   "daily_pnl": 394.53,
+   "drawdown": 0.0,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-07-01",
+   "equity": 101728.62,
+   "cash": 60720.79,
+   "exposure": 41007.83,
+   "daily_pnl": -243.26,
+   "drawdown": 0.0024,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-07-02",
+   "equity": 101469.99,
+   "cash": 60720.79,
+   "exposure": 40749.2,
+   "daily_pnl": -258.63,
+   "drawdown": 0.0049,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-07-03",
+   "equity": 101217.19,
+   "cash": 70120.93,
+   "exposure": 31096.26,
+   "daily_pnl": -252.8,
+   "drawdown": 0.0074,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-07-06",
+   "equity": 101426.02,
+   "cash": 70120.93,
+   "exposure": 31305.09,
+   "daily_pnl": 208.83,
+   "drawdown": 0.0054,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-07-07",
+   "equity": 101142.93,
+   "cash": 70120.93,
+   "exposure": 31022.0,
+   "daily_pnl": -283.09,
+   "drawdown": 0.0081,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-07-08",
+   "equity": 101149.54,
+   "cash": 70120.93,
+   "exposure": 31028.61,
+   "daily_pnl": 6.61,
+   "drawdown": 0.0081,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-07-09",
+   "equity": 101055.03,
+   "cash": 70120.93,
+   "exposure": 30934.1,
+   "daily_pnl": -94.51,
+   "drawdown": 0.009,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-07-10",
+   "equity": 101380.49,
+   "cash": 60005.14,
+   "exposure": 41375.35,
+   "daily_pnl": 325.46,
+   "drawdown": 0.0058,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-07-13",
+   "equity": 100621.53,
+   "cash": 79653.34,
+   "exposure": 20968.19,
+   "daily_pnl": -758.96,
+   "drawdown": 0.0132,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-07-14",
+   "equity": 100955.83,
+   "cash": 90641.72,
+   "exposure": 10314.1,
+   "daily_pnl": 334.3,
+   "drawdown": 0.01,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-07-15",
+   "equity": 101399.65,
+   "cash": 101399.65,
+   "exposure": 0,
+   "daily_pnl": 443.82,
+   "drawdown": 0.0056,
+   "n_positions": 0
+  },
+  {
+   "date": "2026-07-16",
+   "equity": 101399.65,
+   "cash": 101399.65,
+   "exposure": 0,
+   "daily_pnl": -0.0,
+   "drawdown": 0.0056,
+   "n_positions": 0
+  },
+  {
+   "date": "2026-07-17",
+   "equity": 101399.65,
+   "cash": 101399.65,
+   "exposure": 0,
+   "daily_pnl": -0.0,
+   "drawdown": 0.0056,
+   "n_positions": 0
+  },
+  {
+   "date": "2026-07-20",
+   "equity": 101399.16,
+   "cash": 91335.55,
+   "exposure": 10063.61,
+   "daily_pnl": -0.49,
+   "drawdown": 0.0056,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-07-21",
+   "equity": 101314.81,
+   "cash": 91335.55,
+   "exposure": 9979.26,
+   "daily_pnl": -84.35,
+   "drawdown": 0.0064,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-07-22",
+   "equity": 101605.4,
+   "cash": 91335.55,
+   "exposure": 10269.86,
+   "daily_pnl": 290.59,
+   "drawdown": 0.0036,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-07-23",
+   "equity": 101521.7,
+   "cash": 91335.55,
+   "exposure": 10186.16,
+   "daily_pnl": -83.7,
+   "drawdown": 0.0044,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-07-24",
+   "equity": 101514.24,
+   "cash": 91335.55,
+   "exposure": 10178.69,
+   "daily_pnl": -7.46,
+   "drawdown": 0.0045,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-07-27",
+   "equity": 101579.1,
+   "cash": 81176.98,
+   "exposure": 20402.12,
+   "daily_pnl": 64.86,
+   "drawdown": 0.0039,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-07-28",
+   "equity": 101211.44,
+   "cash": 90834.07,
+   "exposure": 10377.37,
+   "daily_pnl": -367.66,
+   "drawdown": 0.0075,
+   "n_positions": 1
+  },
+  {
+   "date": "2026-07-29",
+   "equity": 101167.27,
+   "cash": 80747.39,
+   "exposure": 20419.89,
+   "daily_pnl": -44.17,
+   "drawdown": 0.0079,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-07-30",
+   "equity": 101317.03,
+   "cash": 80747.39,
+   "exposure": 20569.64,
+   "daily_pnl": 149.76,
+   "drawdown": 0.0064,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-07-31",
+   "equity": 101096.82,
+   "cash": 80747.39,
+   "exposure": 20349.43,
+   "daily_pnl": -220.21,
+   "drawdown": 0.0086,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-08-03",
+   "equity": 100909.85,
+   "cash": 70751.96,
+   "exposure": 30157.89,
+   "daily_pnl": -186.97,
+   "drawdown": 0.0104,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-08-04",
+   "equity": 100388.54,
+   "cash": 60726.57,
+   "exposure": 39661.98,
+   "daily_pnl": -521.31,
+   "drawdown": 0.0155,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-05",
+   "equity": 100359.97,
+   "cash": 60637.9,
+   "exposure": 39722.07,
+   "daily_pnl": -28.57,
+   "drawdown": 0.0158,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-06",
+   "equity": 100465.92,
+   "cash": 60637.9,
+   "exposure": 39828.02,
+   "daily_pnl": 105.95,
+   "drawdown": 0.0148,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-07",
+   "equity": 100430.49,
+   "cash": 60637.9,
+   "exposure": 39792.59,
+   "daily_pnl": -35.43,
+   "drawdown": 0.0151,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-10",
+   "equity": 101059.81,
+   "cash": 60637.9,
+   "exposure": 40421.91,
+   "daily_pnl": 629.32,
+   "drawdown": 0.0089,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-11",
+   "equity": 101434.6,
+   "cash": 60637.9,
+   "exposure": 40796.7,
+   "daily_pnl": 374.79,
+   "drawdown": 0.0053,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-12",
+   "equity": 101802.41,
+   "cash": 60637.9,
+   "exposure": 41164.51,
+   "daily_pnl": 367.81,
+   "drawdown": 0.0017,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-13",
+   "equity": 101821.07,
+   "cash": 71397.05,
+   "exposure": 30424.02,
+   "daily_pnl": 18.66,
+   "drawdown": 0.0015,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-08-14",
+   "equity": 101626.34,
+   "cash": 71397.05,
+   "exposure": 30229.29,
+   "daily_pnl": -194.73,
+   "drawdown": 0.0034,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-08-17",
+   "equity": 101861.71,
+   "cash": 51217.21,
+   "exposure": 50644.49,
+   "daily_pnl": 235.37,
+   "drawdown": 0.0011,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-08-18",
+   "equity": 102437.15,
+   "cash": 61185.3,
+   "exposure": 41251.85,
+   "daily_pnl": 575.44,
+   "drawdown": 0.0,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-19",
+   "equity": 102269.83,
+   "cash": 61185.3,
+   "exposure": 41084.53,
+   "daily_pnl": -167.32,
+   "drawdown": 0.0016,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-20",
+   "equity": 102543.42,
+   "cash": 61185.3,
+   "exposure": 41358.12,
+   "daily_pnl": 273.59,
+   "drawdown": 0.0,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-21",
+   "equity": 103119.9,
+   "cash": 61891.25,
+   "exposure": 41228.65,
+   "daily_pnl": 576.48,
+   "drawdown": 0.0,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-24",
+   "equity": 102865.05,
+   "cash": 61891.25,
+   "exposure": 40973.81,
+   "daily_pnl": -254.85,
+   "drawdown": 0.0025,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-25",
+   "equity": 103263.97,
+   "cash": 61891.25,
+   "exposure": 41372.72,
+   "daily_pnl": 398.92,
+   "drawdown": 0.0,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-26",
+   "equity": 103352.05,
+   "cash": 61891.25,
+   "exposure": 41460.8,
+   "daily_pnl": 88.08,
+   "drawdown": 0.0,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-27",
+   "equity": 103487.95,
+   "cash": 61891.25,
+   "exposure": 41596.71,
+   "daily_pnl": 135.9,
+   "drawdown": 0.0,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-08-28",
+   "equity": 103434.56,
+   "cash": 72839.73,
+   "exposure": 30594.83,
+   "daily_pnl": -53.39,
+   "drawdown": 0.0005,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-08-31",
+   "equity": 103440.32,
+   "cash": 72839.73,
+   "exposure": 30600.59,
+   "daily_pnl": 5.76,
+   "drawdown": 0.0005,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-09-01",
+   "equity": 103042.6,
+   "cash": 72839.73,
+   "exposure": 30202.87,
+   "daily_pnl": -397.72,
+   "drawdown": 0.0043,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-09-02",
+   "equity": 102560.5,
+   "cash": 82108.56,
+   "exposure": 20451.94,
+   "daily_pnl": -482.1,
+   "drawdown": 0.009,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-09-03",
+   "equity": 102529.37,
+   "cash": 71867.02,
+   "exposure": 30662.35,
+   "daily_pnl": -31.13,
+   "drawdown": 0.0093,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-09-04",
+   "equity": 102686.36,
+   "cash": 71867.02,
+   "exposure": 30819.34,
+   "daily_pnl": 156.99,
+   "drawdown": 0.0077,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-09-07",
+   "equity": 103093.58,
+   "cash": 71867.02,
+   "exposure": 31226.56,
+   "daily_pnl": 407.22,
+   "drawdown": 0.0038,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-09-08",
+   "equity": 103430.44,
+   "cash": 61684.38,
+   "exposure": 41746.06,
+   "daily_pnl": 336.86,
+   "drawdown": 0.0006,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-09-09",
+   "equity": 103850.33,
+   "cash": 72490.73,
+   "exposure": 31359.6,
+   "daily_pnl": 419.89,
+   "drawdown": 0.0,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-09-10",
+   "equity": 103981.64,
+   "cash": 62092.59,
+   "exposure": 41889.05,
+   "daily_pnl": 131.31,
+   "drawdown": 0.0,
+   "n_positions": 4
+  },
+  {
+   "date": "2026-09-11",
+   "equity": 104205.94,
+   "cash": 51847.84,
+   "exposure": 52358.1,
+   "daily_pnl": 224.3,
+   "drawdown": 0.0,
+   "n_positions": 5
+  },
+  {
+   "date": "2026-09-14",
+   "equity": 104257.83,
+   "cash": 73084.1,
+   "exposure": 31173.73,
+   "daily_pnl": 51.89,
+   "drawdown": 0.0,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-09-15",
+   "equity": 104573.5,
+   "cash": 73084.1,
+   "exposure": 31489.39,
+   "daily_pnl": 315.67,
+   "drawdown": 0.0,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-09-16",
+   "equity": 105177.64,
+   "cash": 73084.1,
+   "exposure": 32093.54,
+   "daily_pnl": 604.14,
+   "drawdown": 0.0,
+   "n_positions": 3
+  },
+  {
+   "date": "2026-09-17",
+   "equity": 105586.48,
+   "cash": 84216.12,
+   "exposure": 21370.36,
+   "daily_pnl": 408.84,
+   "drawdown": 0.0,
+   "n_positions": 2
+  },
+  {
+   "date": "2026-09-18",
+   "equity": 105458.1,
+   "cash": 84216.12,
+   "exposure": 21241.98,
+   "daily_pnl": -128.38,
+   "drawdown": 0.0012,
+   "n_positions": 2
+  }
+ ],
+ "positions": [
+  {
+   "symbol": "META",
+   "qty": 55,
+   "avg_price": 185.1338,
+   "last_price": 191.7915,
+   "notional": 10548.53,
+   "unrealized": 366.17,
+   "unrealized_pct": 0.036,
+   "stop": 176.4168,
+   "target": 202.2903,
+   "opened": "2026-09-08"
+  },
+  {
+   "symbol": "GOOGL",
+   "qty": 44,
+   "avg_price": 232.8302,
+   "last_price": 243.0329,
+   "notional": 10693.45,
+   "unrealized": 448.92,
+   "unrealized_pct": 0.0438,
+   "stop": 222.1449,
+   "target": 253.8515,
+   "opened": "2026-09-11"
+  }
+ ],
+ "pending": [
+  {
+   "id": "ORD-00143",
+   "created": "2026-09-18T04:21:00+00:00",
+   "trade_date": "2026-09-16",
+   "expires": "2026-09-18",
+   "symbol": "AAPL",
+   "side": "BUY",
+   "qty": 42,
+   "price_ref": 245.9677,
+   "notional": 10330.64,
+   "stop": 235.4866,
+   "target": 266.9298,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 42 股，名目 10,331（9.8% equity）",
+   "status": "pending",
+   "atr": 5.2405323470745
+  },
+  {
+   "id": "ORD-00146",
+   "created": "2026-09-18T04:21:00+00:00",
+   "trade_date": "2026-09-17",
+   "expires": "2026-09-19",
+   "symbol": "NVDA",
+   "side": "BUY",
+   "qty": 178,
+   "price_ref": 59.2702,
+   "notional": 10550.1,
+   "stop": 56.5285,
+   "target": 64.7536,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 178 股，名目 10,550（10.0% equity）",
+   "status": "pending",
+   "atr": 1.370837258637672
+  },
+  {
+   "id": "ORD-00147",
+   "created": "2026-09-18T04:21:00+00:00",
+   "trade_date": "2026-09-18",
+   "expires": "2026-09-20",
+   "symbol": "QQQ",
+   "side": "BUY",
+   "qty": 90,
+   "price_ref": 116.6418,
+   "notional": 10497.76,
+   "stop": 111.9583,
+   "target": 126.0088,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 90 股，名目 10,498（10.0% equity）",
+   "status": "pending",
+   "atr": 2.3417569179614617
+  }
+ ],
+ "decided": [
+  {
+   "id": "ORD-00061",
+   "created": "2026-09-18T04:20:53+00:00",
+   "trade_date": "2026-06-03",
+   "expires": "2026-06-05",
+   "symbol": "AMZN",
+   "side": "BUY",
+   "qty": 47,
+   "price_ref": 215.1649,
+   "notional": 10112.75,
+   "stop": 206.9204,
+   "target": 231.654,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 47 股，名目 10,113（10.0% equity）",
+   "status": "approved",
+   "atr": 4.122273772518321,
+   "decided": "2026-09-18T04:20:53+00:00"
+  },
+  {
+   "id": "ORD-00067",
+   "created": "2026-09-18T04:20:53+00:00",
+   "trade_date": "2026-06-08",
+   "expires": "2026-06-10",
+   "symbol": "SPY",
+   "side": "BUY",
+   "qty": 58,
+   "price_ref": 170.4734,
+   "notional": 9887.45,
+   "stop": 162.9204,
+   "target": 185.5793,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 58 股，名目 9,887（9.9% equity）",
+   "status": "approved",
+   "atr": 3.7764929970835226,
+   "decided": "2026-09-18T04:20:53+00:00"
+  },
+  {
+   "id": "ORD-00069",
+   "created": "2026-09-18T04:20:53+00:00",
+   "trade_date": "2026-06-12",
+   "expires": "2026-06-14",
+   "symbol": "MSFT",
+   "side": "BUY",
+   "qty": 64,
+   "price_ref": 156.4636,
+   "notional": 10013.67,
+   "stop": 150.6122,
+   "target": 168.1663,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 64 股，名目 10,014（9.9% equity）",
+   "status": "approved",
+   "atr": 2.925668129751777,
+   "decided": "2026-09-18T04:20:53+00:00"
+  },
+  {
+   "id": "ORD-00073",
+   "created": "2026-09-18T04:20:54+00:00",
+   "trade_date": "2026-06-17",
+   "expires": "2026-06-19",
+   "symbol": "META",
+   "side": "BUY",
+   "qty": 53,
+   "price_ref": 188.3602,
+   "notional": 9983.09,
+   "stop": 179.4475,
+   "target": 206.1855,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 53 股，名目 9,983（9.8% equity）",
+   "status": "approved",
+   "atr": 4.456333971232822,
+   "decided": "2026-09-18T04:20:54+00:00"
+  },
+  {
+   "id": "ORD-00075",
+   "created": "2026-09-18T04:20:54+00:00",
+   "trade_date": "2026-06-24",
+   "expires": "2026-06-26",
+   "symbol": "AAPL",
+   "side": "BUY",
+   "qty": 36,
+   "price_ref": 260.4502,
+   "notional": 9376.21,
+   "stop": 247.9305,
+   "target": 285.4896,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 36 股，名目 9,376（9.4% equity）",
+   "status": "approved",
+   "atr": 6.259847863123521,
+   "decided": "2026-09-18T04:20:54+00:00"
+  },
+  {
+   "id": "ORD-00083",
+   "created": "2026-09-18T04:20:55+00:00",
+   "trade_date": "2026-07-10",
+   "expires": "2026-07-12",
+   "symbol": "META",
+   "side": "BUY",
+   "qty": 56,
+   "price_ref": 180.5438,
+   "notional": 10110.45,
+   "stop": 171.8907,
+   "target": 197.8498,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 56 股，名目 10,110（10.0% equity）",
+   "status": "approved",
+   "atr": 4.326509964458917,
+   "decided": "2026-09-18T04:20:55+00:00"
+  },
+  {
+   "id": "ORD-00093",
+   "created": "2026-09-18T04:20:56+00:00",
+   "trade_date": "2026-07-20",
+   "expires": "2026-07-22",
+   "symbol": "QQQ",
+   "side": "BUY",
+   "qty": 98,
+   "price_ref": 102.6386,
+   "notional": 10058.59,
+   "stop": 98.0679,
+   "target": 111.7801,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 98 股，名目 10,059（9.9% equity）",
+   "status": "approved",
+   "atr": 2.285360736245121,
+   "decided": "2026-09-18T04:20:56+00:00"
+  },
+  {
+   "id": "ORD-00095",
+   "created": "2026-09-18T04:20:56+00:00",
+   "trade_date": "2026-07-27",
+   "expires": "2026-07-29",
+   "symbol": "SPY",
+   "side": "BUY",
+   "qty": 55,
+   "price_ref": 184.6038,
+   "notional": 10153.21,
+   "stop": 175.6763,
+   "target": 202.459,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 55 股，名目 10,153（10.0% equity）",
+   "status": "approved",
+   "atr": 4.463779482873053,
+   "decided": "2026-09-18T04:20:56+00:00"
+  },
+  {
+   "id": "ORD-00099",
+   "created": "2026-09-18T04:20:56+00:00",
+   "trade_date": "2026-07-29",
+   "expires": "2026-07-31",
+   "symbol": "NVDA",
+   "side": "BUY",
+   "qty": 169,
+   "price_ref": 59.6497,
+   "notional": 10080.79,
+   "stop": 56.8916,
+   "target": 65.1658,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 169 股，名目 10,081（10.0% equity）",
+   "status": "approved",
+   "atr": 1.3790296252171461,
+   "decided": "2026-09-18T04:20:56+00:00"
+  },
+  {
+   "id": "ORD-00101",
+   "created": "2026-09-18T04:20:57+00:00",
+   "trade_date": "2026-08-03",
+   "expires": "2026-08-05",
+   "symbol": "MSFT",
+   "side": "BUY",
+   "qty": 63,
+   "price_ref": 158.5732,
+   "notional": 9990.11,
+   "stop": 152.4244,
+   "target": 170.8707,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 63 股，名目 9,990（9.9% equity）",
+   "status": "approved",
+   "atr": 3.0743853647893866,
+   "decided": "2026-09-18T04:20:57+00:00"
+  },
+  {
+   "id": "ORD-00103",
+   "created": "2026-09-18T04:20:57+00:00",
+   "trade_date": "2026-08-04",
+   "expires": "2026-08-06",
+   "symbol": "SPY",
+   "side": "BUY",
+   "qty": 56,
+   "price_ref": 178.9304,
+   "notional": 10020.1,
+   "stop": 169.7485,
+   "target": 197.2942,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 56 股，名目 10,020（10.0% equity）",
+   "status": "approved",
+   "atr": 4.590943235296492,
+   "decided": "2026-09-18T04:20:57+00:00"
+  },
+  {
+   "id": "ORD-00107",
+   "created": "2026-09-18T04:20:57+00:00",
+   "trade_date": "2026-08-05",
+   "expires": "2026-08-07",
+   "symbol": "AMZN",
+   "side": "BUY",
+   "qty": 39,
+   "price_ref": 253.0772,
+   "notional": 9870.01,
+   "stop": 241.0597,
+   "target": 277.1123,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 39 股，名目 9,870（9.8% equity）",
+   "status": "approved",
+   "atr": 6.008760683913452,
+   "decided": "2026-09-18T04:20:57+00:00"
+  },
+  {
+   "id": "ORD-00111",
+   "created": "2026-09-18T04:20:58+00:00",
+   "trade_date": "2026-08-17",
+   "expires": "2026-08-19",
+   "symbol": "MSFT",
+   "side": "BUY",
+   "qty": 59,
+   "price_ref": 172.0219,
+   "notional": 10149.29,
+   "stop": 165.8069,
+   "target": 184.4519,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 59 股，名目 10,149（10.0% equity）",
+   "status": "approved",
+   "atr": 3.1074899816099126,
+   "decided": "2026-09-18T04:20:58+00:00"
+  },
+  {
+   "id": "ORD-00112",
+   "created": "2026-09-18T04:20:58+00:00",
+   "trade_date": "2026-08-17",
+   "expires": "2026-08-19",
+   "symbol": "META",
+   "side": "BUY",
+   "qty": 54,
+   "price_ref": 185.5537,
+   "notional": 10019.9,
+   "stop": 177.4943,
+   "target": 201.6725,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 54 股，名目 10,020（9.8% equity）",
+   "status": "approved",
+   "atr": 4.02969866223307,
+   "decided": "2026-09-18T04:20:58+00:00"
+  },
+  {
+   "id": "ORD-00119",
+   "created": "2026-09-18T04:20:58+00:00",
+   "trade_date": "2026-08-21",
+   "expires": "2026-08-23",
+   "symbol": "META",
+   "side": "BUY",
+   "qty": 54,
+   "price_ref": 188.2524,
+   "notional": 10165.63,
+   "stop": 180.2778,
+   "target": 204.2015,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 54 股，名目 10,166（9.9% equity）",
+   "status": "approved",
+   "atr": 3.987288009026876,
+   "decided": "2026-09-18T04:20:58+00:00"
+  },
+  {
+   "id": "ORD-00127",
+   "created": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-02",
+   "expires": "2026-09-04",
+   "symbol": "QQQ",
+   "side": "BUY",
+   "qty": 90,
+   "price_ref": 113.3375,
+   "notional": 10200.37,
+   "stop": 109.1332,
+   "target": 121.746,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 90 股，名目 10,200（9.9% equity）",
+   "status": "approved",
+   "atr": 2.102135962972849,
+   "decided": "2026-09-18T04:20:59+00:00"
+  },
+  {
+   "id": "ORD-00129",
+   "created": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-03",
+   "expires": "2026-09-05",
+   "symbol": "MSFT",
+   "side": "BUY",
+   "qty": 59,
+   "price_ref": 173.4937,
+   "notional": 10236.13,
+   "stop": 166.4065,
+   "target": 187.6679,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 59 股，名目 10,236（10.0% equity）",
+   "status": "approved",
+   "atr": 3.5435695704817105,
+   "decided": "2026-09-18T04:20:59+00:00"
+  },
+  {
+   "id": "ORD-00131",
+   "created": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-08",
+   "expires": "2026-09-10",
+   "symbol": "META",
+   "side": "BUY",
+   "qty": 55,
+   "price_ref": 185.0413,
+   "notional": 10177.27,
+   "stop": 176.4168,
+   "target": 202.2903,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 55 股，名目 10,177（9.8% equity）",
+   "status": "approved",
+   "atr": 4.312245077174226,
+   "decided": "2026-09-18T04:20:59+00:00"
+  },
+  {
+   "id": "ORD-00135",
+   "created": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-10",
+   "expires": "2026-09-12",
+   "symbol": "NVDA",
+   "side": "BUY",
+   "qty": 176,
+   "price_ref": 59.0458,
+   "notional": 10392.06,
+   "stop": 56.3096,
+   "target": 64.5182,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 176 股，名目 10,392（10.0% equity）",
+   "status": "approved",
+   "atr": 1.3680954737555222,
+   "decided": "2026-09-18T04:20:59+00:00"
+  },
+  {
+   "id": "ORD-00137",
+   "created": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-11",
+   "expires": "2026-09-13",
+   "symbol": "GOOGL",
+   "side": "BUY",
+   "qty": 44,
+   "price_ref": 232.7138,
+   "notional": 10239.41,
+   "stop": 222.1449,
+   "target": 253.8515,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 44 股，名目 10,239（9.8% equity）",
+   "status": "approved",
+   "atr": 5.284441843248025,
+   "decided": "2026-09-18T04:20:59+00:00"
+  }
+ ],
+ "trades": [
+  {
+   "id": "TRD-00145",
+   "order_id": "ORD-00144",
+   "ts": "2026-09-18T04:21:00+00:00",
+   "trade_date": "2026-09-17",
+   "symbol": "MSFT",
+   "side": "SELL",
+   "qty": 59,
+   "price": 188.6832,
+   "notional": 11132.31,
+   "commission": 0.29,
+   "pnl": 890.77,
+   "reason": "觸及停利 187.67",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00142",
+   "order_id": "ORD-00141",
+   "ts": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-14",
+   "symbol": "NVDA",
+   "side": "SELL",
+   "qty": 176,
+   "price": 58.4428,
+   "notional": 10285.93,
+   "commission": 0.88,
+   "pnl": -112.21,
+   "reason": "訊號出場：跌破 SMA50",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00140",
+   "order_id": "ORD-00139",
+   "ts": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-14",
+   "symbol": "QQQ",
+   "side": "SELL",
+   "qty": 90,
+   "price": 121.6851,
+   "notional": 10951.66,
+   "commission": 0.45,
+   "pnl": 745.73,
+   "reason": "觸及停利 121.75",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00138",
+   "order_id": "ORD-00137",
+   "ts": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-11",
+   "symbol": "GOOGL",
+   "side": "BUY",
+   "qty": 44,
+   "price": 232.8302,
+   "notional": 10244.53,
+   "commission": 0.22,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 44 股，名目 10,239（9.8% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00136",
+   "order_id": "ORD-00135",
+   "ts": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-10",
+   "symbol": "NVDA",
+   "side": "BUY",
+   "qty": 176,
+   "price": 59.0753,
+   "notional": 10397.26,
+   "commission": 0.88,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 176 股，名目 10,392（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00134",
+   "order_id": "ORD-00133",
+   "ts": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-09",
+   "symbol": "AMZN",
+   "side": "SELL",
+   "qty": 39,
+   "price": 277.0909,
+   "notional": 10806.55,
+   "commission": 0.2,
+   "pnl": 931.4,
+   "reason": "觸及停利 277.11",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00132",
+   "order_id": "ORD-00131",
+   "ts": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-08",
+   "symbol": "META",
+   "side": "BUY",
+   "qty": 55,
+   "price": 185.1338,
+   "notional": 10182.36,
+   "commission": 0.28,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 55 股，名目 10,177（9.8% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00130",
+   "order_id": "ORD-00129",
+   "ts": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-03",
+   "symbol": "MSFT",
+   "side": "BUY",
+   "qty": 59,
+   "price": 173.5804,
+   "notional": 10241.25,
+   "commission": 0.29,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 59 股，名目 10,236（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00128",
+   "order_id": "ORD-00127",
+   "ts": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-02",
+   "symbol": "QQQ",
+   "side": "BUY",
+   "qty": 90,
+   "price": 113.3942,
+   "notional": 10205.48,
+   "commission": 0.45,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 90 股，名目 10,200（9.9% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00126",
+   "order_id": "ORD-00125",
+   "ts": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-02",
+   "symbol": "META",
+   "side": "SELL",
+   "qty": 54,
+   "price": 180.1877,
+   "notional": 9730.13,
+   "commission": 0.27,
+   "pnl": -440.85,
+   "reason": "觸及停損 180.28",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00124",
+   "order_id": "ORD-00123",
+   "ts": "2026-09-18T04:20:59+00:00",
+   "trade_date": "2026-09-02",
+   "symbol": "NVDA",
+   "side": "SELL",
+   "qty": 169,
+   "price": 57.667,
+   "notional": 9745.73,
+   "commission": 0.84,
+   "pnl": -340.95,
+   "reason": "訊號出場：跌破 SMA50",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00122",
+   "order_id": "ORD-00121",
+   "ts": "2026-09-18T04:20:58+00:00",
+   "trade_date": "2026-08-28",
+   "symbol": "QQQ",
+   "side": "SELL",
+   "qty": 98,
+   "price": 111.7242,
+   "notional": 10948.97,
+   "commission": 0.49,
+   "pnl": 884.87,
+   "reason": "觸及停利 111.78",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00120",
+   "order_id": "ORD-00119",
+   "ts": "2026-09-18T04:20:58+00:00",
+   "trade_date": "2026-08-21",
+   "symbol": "META",
+   "side": "BUY",
+   "qty": 54,
+   "price": 188.3465,
+   "notional": 10170.71,
+   "commission": 0.27,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 54 股，名目 10,166（9.9% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00118",
+   "order_id": "ORD-00117",
+   "ts": "2026-09-18T04:20:58+00:00",
+   "trade_date": "2026-08-21",
+   "symbol": "MSFT",
+   "side": "SELL",
+   "qty": 59,
+   "price": 184.3597,
+   "notional": 10877.22,
+   "commission": 0.29,
+   "pnl": 722.56,
+   "reason": "觸及停利 184.45",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00116",
+   "order_id": "ORD-00115",
+   "ts": "2026-09-18T04:20:58+00:00",
+   "trade_date": "2026-08-18",
+   "symbol": "META",
+   "side": "SELL",
+   "qty": 54,
+   "price": 184.5992,
+   "notional": 9968.36,
+   "commission": 0.27,
+   "pnl": -56.82,
+   "reason": "訊號出場：跌破 SMA50",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00114",
+   "order_id": "ORD-00112",
+   "ts": "2026-09-18T04:20:58+00:00",
+   "trade_date": "2026-08-17",
+   "symbol": "META",
+   "side": "BUY",
+   "qty": 54,
+   "price": 185.6465,
+   "notional": 10024.91,
+   "commission": 0.27,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 54 股，名目 10,020（9.8% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00113",
+   "order_id": "ORD-00111",
+   "ts": "2026-09-18T04:20:58+00:00",
+   "trade_date": "2026-08-17",
+   "symbol": "MSFT",
+   "side": "BUY",
+   "qty": 59,
+   "price": 172.1079,
+   "notional": 10154.37,
+   "commission": 0.29,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 59 股，名目 10,149（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00110",
+   "order_id": "ORD-00109",
+   "ts": "2026-09-18T04:20:57+00:00",
+   "trade_date": "2026-08-13",
+   "symbol": "MSFT",
+   "side": "SELL",
+   "qty": 63,
+   "price": 170.7853,
+   "notional": 10759.47,
+   "commission": 0.32,
+   "pnl": 764.04,
+   "reason": "觸及停利 170.87",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00108",
+   "order_id": "ORD-00107",
+   "ts": "2026-09-18T04:20:57+00:00",
+   "trade_date": "2026-08-05",
+   "symbol": "AMZN",
+   "side": "BUY",
+   "qty": 39,
+   "price": 253.2037,
+   "notional": 9874.95,
+   "commission": 0.2,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 39 股，名目 9,870（9.8% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00106",
+   "order_id": "ORD-00105",
+   "ts": "2026-09-18T04:20:57+00:00",
+   "trade_date": "2026-08-05",
+   "symbol": "SPY",
+   "side": "SELL",
+   "qty": 56,
+   "price": 174.7635,
+   "notional": 9786.76,
+   "commission": 0.28,
+   "pnl": -238.64,
+   "reason": "訊號出場：跌破 SMA50",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00104",
+   "order_id": "ORD-00103",
+   "ts": "2026-09-18T04:20:57+00:00",
+   "trade_date": "2026-08-04",
+   "symbol": "SPY",
+   "side": "BUY",
+   "qty": 56,
+   "price": 179.0199,
+   "notional": 10025.11,
+   "commission": 0.28,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 56 股，名目 10,020（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00102",
+   "order_id": "ORD-00101",
+   "ts": "2026-09-18T04:20:57+00:00",
+   "trade_date": "2026-08-03",
+   "symbol": "MSFT",
+   "side": "BUY",
+   "qty": 63,
+   "price": 158.6525,
+   "notional": 9995.11,
+   "commission": 0.32,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 63 股，名目 9,990（9.9% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00100",
+   "order_id": "ORD-00099",
+   "ts": "2026-09-18T04:20:56+00:00",
+   "trade_date": "2026-07-29",
+   "symbol": "NVDA",
+   "side": "BUY",
+   "qty": 169,
+   "price": 59.6795,
+   "notional": 10085.84,
+   "commission": 0.84,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 169 股，名目 10,081（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00098",
+   "order_id": "ORD-00097",
+   "ts": "2026-09-18T04:20:56+00:00",
+   "trade_date": "2026-07-28",
+   "symbol": "SPY",
+   "side": "SELL",
+   "qty": 55,
+   "price": 175.5885,
+   "notional": 9657.37,
+   "commission": 0.28,
+   "pnl": -501.2,
+   "reason": "觸及停損 175.68",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00096",
+   "order_id": "ORD-00095",
+   "ts": "2026-09-18T04:20:56+00:00",
+   "trade_date": "2026-07-27",
+   "symbol": "SPY",
+   "side": "BUY",
+   "qty": 55,
+   "price": 184.6961,
+   "notional": 10158.29,
+   "commission": 0.28,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 55 股，名目 10,153（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00094",
+   "order_id": "ORD-00093",
+   "ts": "2026-09-18T04:20:56+00:00",
+   "trade_date": "2026-07-20",
+   "symbol": "QQQ",
+   "side": "BUY",
+   "qty": 98,
+   "price": 102.6899,
+   "notional": 10063.61,
+   "commission": 0.49,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 98 股，名目 10,059（9.9% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00092",
+   "order_id": "ORD-00091",
+   "ts": "2026-09-18T04:20:55+00:00",
+   "trade_date": "2026-07-15",
+   "symbol": "SPY",
+   "side": "SELL",
+   "qty": 58,
+   "price": 185.4865,
+   "notional": 10758.22,
+   "commission": 0.29,
+   "pnl": 865.53,
+   "reason": "觸及停利 185.58",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00090",
+   "order_id": "ORD-00089",
+   "ts": "2026-09-18T04:20:55+00:00",
+   "trade_date": "2026-07-14",
+   "symbol": "AMZN",
+   "side": "SELL",
+   "qty": 47,
+   "price": 233.8005,
+   "notional": 10988.62,
+   "commission": 0.24,
+   "pnl": 870.57,
+   "reason": "觸及停利 231.65",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00088",
+   "order_id": "ORD-00087",
+   "ts": "2026-09-18T04:20:55+00:00",
+   "trade_date": "2026-07-13",
+   "symbol": "META",
+   "side": "SELL",
+   "qty": 56,
+   "price": 177.9356,
+   "notional": 9964.4,
+   "commission": 0.28,
+   "pnl": -151.39,
+   "reason": "訊號出場：跌破 SMA50",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00086",
+   "order_id": "ORD-00085",
+   "ts": "2026-09-18T04:20:55+00:00",
+   "trade_date": "2026-07-13",
+   "symbol": "GOOGL",
+   "side": "SELL",
+   "qty": 44,
+   "price": 220.0977,
+   "notional": 9684.3,
+   "commission": 0.22,
+   "pnl": -264.94,
+   "reason": "訊號出場：跌破 SMA50",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00084",
+   "order_id": "ORD-00083",
+   "ts": "2026-09-18T04:20:55+00:00",
+   "trade_date": "2026-07-10",
+   "symbol": "META",
+   "side": "BUY",
+   "qty": 56,
+   "price": 180.6341,
+   "notional": 10115.51,
+   "commission": 0.28,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 56 股，名目 10,110（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00082",
+   "order_id": "ORD-00081",
+   "ts": "2026-09-18T04:20:55+00:00",
+   "trade_date": "2026-07-03",
+   "symbol": "META",
+   "side": "SELL",
+   "qty": 53,
+   "price": 177.3662,
+   "notional": 9400.41,
+   "commission": 0.27,
+   "pnl": -587.94,
+   "reason": "觸及停損 179.45",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00080",
+   "order_id": "ORD-00079",
+   "ts": "2026-09-18T04:20:55+00:00",
+   "trade_date": "2026-07-01",
+   "symbol": "AAPL",
+   "side": "SELL",
+   "qty": 36,
+   "price": 258.828,
+   "notional": 9317.81,
+   "commission": 0.18,
+   "pnl": -63.27,
+   "reason": "訊號出場：跌破 SMA50",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00078",
+   "order_id": "ORD-00077",
+   "ts": "2026-09-18T04:20:54+00:00",
+   "trade_date": "2026-06-30",
+   "symbol": "QQQ",
+   "side": "SELL",
+   "qty": 110,
+   "price": 99.8288,
+   "notional": 10981.16,
+   "commission": 0.55,
+   "pnl": 909.48,
+   "reason": "觸及停利 99.88",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00076",
+   "order_id": "ORD-00075",
+   "ts": "2026-09-18T04:20:54+00:00",
+   "trade_date": "2026-06-24",
+   "symbol": "AAPL",
+   "side": "BUY",
+   "qty": 36,
+   "price": 260.5804,
+   "notional": 9380.9,
+   "commission": 0.18,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 36 股，名目 9,376（9.4% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00074",
+   "order_id": "ORD-00073",
+   "ts": "2026-09-18T04:20:54+00:00",
+   "trade_date": "2026-06-17",
+   "symbol": "META",
+   "side": "BUY",
+   "qty": 53,
+   "price": 188.4544,
+   "notional": 9988.08,
+   "commission": 0.27,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 53 股，名目 9,983（9.8% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00072",
+   "order_id": "ORD-00071",
+   "ts": "2026-09-18T04:20:53+00:00",
+   "trade_date": "2026-06-15",
+   "symbol": "MSFT",
+   "side": "SELL",
+   "qty": 64,
+   "price": 150.5369,
+   "notional": 9634.36,
+   "commission": 0.32,
+   "pnl": -384.63,
+   "reason": "觸及停損 150.61",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00070",
+   "order_id": "ORD-00069",
+   "ts": "2026-09-18T04:20:53+00:00",
+   "trade_date": "2026-06-12",
+   "symbol": "MSFT",
+   "side": "BUY",
+   "qty": 64,
+   "price": 156.5418,
+   "notional": 10018.68,
+   "commission": 0.32,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 64 股，名目 10,014（9.9% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00068",
+   "order_id": "ORD-00067",
+   "ts": "2026-09-18T04:20:53+00:00",
+   "trade_date": "2026-06-08",
+   "symbol": "SPY",
+   "side": "BUY",
+   "qty": 58,
+   "price": 170.5586,
+   "notional": 9892.4,
+   "commission": 0.29,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 58 股，名目 9,887（9.9% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00066",
+   "order_id": "ORD-00065",
+   "ts": "2026-09-18T04:20:53+00:00",
+   "trade_date": "2026-06-08",
+   "symbol": "AAPL",
+   "side": "SELL",
+   "qty": 36,
+   "price": 259.4251,
+   "notional": 9339.3,
+   "commission": 0.18,
+   "pnl": -614.56,
+   "reason": "觸及停損 263.80",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00064",
+   "order_id": "ORD-00063",
+   "ts": "2026-09-18T04:20:53+00:00",
+   "trade_date": "2026-06-04",
+   "symbol": "SPY",
+   "side": "SELL",
+   "qty": 55,
+   "price": 172.8283,
+   "notional": 9505.56,
+   "commission": 0.28,
+   "pnl": -415.07,
+   "reason": "觸及停損 172.91",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00062",
+   "order_id": "ORD-00061",
+   "ts": "2026-09-18T04:20:53+00:00",
+   "trade_date": "2026-06-03",
+   "symbol": "AMZN",
+   "side": "BUY",
+   "qty": 47,
+   "price": 215.2725,
+   "notional": 10117.81,
+   "commission": 0.24,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 47 股，名目 10,113（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00060",
+   "order_id": "ORD-00059",
+   "ts": "2026-09-18T04:20:53+00:00",
+   "trade_date": "2026-06-03",
+   "symbol": "MSFT",
+   "side": "SELL",
+   "qty": 67,
+   "price": 148.2207,
+   "notional": 9930.79,
+   "commission": 0.34,
+   "pnl": -174.63,
+   "reason": "訊號出場：跌破 SMA50",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00058",
+   "order_id": "ORD-00057",
+   "ts": "2026-09-18T04:20:52+00:00",
+   "trade_date": "2026-06-02",
+   "symbol": "GOOGL",
+   "side": "BUY",
+   "qty": 44,
+   "price": 226.114,
+   "notional": 9949.02,
+   "commission": 0.22,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 44 股，名目 9,944（9.8% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00056",
+   "order_id": "ORD-00055",
+   "ts": "2026-09-18T04:20:52+00:00",
+   "trade_date": "2026-06-01",
+   "symbol": "SPY",
+   "side": "BUY",
+   "qty": 55,
+   "price": 180.37,
+   "notional": 9920.35,
+   "commission": 0.28,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 55 股，名目 9,915（9.8% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00054",
+   "order_id": "ORD-00053",
+   "ts": "2026-09-18T04:20:52+00:00",
+   "trade_date": "2026-05-29",
+   "symbol": "SPY",
+   "side": "SELL",
+   "qty": 61,
+   "price": 178.0451,
+   "notional": 10860.75,
+   "commission": 0.3,
+   "pnl": 816.08,
+   "reason": "觸及停利 177.45",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00052",
+   "order_id": "ORD-00051",
+   "ts": "2026-09-18T04:20:52+00:00",
+   "trade_date": "2026-05-27",
+   "symbol": "GOOGL",
+   "side": "SELL",
+   "qty": 44,
+   "price": 213.9326,
+   "notional": 9413.03,
+   "commission": 0.22,
+   "pnl": -712.39,
+   "reason": "觸及停損 219.51",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00050",
+   "order_id": "ORD-00049",
+   "ts": "2026-09-18T04:20:52+00:00",
+   "trade_date": "2026-05-26",
+   "symbol": "QQQ",
+   "side": "BUY",
+   "qty": 110,
+   "price": 91.5558,
+   "notional": 10071.13,
+   "commission": 0.55,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 110 股，名目 10,066（9.9% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00048",
+   "order_id": "ORD-00047",
+   "ts": "2026-09-18T04:20:52+00:00",
+   "trade_date": "2026-05-26",
+   "symbol": "META",
+   "side": "SELL",
+   "qty": 57,
+   "price": 181.3173,
+   "notional": 10335.08,
+   "commission": 0.29,
+   "pnl": 217.73,
+   "reason": "訊號出場：RSI 81 過熱",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00046",
+   "order_id": "ORD-00043",
+   "ts": "2026-09-18T04:20:52+00:00",
+   "trade_date": "2026-05-22",
+   "symbol": "META",
+   "side": "BUY",
+   "qty": 57,
+   "price": 177.4924,
+   "notional": 10117.07,
+   "commission": 0.29,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 57 股，名目 10,112（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00045",
+   "order_id": "ORD-00042",
+   "ts": "2026-09-18T04:20:52+00:00",
+   "trade_date": "2026-05-22",
+   "symbol": "MSFT",
+   "side": "BUY",
+   "qty": 67,
+   "price": 150.822,
+   "notional": 10105.07,
+   "commission": 0.34,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 67 股，名目 10,100（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00044",
+   "order_id": "ORD-00041",
+   "ts": "2026-09-18T04:20:52+00:00",
+   "trade_date": "2026-05-22",
+   "symbol": "AAPL",
+   "side": "BUY",
+   "qty": 36,
+   "price": 276.4911,
+   "notional": 9953.68,
+   "commission": 0.18,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 36 股，名目 9,949（9.8% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00040",
+   "order_id": "ORD-00039",
+   "ts": "2026-09-18T04:20:51+00:00",
+   "trade_date": "2026-05-19",
+   "symbol": "GOOGL",
+   "side": "BUY",
+   "qty": 44,
+   "price": 230.1183,
+   "notional": 10125.21,
+   "commission": 0.22,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 44 股，名目 10,120（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00038",
+   "order_id": "ORD-00037",
+   "ts": "2026-09-18T04:20:51+00:00",
+   "trade_date": "2026-05-19",
+   "symbol": "QQQ",
+   "side": "SELL",
+   "qty": 106,
+   "price": 91.6502,
+   "notional": 9714.92,
+   "commission": 0.53,
+   "pnl": -431.41,
+   "reason": "觸及停損 91.70",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00036",
+   "order_id": "ORD-00035",
+   "ts": "2026-09-18T04:20:51+00:00",
+   "trade_date": "2026-05-18",
+   "symbol": "QQQ",
+   "side": "BUY",
+   "qty": 106,
+   "price": 95.7151,
+   "notional": 10145.8,
+   "commission": 0.53,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 106 股，名目 10,141（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00034",
+   "order_id": "ORD-00033",
+   "ts": "2026-09-18T04:20:51+00:00",
+   "trade_date": "2026-05-15",
+   "symbol": "SPY",
+   "side": "BUY",
+   "qty": 61,
+   "price": 164.6617,
+   "notional": 10044.36,
+   "commission": 0.3,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 61 股，名目 10,039（9.9% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00032",
+   "order_id": "ORD-00031",
+   "ts": "2026-09-18T04:20:51+00:00",
+   "trade_date": "2026-05-15",
+   "symbol": "META",
+   "side": "SELL",
+   "qty": 65,
+   "price": 172.1886,
+   "notional": 11192.26,
+   "commission": 0.33,
+   "pnl": 1236.21,
+   "reason": "觸及停利 167.97",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00030",
+   "order_id": "ORD-00029",
+   "ts": "2026-09-18T04:20:51+00:00",
+   "trade_date": "2026-05-11",
+   "symbol": "SPY",
+   "side": "SELL",
+   "qty": 60,
+   "price": 161.8626,
+   "notional": 9711.76,
+   "commission": 0.3,
+   "pnl": -140.84,
+   "reason": "訊號出場：跌破 SMA50",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00028",
+   "order_id": "ORD-00027",
+   "ts": "2026-09-18T04:20:51+00:00",
+   "trade_date": "2026-05-11",
+   "symbol": "GOOGL",
+   "side": "SELL",
+   "qty": 48,
+   "price": 226.0715,
+   "notional": 10851.43,
+   "commission": 0.24,
+   "pnl": 913.24,
+   "reason": "觸及停利 226.18",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00026",
+   "order_id": "ORD-00025",
+   "ts": "2026-09-18T04:20:51+00:00",
+   "trade_date": "2026-05-11",
+   "symbol": "QQQ",
+   "side": "SELL",
+   "qty": 116,
+   "price": 93.3173,
+   "notional": 10824.81,
+   "commission": 0.58,
+   "pnl": 848.68,
+   "reason": "觸及停利 93.36",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00024",
+   "order_id": "ORD-00023",
+   "ts": "2026-09-18T04:20:50+00:00",
+   "trade_date": "2026-05-06",
+   "symbol": "SPY",
+   "side": "BUY",
+   "qty": 60,
+   "price": 164.2049,
+   "notional": 9852.29,
+   "commission": 0.3,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 60 股，名目 9,847（9.9% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00022",
+   "order_id": "ORD-00021",
+   "ts": "2026-09-18T04:20:50+00:00",
+   "trade_date": "2026-04-29",
+   "symbol": "SPY",
+   "side": "SELL",
+   "qty": 59,
+   "price": 161.4631,
+   "notional": 9526.32,
+   "commission": 0.29,
+   "pnl": -404.3,
+   "reason": "觸及停損 161.54",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00020",
+   "order_id": "ORD-00019",
+   "ts": "2026-09-18T04:20:50+00:00",
+   "trade_date": "2026-04-28",
+   "symbol": "NVDA",
+   "side": "SELL",
+   "qty": 149,
+   "price": 64.2935,
+   "notional": 9579.74,
+   "commission": 0.74,
+   "pnl": -350.87,
+   "reason": "訊號出場：跌破 SMA50",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00018",
+   "order_id": "ORD-00017",
+   "ts": "2026-09-18T04:20:50+00:00",
+   "trade_date": "2026-04-24",
+   "symbol": "GOOGL",
+   "side": "BUY",
+   "qty": 48,
+   "price": 207.0407,
+   "notional": 9937.95,
+   "commission": 0.24,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 48 股，名目 9,933（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00016",
+   "order_id": "ORD-00015",
+   "ts": "2026-09-18T04:20:50+00:00",
+   "trade_date": "2026-04-23",
+   "symbol": "QQQ",
+   "side": "BUY",
+   "qty": 116,
+   "price": 85.9961,
+   "notional": 9975.54,
+   "commission": 0.58,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 116 股，名目 9,971（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00014",
+   "order_id": "ORD-00013",
+   "ts": "2026-09-18T04:20:49+00:00",
+   "trade_date": "2026-04-13",
+   "symbol": "MSFT",
+   "side": "SELL",
+   "qty": 67,
+   "price": 142.5933,
+   "notional": 9553.75,
+   "commission": 0.34,
+   "pnl": -449.07,
+   "reason": "觸及停損 142.66",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00012",
+   "order_id": "ORD-00011",
+   "ts": "2026-09-18T04:20:48+00:00",
+   "trade_date": "2026-04-02",
+   "symbol": "NVDA",
+   "side": "BUY",
+   "qty": 149,
+   "price": 66.6434,
+   "notional": 9929.87,
+   "commission": 0.74,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 149 股，名目 9,925（9.9% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00010",
+   "order_id": "ORD-00009",
+   "ts": "2026-09-18T04:20:48+00:00",
+   "trade_date": "2026-04-01",
+   "symbol": "META",
+   "side": "BUY",
+   "qty": 65,
+   "price": 153.1649,
+   "notional": 9955.72,
+   "commission": 0.33,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 65 股，名目 9,951（9.9% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00008",
+   "order_id": "ORD-00007",
+   "ts": "2026-09-18T04:20:48+00:00",
+   "trade_date": "2026-03-30",
+   "symbol": "SPY",
+   "side": "BUY",
+   "qty": 59,
+   "price": 168.3107,
+   "notional": 9930.33,
+   "commission": 0.29,
+   "pnl": 0.0,
+   "reason": "趨勢向上、突破 20 日高｜風險 1% / 停損 2.0ATR → 59 股，名目 9,925（9.9% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00006",
+   "order_id": "ORD-00005",
+   "ts": "2026-09-18T04:20:47+00:00",
+   "trade_date": "2026-03-24",
+   "symbol": "AAPL",
+   "side": "SELL",
+   "qty": 38,
+   "price": 258.2117,
+   "notional": 9812.05,
+   "commission": 0.19,
+   "pnl": -125.06,
+   "reason": "訊號出場：跌破 SMA50",
+   "how": "自動出場"
+  },
+  {
+   "id": "TRD-00004",
+   "order_id": "ORD-00002",
+   "ts": "2026-09-18T04:20:47+00:00",
+   "trade_date": "2026-03-23",
+   "symbol": "MSFT",
+   "side": "BUY",
+   "qty": 67,
+   "price": 149.2908,
+   "notional": 10002.48,
+   "commission": 0.34,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 67 股，名目 9,997（10.0% equity）",
+   "how": "人工核准"
+  },
+  {
+   "id": "TRD-00003",
+   "order_id": "ORD-00001",
+   "ts": "2026-09-18T04:20:47+00:00",
+   "trade_date": "2026-03-23",
+   "symbol": "AAPL",
+   "side": "BUY",
+   "qty": 38,
+   "price": 261.4979,
+   "notional": 9936.92,
+   "commission": 0.19,
+   "pnl": 0.0,
+   "reason": "趨勢向上、回檔至 SMA20｜風險 1% / 停損 2.0ATR → 38 股，名目 9,932（9.9% equity）",
+   "how": "人工核准"
+  }
+ ],
+ "watchlist": [
+  {
+   "symbol": "SPY",
+   "price": 176.70299049741152,
+   "side": "SELL",
+   "strength": 1.0,
+   "reason": "跌破 SMA50",
+   "indicators": {
+    "sma20": 177.1684,
+    "sma50": 177.7638,
+    "rsi": 47.855,
+    "atr": 3.8064,
+    "high20": 186.1084
+   },
+   "sentiment": 0.0,
+   "confidence": 0.0,
+   "event_type": "other",
+   "rationale": "未使用 LLM（無金鑰、超預算或呼叫失敗），視為中性",
+   "headlines": [
+    "Index funds see record inflows as rate cut hopes build"
+   ],
+   "sentiment_updated": "2026-09-18T04:20:47+00:00"
+  },
+  {
+   "symbol": "QQQ",
+   "price": 116.64178929429829,
+   "side": "BUY",
+   "strength": 0.6,
+   "reason": "趨勢向上、回檔至 SMA20",
+   "indicators": {
+    "sma20": 114.4711,
+    "sma50": 108.3736,
+    "rsi": 59.3703,
+    "atr": 2.3418,
+    "high20": 122.3934
+   },
+   "sentiment": null,
+   "confidence": null,
+   "event_type": null,
+   "rationale": "",
+   "headlines": [],
+   "sentiment_updated": ""
+  },
+  {
+   "symbol": "AAPL",
+   "price": 248.13085948514896,
+   "side": "BUY",
+   "strength": 0.6,
+   "reason": "趨勢向上、回檔至 SMA20",
+   "indicators": {
+    "sma20": 246.4504,
+    "sma50": 244.8084,
+    "rsi": 52.4576,
+    "atr": 5.2123,
+    "high20": 258.9969
+   },
+   "sentiment": 0.0,
+   "confidence": 0.0,
+   "event_type": "other",
+   "rationale": "未使用 LLM（無金鑰、超預算或呼叫失敗），視為中性",
+   "headlines": [
+    "Company beats quarterly estimates, raises full-year guidance"
+   ],
+   "sentiment_updated": "2026-09-18T04:20:47+00:00"
+  },
+  {
+   "symbol": "MSFT",
+   "price": 188.50194766891627,
+   "side": "HOLD",
+   "strength": 0.0,
+   "reason": "趨勢向上但無進場點",
+   "indicators": {
+    "sma20": 178.704,
+    "sma50": 166.9285,
+    "rsi": 75.9361,
+    "atr": 3.6344,
+    "high20": 190.1889
+   },
+   "sentiment": 0.0,
+   "confidence": 0.0,
+   "event_type": "other",
+   "rationale": "未使用 LLM（無金鑰、超預算或呼叫失敗），視為中性",
+   "headlines": [
+    "Regulator opens antitrust probe into cloud pricing practices"
+   ],
+   "sentiment_updated": "2026-09-18T04:20:47+00:00"
+  },
+  {
+   "symbol": "NVDA",
+   "price": 59.9604777128666,
+   "side": "HOLD",
+   "strength": 0.0,
+   "reason": "趨勢向上但無進場點",
+   "indicators": {
+    "sma20": 58.6873,
+    "sma50": 58.6404,
+    "rsi": 55.8752,
+    "atr": 1.3572,
+    "high20": 60.6659
+   },
+   "sentiment": null,
+   "confidence": null,
+   "event_type": null,
+   "rationale": "",
+   "headlines": [],
+   "sentiment_updated": ""
+  },
+  {
+   "symbol": "AMZN",
+   "price": 278.80508073344015,
+   "side": "HOLD",
+   "strength": 0.0,
+   "reason": "趨勢向上但無進場點",
+   "indicators": {
+    "sma20": 269.8196,
+    "sma50": 260.1935,
+    "rsi": 63.9435,
+    "atr": 5.5789,
+    "high20": 286.0187
+   },
+   "sentiment": null,
+   "confidence": null,
+   "event_type": null,
+   "rationale": "",
+   "headlines": [],
+   "sentiment_updated": ""
+  },
+  {
+   "symbol": "GOOGL",
+   "price": 243.03294396656673,
+   "side": "HOLD",
+   "strength": 0.0,
+   "reason": "趨勢向上但無進場點",
+   "indicators": {
+    "sma20": 221.8742,
+    "sma50": 214.1437,
+    "rsi": 75.5741,
+    "atr": 5.9538,
+    "high20": 248.9481
+   },
+   "sentiment": null,
+   "confidence": null,
+   "event_type": null,
+   "rationale": "",
+   "headlines": [],
+   "sentiment_updated": ""
+  },
+  {
+   "symbol": "META",
+   "price": 191.7914518660543,
+   "side": "BUY",
+   "strength": 0.6,
+   "reason": "趨勢向上、回檔至 SMA20",
+   "indicators": {
+    "sma20": 188.4773,
+    "sma50": 186.4202,
+    "rsi": 58.1818,
+    "atr": 3.9588,
+    "high20": 195.45
+   },
+   "sentiment": null,
+   "confidence": null,
+   "event_type": null,
+   "rationale": "",
+   "headlines": [],
+   "sentiment_updated": ""
+  }
+ ],
+ "alerts": [
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "level": "warn",
+   "msg": "2 張待審核單已隔夜未處理：ORD-00143, ORD-00146",
+   "agent": "monitor"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "level": "warn",
+   "msg": "1 張待審核單已隔夜未處理：ORD-00143",
+   "agent": "monitor"
+  }
+ ],
+ "run_log": [
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "desk",
+   "event": "cycle.end",
+   "detail": "13 個事件, equity 105,458"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "report",
+   "event": "run",
+   "detail": "日報完成（template）"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "monitor",
+   "event": "run",
+   "detail": "1 個告警"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "monitor",
+   "event": "alert.warn",
+   "detail": "2 張待審核單已隔夜未處理：ORD-00143, ORD-00146"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "risk",
+   "event": "entry.blocked",
+   "detail": "META: 已持有，不加碼"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "execution",
+   "event": "order.proposed",
+   "detail": "ORD-00147 BUY 90 QQQ @ 116.64 待審核"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "signal",
+   "event": "run",
+   "detail": "8 檔評估, 3 個新訊號"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "data",
+   "event": "run",
+   "detail": "8 檔 K 線, 0 則新標題, 8 個事件"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "desk",
+   "event": "cycle.start",
+   "detail": "llm=off calls_left=20"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "desk",
+   "event": "cycle.end",
+   "detail": "13 個事件, equity 105,586"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "report",
+   "event": "run",
+   "detail": "日報完成（template）"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "monitor",
+   "event": "run",
+   "detail": "1 個告警"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "monitor",
+   "event": "alert.warn",
+   "detail": "1 張待審核單已隔夜未處理：ORD-00143"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "execution",
+   "event": "order.proposed",
+   "detail": "ORD-00146 BUY 178 NVDA @ 59.27 待審核"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "risk",
+   "event": "entry.blocked",
+   "detail": "MSFT: 冷卻期至 2026-09-20"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "execution",
+   "event": "order.filled",
+   "detail": "TRD-00145 SELL 59 MSFT @ 188.68（自動出場）pnl +890.77"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "signal",
+   "event": "run",
+   "detail": "8 檔評估, 2 個新訊號"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "data",
+   "event": "run",
+   "detail": "8 檔 K 線, 0 則新標題, 8 個事件"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "desk",
+   "event": "cycle.start",
+   "detail": "llm=off calls_left=20"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "desk",
+   "event": "cycle.end",
+   "detail": "11 個事件, equity 105,178"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "report",
+   "event": "run",
+   "detail": "日報完成（template）"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "monitor",
+   "event": "run",
+   "detail": "0 個告警"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "execution",
+   "event": "order.proposed",
+   "detail": "ORD-00143 BUY 42 AAPL @ 245.97 待審核"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "signal",
+   "event": "run",
+   "detail": "8 檔評估, 2 個新訊號"
+  },
+  {
+   "ts": "2026-09-18T04:21:00+00:00",
+   "agent": "data",
+   "event": "run",
+   "detail": "8 檔 K 線, 0 則新標題, 8 個事件"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.start",
+   "detail": "llm=off calls_left=20"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.end",
+   "detail": "13 個事件, equity 104,574"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "report",
+   "event": "run",
+   "detail": "日報完成（template）"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "monitor",
+   "event": "run",
+   "detail": "0 個告警"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "risk",
+   "event": "entry.blocked",
+   "detail": "GOOGL: 已持有，不加碼"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "risk",
+   "event": "entry.blocked",
+   "detail": "NVDA: 冷卻期至 2026-09-17"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "signal",
+   "event": "run",
+   "detail": "8 檔評估, 3 個新訊號"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "data",
+   "event": "run",
+   "detail": "8 檔 K 線, 0 則新標題, 8 個事件"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.start",
+   "detail": "llm=off calls_left=20"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.end",
+   "detail": "13 個事件, equity 104,258"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "report",
+   "event": "run",
+   "detail": "日報完成（template）"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "monitor",
+   "event": "run",
+   "detail": "0 個告警"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "risk",
+   "event": "entry.blocked",
+   "detail": "QQQ: 冷卻期至 2026-09-17"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "execution",
+   "event": "order.filled",
+   "detail": "TRD-00142 SELL 176 NVDA @ 58.44（自動出場）pnl -112.21"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "execution",
+   "event": "order.filled",
+   "detail": "TRD-00140 SELL 90 QQQ @ 121.69（自動出場）pnl +745.73"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "signal",
+   "event": "run",
+   "detail": "8 檔評估, 2 個新訊號"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "data",
+   "event": "run",
+   "detail": "8 檔 K 線, 0 則新標題, 8 個事件"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.start",
+   "detail": "llm=off calls_left=20"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "execution",
+   "event": "order.filled",
+   "detail": "TRD-00138 BUY 44 GOOGL @ 232.83（人工核准）pnl +0.00"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.end",
+   "detail": "12 個事件, equity 104,206"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "report",
+   "event": "run",
+   "detail": "日報完成（template）"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "monitor",
+   "event": "run",
+   "detail": "0 個告警"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "execution",
+   "event": "order.proposed",
+   "detail": "ORD-00137 BUY 44 GOOGL @ 232.71 待審核"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "risk",
+   "event": "entry.blocked",
+   "detail": "AMZN: 冷卻期至 2026-09-12"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "signal",
+   "event": "run",
+   "detail": "8 檔評估, 2 個新訊號"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "data",
+   "event": "run",
+   "detail": "8 檔 K 線, 0 則新標題, 8 個事件"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.start",
+   "detail": "llm=off calls_left=20"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "execution",
+   "event": "order.filled",
+   "detail": "TRD-00136 BUY 176 NVDA @ 59.08（人工核准）pnl +0.00"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.end",
+   "detail": "10 個事件, equity 103,983"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "report",
+   "event": "run",
+   "detail": "日報完成（template）"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "monitor",
+   "event": "run",
+   "detail": "0 個告警"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "execution",
+   "event": "order.proposed",
+   "detail": "ORD-00135 BUY 176 NVDA @ 59.05 待審核"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "signal",
+   "event": "run",
+   "detail": "8 檔評估, 1 個新訊號"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "data",
+   "event": "run",
+   "detail": "8 檔 K 線, 0 則新標題, 8 個事件"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.start",
+   "detail": "llm=off calls_left=20"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.end",
+   "detail": "9 個事件, equity 103,850"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "report",
+   "event": "run",
+   "detail": "日報完成（template）"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "monitor",
+   "event": "run",
+   "detail": "0 個告警"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "execution",
+   "event": "order.filled",
+   "detail": "TRD-00134 SELL 39 AMZN @ 277.09（自動出場）pnl +931.40"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "signal",
+   "event": "run",
+   "detail": "8 檔評估, 0 個新訊號"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "data",
+   "event": "run",
+   "detail": "8 檔 K 線, 0 則新標題, 8 個事件"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.start",
+   "detail": "llm=off calls_left=20"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "execution",
+   "event": "order.filled",
+   "detail": "TRD-00132 BUY 55 META @ 185.13（人工核准）pnl +0.00"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.end",
+   "detail": "10 個事件, equity 103,431"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "report",
+   "event": "run",
+   "detail": "日報完成（template）"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "monitor",
+   "event": "run",
+   "detail": "0 個告警"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "execution",
+   "event": "order.proposed",
+   "detail": "ORD-00131 BUY 55 META @ 185.04 待審核"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "signal",
+   "event": "run",
+   "detail": "8 檔評估, 1 個新訊號"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "data",
+   "event": "run",
+   "detail": "8 檔 K 線, 0 則新標題, 8 個事件"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.start",
+   "detail": "llm=off calls_left=20"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "desk",
+   "event": "cycle.end",
+   "detail": "11 個事件, equity 103,094"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "report",
+   "event": "run",
+   "detail": "日報完成（template）"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "monitor",
+   "event": "run",
+   "detail": "0 個告警"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "risk",
+   "event": "entry.blocked",
+   "detail": "QQQ: 已持有，不加碼"
+  },
+  {
+   "ts": "2026-09-18T04:20:59+00:00",
+   "agent": "signal",
+   "event": "run",
+   "detail": "8 檔評估, 2 個新訊號"
+  }
+ ],
+ "reports": [
+  {
+   "date": "2026-09-18",
+   "ts": "2026-09-18T04:21:00+00:00",
+   "text": "**2026-09-18 日報（模板，未使用 LLM）**\n\n權益 105,458，當日 -128，回撤 0.1%，持倉 2 檔，現金 84,216。\n\n待審核 3 張：ORD-00143 BUY 42 AAPL @ 245.97；ORD-00146 BUY 178 NVDA @ 59.27；ORD-00147 BUY 90 QQQ @ 116.64\n\n告警：2 張待審核單已隔夜未處理：ORD-00143, ORD-00146",
+   "source": "template"
+  },
+  {
+   "date": "2026-09-17",
+   "ts": "2026-09-18T04:21:00+00:00",
+   "text": "**2026-09-17 日報（模板，未使用 LLM）**\n\n權益 105,586，當日 +409，回撤 0.0%，持倉 2 檔，現金 84,216。\n\n待審核 2 張：ORD-00143 BUY 42 AAPL @ 245.97；ORD-00146 BUY 178 NVDA @ 59.27\n\n告警：1 張待審核單已隔夜未處理：ORD-00143",
+   "source": "template"
+  },
+  {
+   "date": "2026-09-16",
+   "ts": "2026-09-18T04:21:00+00:00",
+   "text": "**2026-09-16 日報（模板，未使用 LLM）**\n\n權益 105,178，當日 +604，回撤 0.0%，持倉 3 檔，現金 73,084。\n\n待審核 1 張：ORD-00143 BUY 42 AAPL @ 245.97\n\n告警：無",
+   "source": "template"
+  },
+  {
+   "date": "2026-09-15",
+   "ts": "2026-09-18T04:20:59+00:00",
+   "text": "**2026-09-15 日報（模板，未使用 LLM）**\n\n權益 104,574，當日 +316，回撤 0.0%，持倉 3 檔，現金 73,084。\n\n告警：無",
+   "source": "template"
+  },
+  {
+   "date": "2026-09-14",
+   "ts": "2026-09-18T04:20:59+00:00",
+   "text": "**2026-09-14 日報（模板，未使用 LLM）**\n\n權益 104,258，當日 +52，回撤 0.0%，持倉 3 檔，現金 73,084。\n\n告警：無",
+   "source": "template"
+  }
+ ]
+}
