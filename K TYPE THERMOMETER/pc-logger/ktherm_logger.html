@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K-Therm Logger</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--fg:#1d2733;--mut:#6b7785;--line:#dde2e8;--acc:#1565c0;--ok:#2e7d32;--bad:#c62828;
+--c1:#e53935;--c2:#1e88e5;--c3:#43a047;--c4:#fb8c00;--cj:#8e24aa}
+@media (prefers-color-scheme:dark){:root{--bg:#14181d;--card:#1d242c;--fg:#e8edf2;--mut:#93a0ad;--line:#2d3742;--acc:#64b5f6;
+--c1:#ff6f60;--c2:#64b5f6;--c3:#81c784;--c4:#ffb74d;--cj:#ce93d8}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 system-ui,-apple-system,"Segoe UI","Noto Sans TC","PingFang TC",sans-serif}
+header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 16px;background:var(--card);border-bottom:1px solid var(--line)}
+h1{font-size:18px;margin:0 12px 0 0}
+button,select,input{font:inherit;color:inherit}
+button{padding:6px 12px;border:1px solid var(--line);background:var(--card);border-radius:6px;cursor:pointer}
+button.primary{background:var(--acc);border-color:var(--acc);color:#fff}
+button:disabled{opacity:.45;cursor:not-allowed}
+select,input[type=number]{padding:5px 6px;border:1px solid var(--line);background:var(--card);border-radius:6px}
+label{display:inline-flex;gap:5px;align-items:center;color:var(--mut)}
+#status{margin-left:auto;font-size:13px;color:var(--mut)}
+#status b{color:var(--fg)} .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--mut);margin-right:5px}
+.dot.on{background:var(--ok)}
+main{padding:14px 16px;max-width:1280px;margin:0 auto}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:12px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;border-top:4px solid var(--c)}
+.tile .n{display:flex;justify-content:space-between;color:var(--mut);font-size:12px}
+.tile .v{font-size:34px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.2}
+.tile .v small{font-size:15px;font-weight:400;color:var(--mut)}
+.tile .mm{font-size:12px;color:var(--mut);font-variant-numeric:tabular-nums}
+.tile.err .v{color:var(--bad);font-size:26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:12px}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:8px}
+canvas{width:100%;height:340px;display:block}
+.tbl{max-height:260px;overflow:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:13px}
+th,td{padding:3px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap} th:first-child,td:first-child{text-align:left}
+th{position:sticky;top:0;background:var(--card);color:var(--mut)}
+#log{height:110px;overflow:auto;font:12px/1.4 ui-monospace,Consolas,monospace;color:var(--mut);white-space:pre-wrap}
+.warn{background:#fff3cd;color:#664d03;border:1px solid #ffecb5;padding:8px 12px;border-radius:8px;margin-bottom:12px;display:none}
+.sw{width:11px;height:11px;border-radius:3px;display:inline-block}
+</style>
+</head>
+<body>
+<header>
+  <h1>K-Therm Logger · 4 CH</h1>
+  <button id="bConn" class="primary">連接 USB / Connect</button>
+  <button id="bDemo">示範模式 / Demo</button>
+  <label>取樣 / Rate
+    <select id="rate"><option value="500">0.5 s</option><option value="1000" selected>1 s</option><option value="2000">2 s</option>
+    <option value="5000">5 s</option><option value="10000">10 s</option><option value="60000">60 s</option></select></label>
+  <label>單位 / Unit <select id="unit"><option value="C">°C</option><option value="F">°F</option></select></label>
+  <button id="bRec" disabled>● 記錄 / Record</button>
+  <button id="bCsv" disabled>匯出 CSV / Export</button>
+  <button id="bClr" disabled>清除 / Clear</button>
+  <span id="status"><span class="dot" id="dot"></span><b id="stTxt">未連接 / Disconnected</b></span>
+</header>
+<main>
+  <div class="warn" id="noSerial">此瀏覽器不支援 Web Serial。請使用桌面版 Chrome 或 Edge；或先按「示範模式」預覽。
+    / Web Serial is not available. Use desktop Chrome/Edge, or try Demo mode.</div>
+  <div class="tiles" id="tiles"></div>
+  <div class="card">
+    <div class="bar"><b>即時曲線 / Live chart</b>
+      <label>視窗 / Window <select id="win"><option value="60">1 min</option><option value="300" selected>5 min</option>
+        <option value="1800">30 min</option><option value="0">全部 / All</option></select></label>
+      <span id="legend"></span></div>
+    <canvas id="chart"></canvas>
+  </div>
+  <div class="card"><div class="bar"><b>記錄資料 / Data</b><span id="cnt" style="color:var(--mut)"></span>
+      <button id="bDump" disabled>讀取機內記錄 / Download device log</button>
+      <button id="bTime" disabled>同步時間 / Sync time</button></div>
+    <div class="tbl"><table><thead><tr><th>時間 / Time</th><th>CH1</th><th>CH2</th><th>CH3</th><th>CH4</th><th>CJC</th></tr></thead><tbody id="rows"></tbody></table></div></div>
+  <div class="card"><b>通訊 / Console</b><div id="log"></div></div>
+</main>
+<script>
+// ==PROTO== (identical logic to pc-logger/ktherm_proto.py; checked by test_js_parity.py)
+function csum(s){var c=0;for(var i=0;i<s.length;i++)c^=s.charCodeAt(i);return ('0'+c.toString(16).toUpperCase()).slice(-2);}
+function parseLine(line){
+  line=line.trim(); if(!line) return null;
+  if(line[0]==='#') return {type:'info',text:line.slice(1).trim()};
+  if(line[0]!=='$') return {type:'resp',text:line};
+  var star=line.lastIndexOf('*'); if(star<0) return {type:'bad',text:line,reason:'no checksum'};
+  var body=line.slice(1,star), cs=line.slice(star+1).toUpperCase();
+  if(csum(body)!==cs) return {type:'bad',text:line,reason:'checksum'};
+  var f=body.split(',');
+  if(f[0]==='L'&&f.length>=3&&f[1]==='END') return {type:'logend',count:parseInt(f[2],10)};
+  if((f[0]==='T'||f[0]==='L')&&f.length===9){
+    var ch=[];
+    for(var i=3;i<7;i++){var v=f[i];
+      if(/^-?\d+(\.\d+)?$/.test(v)) ch.push(parseFloat(v)); else if(v==='OPEN'||v==='OVR') ch.push(v);
+      else return {type:'bad',text:line,reason:'field'};}
+    return {type:f[0]==='T'?'sample':'logrec',seq:parseInt(f[1],10),t:parseInt(f[2],10),ch:ch,cjc:parseFloat(f[7]),flags:parseInt(f[8],16)};
+  }
+  return {type:'bad',text:line,reason:'unknown frame'};
+}
+function makeFrame(kind,seq,epoch,temps,cjc,flags){
+  var body=kind+','+seq+','+epoch+','+temps.map(function(t){return typeof t==='string'?t:t.toFixed(1)}).join(',')+','+cjc.toFixed(2)+','+flags.toString(16).toUpperCase();
+  return '$'+body+'*'+csum(body);
+}
+// ==/PROTO==
+
+var COL=['--c1','--c2','--c3','--c4'], NAMES=['CH1','CH2','CH3','CH4'];
+var $=function(id){return document.getElementById(id)};
+var state={devlog:[],port:null,reader:null,writer:null,demo:null,rec:false,rows:[],stats:[],live:[null,null,null,null],cjc:null,t0:null,dumping:null,flags:0};
+for(var i=0;i<4;i++)state.stats.push({min:null,max:null});
+var MAXROWS=200000;
+
+function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()}
+function conv(v){return state.unit==='F'&&typeof v==='number'?v*9/5+32:v}
+function fmt(v){return typeof v==='number'?conv(v).toFixed(1):(v==='OPEN'?'OPEn':'OvEr')}
+function log(s){var el=$('log');el.textContent+=s+'\n';if(el.textContent.length>20000)el.textContent=el.textContent.slice(-12000);el.scrollTop=1e9}
+function setStatus(on,txt){$('dot').className='dot'+(on?' on':'');$('stTxt').textContent=txt}
+
+function buildTiles(){
+  var h='';for(var i=0;i<4;i++)h+='<div class="tile" id="tile'+i+'" style="--c:var('+COL[i]+')"><div class="n"><span>'+NAMES[i]+' · K-type</span><span id="mm'+i+'"></span></div><div class="v" id="v'+i+'">--.-<small></small></div></div>';
+  h+='<div class="tile" style="--c:var(--cj)"><div class="n"><span>冷端 / Cold junction</span><span id="fl"></span></div><div class="v" id="vcj" style="font-size:26px">--.-</div></div>';
+  $('tiles').innerHTML=h;
+  var lg='';for(var j=0;j<4;j++)lg+='<span style="margin-right:10px"><span class="sw" style="background:var('+COL[j]+')"></span> '+NAMES[j]+'</span>';
+  $('legend').innerHTML=lg;
+}
+function unitTxt(){return state.unit==='F'?'°F':'°C'}
+function updateTiles(){
+  for(var i=0;i<4;i++){
+    var v=state.live[i],t=$('tile'+i);
+    t.className='tile'+(typeof v==='string'?' err':'');
+    $('v'+i).innerHTML=v==null?'--.-':fmt(v)+(typeof v==='number'?'<small> '+unitTxt()+'</small>':'');
+    var s=state.stats[i];$('mm'+i).textContent=s.min==null?'':('min '+conv(s.min).toFixed(1)+' · max '+conv(s.max).toFixed(1));
+  }
+  $('vcj').innerHTML=state.cjc==null?'--.-':conv(state.cjc).toFixed(2)+'<small> '+unitTxt()+'</small>';
+  var f=state.flags,tx=[];if(f&1)tx.push('LOW BAT');if(f&2)tx.push('CHG');if(f&4)tx.push('LOG');if(f&8)tx.push('HOLD');$('fl').textContent=tx.join(' ');
+}
+
+function onSample(p,fromLog){
+  var now=Date.now();
+  if(state.t0==null)state.t0=now;
+  var row={ms:fromLog?p.t*1000:now,dev:p.t,seq:p.seq,ch:p.ch,cjc:p.cjc,flags:p.flags};
+  if(!fromLog){state.live=p.ch.slice();state.cjc=p.cjc;state.flags=p.flags;
+    p.ch.forEach(function(v,i){if(typeof v==='number'){var s=state.stats[i];if(s.min==null||v<s.min)s.min=v;if(s.max==null||v>s.max)s.max=v}});
+    updateTiles();
+    if(state.rec){state.rows.push(row);if(state.rows.length>MAXROWS)state.rows.shift();addRow(row);$('cnt').textContent=state.rows.length+' rows'}
+    state.chart.push(row);if(state.chart.length>20000)state.chart.shift();draw();
+  }else{state.devlog.push(row)}
+}
+state.chart=[];state.unit='C';
+function addRow(r){
+  var tb=$('rows'),tr=document.createElement('tr');
+  var d=new Date(r.ms);
+  tr.innerHTML='<td>'+d.toLocaleTimeString()+'</td>'+r.ch.map(function(v){return '<td>'+fmt(v)+'</td>'}).join('')+'<td>'+conv(r.cjc).toFixed(2)+'</td>';
+  tb.insertBefore(tr,tb.firstChild);while(tb.children.length>300)tb.removeChild(tb.lastChild);
+  $('bCsv').disabled=false;$('bClr').disabled=false;
+}
+
+// ---------- chart ----------
+function draw(){
+  var cv=$('chart'),dpr=window.devicePixelRatio||1,w=cv.clientWidth,h=cv.clientHeight;
+  if(cv.width!==w*dpr||cv.height!==h*dpr){cv.width=w*dpr;cv.height=h*dpr}
+  var g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,w,h);
+  var win=parseInt($('win').value,10)*1000,data=state.chart;if(!data.length)return;
+  var tEnd=data[data.length-1].ms,tStart=win?Math.max(data[0].ms,tEnd-win):data[0].ms;if(tEnd-tStart<10000)tStart=tEnd-10000;
+  var ys=[];data.forEach(function(r){if(r.ms>=tStart)r.ch.forEach(function(v){if(typeof v==='number')ys.push(conv(v))})});
+  var L=52,R=10,T=10,B=24;
+  if(!ys.length){return}
+  var lo=Math.min.apply(null,ys),hi=Math.max.apply(null,ys);if(hi-lo<2){var m=(hi+lo)/2;lo=m-1;hi=m+1}
+  var pad=(hi-lo)*.08;lo-=pad;hi+=pad;
+  var X=function(t){return L+(t-tStart)/(tEnd-tStart)*(w-L-R)},Y=function(v){return T+(hi-v)/(hi-lo)*(h-T-B)};
+  g.font='11px system-ui';g.fillStyle=css('--mut');g.strokeStyle=css('--line');g.lineWidth=1;
+  var step=niceStep((hi-lo)/5);
+  for(var y=Math.ceil(lo/step)*step;y<=hi;y+=step){var yy=Math.round(Y(y))+.5;g.beginPath();g.moveTo(L,yy);g.lineTo(w-R,yy);g.stroke();g.textAlign='right';g.fillText(y.toFixed(step<1?1:0),L-6,yy+4)}
+  var span=(tEnd-tStart)/1000,ts=niceStep(span/6);g.textAlign='center';
+  for(var s=0;s<=span;s+=ts){var x=Math.round(X(tStart+s*1000))+.5;g.beginPath();g.moveTo(x,T);g.lineTo(x,h-B);g.stroke();
+    g.fillText(span>600?(new Date(tStart+s*1000)).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}):('-'+Math.round(span-s)+'s'),x,h-8)}
+  for(var c=0;c<4;c++){
+    g.strokeStyle=css(COL[c]);g.lineWidth=1.8;g.beginPath();var pen=false;
+    data.forEach(function(r){var v=r.ch[c];if(r.ms<tStart)return;if(typeof v!=='number'){pen=false;return}
+      var x=X(r.ms),y=Y(conv(v));if(!pen){g.moveTo(x,y);pen=true}else g.lineTo(x,y)});
+    g.stroke();
+  }
+}
+function niceStep(raw){var p=Math.pow(10,Math.floor(Math.log10(raw))),n=raw/p;return (n<1.5?1:n<3?2:n<7?5:10)*p}
+
+// ---------- CSV ----------
+function exportCsv(rows,prefix){
+  rows=rows||state.rows;prefix=prefix||'ktherm_';
+  var out=['pc_time_iso,device_epoch,seq,CH1_C,CH2_C,CH3_C,CH4_C,CJC_C,flags_hex'];
+  rows.forEach(function(r){out.push([new Date(r.ms).toISOString(),r.dev,r.seq].concat(r.ch.map(function(v){return typeof v==='number'?v.toFixed(1):v}),[r.cjc.toFixed(2),r.flags.toString(16).toUpperCase()]).join(','))});
+  var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([out.join('\r\n')+'\r\n'],{type:'text/csv'}));
+  a.download=prefix+new Date().toISOString().replace(/[:.]/g,'-').slice(0,19)+'.csv';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},2000);
+}
+
+// ---------- line source: serial ----------
+function handleLine(line){
+  var p=parseLine(line);if(!p)return;
+  if(p.type==='sample')onSample(p,false);
+  else if(p.type==='logrec'){onSample(p,true)}
+  else if(p.type==='logend'){log('device log: '+p.count+' records received ('+state.devlog.length+' parsed) -> saved as CSV');$('bDump').disabled=false;if(state.devlog.length)exportCsv(state.devlog,'ktherm_devicelog_');state.devlog=[]}
+  else if(p.type==='bad')log('! dropped ('+p.reason+'): '+p.text);
+  else log((p.type==='info'?'# ':'< ')+p.text);
+}
+function send(cmd){
+  if(state.demo){log('> '+cmd);demoCmd(cmd);return}
+  if(!state.writer)return;log('> '+cmd);state.writer.write(cmd+'\r\n');
+}
+async function connect(){
+  try{
+    var port=await navigator.serial.requestPort();await port.open({baudRate:115200});
+    state.port=port;
+    var enc=new TextEncoderStream();enc.readable.pipeTo(port.writable);state.writer=enc.writable.getWriter();
+    var dec=new TextDecoderStream();port.readable.pipeTo(dec.writable);state.reader=dec.readable.getReader();
+    setStatus(true,'已連接 / Connected');$('bConn').textContent='中斷 / Disconnect';
+    ['bRec','bDump','bTime'].forEach(function(i){$(i).disabled=false});
+    send('*IDN?');send('TIME '+Math.floor(Date.now()/1000));send('RATE '+$('rate').value);send('STREAM 1');
+    var buf='';
+    for(;;){var r=await state.reader.read();if(r.done)break;buf+=r.value;var ix;while((ix=buf.indexOf('\n'))>=0){handleLine(buf.slice(0,ix));buf=buf.slice(ix+1)}}
+  }catch(e){log('! '+e.message)}
+  await disconnect();
+}
+async function disconnect(){
+  try{if(state.writer){await state.writer.write('STREAM 0\r\n')}}catch(e){}
+  try{if(state.reader)await state.reader.cancel()}catch(e){}
+  try{if(state.writer)await state.writer.close()}catch(e){}
+  try{if(state.port)await state.port.close()}catch(e){}
+  state.port=state.reader=state.writer=null;
+  if(!state.demo){setStatus(false,'未連接 / Disconnected');$('bConn').textContent='連接 USB / Connect';['bDump','bTime'].forEach(function(i){$(i).disabled=true})}
+}
+
+// ---------- demo device (same wire format as the real one) ----------
+function startDemo(){
+  state.demo={seq:0,timer:null,t:0};setStatus(true,'示範模式 / Demo (simulated device)');$('bDemo').textContent='停止示範 / Stop demo';
+  ['bRec','bDump','bTime'].forEach(function(i){$(i).disabled=false});
+  log('# KTHERM 4CH DEMO');demoTick();state.demo.timer=setInterval(demoTick,parseInt($('rate').value,10));
+}
+function demoTick(){
+  var d=state.demo;if(!d)return;var t=d.seq*parseInt($('rate').value,10)/1000;
+  var temps=[25+10*Math.sin(t/7),100+40*Math.sin(t/11+1),-20+5*Math.sin(t/5),(Math.floor(d.seq/8)%4===3)?'OPEN':300+150*Math.sin(t/30)];
+  handleLine(makeFrame('T',d.seq++,Math.floor(Date.now()/1000),temps,24.6+.2*Math.sin(t/50),0));
+}
+function demoCmd(c){
+  if(c==='LOG DUMP'){for(var i=0;i<5;i++)handleLine(makeFrame('L',i,Math.floor(Date.now()/1000)-300+i*60,[22+i,50+i,-5,'OPEN'],24.5,4));handleLine('$L,END,5*'+csum('L,END,5'))}
+}
+function stopDemo(){clearInterval(state.demo.timer);state.demo=null;setStatus(false,'未連接 / Disconnected');$('bDemo').textContent='示範模式 / Demo';
+  ['bRec','bDump','bTime'].forEach(function(i){$(i).disabled=true})}
+
+// ---------- UI ----------
+buildTiles();updateTiles();
+if(!('serial' in navigator))$('noSerial').style.display='block';
+$('bConn').onclick=function(){if(state.port){disconnect()}else if('serial' in navigator){connect()}else{$('noSerial').style.display='block'}};
+$('bDemo').onclick=function(){if(state.demo)stopDemo();else startDemo()};
+$('bRec').onclick=function(){state.rec=!state.rec;this.textContent=state.rec?'■ 停止記錄 / Stop':'● 記錄 / Record';this.className=state.rec?'primary':'';if(state.rec)log('recording...')};
+$('bCsv').onclick=function(){exportCsv()};
+$('bClr').onclick=function(){state.rows=[];state.chart=[];state.stats.forEach(function(s){s.min=s.max=null});$('rows').innerHTML='';$('cnt').textContent='';updateTiles();draw();this.disabled=true;$('bCsv').disabled=true};
+$('bDump').onclick=function(){this.disabled=true;state.devlog=[];send('LOG DUMP')};
+$('bTime').onclick=function(){send('TIME '+Math.floor(Date.now()/1000))};
+$('rate').onchange=function(){if(state.demo){clearInterval(state.demo.timer);state.demo.timer=setInterval(demoTick,parseInt(this.value,10))}else send('RATE '+this.value)};
+$('unit').onchange=function(){state.unit=this.value;updateTiles();draw();var tb=$('rows');tb.innerHTML='';state.rows.slice(-300).forEach(addRow)};
+$('win').onchange=draw;window.addEventListener('resize',draw);
+if(/[?&]demo=1/.test(location.search))startDemo();
+</script>
+</body>
+</html>
