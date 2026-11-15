@@ -1,0 +1,536 @@
+{
+ "parts": {
+  "C6": {
+   "type": "CAP",
+   "Value": "10uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "C8": {
+   "type": "CAP",
+   "Value": "0.1uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "U1": {
+   "type": "SD6500-10",
+   "PCB DECAL": "LCD10-0.75",
+   "Value": "SD6500"
+  },
+  "R11": {
+   "type": "RES-1/8W",
+   "Value": "10K",
+   "PCB DECAL": "R1/8W"
+  },
+  "R5": {
+   "type": "RES_1/4W",
+   "Value": "1M",
+   "PCB_DECAL": "R0603_B_H",
+   "Value2": "5%",
+   "PCB DECAL": "RLC0603"
+  },
+  "C5": {
+   "type": "CAP",
+   "Value": "0.1uF",
+   "PCB_DECAL": "C0603_B_H",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "RLC0603"
+  },
+  "NTC1": {
+   "type": "NTC",
+   "PCB DECAL": "LED-0603",
+   "Value": "10K"
+  },
+  "T1": {
+   "type": "THERMOCOUOPLE",
+   "PCB DECAL": "0603"
+  },
+  "R1": {
+   "type": "RES_1/4W",
+   "Value": "22M",
+   "PCB_DECAL": "R0603_B_H",
+   "Value2": "5%",
+   "PCB DECAL": "RLC0603"
+  },
+  "C7": {
+   "type": "CAP",
+   "Value": "0.1uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "C9": {
+   "type": "CAP",
+   "Value": "10uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "C10": {
+   "type": "CAP",
+   "Value": "0.1uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "U2": {
+   "type": "SD6500-10",
+   "PCB DECAL": "LCD10-0.75",
+   "Value": "SD6500"
+  },
+  "R9": {
+   "type": "RES-1/8W",
+   "Value": "10K",
+   "PCB DECAL": "R1/8W"
+  },
+  "C15": {
+   "type": "CAP",
+   "Value": "0.1uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "C16": {
+   "type": "CAP",
+   "Value": "10uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "C17": {
+   "type": "CAP",
+   "Value": "0.1uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "U3": {
+   "type": "SD6500-10",
+   "PCB DECAL": "LCD10-0.75",
+   "Value": "SD6500"
+  },
+  "R15": {
+   "type": "RES-1/8W",
+   "Value": "10K",
+   "PCB DECAL": "R1/8W"
+  },
+  "C22": {
+   "type": "CAP",
+   "Value": "10uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "C23": {
+   "type": "CAP",
+   "Value": "10uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "C24": {
+   "type": "CAP",
+   "Value": "0.1uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "U4": {
+   "type": "SD6500-10",
+   "PCB DECAL": "LCD10-0.75",
+   "Value": "SD6500"
+  },
+  "R20": {
+   "type": "RES-1/8W",
+   "Value": "10K",
+   "PCB DECAL": "R1/8W"
+  },
+  "C29": {
+   "type": "CAP",
+   "Value": "10uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "C30": {
+   "type": "CAP",
+   "Value": "10uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "C31": {
+   "type": "CAP",
+   "Value": "0.1uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "U5": {
+   "type": "SD6500-10",
+   "PCB DECAL": "LCD10-0.75",
+   "Value": "SD6500"
+  },
+  "R25": {
+   "type": "RES-1/8W",
+   "Value": "10K",
+   "PCB DECAL": "R1/8W"
+  },
+  "C36": {
+   "type": "CAP",
+   "Value": "10uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "R2": {
+   "type": "RES_1/4W",
+   "Value": "5.1M",
+   "PCB_DECAL": "R0603_B_H",
+   "Value2": "5%",
+   "PCB DECAL": "RLC0603"
+  },
+  "C3": {
+   "type": "CAP",
+   "Value": "0.1uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "R3": {
+   "type": "RES_1/4W",
+   "Value": "100K",
+   "PCB_DECAL": "R0603_B_H",
+   "Value2": "5%",
+   "PCB DECAL": "RLC0603"
+  },
+  "C4": {
+   "type": "CAP",
+   "Value": "0.1uF",
+   "PCB_DECAL": "C0603_B_H",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "RLC0603"
+  },
+  "T2": {
+   "type": "THERMOCOUOPLE",
+   "PCB DECAL": "0603"
+  },
+  "R4": {
+   "type": "RES_1/4W",
+   "Value": "22M",
+   "PCB_DECAL": "R0603_B_H",
+   "Value2": "5%",
+   "PCB DECAL": "RLC0603"
+  },
+  "R6": {
+   "type": "RES_1/4W",
+   "Value": "5.1M",
+   "PCB_DECAL": "R0603_B_H",
+   "Value2": "5%",
+   "PCB DECAL": "RLC0603"
+  },
+  "C13": {
+   "type": "CAP",
+   "Value": "0.1uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "T3": {
+   "type": "THERMOCOUOPLE",
+   "PCB DECAL": "0603"
+  },
+  "R7": {
+   "type": "RES_1/4W",
+   "Value": "22M",
+   "PCB_DECAL": "R0603_B_H",
+   "Value2": "5%",
+   "PCB DECAL": "RLC0603"
+  },
+  "R8": {
+   "type": "RES_1/4W",
+   "Value": "5.1M",
+   "PCB_DECAL": "R0603_B_H",
+   "Value2": "5%",
+   "PCB DECAL": "RLC0603"
+  },
+  "C1": {
+   "type": "CAP",
+   "Value": "0.1uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "T4": {
+   "type": "THERMOCOUOPLE",
+   "PCB DECAL": "0603"
+  },
+  "R10": {
+   "type": "RES_1/4W",
+   "Value": "22M",
+   "PCB_DECAL": "R0603_B_H",
+   "Value2": "5%",
+   "PCB DECAL": "RLC0603"
+  },
+  "R12": {
+   "type": "RES_1/4W",
+   "Value": "5.1M",
+   "PCB_DECAL": "R0603_B_H",
+   "Value2": "5%",
+   "PCB DECAL": "RLC0603"
+  },
+  "C2": {
+   "type": "CAP",
+   "Value": "0.1uF",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "0402C"
+  },
+  "T5": {
+   "type": "THERMOCOUOPLE",
+   "PCB DECAL": "0603"
+  },
+  "R13": {
+   "type": "RES_1/4W",
+   "Value": "22M",
+   "PCB_DECAL": "R0603_B_H",
+   "Value2": "5%",
+   "PCB DECAL": "RLC0603"
+  },
+  "R14": {
+   "type": "RES_1/4W",
+   "Value": "5.1M",
+   "PCB_DECAL": "R0603_B_H",
+   "Value2": "5%",
+   "PCB DECAL": "RLC0603"
+  },
+  "C11": {
+   "type": "CAP",
+   "Value": "T POINT R",
+   "PCB_DECAL": "C0402_0.01",
+   "Value2": "X7R,50V",
+   "PCB DECAL": "TPA"
+  },
+  "DATA1": {
+   "type": "T_POINT_R",
+   "Value": "T POINT R",
+   "PCB DECAL": "TPA"
+  },
+  "DATA2": {
+   "type": "T_POINT_R",
+   "Value": "T POINT R",
+   "PCB DECAL": "TPA"
+  },
+  "DATA3": {
+   "type": "T_POINT_R",
+   "Value": "T POINT R",
+   "PCB DECAL": "TPA"
+  },
+  "DATA4": {
+   "type": "T_POINT_R",
+   "Value": "T POINT R",
+   "PCB DECAL": "TPA"
+  },
+  "DATA5": {
+   "type": "T_POINT_R",
+   "Value": "T POINT R",
+   "PCB DECAL": "TPA"
+  }
+ },
+ "nets": {
+  "GND": [
+   "C10.1",
+   "C15.1",
+   "C16.1",
+   "C17.1",
+   "C22.1",
+   "C23.1",
+   "C24.1",
+   "C29.1",
+   "C30.1",
+   "C31.1",
+   "C36.1",
+   "C6.1",
+   "C7.1",
+   "C8.1",
+   "C9.1",
+   "U1.5",
+   "U1.8",
+   "U2.5",
+   "U2.8",
+   "U3.5",
+   "U3.8",
+   "U4.5",
+   "U4.8",
+   "U5.5",
+   "U5.8"
+  ],
+  "AI17": [
+   "C5.2",
+   "R3.2",
+   "R5.1",
+   "U1.4"
+  ],
+  "VDD": [
+   "C15.2",
+   "C16.2",
+   "C22.2",
+   "C23.2",
+   "C29.2",
+   "C30.2",
+   "C36.2",
+   "C6.2",
+   "C7.2",
+   "C9.2",
+   "R11.2",
+   "R15.2",
+   "R20.2",
+   "R25.2",
+   "R9.2",
+   "U1.7",
+   "U2.7",
+   "U3.7",
+   "U4.7",
+   "U5.7"
+  ],
+  "DATA2": [
+   "DATA2.1",
+   "R9.1",
+   "U2.10"
+  ],
+  "AI20": [
+   "C13.2",
+   "R4.1",
+   "R6.2",
+   "T2.1",
+   "U2.1"
+  ],
+  "AVDDR2": [
+   "C10.2",
+   "R4.2",
+   "U2.6"
+  ],
+  "ACM2": [
+   "C13.1",
+   "R6.1",
+   "T2.2",
+   "U2.3"
+  ],
+  "AVDDR4": [
+   "C24.2",
+   "R10.2",
+   "U4.6"
+  ],
+  "AVDDR3": [
+   "C17.2",
+   "R7.2",
+   "U3.6"
+  ],
+  "AVDDR1": [
+   "C8.2",
+   "R1.2",
+   "R5.2",
+   "U1.6"
+  ],
+  "ACM1": [
+   "C3.1",
+   "R2.1",
+   "T1.2",
+   "U1.3"
+  ],
+  "AI30": [
+   "C1.2",
+   "R7.1",
+   "R8.2",
+   "T3.1",
+   "U3.1"
+  ],
+  "AI11": [
+   "C4.2",
+   "C5.1",
+   "NTC1.1",
+   "R3.1",
+   "U1.2"
+  ],
+  "ACM3": [
+   "C1.1",
+   "R8.1",
+   "T3.2",
+   "U3.3"
+  ],
+  "DATA3": [
+   "DATA3.1",
+   "R15.1",
+   "U3.10"
+  ],
+  "AI10": [
+   "C3.2",
+   "R1.1",
+   "R2.2",
+   "T1.1",
+   "U1.1"
+  ],
+  "AI40": [
+   "C2.2",
+   "R10.1",
+   "R12.2",
+   "T4.1",
+   "U4.1"
+  ],
+  "AI41": [
+   "U4.2"
+  ],
+  "ACM4": [
+   "C2.1",
+   "R12.1",
+   "T4.2",
+   "U4.3"
+  ],
+  "DATA4": [
+   "DATA4.1",
+   "R20.1",
+   "U4.10"
+  ],
+  "AVDDR5": [
+   "C31.2",
+   "R13.2",
+   "U5.6"
+  ],
+  "AI50": [
+   "C11.2",
+   "R13.1",
+   "R14.2",
+   "T5.1",
+   "U5.1"
+  ],
+  "ACM5": [
+   "C11.1",
+   "R14.1",
+   "T5.2",
+   "U5.3"
+  ],
+  "DATA5": [
+   "DATA5.1",
+   "R25.1",
+   "U5.10"
+  ],
+  "ACM": [
+   "C4.1",
+   "NTC1.2"
+  ],
+  "DATA1": [
+   "DATA1.1",
+   "R11.1",
+   "U1.10"
+  ],
+  "SCK": [
+   "U1.9",
+   "U2.9",
+   "U3.9",
+   "U4.9",
+   "U5.9"
+  ]
+ }
+}

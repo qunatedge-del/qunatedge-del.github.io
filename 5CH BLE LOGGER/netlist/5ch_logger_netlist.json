@@ -1,0 +1,1266 @@
+{
+ "nets": {
+  "GND": [
+   "C202.1",
+   "C204.1",
+   "C303.1",
+   "C302.1",
+   "C304.1",
+   "C403.1",
+   "C402.1",
+   "C404.1",
+   "C503.1",
+   "C502.1",
+   "C504.1",
+   "C103.1",
+   "C104.1",
+   "C102.1",
+   "C203.1",
+   "U11.5",
+   "U11.8",
+   "U12.5",
+   "U12.8",
+   "U13.5",
+   "U13.8",
+   "U14.5",
+   "U14.8",
+   "U15.5",
+   "U15.8",
+   "U1.GND",
+   "BT1.2",
+   "C22.2",
+   "C27.2",
+   "U3.2",
+   "R30.2",
+   "C23.2",
+   "C16.2",
+   "C39.2",
+   "U2.4",
+   "C801.2",
+   "LCD1.GND"
+  ],
+  "AI17": [
+   "C901.2",
+   "R902.2",
+   "R901.1",
+   "U11.4"
+  ],
+  "VCC_3V3": [
+   "C204.2",
+   "C303.2",
+   "C304.2",
+   "C403.2",
+   "C404.2",
+   "C503.2",
+   "C504.2",
+   "C103.2",
+   "C104.2",
+   "C203.2",
+   "R103.2",
+   "R303.2",
+   "R403.2",
+   "R503.2",
+   "R203.2",
+   "U11.7",
+   "U12.7",
+   "U13.7",
+   "U14.7",
+   "U15.7",
+   "U1.VCC",
+   "L3.2",
+   "R29.1",
+   "C38.1",
+   "C23.1",
+   "C16.1",
+   "C39.1",
+   "U2.3",
+   "U2.7",
+   "U2.8",
+   "C801.1",
+   "LCD1.VCC"
+  ],
+  "DATA2": [
+   "U1.DATA2",
+   "R203.1",
+   "U12.10"
+  ],
+  "AI20": [
+   "C201.2",
+   "R201.1",
+   "R202.2",
+   "T2.1",
+   "U12.1"
+  ],
+  "AVDDR2": [
+   "C202.2",
+   "R201.2",
+   "U12.6"
+  ],
+  "ACM2": [
+   "C201.1",
+   "R202.1",
+   "T2.2",
+   "U12.3"
+  ],
+  "AVDDR4": [
+   "C402.2",
+   "R401.2",
+   "U14.6"
+  ],
+  "AVDDR3": [
+   "C302.2",
+   "R301.2",
+   "U13.6"
+  ],
+  "AVDDR1": [
+   "C102.2",
+   "R101.2",
+   "R901.2",
+   "U11.6"
+  ],
+  "ACM1": [
+   "C101.1",
+   "C902.1",
+   "NTC1.2",
+   "R102.1",
+   "T1.2",
+   "U11.3"
+  ],
+  "AI30": [
+   "C301.2",
+   "R301.1",
+   "R302.2",
+   "T3.1",
+   "U13.1"
+  ],
+  "AI11": [
+   "C902.2",
+   "C901.1",
+   "NTC1.1",
+   "R902.1",
+   "U11.2"
+  ],
+  "ACM3": [
+   "C301.1",
+   "R302.1",
+   "T3.2",
+   "U13.3"
+  ],
+  "DATA3": [
+   "U1.DATA3",
+   "R303.1",
+   "U13.10"
+  ],
+  "AI10": [
+   "C101.2",
+   "R101.1",
+   "R102.2",
+   "T1.1",
+   "U11.1"
+  ],
+  "AI40": [
+   "C401.2",
+   "R401.1",
+   "R402.2",
+   "T4.1",
+   "U14.1"
+  ],
+  "ACM4": [
+   "C401.1",
+   "R402.1",
+   "T4.2",
+   "U14.3"
+  ],
+  "DATA4": [
+   "U1.DATA4",
+   "R403.1",
+   "U14.10"
+  ],
+  "AVDDR5": [
+   "C502.2",
+   "R501.2",
+   "U15.6"
+  ],
+  "AI50": [
+   "C501.2",
+   "R501.1",
+   "R502.2",
+   "T5.1",
+   "U15.1"
+  ],
+  "ACM5": [
+   "C501.1",
+   "R502.1",
+   "T5.2",
+   "U15.3"
+  ],
+  "DATA5": [
+   "U1.DATA5",
+   "R503.1",
+   "U15.10"
+  ],
+  "DATA1": [
+   "U1.DATA1",
+   "R103.1",
+   "U11.10"
+  ],
+  "SCK": [
+   "U11.9",
+   "U12.9",
+   "U13.9",
+   "U14.9",
+   "U15.9",
+   "U1.SCK"
+  ],
+  "SYS_PWR": [
+   "BT1.1",
+   "C22.1",
+   "C27.1",
+   "U3.4",
+   "R31.1"
+  ],
+  "PB1": [
+   "U3.1",
+   "R31.2",
+   "U1.PB1"
+  ],
+  "LX": [
+   "U3.3",
+   "L3.1"
+  ],
+  "FB": [
+   "U3.5",
+   "R29.2",
+   "R30.1",
+   "C38.2"
+  ],
+  "FLASH_CS": [
+   "U2.1",
+   "U1.FLASH_CS"
+  ],
+  "FLASH_MISO": [
+   "U2.2",
+   "U1.FLASH_MISO"
+  ],
+  "FLASH_MOSI": [
+   "U2.5",
+   "U1.FLASH_MOSI"
+  ],
+  "FLASH_SCK": [
+   "U2.6",
+   "U1.FLASH_SCK"
+  ],
+  "LCD_SCK": [
+   "LCD1.SCK",
+   "U1.LCD_SCK"
+  ],
+  "LCD_MOSI": [
+   "LCD1.MOSI",
+   "U1.LCD_MOSI"
+  ],
+  "LCD_RST": [
+   "LCD1.RES",
+   "U1.LCD_RST"
+  ],
+  "LCD_DC": [
+   "LCD1.DC",
+   "U1.LCD_DC"
+  ],
+  "LCD_CS": [
+   "LCD1.CS",
+   "U1.LCD_CS"
+  ]
+ },
+ "parts": {
+  "U11": {
+   "value": "SD6500",
+   "pkg": "MSOP-10",
+   "desc": "24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)",
+   "cat": "IC",
+   "notes": "Channel 1",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
+   ],
+   "src": "factory U1"
+  },
+  "R101": {
+   "value": "22 MΩ",
+   "pkg": "0603",
+   "desc": "K+ bias pull-up to AVDDR1 (open-TC detect)",
+   "cat": "Passive",
+   "notes": "Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R1"
+  },
+  "R102": {
+   "value": "5.1 MΩ",
+   "pkg": "0603",
+   "desc": "K+ bias pull-down to ACM1",
+   "cat": "Passive",
+   "notes": "Factory file: 5 %",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R2"
+  },
+  "R103": {
+   "value": "10 kΩ",
+   "pkg": "0603",
+   "desc": "DATA1 pull-up to VCC_3V3 (datasheet typical application)",
+   "cat": "Passive",
+   "notes": "Factory footprint is R1/8W (axial) - replace by 0603",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R11"
+  },
+  "C101": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "Thermocouple input filter, K+ node to ACM1",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C3"
+  },
+  "C102": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "AVDDR1 filter to AVSS (datasheet requires 0.1 uF)",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C8"
+  },
+  "C103": {
+   "value": "10 µF X7R",
+   "pkg": "0603",
+   "desc": "VDD bulk decoupling (datasheet: 10 uF VDD-AVSS)",
+   "cat": "Passive",
+   "notes": "Factory file: 0402 10 uF 50 V",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C6"
+  },
+  "C104": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "VDD HF decoupling",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C7"
+  },
+  "T1": {
+   "value": "K-type mini jack",
+   "pkg": "TBD",
+   "desc": "Thermocouple connector 1 (pin 1 = K+, pin 2 = K-)",
+   "cat": "Connector",
+   "notes": "Part not chosen yet",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory T1"
+  },
+  "U12": {
+   "value": "SD6500",
+   "pkg": "MSOP-10",
+   "desc": "24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)",
+   "cat": "IC",
+   "notes": "Channel 2",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
+   ],
+   "src": "factory U2"
+  },
+  "R201": {
+   "value": "22 MΩ",
+   "pkg": "0603",
+   "desc": "K+ bias pull-up to AVDDR2 (open-TC detect)",
+   "cat": "Passive",
+   "notes": "Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R4"
+  },
+  "R202": {
+   "value": "5.1 MΩ",
+   "pkg": "0603",
+   "desc": "K+ bias pull-down to ACM2",
+   "cat": "Passive",
+   "notes": "Factory file: 5 %",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R6"
+  },
+  "R203": {
+   "value": "10 kΩ",
+   "pkg": "0603",
+   "desc": "DATA2 pull-up to VCC_3V3 (datasheet typical application)",
+   "cat": "Passive",
+   "notes": "Factory footprint is R1/8W (axial) - replace by 0603",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R9"
+  },
+  "C201": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "Thermocouple input filter, K+ node to ACM2",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C13"
+  },
+  "C202": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "AVDDR2 filter to AVSS (datasheet requires 0.1 uF)",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C10"
+  },
+  "C203": {
+   "value": "10 µF X7R",
+   "pkg": "0603",
+   "desc": "VDD bulk decoupling (datasheet: 10 uF VDD-AVSS)",
+   "cat": "Passive",
+   "notes": "Factory file: 0402 10 uF 50 V",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C9"
+  },
+  "C204": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "VDD HF decoupling",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C15"
+  },
+  "T2": {
+   "value": "K-type mini jack",
+   "pkg": "TBD",
+   "desc": "Thermocouple connector 2 (pin 1 = K+, pin 2 = K-)",
+   "cat": "Connector",
+   "notes": "Part not chosen yet",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory T2"
+  },
+  "U13": {
+   "value": "SD6500",
+   "pkg": "MSOP-10",
+   "desc": "24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)",
+   "cat": "IC",
+   "notes": "Channel 3",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
+   ],
+   "src": "factory U3"
+  },
+  "R301": {
+   "value": "22 MΩ",
+   "pkg": "0603",
+   "desc": "K+ bias pull-up to AVDDR3 (open-TC detect)",
+   "cat": "Passive",
+   "notes": "Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R7"
+  },
+  "R302": {
+   "value": "5.1 MΩ",
+   "pkg": "0603",
+   "desc": "K+ bias pull-down to ACM3",
+   "cat": "Passive",
+   "notes": "Factory file: 5 %",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R8"
+  },
+  "R303": {
+   "value": "10 kΩ",
+   "pkg": "0603",
+   "desc": "DATA3 pull-up to VCC_3V3 (datasheet typical application)",
+   "cat": "Passive",
+   "notes": "Factory footprint is R1/8W (axial) - replace by 0603",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R15"
+  },
+  "C301": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "Thermocouple input filter, K+ node to ACM3",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C1"
+  },
+  "C302": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "AVDDR3 filter to AVSS (datasheet requires 0.1 uF)",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C17"
+  },
+  "C303": {
+   "value": "10 µF X7R",
+   "pkg": "0603",
+   "desc": "VDD bulk decoupling (datasheet: 10 uF VDD-AVSS)",
+   "cat": "Passive",
+   "notes": "Factory file: 0402 10 uF 50 V",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C16"
+  },
+  "C304": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "VDD HF decoupling",
+   "cat": "Passive",
+   "notes": "DEVIATION: factory file has 10 uF here (C22); we use 0.1 uF to match the brief. Confirm with factory.",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C22"
+  },
+  "T3": {
+   "value": "K-type mini jack",
+   "pkg": "TBD",
+   "desc": "Thermocouple connector 3 (pin 1 = K+, pin 2 = K-)",
+   "cat": "Connector",
+   "notes": "Part not chosen yet",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory T3"
+  },
+  "U14": {
+   "value": "SD6500",
+   "pkg": "MSOP-10",
+   "desc": "24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)",
+   "cat": "IC",
+   "notes": "Channel 4",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
+   ],
+   "src": "factory U4"
+  },
+  "R401": {
+   "value": "22 MΩ",
+   "pkg": "0603",
+   "desc": "K+ bias pull-up to AVDDR4 (open-TC detect)",
+   "cat": "Passive",
+   "notes": "Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R10"
+  },
+  "R402": {
+   "value": "5.1 MΩ",
+   "pkg": "0603",
+   "desc": "K+ bias pull-down to ACM4",
+   "cat": "Passive",
+   "notes": "Factory file: 5 %",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R12"
+  },
+  "R403": {
+   "value": "10 kΩ",
+   "pkg": "0603",
+   "desc": "DATA4 pull-up to VCC_3V3 (datasheet typical application)",
+   "cat": "Passive",
+   "notes": "Factory footprint is R1/8W (axial) - replace by 0603",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R20"
+  },
+  "C401": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "Thermocouple input filter, K+ node to ACM4",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C2"
+  },
+  "C402": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "AVDDR4 filter to AVSS (datasheet requires 0.1 uF)",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C24"
+  },
+  "C403": {
+   "value": "10 µF X7R",
+   "pkg": "0603",
+   "desc": "VDD bulk decoupling (datasheet: 10 uF VDD-AVSS)",
+   "cat": "Passive",
+   "notes": "Factory file: 0402 10 uF 50 V",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C23"
+  },
+  "C404": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "VDD HF decoupling",
+   "cat": "Passive",
+   "notes": "DEVIATION: factory file has 10 uF here (C29); we use 0.1 uF to match the brief. Confirm with factory.",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C29"
+  },
+  "T4": {
+   "value": "K-type mini jack",
+   "pkg": "TBD",
+   "desc": "Thermocouple connector 4 (pin 1 = K+, pin 2 = K-)",
+   "cat": "Connector",
+   "notes": "Part not chosen yet",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory T4"
+  },
+  "U15": {
+   "value": "SD6500",
+   "pkg": "MSOP-10",
+   "desc": "24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)",
+   "cat": "IC",
+   "notes": "Channel 5",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
+   ],
+   "src": "factory U5"
+  },
+  "R501": {
+   "value": "22 MΩ",
+   "pkg": "0603",
+   "desc": "K+ bias pull-up to AVDDR5 (open-TC detect)",
+   "cat": "Passive",
+   "notes": "Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R13"
+  },
+  "R502": {
+   "value": "5.1 MΩ",
+   "pkg": "0603",
+   "desc": "K+ bias pull-down to ACM5",
+   "cat": "Passive",
+   "notes": "Factory file: 5 %",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R14"
+  },
+  "R503": {
+   "value": "10 kΩ",
+   "pkg": "0603",
+   "desc": "DATA5 pull-up to VCC_3V3 (datasheet typical application)",
+   "cat": "Passive",
+   "notes": "Factory footprint is R1/8W (axial) - replace by 0603",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R25"
+  },
+  "C501": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "Thermocouple input filter, K+ node to ACM5",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C11"
+  },
+  "C502": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "AVDDR5 filter to AVSS (datasheet requires 0.1 uF)",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C31"
+  },
+  "C503": {
+   "value": "10 µF X7R",
+   "pkg": "0603",
+   "desc": "VDD bulk decoupling (datasheet: 10 uF VDD-AVSS)",
+   "cat": "Passive",
+   "notes": "Factory file: 0402 10 uF 50 V",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C30"
+  },
+  "C504": {
+   "value": "100 nF X7R 50V",
+   "pkg": "0402",
+   "desc": "VDD HF decoupling",
+   "cat": "Passive",
+   "notes": "DEVIATION: factory file has 10 uF here (C36); we use 0.1 uF to match the brief. Confirm with factory.",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C36"
+  },
+  "T5": {
+   "value": "K-type mini jack",
+   "pkg": "TBD",
+   "desc": "Thermocouple connector 5 (pin 1 = K+, pin 2 = K-)",
+   "cat": "Connector",
+   "notes": "Part not chosen yet",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory T5"
+  },
+  "R901": {
+   "value": "1 MΩ",
+   "pkg": "0603",
+   "desc": "CJC chain: top resistor from AVDDR1",
+   "cat": "Passive",
+   "notes": "Factory file: 5 %",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R5"
+  },
+  "R902": {
+   "value": "100 kΩ 0.1%",
+   "pkg": "0603",
+   "desc": "CJC chain: ratiometric reference",
+   "cat": "Passive",
+   "notes": "DEVIATION: factory file 5 %; CJC accuracy depends on this resistor -> 0.1 % 25 ppm recommended",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory R3"
+  },
+  "C901": {
+   "value": "100 nF X7R",
+   "pkg": "0603",
+   "desc": "CJC filter across R902",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C5"
+  },
+  "C902": {
+   "value": "100 nF X7R",
+   "pkg": "0603",
+   "desc": "CJC filter across NTC1",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory C4"
+  },
+  "NTC1": {
+   "value": "NTC 10 kΩ 1%",
+   "pkg": "0603",
+   "desc": "Cold-junction sensor (shared by all 5 channels)",
+   "cat": "Passive",
+   "notes": "Factory footprint is LED-0603 (wrong). Place at the isothermal block centre.",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": "factory NTC1"
+  },
+  "BT1": {
+   "value": "4 x AA holder",
+   "pkg": "TBD",
+   "desc": "Battery pack, 6.0 V fresh / 3.6 V empty (SYS_PWR)",
+   "cat": "Connector",
+   "notes": "No reverse-polarity protection in the user's schematic",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "U3": {
+   "value": "CE8503AM",
+   "pkg": "SOT-23-5",
+   "desc": "800 mA 1.5 MHz synchronous buck, VIN 2-6.5 V (Chipower)",
+   "cat": "IC",
+   "notes": "'M' pinout: 1 EN, 2 VSS, 3 SW, 4 VIN, 5 FB. Vout = 0.6 x (1+R29/R30) = 3.37 V",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "src": ""
+  },
+  "C22": {
+   "value": "10 µF",
+   "pkg": "TBD",
+   "desc": "U3 VIN bulk",
+   "cat": "Passive",
+   "notes": "From user's schematic",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "C27": {
+   "value": "1 µF",
+   "pkg": "TBD",
+   "desc": "U3 VIN HF",
+   "cat": "Passive",
+   "notes": "From user's schematic",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "L3": {
+   "value": "2.2 µH",
+   "pkg": "TBD",
+   "desc": "Buck inductor (datasheet 1-4.7 uH)",
+   "cat": "Passive",
+   "notes": "From user's schematic",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "R29": {
+   "value": "180 kΩ 1%",
+   "pkg": "TBD",
+   "desc": "FB divider, top",
+   "cat": "Passive",
+   "notes": "Recommended: 453 k (with R30 = 100 k) -> 3.32 V, 6 uA (datasheet: R2 <= 100 k)",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "R30": {
+   "value": "39 kΩ 1%",
+   "pkg": "TBD",
+   "desc": "FB divider, bottom",
+   "cat": "Passive",
+   "notes": "Recommended: 100 k",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "C38": {
+   "value": "22 pF",
+   "pkg": "TBD",
+   "desc": "FB feed-forward (datasheet: optional)",
+   "cat": "Passive",
+   "notes": "From user's schematic",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "C23": {
+   "value": "10 µF",
+   "pkg": "TBD",
+   "desc": "VCC_3V3 output cap",
+   "cat": "Passive",
+   "notes": "From user's schematic",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "C16": {
+   "value": "100 nF",
+   "pkg": "TBD",
+   "desc": "VCC_3V3 HF cap",
+   "cat": "Passive",
+   "notes": "From user's schematic",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "C39": {
+   "value": "100 µF / 10 V tantalum",
+   "pkg": "TBD",
+   "desc": "VCC_3V3 bulk",
+   "cat": "Passive",
+   "notes": "Tantalum + battery inrush: consider polymer/ceramic",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "R31": {
+   "value": "100 kΩ",
+   "pkg": "TBD",
+   "desc": "EN pull-up to SYS_PWR - RECOMMENDED, not in the user's schematic",
+   "cat": "Passive",
+   "notes": "CE8503 EN must not float and must be > 1.5 V to start; PB1 is high-Z at power-up. Confirm.",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "U1": {
+   "value": "CH583",
+   "pkg": "TBD (QFN48/QFN28)",
+   "desc": "WCH RISC-V BLE 5.3 MCU",
+   "cat": "IC",
+   "notes": "PIN NUMBERS TBD - need WCH datasheet. Signals listed below are required connections.",
+   "tbd": true,
+   "pins": [
+    "VCC",
+    "GND",
+    "PB1",
+    "SCK",
+    "DATA1",
+    "DATA2",
+    "DATA3",
+    "DATA4",
+    "DATA5",
+    "FLASH_SCK",
+    "FLASH_MOSI",
+    "FLASH_MISO",
+    "FLASH_CS",
+    "LCD_SCK",
+    "LCD_MOSI",
+    "LCD_DC",
+    "LCD_CS",
+    "LCD_RST"
+   ],
+   "src": ""
+  },
+  "U2": {
+   "value": "SPI Flash (TBD)",
+   "pkg": "SOIC-8 (typical)",
+   "desc": "Data-logging flash on SPI0",
+   "cat": "IC",
+   "notes": "Typical 25-series SOIC-8 pinout assumed: 1 CS, 2 SO, 3 WP, 4 GND, 5 SI, 6 SCK, 7 HOLD, 8 VCC. Verify for the chosen part.",
+   "tbd": true,
+   "pins": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8"
+   ],
+   "src": ""
+  },
+  "C801": {
+   "value": "100 nF",
+   "pkg": "TBD",
+   "desc": "U2 bypass",
+   "cat": "Passive",
+   "notes": "",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "LCD1": {
+   "value": "SPI LCD module (TBD)",
+   "pkg": "TBD",
+   "desc": "LCD on SPI1",
+   "cat": "Connector",
+   "notes": "Module and pinout TBD; typical 7-wire interface assumed.",
+   "tbd": true,
+   "pins": [
+    "VCC",
+    "GND",
+    "SCK",
+    "MOSI",
+    "RES",
+    "DC",
+    "CS"
+   ],
+   "src": ""
+  }
+ },
+ "no_connect": [
+  "U12.2",
+  "U12.4",
+  "U13.2",
+  "U13.4",
+  "U14.2",
+  "U14.4",
+  "U15.2",
+  "U15.4"
+ ],
+ "factory_map": {
+  "U1": "U11",
+  "R1": "R101",
+  "R2": "R102",
+  "R11": "R103",
+  "C3": "C101",
+  "C8": "C102",
+  "C6": "C103",
+  "C7": "C104",
+  "T1": "T1",
+  "U2": "U12",
+  "R4": "R201",
+  "R6": "R202",
+  "R9": "R203",
+  "C13": "C201",
+  "C10": "C202",
+  "C9": "C203",
+  "C15": "C204",
+  "T2": "T2",
+  "U3": "U13",
+  "R7": "R301",
+  "R8": "R302",
+  "R15": "R303",
+  "C1": "C301",
+  "C17": "C302",
+  "C16": "C303",
+  "C22": "C304",
+  "T3": "T3",
+  "U4": "U14",
+  "R10": "R401",
+  "R12": "R402",
+  "R20": "R403",
+  "C2": "C401",
+  "C24": "C402",
+  "C23": "C403",
+  "C29": "C404",
+  "T4": "T4",
+  "U5": "U15",
+  "R13": "R501",
+  "R14": "R502",
+  "R25": "R503",
+  "C11": "C501",
+  "C31": "C502",
+  "C30": "C503",
+  "C36": "C504",
+  "T5": "T5",
+  "R5": "R901",
+  "R3": "R902",
+  "C5": "C901",
+  "C4": "C902",
+  "NTC1": "NTC1"
+ }
+}
