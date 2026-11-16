@@ -16,8 +16,8 @@ import sheet as sh
 from sheet import Sheet, INK, RED, GND_C, BLUE, ORG, GREY
 import design5 as D
 
-sh.POWER_NETS |= {"SYS_PWR", "VCC_3V3"} | {"AVDDR%d" % k for k in range(1, 6)}
-sh.ANALOG_NETS |= {"ACM%d" % k for k in range(1, 6)} | {"AI%d0" % k for k in range(1, 6)} | {"AI11", "AI17"}
+sh.POWER_NETS |= {"SYS_PWR", "VCC_3V3", "BAT_IN"} | {"AVDDR%d" % k for k in range(1, 6)}
+sh.ANALOG_NETS |= {"VBAT_SENSE"} | {"ACM%d" % k for k in range(1, 6)} | {"AI%d0" % k for k in range(1, 6)} | {"AI11", "AI17"}
 wc = sh.netcol
 
 W, H = 2000, 1560
@@ -78,38 +78,62 @@ def nc_mark(x, y):
 
 
 # ================================================================ P  power
-section("P", 24, 70, 1156, 330, "P  POWER  ·  4 x AA → CE8503AM buck → VCC_3V3   (user's schematic, unchanged)")
-by = 150
-battery(44, by - 20, "BT1")
-S.line(106, by - 6, 200, by - 6, RED)
-S.dot(150, by - 6, RED)
-S.gnd(75, by + 70)
-rail = by - 6                                           # y of SYS_PWR rail (BT1 + terminal)
-S.line(200, rail, 372, rail, RED)
-S.text(150, rail - 12, "SYS_PWR", 10, RED, "middle", True)
-for x, ref, val in ((200, "C22", "10 µF"), (262, "C27", "1 µF")):
+section("P", 24, 70, 1156, 330, "P  POWER  ·  4 x AA → reverse-polarity P-MOS → CE8503AM buck → VCC_3V3   (user's schematic + recommended changes)")
+rail = 144                                              # y of the battery / SYS_PWR rail
+battery(44, rail - 14, "BT1")
+S.gnd(75, rail + 84)
+S.line(106, rail, 130, rail, RED)
+S.text(118, rail - 14, "BAT_IN", 9.5, RED, "middle", True)
+
+
+def pmos_series(cx, y, ref, val):
+    """P-MOSFET in series with the positive rail: drain (left) = battery, source (right) = load, gate lead down."""
+    S.reg(ref)
+    S.line(cx - 40, y, cx - 14, y, RED)
+    S.line(cx + 14, y, cx + 40, y, RED)
+    for a_, b_ in ((-14, -6), (-3, 3), (6, 14)):
+        S.line(cx + a_, y, cx + b_, y, INK, 2.6)
+    S.line(cx - 14, y + 8, cx + 14, y + 8, INK, 2.6)
+    S.line(cx, y + 8, cx, y + 28, BLUE)
+    S.text(cx - 22, y - 5, "D", 8.5, GREY, "end")
+    S.text(cx + 22, y - 5, "S", 8.5, GREY, "start")
+    S.text(cx + 6, y + 22, "G", 8.5, GREY, "start")
+    S.text(cx, y - 24, ref, 10.5, INK, "middle", True)
+    S.text(cx, y - 12, val, 8.5, INK, "middle")
+
+
+qx = 170
+pmos_series(qx, rail, "Q1", "P-MOS")
+S.line(qx + 40, rail, 420 + 0, rail, RED)
+S.res(qx, rail + 28, "R32", "100 kΩ", "v", 40, "r", BLUE)
+S.gnd(qx, rail + 68)
+S.text(qx, rail + 100, "gate to GND via R32:", 8.5, GREY, "middle")
+S.text(qx, rail + 111, "off on reverse battery,", 8.5, GREY, "middle")
+S.text(qx, rail + 122, "~0 V drop when correct", 8.5, GREY, "middle")
+S.text(236, rail - 12, "SYS_PWR", 10, RED, "middle", True)
+for x, ref, val in ((270, "C22", "10 µF"), (330, "C27", "1 µF")):
     S.dot(x, rail, RED)
     S.cap(x, rail, ref, val, 46, "r", RED)
     S.gnd(x, rail + 46)
 # U3
-u3 = S.ic(420, 110, 124, 130, "U3", "CE8503AM", left=[(4, "VIN", rail - 110), (1, "EN", 76)],
+u3 = S.ic(460, 110, 124, 130, "U3", "CE8503AM", left=[(4, "VIN", rail - 110), (1, "EN", 76)],
           right=[(3, "LX", 30), (5, "FB", 76)], bottom=[(2, "VSS", 62)], inside=True)
-S.line(372, rail, u3[("l", 4)][0], u3[("l", 4)][1], RED)
-S.dot(372, rail, RED)
-# R31 EN pull-up (recommended) and PB1
+S.line(420, rail, u3[("l", 4)][0], u3[("l", 4)][1], RED)
+S.dot(420, rail, RED)
+# R31 EN pull-up and PB1
 enx, eny = u3[("l", 1)]
-S.res(372, rail, "R31", "100 kΩ", "v", eny - rail, "l", RED)
-S.line(372, eny, enx, eny, BLUE)
-S.dot(372, eny, BLUE)
-S.line(372, eny, 340, eny, BLUE)
-S.flag(340, eny, "PB1", "l")
+S.res(420, rail, "R31", "100 kΩ", "v", eny - rail, "l", RED)
+S.line(420, eny, enx, eny, BLUE)
+S.dot(420, eny, BLUE)
+S.line(420, eny, 392, eny, BLUE)
+S.flag(392, eny, "PB1", "l")
 S.gnd(*u3[("b", 2)])
 # LX -> L3 -> VCC_3V3
 lx, ly = u3[("r", 3)]
 S.line(lx, ly, lx + 24, ly, BLUE)
 inductor(lx + 24, ly, "L3", "2.2 µH", 70)
 vx = lx + 24 + 70 + 24                                   # VCC_3V3 node x
-S.line(lx + 24 + 70, ly, 1100, ly, RED)
+S.line(lx + 24 + 70, ly, 1090, ly, RED)
 S.text(vx + 6, ly - 10, "VCC_3V3", 10, RED, "start", True)
 # FB divider
 fx, fy = u3[("r", 5)]
@@ -117,43 +141,58 @@ dx = vx + 40
 S.line(fx, fy, dx, fy, BLUE)
 S.dot(dx, fy, BLUE)
 S.dot(dx, ly, RED)
-S.res(dx, ly, "R29", "180 kΩ", "v", fy - ly, "r", RED)
-S.res(dx, fy, "R30", "39 kΩ", "v", 56, "r", BLUE)
+S.res(dx, ly, "R29", "453 kΩ", "v", fy - ly, "r", RED)
+S.res(dx, fy, "R30", "100 kΩ", "v", 56, "r", BLUE)
 S.gnd(dx, fy + 56)
 cfx = dx + 70
 S.dot(cfx, ly, RED)
 S.line(dx, fy, cfx, fy, BLUE)
 S.dot(cfx, fy, BLUE)
-S.cap(cfx, ly, "C38", "22 pF", fy - ly, "r", BLUE)
+S.cap(cfx, ly, "C38", "10 pF", fy - ly, "r", BLUE)
 S.text(dx - 14, fy - 6, "FB", 9.5, BLUE, "end", True)
 # output caps
-ox0 = cfx + 120
+ox0 = cfx + 90
 for i, (ref, val) in enumerate((("C23", "10 µF"), ("C16", "100 nF"))):
-    x = ox0 + i * 90
+    x = ox0 + i * 80
     S.dot(x, ly, RED)
     S.cap(x, ly, ref, val, 46, "r", RED)
     S.gnd(x, ly + 46)
-x = ox0 + 180
+x = ox0 + 160
 S.dot(x, ly, RED)
-S.reg("C39")
-tant_cap(x, ly, "C39", "100 µF/10 V tant.")
+tant_cap(x, ly, "C39", "100 µF polymer")
 S.gnd(x, ly + 44)
+# battery voltage sense (net-label style)
+bx, by0 = 940, 246
+S.text(bx - 60, by0 - 18, "Battery voltage sense", 10.5, INK, "start", True)
+S.flag(bx, by0, "SYS_PWR", "l")
+S.line(bx, by0, bx, by0 + 8, RED)
+S.res(bx, by0 + 8, "R33", "1.5 MΩ", "v", 40, "r", RED)
+nodey = by0 + 48
+S.dot(bx, nodey, ORG)
+S.res(bx, nodey, "R34", "1.0 MΩ", "v", 40, "r", ORG)
+S.gnd(bx, nodey + 40)
+S.line(bx, nodey, bx + 60, nodey, ORG)
+S.dot(bx + 60, nodey, ORG)
+S.cap(bx + 60, nodey, "C40", "100 nF", 40, "r", ORG)
+S.gnd(bx + 60, nodey + 40)
+S.line(bx + 60, nodey, bx + 90, nodey, ORG)
+S.flag(bx + 90, nodey, "VBAT_SENSE", "r")
 # notes
-pn = ["Vout = 0.6 V × (1 + R29/R30) = 0.6 × (1 + 180k/39k) = 3.37 V (VFB 0.6 V ±2 %, CE8503 datasheet V0.6).",
+pn = ["Vout = 0.6 V × (1 + R29/R30) = 0.6 × (1 + 453k/100k) = 3.32 V (VFB 0.6 V ±2 %); divider current ≈ 6 µA (was 15 µA with 180k/39k).",
       "VIN 2.0–6.5 V (abs.max 7.5 V): fresh alkaline 4×AA ≈ 6.0–6.4 V is OK with ~0.1 V margin; do NOT use 4×lithium AA (7.2 V).",
-      "R31 is RECOMMENDED (not in the original drawing): EN must not float and needs > 1.5 V; PB1 is high-Z at power-up.",
-      "Suggested: R29 = 453k, R30 = 100k (datasheet: R2 ≤ 100k) → 3.32 V and ~6 µA instead of ~15 µA divider current.",
-      "Missing in the original: reverse-polarity protection and battery-voltage sense (to a CH583 ADC pin)."]
+      "CHANGES vs the original drawing: R29/R30 453k/100k, C38 22→10 pF (keeps the datasheet's feed-forward zero, computed not tested),",
+      "C39 tantalum→polymer, + R31 EN pull-up, + Q1/R32 reverse-polarity protection, + R33/R34/C40 battery sense to a CH583 ADC pin.",
+      "Check on the prototype: buck stability with the polymer C39, Q1 Rds(on), and the ADC range for VBAT_SENSE (0.4 × VBAT = 2.56 V max)."]
 for i, t in enumerate(pn):
     S.text(40, 322 + i * 15, "• " + t, 10, "#444444")
 
 # ================================================================ M  MCU / peripherals
 section("M", 1200, 70, 776, 330, "M  MCU INTERFACE · SPI FLASH · SPI LCD   (pin numbers TBD — CH583 datasheet needed)")
-left_sig = [("PB1", "PB1"), ("SCK", "SCK"), ("DATA1", "DATA1"), ("DATA2", "DATA2"), ("DATA3", "DATA3"),
+left_sig = [("PB1", "PB1"), ("VBAT_ADC", "VBAT_SENSE"), ("SCK", "SCK"), ("DATA1", "DATA1"), ("DATA2", "DATA2"), ("DATA3", "DATA3"),
             ("DATA4", "DATA4"), ("DATA5", "DATA5")]
 right_sig = ["FLASH_SCK", "FLASH_MOSI", "FLASH_MISO", "FLASH_CS", "LCD_SCK", "LCD_MOSI", "LCD_DC", "LCD_CS", "LCD_RST"]
 S.reg("U1")
-ux, uy, uw, uh = 1330, 112, 190, 262
+ux, uy, uw, uh = 1330, 112, 190, 276
 S.rect(ux, uy, uw, uh, INK, "#fffde7", 4, 1.8)
 S.text(ux + uw / 2, uy + 20, "U1  CH583", 12, INK, "middle", True)
 S.text(ux + uw / 2, uy + 34, "WCH RISC-V BLE 5.3  ·  pins TBD", 8.5, GREY, "middle")
@@ -164,7 +203,7 @@ for i, (pin, net) in enumerate(left_sig):
     S.text(ux - 3, y - 3, "PA?", 7, GREY, "end")
     S.line(ux - 14, y, ux - 22, y, wc(net))
     S.flag(ux - 22, y, net, "l")
-y = uy + 50 + 7 * 22 + 8
+y = uy + 50 + len(left_sig) * 22 + 8
 S.line(ux - 14, y, ux, y, INK, 1.4); S.text(ux + 6, y + 3.5, "VCC", 9.5)
 S.line(ux - 14, y, ux - 22, y, RED); S.flag(ux - 22, y, "VCC_3V3", "l")
 y += 24
@@ -342,7 +381,7 @@ S.rect(24, 1470, 1500, 76, "#9e9e9e", "#fafafa", 6, 1.4)
 S.text(36, 1488, "NOTES  ·  備註", 11.5, INK, "start", True)
 nts = ["AFE netlist is the IC factory's SDH260018 V1.0-2 verbatim (round-trip checked), only renumbered. Factory refdes ↔ ours: docs/FACTORY_V1_TO_V2.md.",
        "DEVIATIONS from factory: C304 / C404 / C504 are 0.1 µF here (factory file has 10 µF on the second VDD cap of U3/U4/U5 — to be confirmed); R902 = 0.1 %.",
-       "OPEN: CH583 pins, SPI Flash / LCD part numbers, reverse-polarity protection, battery sense, EN pull-up R31, AI1/AI7 left floating (confirm with SDIC)."]
+       "OPEN: CH583 pins (incl. VBAT_ADC), SPI Flash / LCD part numbers, ADC range for VBAT_SENSE, AI1/AI7 left floating (confirm with SDIC)."]
 for i, t in enumerate(nts):
     S.text(36, 1506 + i * 15, t, 9.2, "#444444")
 tbx, tby, tbw, tbh = 1540, 1470, 436, 76
@@ -397,7 +436,7 @@ def write_bom():
     groups = {}
     for ref, p in D.PARTS.items():
         groups.setdefault((p["cat"], p["value"], p["pkg"], p["desc"], p["notes"]), []).append(ref)
-    order = ["IC", "Passive", "Connector"]
+    order = ["IC", "Discrete", "Passive", "Connector"]
     rows = []
     for key, refs in groups.items():
         refs.sort(key=refkey)

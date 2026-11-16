@@ -77,28 +77,38 @@ add("NTC1", "NTC 10 kΩ 1%", "0603", "Cold-junction sensor (shared by all 5 chan
     "Factory footprint is LED-0603 (wrong). Place at the isothermal block centre.", pins=["1", "2"], src="factory NTC1")
 
 # ---- power (user's own schematic, reference/power_section_user_schematic.png) ----
-add("BT1", "4 x AA holder", "TBD", "Battery pack, 6.0 V fresh / 3.6 V empty (SYS_PWR)", "Connector",
-    "No reverse-polarity protection in the user's schematic", pins=["1", "2"])
+add("BT1", "4 x AA holder", "TBD", "Battery pack, 6.0 V fresh / 3.6 V empty (net BAT_IN, before Q1)", "Connector",
+    "Alkaline only: 4 x lithium AA = 7.2 V exceeds the CE8503 6.5 V limit", pins=["1", "2"])
+add("Q1", "P-MOSFET (e.g. AO3401A)", "SOT-23", "Reverse-polarity protection, series high-side switch", "Discrete",
+    "Drain = battery side, source = load side, gate to GND via R32. Need Vds >= 20 V, Vgs(max) >= 12 V, Rds(on) < 100 mOhm "
+    "@ -4.5 V. SOT-23 pinout assumed 1 G / 2 S / 3 D (AO3401A): verify for the chosen part.", pins=["1", "2", "3"])
+add("R32", "100 kΩ", "0603", "Q1 gate pull-down to GND", "Passive", "Vgs = -(battery voltage) when conducting (max -6.4 V)", pins=["1", "2"])
+add("R33", "1.5 MΩ 1%", "0603", "Battery sense divider, top", "Passive",
+    "Ratio 0.4: 6.4 V -> 2.56 V. RE-CHECK against the CH583 ADC reference/range (WCH datasheet)", pins=["1", "2"])
+add("R34", "1.0 MΩ 1%", "0603", "Battery sense divider, bottom", "Passive", "Divider drain 6.4 V / 2.5 MΩ = 2.6 uA", pins=["1", "2"])
+add("C40", "100 nF", "0603", "Battery sense filter / ADC sample reservoir", "Passive", "", pins=["1", "2"])
 add("U3", "CE8503AM", "SOT-23-5", "800 mA 1.5 MHz synchronous buck, VIN 2-6.5 V (Chipower)", "IC",
-    "'M' pinout: 1 EN, 2 VSS, 3 SW, 4 VIN, 5 FB. Vout = 0.6 x (1+R29/R30) = 3.37 V", pins=["1", "2", "3", "4", "5"])
+    "'M' pinout: 1 EN, 2 VSS, 3 SW, 4 VIN, 5 FB. Vout = 0.6 x (1+R29/R30) = 3.32 V", pins=["1", "2", "3", "4", "5"])
 add("C22", "10 µF", "TBD", "U3 VIN bulk", "Passive", "From user's schematic", pins=["1", "2"])
 add("C27", "1 µF", "TBD", "U3 VIN HF", "Passive", "From user's schematic", pins=["1", "2"])
 add("L3", "2.2 µH", "TBD", "Buck inductor (datasheet 1-4.7 uH)", "Passive", "From user's schematic", pins=["1", "2"])
-add("R29", "180 kΩ 1%", "TBD", "FB divider, top", "Passive",
-    "Recommended: 453 k (with R30 = 100 k) -> 3.32 V, 6 uA (datasheet: R2 <= 100 k)", pins=["1", "2"])
-add("R30", "39 kΩ 1%", "TBD", "FB divider, bottom", "Passive", "Recommended: 100 k", pins=["1", "2"])
-add("C38", "22 pF", "TBD", "FB feed-forward (datasheet: optional)", "Passive", "From user's schematic", pins=["1", "2"])
+add("R29", "453 kΩ 1%", "0603", "FB divider, top", "Passive",
+    "Changed from 180 k: Vout = 0.6 x (1 + 453/100) = 3.32 V, divider current 6 uA (was 15 uA). Datasheet: R2 <= 100 k", pins=["1", "2"])
+add("R30", "100 kΩ 1%", "0603", "FB divider, bottom", "Passive", "Changed from 39 k", pins=["1", "2"])
+add("C38", "10 pF", "0603", "FB feed-forward (datasheet: optional)", "Passive",
+    "Changed from 22 pF to keep the datasheet example's feed-forward zero (200 k x 22 pF = 4.4 us; 453 k x 10 pF = 4.5 us). "
+    "Computed, not tested: check load-step/ripple on the prototype.", pins=["1", "2"])
 add("C23", "10 µF", "TBD", "VCC_3V3 output cap", "Passive", "From user's schematic", pins=["1", "2"])
 add("C16", "100 nF", "TBD", "VCC_3V3 HF cap", "Passive", "From user's schematic", pins=["1", "2"])
-add("C39", "100 µF / 10 V tantalum", "TBD", "VCC_3V3 bulk", "Passive",
-    "Tantalum + battery inrush: consider polymer/ceramic", pins=["1", "2"])
-add("R31", "100 kΩ", "TBD", "EN pull-up to SYS_PWR - RECOMMENDED, not in the user's schematic", "Passive",
-    "CE8503 EN must not float and must be > 1.5 V to start; PB1 is high-Z at power-up. Confirm.", pins=["1", "2"])
+add("C39", "100 µF / 10 V polymer", "TBD", "VCC_3V3 bulk (low-ESR polymer aluminium)", "Passive",
+    "Changed from tantalum (failure mode with battery inrush). Check that the buck stays stable with the lower ESR.", pins=["1", "2"])
+add("R31", "100 kΩ", "0603", "U3 EN pull-up to SYS_PWR (added)", "Passive",
+    "CE8503 EN must not float and must be > 1.5 V to start; PB1 is high-Z at power-up. MCU pulls PB1 low to shut the buck down.", pins=["1", "2"])
 
 # ---- MCU / peripherals (pin numbers NOT known yet) ----
 add("U1", "CH583", "TBD (QFN48/QFN28)", "WCH RISC-V BLE 5.3 MCU", "IC",
     "PIN NUMBERS TBD - need WCH datasheet. Signals listed below are required connections.", tbd=True,
-    pins=["VCC", "GND", "PB1", "SCK", "DATA1", "DATA2", "DATA3", "DATA4", "DATA5", "FLASH_SCK", "FLASH_MOSI",
+    pins=["VCC", "GND", "PB1", "VBAT_ADC", "SCK", "DATA1", "DATA2", "DATA3", "DATA4", "DATA5", "FLASH_SCK", "FLASH_MOSI",
           "FLASH_MISO", "FLASH_CS", "LCD_SCK", "LCD_MOSI", "LCD_DC", "LCD_CS", "LCD_RST"])
 add("U2", "SPI Flash (TBD)", "SOIC-8 (typical)", "Data-logging flash on SPI0", "IC",
     "Typical 25-series SOIC-8 pinout assumed: 1 CS, 2 SO, 3 WP, 4 GND, 5 SI, 6 SCK, 7 HOLD, 8 VCC. Verify for the chosen part.",
@@ -136,8 +146,11 @@ conn("VCC_3V3", "U1.VCC")
 conn("GND", "U1.GND")
 
 # power section (as drawn by the user)
-conn("SYS_PWR", "BT1.1", "C22.1", "C27.1", "U3.4", "R31.1")
-conn("GND", "BT1.2", "C22.2", "C27.2", "U3.2", "R30.2", "C23.2", "C16.2", "C39.2")
+conn("BAT_IN", "BT1.1", "Q1.3")
+conn("SYS_PWR", "Q1.2", "C22.1", "C27.1", "U3.4", "R31.1", "R33.1")
+conn("PG", "Q1.1", "R32.1")
+conn("VBAT_SENSE", "R33.2", "R34.1", "C40.1", "U1.VBAT_ADC")
+conn("GND", "BT1.2", "C22.2", "C27.2", "U3.2", "R30.2", "C23.2", "C16.2", "C39.2", "R32.2", "R34.2", "C40.2")
 conn("PB1", "U3.1", "R31.2", "U1.PB1")
 conn("LX", "U3.3", "L3.1")
 conn("VCC_3V3", "L3.2", "R29.1", "C38.1", "C23.1", "C16.1", "C39.1")

@@ -1,6 +1,6 @@
 # 5-Channel K-Type BLE Data Logger (CH583 + 5×SD6500)
 
-狀態：**線路圖草稿 Rev A 已完成**（AFE 採用 IC 工廠 SDH260018 V1.0-2）；CH583 / Flash / LCD 腳號 TBD。
+狀態：**線路圖草稿 Rev A 已完成**（AFE 採用 IC 工廠 SDH260018 V1.0-2；電源區已加入防反接、EN 上拉、電池偵測、453k/100k 分壓）；CH583 / Flash / LCD 腳號 TBD。
 
 | 路徑 | 內容 |
 |---|---|

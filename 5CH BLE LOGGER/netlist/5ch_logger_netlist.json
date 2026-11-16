@@ -35,6 +35,9 @@
    "C23.2",
    "C16.2",
    "C39.2",
+   "R32.2",
+   "R34.2",
+   "C40.2",
    "U2.4",
    "C801.2",
    "LCD1.GND"
@@ -212,12 +215,27 @@
    "U15.9",
    "U1.SCK"
   ],
-  "SYS_PWR": [
+  "BAT_IN": [
    "BT1.1",
+   "Q1.3"
+  ],
+  "SYS_PWR": [
+   "Q1.2",
    "C22.1",
    "C27.1",
    "U3.4",
-   "R31.1"
+   "R31.1",
+   "R33.1"
+  ],
+  "PG": [
+   "Q1.1",
+   "R32.1"
+  ],
+  "VBAT_SENSE": [
+   "R33.2",
+   "R34.1",
+   "C40.1",
+   "U1.VBAT_ADC"
   ],
   "PB1": [
    "U3.1",
@@ -965,9 +983,75 @@
   "BT1": {
    "value": "4 x AA holder",
    "pkg": "TBD",
-   "desc": "Battery pack, 6.0 V fresh / 3.6 V empty (SYS_PWR)",
+   "desc": "Battery pack, 6.0 V fresh / 3.6 V empty (net BAT_IN, before Q1)",
    "cat": "Connector",
-   "notes": "No reverse-polarity protection in the user's schematic",
+   "notes": "Alkaline only: 4 x lithium AA = 7.2 V exceeds the CE8503 6.5 V limit",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "Q1": {
+   "value": "P-MOSFET (e.g. AO3401A)",
+   "pkg": "SOT-23",
+   "desc": "Reverse-polarity protection, series high-side switch",
+   "cat": "Discrete",
+   "notes": "Drain = battery side, source = load side, gate to GND via R32. Need Vds >= 20 V, Vgs(max) >= 12 V, Rds(on) < 100 mOhm @ -4.5 V. SOT-23 pinout assumed 1 G / 2 S / 3 D (AO3401A): verify for the chosen part.",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2",
+    "3"
+   ],
+   "src": ""
+  },
+  "R32": {
+   "value": "100 kΩ",
+   "pkg": "0603",
+   "desc": "Q1 gate pull-down to GND",
+   "cat": "Passive",
+   "notes": "Vgs = -(battery voltage) when conducting (max -6.4 V)",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "R33": {
+   "value": "1.5 MΩ 1%",
+   "pkg": "0603",
+   "desc": "Battery sense divider, top",
+   "cat": "Passive",
+   "notes": "Ratio 0.4: 6.4 V -> 2.56 V. RE-CHECK against the CH583 ADC reference/range (WCH datasheet)",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "R34": {
+   "value": "1.0 MΩ 1%",
+   "pkg": "0603",
+   "desc": "Battery sense divider, bottom",
+   "cat": "Passive",
+   "notes": "Divider drain 6.4 V / 2.5 MΩ = 2.6 uA",
+   "tbd": false,
+   "pins": [
+    "1",
+    "2"
+   ],
+   "src": ""
+  },
+  "C40": {
+   "value": "100 nF",
+   "pkg": "0603",
+   "desc": "Battery sense filter / ADC sample reservoir",
+   "cat": "Passive",
+   "notes": "",
    "tbd": false,
    "pins": [
     "1",
@@ -980,7 +1064,7 @@
    "pkg": "SOT-23-5",
    "desc": "800 mA 1.5 MHz synchronous buck, VIN 2-6.5 V (Chipower)",
    "cat": "IC",
-   "notes": "'M' pinout: 1 EN, 2 VSS, 3 SW, 4 VIN, 5 FB. Vout = 0.6 x (1+R29/R30) = 3.37 V",
+   "notes": "'M' pinout: 1 EN, 2 VSS, 3 SW, 4 VIN, 5 FB. Vout = 0.6 x (1+R29/R30) = 3.32 V",
    "tbd": false,
    "pins": [
     "1",
@@ -1031,11 +1115,11 @@
    "src": ""
   },
   "R29": {
-   "value": "180 kΩ 1%",
-   "pkg": "TBD",
+   "value": "453 kΩ 1%",
+   "pkg": "0603",
    "desc": "FB divider, top",
    "cat": "Passive",
-   "notes": "Recommended: 453 k (with R30 = 100 k) -> 3.32 V, 6 uA (datasheet: R2 <= 100 k)",
+   "notes": "Changed from 180 k: Vout = 0.6 x (1 + 453/100) = 3.32 V, divider current 6 uA (was 15 uA). Datasheet: R2 <= 100 k",
    "tbd": false,
    "pins": [
     "1",
@@ -1044,11 +1128,11 @@
    "src": ""
   },
   "R30": {
-   "value": "39 kΩ 1%",
-   "pkg": "TBD",
+   "value": "100 kΩ 1%",
+   "pkg": "0603",
    "desc": "FB divider, bottom",
    "cat": "Passive",
-   "notes": "Recommended: 100 k",
+   "notes": "Changed from 39 k",
    "tbd": false,
    "pins": [
     "1",
@@ -1057,11 +1141,11 @@
    "src": ""
   },
   "C38": {
-   "value": "22 pF",
-   "pkg": "TBD",
+   "value": "10 pF",
+   "pkg": "0603",
    "desc": "FB feed-forward (datasheet: optional)",
    "cat": "Passive",
-   "notes": "From user's schematic",
+   "notes": "Changed from 22 pF to keep the datasheet example's feed-forward zero (200 k x 22 pF = 4.4 us; 453 k x 10 pF = 4.5 us). Computed, not tested: check load-step/ripple on the prototype.",
    "tbd": false,
    "pins": [
     "1",
@@ -1096,11 +1180,11 @@
    "src": ""
   },
   "C39": {
-   "value": "100 µF / 10 V tantalum",
+   "value": "100 µF / 10 V polymer",
    "pkg": "TBD",
-   "desc": "VCC_3V3 bulk",
+   "desc": "VCC_3V3 bulk (low-ESR polymer aluminium)",
    "cat": "Passive",
-   "notes": "Tantalum + battery inrush: consider polymer/ceramic",
+   "notes": "Changed from tantalum (failure mode with battery inrush). Check that the buck stays stable with the lower ESR.",
    "tbd": false,
    "pins": [
     "1",
@@ -1110,10 +1194,10 @@
   },
   "R31": {
    "value": "100 kΩ",
-   "pkg": "TBD",
-   "desc": "EN pull-up to SYS_PWR - RECOMMENDED, not in the user's schematic",
+   "pkg": "0603",
+   "desc": "U3 EN pull-up to SYS_PWR (added)",
    "cat": "Passive",
-   "notes": "CE8503 EN must not float and must be > 1.5 V to start; PB1 is high-Z at power-up. Confirm.",
+   "notes": "CE8503 EN must not float and must be > 1.5 V to start; PB1 is high-Z at power-up. MCU pulls PB1 low to shut the buck down.",
    "tbd": false,
    "pins": [
     "1",
@@ -1132,6 +1216,7 @@
     "VCC",
     "GND",
     "PB1",
+    "VBAT_ADC",
     "SCK",
     "DATA1",
     "DATA2",
