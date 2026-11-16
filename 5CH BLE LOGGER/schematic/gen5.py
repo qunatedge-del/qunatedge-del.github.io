@@ -20,10 +20,10 @@ sh.POWER_NETS |= {"SYS_PWR", "VCC_3V3", "BAT_IN"} | {"AVDDR%d" % k for k in rang
 sh.ANALOG_NETS |= {"VBAT_SENSE"} | {"ACM%d" % k for k in range(1, 6)} | {"AI%d0" % k for k in range(1, 6)} | {"AI11", "AI17"}
 wc = sh.netcol
 
-W, H = 2000, 1560
+W, H = 2000, 2000
 S = Sheet(W, H)
 COL = {"P": ("#ffebee", "#c62828"), "M": ("#e8eaf6", "#3949ab"), "A": ("#fff3e0", "#ef6c00"),
-       "N": ("#fff8e1", "#f9a825")}
+       "N": ("#fff8e1", "#f9a825"), "C": ("#e0f2f1", "#00796b")}
 
 
 def section(key, x, y, w, h, title):
@@ -33,8 +33,8 @@ def section(key, x, y, w, h, title):
 
 # ---------------------------------------------------------------- header
 S.text(24, 40, "%s  ·  五通道 K 型熱電偶 BLE 記錄器" % D.PROJECT, 26, INK, "start", True)
-S.text(24, 60, "CH583 + 5 x SD6500 (SDIC) + CE8503 buck  ·  AFE = IC-factory SDH260018 V1.0-2 (renumbered)  ·  "
-               "CH583 / Flash / LCD pin numbers TBD", 12.5, GREY)
+S.text(24, 60, "CH583M + 5 x SD6500 (SDIC) + CE8503 buck  ·  AFE = IC-factory SDH260018 V1.0-2 (renumbered)  ·  "
+               "CH583M QFN48 pins per WCH datasheet V1.9  ·  Flash / LCD parts TBD", 12.5, GREY)
 for i, (name, c) in enumerate((("Power", RED), ("GND", GND_C), ("Signal", BLUE), ("Analog", ORG))):
     S.line(1340 + i * 150, 38, 1376 + i * 150, 38, c, 3.5)
     S.text(1384 + i * 150, 43, name, 12, INK)
@@ -166,7 +166,7 @@ bx, by0 = 940, 246
 S.text(bx - 60, by0 - 18, "Battery voltage sense", 10.5, INK, "start", True)
 S.flag(bx, by0, "SYS_PWR", "l")
 S.line(bx, by0, bx, by0 + 8, RED)
-S.res(bx, by0 + 8, "R33", "1.5 MΩ", "v", 40, "r", RED)
+S.res(bx, by0 + 8, "R33", "2.4 MΩ", "v", 40, "r", RED)
 nodey = by0 + 48
 S.dot(bx, nodey, ORG)
 S.res(bx, nodey, "R34", "1.0 MΩ", "v", 40, "r", ORG)
@@ -182,40 +182,28 @@ pn = ["Vout = 0.6 V × (1 + R29/R30) = 0.6 × (1 + 453k/100k) = 3.32 V (VFB 0.6 
       "VIN 2.0–6.5 V (abs.max 7.5 V): fresh alkaline 4×AA ≈ 6.0–6.4 V is OK with ~0.1 V margin; do NOT use 4×lithium AA (7.2 V).",
       "CHANGES vs the original drawing: R29/R30 453k/100k, C38 22→10 pF (keeps the datasheet's feed-forward zero, computed not tested),",
       "C39 tantalum→polymer, + R31 EN pull-up, + Q1/R32 reverse-polarity protection, + R33/R34/C40 battery sense to a CH583 ADC pin.",
-      "Check on the prototype: buck stability with the polymer C39, Q1 Rds(on), and the ADC range for VBAT_SENSE (0.4 × VBAT = 2.56 V max)."]
+      "VBAT_SENSE = 0.294 × VBAT (6.4 V → 1.88 V, 3.6 V → 1.06 V): inside the CH583 ADC 0 dB range (recommended 0–2 V, Vref 1.05 V). Check buck stability with the polymer C39."]
 for i, t in enumerate(pn):
     S.text(40, 322 + i * 15, "• " + t, 10, "#444444")
 
 # ================================================================ M  MCU / peripherals
-section("M", 1200, 70, 776, 330, "M  MCU INTERFACE · SPI FLASH · SPI LCD   (pin numbers TBD — CH583 datasheet needed)")
-left_sig = [("PB1", "PB1"), ("VBAT_ADC", "VBAT_SENSE"), ("SCK", "SCK"), ("DATA1", "DATA1"), ("DATA2", "DATA2"), ("DATA3", "DATA3"),
-            ("DATA4", "DATA4"), ("DATA5", "DATA5")]
-right_sig = ["FLASH_SCK", "FLASH_MOSI", "FLASH_MISO", "FLASH_CS", "LCD_SCK", "LCD_MOSI", "LCD_DC", "LCD_CS", "LCD_RST"]
+section("M", 1200, 70, 776, 330, "M  MCU GPIO (U1A) · SPI FLASH · SPI LCD   (CH583M QFN48 pins: WCH datasheet V1.9; Flash / LCD parts TBD)")
 S.reg("U1")
-ux, uy, uw, uh = 1330, 112, 190, 276
-S.rect(ux, uy, uw, uh, INK, "#fffde7", 4, 1.8)
-S.text(ux + uw / 2, uy + 20, "U1  CH583", 12, INK, "middle", True)
-S.text(ux + uw / 2, uy + 34, "WCH RISC-V BLE 5.3  ·  pins TBD", 8.5, GREY, "middle")
-for i, (pin, net) in enumerate(left_sig):
-    y = uy + 50 + i * 22
-    S.line(ux - 14, y, ux, y, INK, 1.4)
-    S.text(ux + 6, y + 3.5, pin, 9.5)
-    S.text(ux - 3, y - 3, "PA?", 7, GREY, "end")
-    S.line(ux - 14, y, ux - 22, y, wc(net))
-    S.flag(ux - 22, y, net, "l")
-y = uy + 50 + len(left_sig) * 22 + 8
-S.line(ux - 14, y, ux, y, INK, 1.4); S.text(ux + 6, y + 3.5, "VCC", 9.5)
-S.line(ux - 14, y, ux - 22, y, RED); S.flag(ux - 22, y, "VCC_3V3", "l")
-y += 24
-S.line(ux - 14, y, ux, y, INK, 1.4); S.text(ux + 6, y + 3.5, "GND", 9.5)
-S.gnd(ux - 14, y)
-for i, net in enumerate(right_sig):
-    y = uy + 50 + i * 22
-    S.line(ux + uw, y, ux + uw + 14, y, INK, 1.4)
-    S.text(ux + uw - 6, y + 3.5, net, 9, INK, "end")
-    S.text(ux + uw + 3, y - 3, "P?", 7, GREY, "start")
-    S.line(ux + uw + 14, y, ux + uw + 22, y, BLUE)
-    S.flag(ux + uw + 22, y, net, "r")
+ux, uy, uw, uh = 1340, 112, 180, 272
+ua_left = [("24", "PB0", "SCK"), ("23", "PB1", "PB1"), ("22", "PB2", "DATA1"), ("21", "PB3", "DATA2"),
+           ("20", "PB4", "DATA3"), ("19", "PB5", "DATA4"), ("18", "PB6", "DATA5"), ("36", "PA4", "VBAT_SENSE")]
+ua_right = [("46", "PA12", "FLASH_CS"), ("45", "PA13", "FLASH_SCK"), ("44", "PA14", "FLASH_MOSI"), ("43", "PA15", "FLASH_MISO"),
+            ("39", "PA0", "LCD_SCK"), ("40", "PA1", "LCD_MOSI"), ("41", "PA2", "LCD_DC"), ("42", "PA3", "LCD_CS"),
+            ("8", "PB8", "LCD_RST")]
+pa = S.ic(ux, uy, uw, uh, "U1", "CH583M  (QFN48)  ·  unit A: GPIO",
+          left=[(n, lab, 44 + i * 28) for i, (n, lab, _) in enumerate(ua_left)],
+          right=[(n, lab, 44 + i * 25) for i, (n, lab, _) in enumerate(ua_right)], inside=True)
+for n, lab, net in ua_left:
+    x, y = pa[("l", n)]
+    S.line(x, y, x - 8, y, wc(net)); S.flag(x - 8, y, net, "l")
+for n, lab, net in ua_right:
+    x, y = pa[("r", n)]
+    S.line(x, y, x + 8, y, BLUE); S.flag(x + 8, y, net, "r")
 # SPI flash U2
 f = S.ic(1660, 128, 124, 126, "U2", "SPI Flash (TBD)",
          left=[(8, "VCC", 20), (3, "WP", 44), (7, "HOLD", 68)],
@@ -376,15 +364,99 @@ for t in nt:
         _yy += 15
     _yy += 4
 
+# ================================================================ C  CH583M support (unit B)
+section("C", 24, 1470, 1952, 420, "C  CH583M SUPPORT (U1B)  ·  power pins, DC-DC, crystals, antenna, reset / boot, SWD, UART1   (per WCH datasheet V1.9 + EVT schematic)")
+bx0, by1, bw, bh = 870, 1512, 170, 340
+lb = [("3", "VDD33/VIO33", 40, "VCC_3V3"), ("1", "VDCID", 72, "VDCID"), ("35", "VDCIA", 104, "VDCID"),
+      ("2", "VSW", 136, "VSW"), ("33", "VINTA", 168, "VINTA"), ("0", "EPAD (GND)", 220, None)]
+rb = [("34", "ANT", 40, "ANT"), ("32", "X32MI", 66, "X32MI"), ("31", "X32MO", 92, "X32MO"), ("48", "PA10/X32KI", 124, "X32KI"),
+      ("47", "PA11/X32KO", 150, "X32KO"), ("25", "PB23/RST#", 186, "RST_N"), ("26", "PB22/BOOT", 212, "BOOT"),
+      ("12", "PB14/SWDIO", 248, "SWDIO"), ("11", "PB15/SWDCK", 274, "SWDCK"), ("5", "PA8/RXD1", 306, "UART1_RX"),
+      ("6", "PA9/TXD1", 330, "UART1_TX")]
+pb = S.ic(bx0, by1, bw, bh, "U1", "CH583M  (QFN48)  ·  unit B: power / RF / debug",
+          left=[(n, lab, o) for n, lab, o, _ in lb], right=[(n, lab, o) for n, lab, o, _ in rb])
+for n, lab, o, net in lb:
+    x, y = pb[("l", n)]
+    if net is None:
+        S.gnd(x, y)
+    else:
+        S.line(x, y, x - 8, y, wc(net)); S.flag(x - 8, y, net, "l")
+for n, lab, o, net in rb:
+    x, y = pb[("r", n)]
+    S.line(x, y, x + 8, y, wc(net)); S.flag(x + 8, y, net, "r")
+# decoupling (net-label style)
+S.text(60, 1530, "Decoupling at the pins (no vias between cap and pin)", 10.5, INK, "start", True)
+for i, (ref, val, net) in enumerate((("C41", "2.2 µF", "VCC_3V3"), ("C42", "2.2 µF", "VDCID"), ("C43", "100 nF", "VDCID"), ("C44", "1 µF", "VINTA"))):
+    x = 100 + i * 100
+    S.text(x, 1566, net, 8.5, wc(net), "middle", True)
+    S.line(x, 1570, x, 1580, wc(net))
+    S.cap(x, 1580, ref, val, 46, "r", wc(net))
+    S.gnd(x, 1626)
+S.text(60, 1660, "VDDx pins: C41 on VDD33/VIO33 (pin 3); C42 on VDCID; C43 on VDCIA (tied to VDCID); C44 on VINTA.", 9, GREY)
+# DC-DC inductor
+S.text(60, 1700, "On-chip DC-DC inductor (VSW → VDCID)", 10.5, INK, "start", True)
+S.flag(70, 1740, "VSW", "r")
+S.line(101, 1740, 140, 1740, BLUE)
+inductor(140, 1740, "L1", "10 µH", 70)
+S.line(210, 1740, 240, 1740, RED)
+S.flag(240, 1740, "VDCID", "r")
+S.text(60, 1768, "L1 fitted so the DC-DC can be enabled in software; with DC-DC off it is just a DC path VSW → VDCID.", 9, GREY)
+# crystals
+cx1 = 1330
+S.text(1250, 1530, "Clocks", 10.5, INK, "start", True)
+S.flag(cx1 - 14, 1560, "X32MI", "l"); S.line(cx1 - 14, 1560, cx1, 1560, BLUE)
+S.xtal(cx1, 1560, "Y1", "32 MHz", 60, BLUE, "r")
+S.line(cx1, 1620, cx1 - 14, 1620, BLUE); S.flag(cx1 - 14, 1620, "X32MO", "l")
+cx2 = 1500
+S.flag(cx2 - 14, 1560, "X32KI", "l"); S.line(cx2 - 14, 1560, cx2, 1560, BLUE)
+S.xtal(cx2, 1560, "Y2", "32.768 kHz", 60, BLUE, "r")
+S.line(cx2, 1620, cx2 - 14, 1620, BLUE); S.flag(cx2 - 14, 1620, "X32KO", "l")
+S.text(1250, 1650, "32 MHz: internal load caps (10–24 pF), none external (as the WCH EVT).", 9, GREY)
+S.text(1250, 1664, "32.768 kHz: optional, for an accurate RTC / BLE sleep clock.", 9, GREY)
+# antenna
+S.reg("E1")
+S.text(1700, 1530, "Antenna", 10.5, INK, "start", True)
+S.flag(1690, 1565, "ANT", "l"); S.line(1690, 1565, 1706, 1565, BLUE)
+S.rect(1706, 1545, 150, 76, INK, "#fffde7", 3, 1.6)
+S.text(1781, 1578, "E1  2.4 GHz", 10.5, INK, "middle", True)
+S.text(1781, 1592, "PCB trace antenna", 9, INK, "middle")
+S.text(1781, 1606, "(WCH ANT-F-2.4G-FR4)", 8.5, GREY, "middle")
+S.line(1781, 1621, 1781, 1631, GND_C); S.gnd(1781, 1631)
+S.text(1714, 1561, "1", 8, GREY)
+# reset / boot
+S.text(1250, 1700, "Reset / download", 10.5, INK, "start", True)
+for x, ref, net, lab in ((1290, "SW1", "RST_N", "RESET (PB23)"), (1440, "SW2", "BOOT", "BOOT (PB22)")):
+    S.flag(x, 1730, net, "r"); S.line(x, 1730, x, 1750, BLUE)
+    S.sw(x, 1750, ref, 56)
+    S.gnd(x, 1806)
+    S.text(x + 14, 1792, lab, 8.5, INK)
+# SWD and UART1 headers
+for hx, ref, ttl, pins4 in ((1560, "P1", "P1  SWD", [("1", "3V3", "VCC_3V3"), ("2", "SWDIO", "SWDIO"), ("3", "SWDCK", "SWDCK"), ("4", "GND", None)]),
+                            (1790, "P2", "P2  UART1", [("1", "3V3", "VCC_3V3"), ("2", "RX", "UART1_RX"), ("3", "TX", "UART1_TX"), ("4", "GND", None)])):
+    S.reg(ref)
+    S.rect(hx, 1710, 84, 92, INK, "#fffde7", 3, 1.6)
+    S.text(hx + 42, 1728, ttl, 10.5, INK, "middle", True)
+    for i, (n, lab, net) in enumerate(pins4):
+        yy = 1746 + i * 16
+        S.line(hx + 84, yy, hx + 98, yy, wc(net) if net else GND_C)
+        S.text(hx + 8, yy + 3.4, "%s %s" % (n, lab), 9, INK)
+        if net:
+            S.flag(hx + 98, yy, net, "r")
+        else:
+            S.gnd(hx + 98, yy)
+S.text(60, 1812, "Unused GPIO (no connect, free for expansion): PA5, PA6, PA7, PB7, PB9–PB13, PB16–PB21.", 9, GREY)
+S.text(60, 1826, "ADC: PA4 = AIN0, 12-bit, Vref 1.05 V, 0 dB, input buffer ON (3.4 MΩ source). DATA1–5 = PB2–PB6 (one port read samples all five).", 9, GREY)
+S.text(60, 1840, "VIO ≤ VIO33 + 0.4 V (abs. max): VBAT_SENSE may precede VCC_3V3 for ~ms at battery insertion; current is < 1 µA through 2.4 MΩ.", 9, GREY)
+
 # ================================================================ notes + title block
-S.rect(24, 1470, 1500, 76, "#9e9e9e", "#fafafa", 6, 1.4)
-S.text(36, 1488, "NOTES  ·  備註", 11.5, INK, "start", True)
+S.rect(24, 1910, 1500, 76, "#9e9e9e", "#fafafa", 6, 1.4)
+S.text(36, 1928, "NOTES  ·  備註", 11.5, INK, "start", True)
 nts = ["AFE netlist is the IC factory's SDH260018 V1.0-2 verbatim (round-trip checked), only renumbered. Factory refdes ↔ ours: docs/FACTORY_V1_TO_V2.md.",
        "DEVIATIONS from factory: C304 / C404 / C504 are 0.1 µF here (factory file has 10 µF on the second VDD cap of U3/U4/U5 — to be confirmed); R902 = 0.1 %.",
-       "OPEN: CH583 pins (incl. VBAT_ADC), SPI Flash / LCD part numbers, ADC range for VBAT_SENSE, AI1/AI7 left floating (confirm with SDIC)."]
+       "OPEN: SPI Flash / LCD part numbers, Y1/Y2 crystal specs and antenna tuning (WCH EVT BOM / PCB notes), AI1/AI7 of U12–U15 left floating (confirm with SDIC)."]
 for i, t in enumerate(nts):
-    S.text(36, 1506 + i * 15, t, 9.2, "#444444")
-tbx, tby, tbw, tbh = 1540, 1470, 436, 76
+    S.text(36, 1946 + i * 15, t, 9.2, "#444444")
+tbx, tby, tbw, tbh = 1540, 1910, 436, 76
 S.rect(tbx, tby, tbw, tbh, INK, "#ffffff", 0, 2)
 S.line(tbx, tby + 26, tbx + tbw, tby + 26, INK, 1)
 S.line(tbx, tby + 48, tbx + tbw, tby + 48, INK, 1)
@@ -436,7 +508,8 @@ def write_bom():
     groups = {}
     for ref, p in D.PARTS.items():
         groups.setdefault((p["cat"], p["value"], p["pkg"], p["desc"], p["notes"]), []).append(ref)
-    order = ["IC", "Discrete", "Passive", "Connector"]
+    order = ["IC", "Discrete", "Passive", "Crystal", "Connector", "Electromech"]
+    order += sorted({v["cat"] for v in D.PARTS.values()} - set(order))
     rows = []
     for key, refs in groups.items():
         refs.sort(key=refkey)

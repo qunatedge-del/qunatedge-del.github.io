@@ -1,5 +1,5 @@
 ﻿Item,Ref Des,Qty,Value,Package,Description,Category,Notes
-1,U1,1,CH583,TBD (QFN48/QFN28),WCH RISC-V BLE 5.3 MCU,IC,PIN NUMBERS TBD - need WCH datasheet. Signals listed below are required connections.
+1,U1,1,CH583M,QFN48 5x5,"WCH RISC-V BLE 5.3 MCU (448 KB flash, 30 KB RAM, 2 SPI, 14-ch 12-bit ADC)",IC,Pin numbers from the WCH CH583 datasheet V1.9 section 1.2. PB1 exists only on QFN48 (not QFN28). EPAD = GND.
 2,U2,1,SPI Flash (TBD),SOIC-8 (typical),Data-logging flash on SPI0,IC,"Typical 25-series SOIC-8 pinout assumed: 1 CS, 2 SO, 3 WP, 4 GND, 5 SI, 6 SCK, 7 HOLD, 8 VCC. Verify for the chosen part."
 3,U3,1,CE8503AM,SOT-23-5,"800 mA 1.5 MHz synchronous buck, VIN 2-6.5 V (Chipower)",IC,"'M' pinout: 1 EN, 2 VSS, 3 SW, 4 VIN, 5 FB. Vout = 0.6 x (1+R29/R30) = 3.32 V"
 4,U11,1,SD6500,MSOP-10,"24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)",IC,Channel 1
@@ -15,53 +15,65 @@
 14,C38,1,10 pF,0603,FB feed-forward (datasheet: optional),Passive,"Changed from 22 pF to keep the datasheet example's feed-forward zero (200 k x 22 pF = 4.4 us; 453 k x 10 pF = 4.5 us). Computed, not tested: check load-step/ripple on the prototype."
 15,C39,1,100 µF / 10 V polymer,TBD,VCC_3V3 bulk (low-ESR polymer aluminium),Passive,Changed from tantalum (failure mode with battery inrush). Check that the buck stays stable with the lower ESR.
 16,C40,1,100 nF,0603,Battery sense filter / ADC sample reservoir,Passive,
-17,C101,1,100 nF X7R 50V,0402,"Thermocouple input filter, K+ node to ACM1",Passive,
-18,C102,1,100 nF X7R 50V,0402,AVDDR1 filter to AVSS (datasheet requires 0.1 uF),Passive,
-19,"C103, C203, C303, C403, C503",5,10 µF X7R,0603,VDD bulk decoupling (datasheet: 10 uF VDD-AVSS),Passive,Factory file: 0402 10 uF 50 V
-20,"C104, C204",2,100 nF X7R 50V,0402,VDD HF decoupling,Passive,
-21,C201,1,100 nF X7R 50V,0402,"Thermocouple input filter, K+ node to ACM2",Passive,
-22,C202,1,100 nF X7R 50V,0402,AVDDR2 filter to AVSS (datasheet requires 0.1 uF),Passive,
-23,C301,1,100 nF X7R 50V,0402,"Thermocouple input filter, K+ node to ACM3",Passive,
-24,C302,1,100 nF X7R 50V,0402,AVDDR3 filter to AVSS (datasheet requires 0.1 uF),Passive,
-25,C304,1,100 nF X7R 50V,0402,VDD HF decoupling,Passive,DEVIATION: factory file has 10 uF here (C22); we use 0.1 uF to match the brief. Confirm with factory.
-26,C401,1,100 nF X7R 50V,0402,"Thermocouple input filter, K+ node to ACM4",Passive,
-27,C402,1,100 nF X7R 50V,0402,AVDDR4 filter to AVSS (datasheet requires 0.1 uF),Passive,
-28,C404,1,100 nF X7R 50V,0402,VDD HF decoupling,Passive,DEVIATION: factory file has 10 uF here (C29); we use 0.1 uF to match the brief. Confirm with factory.
-29,C501,1,100 nF X7R 50V,0402,"Thermocouple input filter, K+ node to ACM5",Passive,
-30,C502,1,100 nF X7R 50V,0402,AVDDR5 filter to AVSS (datasheet requires 0.1 uF),Passive,
-31,C504,1,100 nF X7R 50V,0402,VDD HF decoupling,Passive,DEVIATION: factory file has 10 uF here (C36); we use 0.1 uF to match the brief. Confirm with factory.
-32,C801,1,100 nF,TBD,U2 bypass,Passive,
-33,C901,1,100 nF X7R,0603,CJC filter across R902,Passive,
-34,C902,1,100 nF X7R,0603,CJC filter across NTC1,Passive,
-35,L3,1,2.2 µH,TBD,Buck inductor (datasheet 1-4.7 uH),Passive,From user's schematic
-36,NTC1,1,NTC 10 kΩ 1%,0603,Cold-junction sensor (shared by all 5 channels),Passive,Factory footprint is LED-0603 (wrong). Place at the isothermal block centre.
-37,R29,1,453 kΩ 1%,0603,"FB divider, top",Passive,"Changed from 180 k: Vout = 0.6 x (1 + 453/100) = 3.32 V, divider current 6 uA (was 15 uA). Datasheet: R2 <= 100 k"
-38,R30,1,100 kΩ 1%,0603,"FB divider, bottom",Passive,Changed from 39 k
-39,R31,1,100 kΩ,0603,U3 EN pull-up to SYS_PWR (added),Passive,CE8503 EN must not float and must be > 1.5 V to start; PB1 is high-Z at power-up. MCU pulls PB1 low to shut the buck down.
-40,R32,1,100 kΩ,0603,Q1 gate pull-down to GND,Passive,Vgs = -(battery voltage) when conducting (max -6.4 V)
-41,R33,1,1.5 MΩ 1%,0603,"Battery sense divider, top",Passive,Ratio 0.4: 6.4 V -> 2.56 V. RE-CHECK against the CH583 ADC reference/range (WCH datasheet)
-42,R34,1,1.0 MΩ 1%,0603,"Battery sense divider, bottom",Passive,Divider drain 6.4 V / 2.5 MΩ = 2.6 uA
-43,R101,1,22 MΩ,0603,K+ bias pull-up to AVDDR1 (open-TC detect),Passive,Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1
-44,R102,1,5.1 MΩ,0603,K+ bias pull-down to ACM1,Passive,Factory file: 5 %
-45,R103,1,10 kΩ,0603,DATA1 pull-up to VCC_3V3 (datasheet typical application),Passive,Factory footprint is R1/8W (axial) - replace by 0603
-46,R201,1,22 MΩ,0603,K+ bias pull-up to AVDDR2 (open-TC detect),Passive,Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1
-47,R202,1,5.1 MΩ,0603,K+ bias pull-down to ACM2,Passive,Factory file: 5 %
-48,R203,1,10 kΩ,0603,DATA2 pull-up to VCC_3V3 (datasheet typical application),Passive,Factory footprint is R1/8W (axial) - replace by 0603
-49,R301,1,22 MΩ,0603,K+ bias pull-up to AVDDR3 (open-TC detect),Passive,Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1
-50,R302,1,5.1 MΩ,0603,K+ bias pull-down to ACM3,Passive,Factory file: 5 %
-51,R303,1,10 kΩ,0603,DATA3 pull-up to VCC_3V3 (datasheet typical application),Passive,Factory footprint is R1/8W (axial) - replace by 0603
-52,R401,1,22 MΩ,0603,K+ bias pull-up to AVDDR4 (open-TC detect),Passive,Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1
-53,R402,1,5.1 MΩ,0603,K+ bias pull-down to ACM4,Passive,Factory file: 5 %
-54,R403,1,10 kΩ,0603,DATA4 pull-up to VCC_3V3 (datasheet typical application),Passive,Factory footprint is R1/8W (axial) - replace by 0603
-55,R501,1,22 MΩ,0603,K+ bias pull-up to AVDDR5 (open-TC detect),Passive,Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1
-56,R502,1,5.1 MΩ,0603,K+ bias pull-down to ACM5,Passive,Factory file: 5 %
-57,R503,1,10 kΩ,0603,DATA5 pull-up to VCC_3V3 (datasheet typical application),Passive,Factory footprint is R1/8W (axial) - replace by 0603
-58,R901,1,1 MΩ,0603,CJC chain: top resistor from AVDDR1,Passive,Factory file: 5 %
-59,R902,1,100 kΩ 0.1%,0603,CJC chain: ratiometric reference,Passive,DEVIATION: factory file 5 %; CJC accuracy depends on this resistor -> 0.1 % 25 ppm recommended
-60,BT1,1,4 x AA holder,TBD,"Battery pack, 6.0 V fresh / 3.6 V empty (net BAT_IN, before Q1)",Connector,Alkaline only: 4 x lithium AA = 7.2 V exceeds the CE8503 6.5 V limit
-61,LCD1,1,SPI LCD module (TBD),TBD,LCD on SPI1,Connector,Module and pinout TBD; typical 7-wire interface assumed.
-62,T1,1,K-type mini jack,TBD,"Thermocouple connector 1 (pin 1 = K+, pin 2 = K-)",Connector,Part not chosen yet
-63,T2,1,K-type mini jack,TBD,"Thermocouple connector 2 (pin 1 = K+, pin 2 = K-)",Connector,Part not chosen yet
-64,T3,1,K-type mini jack,TBD,"Thermocouple connector 3 (pin 1 = K+, pin 2 = K-)",Connector,Part not chosen yet
-65,T4,1,K-type mini jack,TBD,"Thermocouple connector 4 (pin 1 = K+, pin 2 = K-)",Connector,Part not chosen yet
-66,T5,1,K-type mini jack,TBD,"Thermocouple connector 5 (pin 1 = K+, pin 2 = K-)",Connector,Part not chosen yet
+17,C41,1,2.2 µF,0603,U1 VDD33/VIO33 decoupling (pin 3),Passive,"EVT: 2.2 uF; datasheet: 2.2 uF with DC-DC, 0.1 uF without"
+18,C42,1,2.2 µF,0603,U1 VDCID decoupling (pin 1),Passive,Datasheet: 2.2 uF recommended with DC-DC enabled
+19,C43,1,100 nF,0402,U1 VDCIA decoupling (pin 35),Passive,VDCIA is tied to VDCID (datasheet recommendation)
+20,C44,1,1 µF,0603,U1 VINTA decoupling (pin 33),Passive,Datasheet: 1 uF with DC-DC enabled (0.47-2.2 uF)
+21,C101,1,100 nF X7R 50V,0402,"Thermocouple input filter, K+ node to ACM1",Passive,
+22,C102,1,100 nF X7R 50V,0402,AVDDR1 filter to AVSS (datasheet requires 0.1 uF),Passive,
+23,"C103, C203, C303, C403, C503",5,10 µF X7R,0603,VDD bulk decoupling (datasheet: 10 uF VDD-AVSS),Passive,Factory file: 0402 10 uF 50 V
+24,"C104, C204",2,100 nF X7R 50V,0402,VDD HF decoupling,Passive,
+25,C201,1,100 nF X7R 50V,0402,"Thermocouple input filter, K+ node to ACM2",Passive,
+26,C202,1,100 nF X7R 50V,0402,AVDDR2 filter to AVSS (datasheet requires 0.1 uF),Passive,
+27,C301,1,100 nF X7R 50V,0402,"Thermocouple input filter, K+ node to ACM3",Passive,
+28,C302,1,100 nF X7R 50V,0402,AVDDR3 filter to AVSS (datasheet requires 0.1 uF),Passive,
+29,C304,1,100 nF X7R 50V,0402,VDD HF decoupling,Passive,DEVIATION: factory file has 10 uF here (C22); we use 0.1 uF to match the brief. Confirm with factory.
+30,C401,1,100 nF X7R 50V,0402,"Thermocouple input filter, K+ node to ACM4",Passive,
+31,C402,1,100 nF X7R 50V,0402,AVDDR4 filter to AVSS (datasheet requires 0.1 uF),Passive,
+32,C404,1,100 nF X7R 50V,0402,VDD HF decoupling,Passive,DEVIATION: factory file has 10 uF here (C29); we use 0.1 uF to match the brief. Confirm with factory.
+33,C501,1,100 nF X7R 50V,0402,"Thermocouple input filter, K+ node to ACM5",Passive,
+34,C502,1,100 nF X7R 50V,0402,AVDDR5 filter to AVSS (datasheet requires 0.1 uF),Passive,
+35,C504,1,100 nF X7R 50V,0402,VDD HF decoupling,Passive,DEVIATION: factory file has 10 uF here (C36); we use 0.1 uF to match the brief. Confirm with factory.
+36,C801,1,100 nF,TBD,U2 bypass,Passive,
+37,C901,1,100 nF X7R,0603,CJC filter across R902,Passive,
+38,C902,1,100 nF X7R,0603,CJC filter across NTC1,Passive,
+39,L1,1,10 µH,TBD,"U1 on-chip DC-DC inductor, VSW (pin 2) to VDCID (pin 1)",Passive,Datasheet: 10 uH recommended (3.3-33 uH supported); EVT uses 22 uH. Also works as a DC short when DC-DC is disabled.
+40,L3,1,2.2 µH,TBD,Buck inductor (datasheet 1-4.7 uH),Passive,From user's schematic
+41,NTC1,1,NTC 10 kΩ 1%,0603,Cold-junction sensor (shared by all 5 channels),Passive,Factory footprint is LED-0603 (wrong). Place at the isothermal block centre.
+42,R29,1,453 kΩ 1%,0603,"FB divider, top",Passive,"Changed from 180 k: Vout = 0.6 x (1 + 453/100) = 3.32 V, divider current 6 uA (was 15 uA). Datasheet: R2 <= 100 k"
+43,R30,1,100 kΩ 1%,0603,"FB divider, bottom",Passive,Changed from 39 k
+44,R31,1,100 kΩ,0603,U3 EN pull-up to SYS_PWR (added),Passive,CE8503 EN must not float and must be > 1.5 V to start; PB1 is high-Z at power-up. MCU pulls PB1 low to shut the buck down.
+45,R32,1,100 kΩ,0603,Q1 gate pull-down to GND,Passive,Vgs = -(battery voltage) when conducting (max -6.4 V)
+46,R33,1,2.4 MΩ 1%,0603,"Battery sense divider, top",Passive,"Ratio 1/3.4 = 0.294: 6.4 V -> 1.88 V (CH583 ADC 0 dB: recommended 0-2 V, Vref 1.05 V); 3.6 V -> 1.06 V. ADC input buffer ON."
+47,R34,1,1.0 MΩ 1%,0603,"Battery sense divider, bottom",Passive,Divider drain 6.4 V / 3.4 MΩ = 1.9 uA
+48,R101,1,22 MΩ,0603,K+ bias pull-up to AVDDR1 (open-TC detect),Passive,Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1
+49,R102,1,5.1 MΩ,0603,K+ bias pull-down to ACM1,Passive,Factory file: 5 %
+50,R103,1,10 kΩ,0603,DATA1 pull-up to VCC_3V3 (datasheet typical application),Passive,Factory footprint is R1/8W (axial) - replace by 0603
+51,R201,1,22 MΩ,0603,K+ bias pull-up to AVDDR2 (open-TC detect),Passive,Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1
+52,R202,1,5.1 MΩ,0603,K+ bias pull-down to ACM2,Passive,Factory file: 5 %
+53,R203,1,10 kΩ,0603,DATA2 pull-up to VCC_3V3 (datasheet typical application),Passive,Factory footprint is R1/8W (axial) - replace by 0603
+54,R301,1,22 MΩ,0603,K+ bias pull-up to AVDDR3 (open-TC detect),Passive,Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1
+55,R302,1,5.1 MΩ,0603,K+ bias pull-down to ACM3,Passive,Factory file: 5 %
+56,R303,1,10 kΩ,0603,DATA3 pull-up to VCC_3V3 (datasheet typical application),Passive,Factory footprint is R1/8W (axial) - replace by 0603
+57,R401,1,22 MΩ,0603,K+ bias pull-up to AVDDR4 (open-TC detect),Passive,Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1
+58,R402,1,5.1 MΩ,0603,K+ bias pull-down to ACM4,Passive,Factory file: 5 %
+59,R403,1,10 kΩ,0603,DATA4 pull-up to VCC_3V3 (datasheet typical application),Passive,Factory footprint is R1/8W (axial) - replace by 0603
+60,R501,1,22 MΩ,0603,K+ bias pull-up to AVDDR5 (open-TC detect),Passive,Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1
+61,R502,1,5.1 MΩ,0603,K+ bias pull-down to ACM5,Passive,Factory file: 5 %
+62,R503,1,10 kΩ,0603,DATA5 pull-up to VCC_3V3 (datasheet typical application),Passive,Factory footprint is R1/8W (axial) - replace by 0603
+63,R901,1,1 MΩ,0603,CJC chain: top resistor from AVDDR1,Passive,Factory file: 5 %
+64,R902,1,100 kΩ 0.1%,0603,CJC chain: ratiometric reference,Passive,DEVIATION: factory file 5 %; CJC accuracy depends on this resistor -> 0.1 % 25 ppm recommended
+65,Y1,1,32 MHz crystal,SMD 3225/2016,BLE high-frequency crystal (HSE) on X32MI/X32MO,Crystal,No external load caps (internal 10-24 pF selectable). Crystal specs TBD from WCH EVT BOM. 4-pad package: other pads to GND.
+66,Y2,1,32.768 kHz crystal,SMD 3215,RTC / BLE sleep-clock crystal on PA10/PA11 (optional),Crystal,Internal load caps selectable (12-27 pF); EVT fits it without external caps.
+67,BT1,1,4 x AA holder,TBD,"Battery pack, 6.0 V fresh / 3.6 V empty (net BAT_IN, before Q1)",Connector,Alkaline only: 4 x lithium AA = 7.2 V exceeds the CE8503 6.5 V limit
+68,E1,1,2.4 GHz PCB antenna,PCB trace,BLE antenna fed directly from ANT (pin 34),Connector,Use WCH template ANT-F-2.4G-FR4.PcbDoc; antenna needs a ground end; keep ground clear around it.
+69,LCD1,1,SPI LCD module (TBD),TBD,LCD on SPI1,Connector,Module and pinout TBD; typical 7-wire interface assumed.
+70,P1,1,1x4 header,2.54 mm,"SWD debug: 3V3, SWDIO (PB14), SWDCK (PB15), GND",Connector,While the debug interface is enabled PB14/PB15 are used only as TIO/TCK
+71,P2,1,1x4 header,2.54 mm,"UART1 debug: 3V3, RXD1 (PA8), TXD1 (PA9), GND",Connector,
+72,T1,1,K-type mini jack,TBD,"Thermocouple connector 1 (pin 1 = K+, pin 2 = K-)",Connector,Part not chosen yet
+73,T2,1,K-type mini jack,TBD,"Thermocouple connector 2 (pin 1 = K+, pin 2 = K-)",Connector,Part not chosen yet
+74,T3,1,K-type mini jack,TBD,"Thermocouple connector 3 (pin 1 = K+, pin 2 = K-)",Connector,Part not chosen yet
+75,T4,1,K-type mini jack,TBD,"Thermocouple connector 4 (pin 1 = K+, pin 2 = K-)",Connector,Part not chosen yet
+76,T5,1,K-type mini jack,TBD,"Thermocouple connector 5 (pin 1 = K+, pin 2 = K-)",Connector,Part not chosen yet
+77,SW1,1,Tact switch,SMD,"Reset (RST# = PB23, active low, internal pull-up)",Electromech,
+78,SW2,1,Tact switch,SMD,BOOT / download (PB22),Electromech,EVT: PB22 'Download BOOT'

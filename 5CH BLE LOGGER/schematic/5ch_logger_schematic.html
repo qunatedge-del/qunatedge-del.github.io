@@ -7,10 +7,10 @@ table{border-collapse:collapse;margin:0 20px 22px;font-size:13px;width:calc(100%
 th{background:#eceff1} .wrap{overflow-x:auto} nav a{margin-right:14px;color:#1565c0;text-decoration:none;font-size:14px}
 </style></head><body><header><h1>5-CH K-Type BLE Data Logger — Schematic · 線路圖</h1>
 <nav><a href="#s">Schematic</a><a href="#n">Netlist</a><a href="#b">BOM</a><a href="#m">Refdes map</a></nav></header>
-<div class="sch" id="s"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1560" width="2000" height="1560" font-family="Helvetica, Arial, 'WenQuanYi Zen Hei', 'Noto Sans CJK TC', sans-serif">
-<rect width="2000" height="1560" fill="#ffffff"/>
+<div class="sch" id="s"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 2000" width="2000" height="2000" font-family="Helvetica, Arial, 'WenQuanYi Zen Hei', 'Noto Sans CJK TC', sans-serif">
+<rect width="2000" height="2000" fill="#ffffff"/>
 <text x="24.0" y="40.0" font-size="26.0" fill="#2b2b2b" text-anchor="start" font-weight="bold">5-CH K-TYPE BLE DATA LOGGER  ·  五通道 K 型熱電偶 BLE 記錄器</text>
-<text x="24.0" y="60.0" font-size="12.5" fill="#777777" text-anchor="start">CH583 + 5 x SD6500 (SDIC) + CE8503 buck  ·  AFE = IC-factory SDH260018 V1.0-2 (renumbered)  ·  CH583 / Flash / LCD pin numbers TBD</text>
+<text x="24.0" y="60.0" font-size="12.5" fill="#777777" text-anchor="start">CH583M + 5 x SD6500 (SDIC) + CE8503 buck  ·  AFE = IC-factory SDH260018 V1.0-2 (renumbered)  ·  CH583M QFN48 pins per WCH datasheet V1.9  ·  Flash / LCD parts TBD</text>
 <line x1="1340.0" y1="38.0" x2="1376.0" y2="38.0" stroke="#d32f2f" stroke-width="3.5" stroke-linecap="round"/>
 <text x="1384.0" y="43.0" font-size="12.0" fill="#2b2b2b" text-anchor="start">Power</text>
 <line x1="1490.0" y1="38.0" x2="1526.0" y2="38.0" stroke="#333333" stroke-width="3.5" stroke-linecap="round"/>
@@ -198,7 +198,7 @@ th{background:#eceff1} .wrap{overflow-x:auto} nav a{margin-right:14px;color:#156
 <line x1="940.0" y1="287.0" x2="940.0" y2="294.0" stroke="#d32f2f" stroke-width="1.6" stroke-linecap="round"/>
 <rect x="934.0" y="261.0" width="12.0" height="26.0" rx="0" fill="#ffffff" stroke="#2b2b2b" stroke-width="1.4"/>
 <text x="951.0" y="273.0" font-size="10.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">R33</text>
-<text x="951.0" y="285.0" font-size="9.0" fill="#2b2b2b" text-anchor="start">1.5 MΩ</text>
+<text x="951.0" y="285.0" font-size="9.0" fill="#2b2b2b" text-anchor="start">2.4 MΩ</text>
 <circle cx="940.0" cy="294.0" r="2.6" fill="#e65100" stroke="#e65100" stroke-width="1.0"/>
 <line x1="940.0" y1="294.0" x2="940.0" y2="301.0" stroke="#e65100" stroke-width="1.6" stroke-linecap="round"/>
 <line x1="940.0" y1="327.0" x2="940.0" y2="334.0" stroke="#e65100" stroke-width="1.6" stroke-linecap="round"/>
@@ -228,127 +228,116 @@ th{background:#eceff1} .wrap{overflow-x:auto} nav a{margin-right:14px;color:#156
 <text x="40.0" y="337.0" font-size="10.0" fill="#444444" text-anchor="start">• VIN 2.0–6.5 V (abs.max 7.5 V): fresh alkaline 4×AA ≈ 6.0–6.4 V is OK with ~0.1 V margin; do NOT use 4×lithium AA (7.2 V).</text>
 <text x="40.0" y="352.0" font-size="10.0" fill="#444444" text-anchor="start">• CHANGES vs the original drawing: R29/R30 453k/100k, C38 22→10 pF (keeps the datasheet&#x27;s feed-forward zero, computed not tested),</text>
 <text x="40.0" y="367.0" font-size="10.0" fill="#444444" text-anchor="start">• C39 tantalum→polymer, + R31 EN pull-up, + Q1/R32 reverse-polarity protection, + R33/R34/C40 battery sense to a CH583 ADC pin.</text>
-<text x="40.0" y="382.0" font-size="10.0" fill="#444444" text-anchor="start">• Check on the prototype: buck stability with the polymer C39, Q1 Rds(on), and the ADC range for VBAT_SENSE (0.4 × VBAT = 2.56 V max).</text>
+<text x="40.0" y="382.0" font-size="10.0" fill="#444444" text-anchor="start">• VBAT_SENSE = 0.294 × VBAT (6.4 V → 1.88 V, 3.6 V → 1.06 V): inside the CH583 ADC 0 dB range (recommended 0–2 V, Vref 1.05 V). Check buck stability with the polymer C39.</text>
 <rect x="1200.0" y="70.0" width="776.0" height="330.0" rx="10" fill="#e8eaf6" stroke="#3949ab" stroke-width="2.2"/>
 <rect x="1200.0" y="70.0" width="776.0" height="28.0" rx="10" fill="#3949ab" stroke="#3949ab" stroke-width="2.2"/>
 <rect x="1200.0" y="84.0" width="776.0" height="14.0" rx="0" fill="#3949ab" stroke="none" stroke-width="0.1"/>
-<text x="1212.0" y="89.5" font-size="13.0" fill="#ffffff" text-anchor="start" font-weight="bold">M  MCU INTERFACE · SPI FLASH · SPI LCD   (pin numbers TBD — CH583 datasheet needed)</text>
-<rect x="1330.0" y="112.0" width="190.0" height="276.0" rx="4" fill="#fffde7" stroke="#2b2b2b" stroke-width="1.8"/>
-<text x="1425.0" y="132.0" font-size="12.0" fill="#2b2b2b" text-anchor="middle" font-weight="bold">U1  CH583</text>
-<text x="1425.0" y="146.0" font-size="8.5" fill="#777777" text-anchor="middle">WCH RISC-V BLE 5.3  ·  pins TBD</text>
-<line x1="1316.0" y1="162.0" x2="1330.0" y2="162.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1336.0" y="165.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">PB1</text>
-<text x="1327.0" y="159.0" font-size="7.0" fill="#777777" text-anchor="end">PA?</text>
-<line x1="1316.0" y1="162.0" x2="1308.0" y2="162.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1308.0,162.0 1301.0,154.0 1277.0,154.0 1277.0,170.0 1301.0,170.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1289.0" y="165.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">PB1</text>
-<line x1="1316.0" y1="184.0" x2="1330.0" y2="184.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1336.0" y="187.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">VBAT_ADC</text>
-<text x="1327.0" y="181.0" font-size="7.0" fill="#777777" text-anchor="end">PA?</text>
-<line x1="1316.0" y1="184.0" x2="1308.0" y2="184.0" stroke="#e65100" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1308.0,184.0 1301.0,176.0 1239.8,176.0 1239.8,192.0 1301.0,192.0" fill="#ffffff" stroke="#e65100" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1270.4" y="187.4" font-size="9.5" fill="#e65100" text-anchor="middle" font-weight="bold">VBAT_SENSE</text>
-<line x1="1316.0" y1="206.0" x2="1330.0" y2="206.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1336.0" y="209.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">SCK</text>
-<text x="1327.0" y="203.0" font-size="7.0" fill="#777777" text-anchor="end">PA?</text>
-<line x1="1316.0" y1="206.0" x2="1308.0" y2="206.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1308.0,206.0 1301.0,198.0 1277.0,198.0 1277.0,214.0 1301.0,214.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1289.0" y="209.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">SCK</text>
-<line x1="1316.0" y1="228.0" x2="1330.0" y2="228.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1336.0" y="231.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">DATA1</text>
-<text x="1327.0" y="225.0" font-size="7.0" fill="#777777" text-anchor="end">PA?</text>
-<line x1="1316.0" y1="228.0" x2="1308.0" y2="228.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1308.0,228.0 1301.0,220.0 1266.4,220.0 1266.4,236.0 1301.0,236.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1283.7" y="231.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">DATA1</text>
-<line x1="1316.0" y1="250.0" x2="1330.0" y2="250.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1336.0" y="253.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">DATA2</text>
-<text x="1327.0" y="247.0" font-size="7.0" fill="#777777" text-anchor="end">PA?</text>
-<line x1="1316.0" y1="250.0" x2="1308.0" y2="250.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1308.0,250.0 1301.0,242.0 1266.4,242.0 1266.4,258.0 1301.0,258.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1283.7" y="253.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">DATA2</text>
-<line x1="1316.0" y1="272.0" x2="1330.0" y2="272.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1336.0" y="275.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">DATA3</text>
-<text x="1327.0" y="269.0" font-size="7.0" fill="#777777" text-anchor="end">PA?</text>
-<line x1="1316.0" y1="272.0" x2="1308.0" y2="272.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1308.0,272.0 1301.0,264.0 1266.4,264.0 1266.4,280.0 1301.0,280.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1283.7" y="275.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">DATA3</text>
-<line x1="1316.0" y1="294.0" x2="1330.0" y2="294.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1336.0" y="297.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">DATA4</text>
-<text x="1327.0" y="291.0" font-size="7.0" fill="#777777" text-anchor="end">PA?</text>
-<line x1="1316.0" y1="294.0" x2="1308.0" y2="294.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1308.0,294.0 1301.0,286.0 1266.4,286.0 1266.4,302.0 1301.0,302.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1283.7" y="297.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">DATA4</text>
-<line x1="1316.0" y1="316.0" x2="1330.0" y2="316.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1336.0" y="319.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">DATA5</text>
-<text x="1327.0" y="313.0" font-size="7.0" fill="#777777" text-anchor="end">PA?</text>
-<line x1="1316.0" y1="316.0" x2="1308.0" y2="316.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1308.0,316.0 1301.0,308.0 1266.4,308.0 1266.4,324.0 1301.0,324.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1283.7" y="319.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">DATA5</text>
-<line x1="1316.0" y1="346.0" x2="1330.0" y2="346.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1336.0" y="349.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">VCC</text>
-<line x1="1316.0" y1="346.0" x2="1308.0" y2="346.0" stroke="#d32f2f" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1308.0,346.0 1301.0,338.0 1255.8,338.0 1255.8,354.0 1301.0,354.0" fill="#ffffff" stroke="#d32f2f" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1278.4" y="349.4" font-size="9.5" fill="#d32f2f" text-anchor="middle" font-weight="bold">VCC_3V3</text>
-<line x1="1316.0" y1="370.0" x2="1330.0" y2="370.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1336.0" y="373.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">GND</text>
-<line x1="1316.0" y1="370.0" x2="1316.0" y2="377.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
-<line x1="1306.0" y1="377.0" x2="1326.0" y2="377.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
-<line x1="1309.5" y1="381.0" x2="1322.5" y2="381.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
-<line x1="1313.0" y1="385.0" x2="1319.0" y2="385.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
-<line x1="1520.0" y1="162.0" x2="1534.0" y2="162.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1514.0" y="165.5" font-size="9.0" fill="#2b2b2b" text-anchor="end">FLASH_SCK</text>
-<text x="1523.0" y="159.0" font-size="7.0" fill="#777777" text-anchor="start">P?</text>
-<line x1="1534.0" y1="162.0" x2="1542.0" y2="162.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1542.0,162.0 1549.0,154.0 1604.9,154.0 1604.9,170.0 1549.0,170.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1576.9" y="165.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">FLASH_SCK</text>
-<line x1="1520.0" y1="184.0" x2="1534.0" y2="184.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1514.0" y="187.5" font-size="9.0" fill="#2b2b2b" text-anchor="end">FLASH_MOSI</text>
-<text x="1523.0" y="181.0" font-size="7.0" fill="#777777" text-anchor="start">P?</text>
-<line x1="1534.0" y1="184.0" x2="1542.0" y2="184.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1542.0,184.0 1549.0,176.0 1610.2,176.0 1610.2,192.0 1549.0,192.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1579.6" y="187.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">FLASH_MOSI</text>
+<text x="1212.0" y="89.5" font-size="13.0" fill="#ffffff" text-anchor="start" font-weight="bold">M  MCU GPIO (U1A) · SPI FLASH · SPI LCD   (CH583M QFN48 pins: WCH datasheet V1.9; Flash / LCD parts TBD)</text>
+<rect x="1340.0" y="112.0" width="180.0" height="272.0" rx="3" fill="#fffde7" stroke="#2b2b2b" stroke-width="1.8"/>
+<text x="1430.0" y="246.0" font-size="11.0" fill="#2b2b2b" text-anchor="middle" font-weight="bold">U1</text>
+<text x="1430.0" y="258.0" font-size="8.5" fill="#2b2b2b" text-anchor="middle">CH583M  (QFN48)  ·  unit A: GPIO</text>
+<line x1="1326.0" y1="156.0" x2="1340.0" y2="156.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1345.0" y="159.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">PB0</text>
+<text x="1337.0" y="153.0" font-size="7.5" fill="#777777" text-anchor="end">24</text>
+<line x1="1326.0" y1="184.0" x2="1340.0" y2="184.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1345.0" y="187.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">PB1</text>
+<text x="1337.0" y="181.0" font-size="7.5" fill="#777777" text-anchor="end">23</text>
+<line x1="1326.0" y1="212.0" x2="1340.0" y2="212.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1345.0" y="215.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">PB2</text>
+<text x="1337.0" y="209.0" font-size="7.5" fill="#777777" text-anchor="end">22</text>
+<line x1="1326.0" y1="240.0" x2="1340.0" y2="240.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1345.0" y="243.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">PB3</text>
+<text x="1337.0" y="237.0" font-size="7.5" fill="#777777" text-anchor="end">21</text>
+<line x1="1326.0" y1="268.0" x2="1340.0" y2="268.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1345.0" y="271.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">PB4</text>
+<text x="1337.0" y="265.0" font-size="7.5" fill="#777777" text-anchor="end">20</text>
+<line x1="1326.0" y1="296.0" x2="1340.0" y2="296.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1345.0" y="299.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">PB5</text>
+<text x="1337.0" y="293.0" font-size="7.5" fill="#777777" text-anchor="end">19</text>
+<line x1="1326.0" y1="324.0" x2="1340.0" y2="324.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1345.0" y="327.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">PB6</text>
+<text x="1337.0" y="321.0" font-size="7.5" fill="#777777" text-anchor="end">18</text>
+<line x1="1326.0" y1="352.0" x2="1340.0" y2="352.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1345.0" y="355.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">PA4</text>
+<text x="1337.0" y="349.0" font-size="7.5" fill="#777777" text-anchor="end">36</text>
+<line x1="1520.0" y1="156.0" x2="1534.0" y2="156.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1515.0" y="159.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PA12</text>
+<text x="1523.0" y="153.0" font-size="7.5" fill="#777777" text-anchor="start">46</text>
+<line x1="1520.0" y1="181.0" x2="1534.0" y2="181.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1515.0" y="184.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PA13</text>
+<text x="1523.0" y="178.0" font-size="7.5" fill="#777777" text-anchor="start">45</text>
 <line x1="1520.0" y1="206.0" x2="1534.0" y2="206.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1514.0" y="209.5" font-size="9.0" fill="#2b2b2b" text-anchor="end">FLASH_MISO</text>
-<text x="1523.0" y="203.0" font-size="7.0" fill="#777777" text-anchor="start">P?</text>
+<text x="1515.0" y="209.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PA14</text>
+<text x="1523.0" y="203.0" font-size="7.5" fill="#777777" text-anchor="start">44</text>
+<line x1="1520.0" y1="231.0" x2="1534.0" y2="231.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1515.0" y="234.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PA15</text>
+<text x="1523.0" y="228.0" font-size="7.5" fill="#777777" text-anchor="start">43</text>
+<line x1="1520.0" y1="256.0" x2="1534.0" y2="256.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1515.0" y="259.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PA0</text>
+<text x="1523.0" y="253.0" font-size="7.5" fill="#777777" text-anchor="start">39</text>
+<line x1="1520.0" y1="281.0" x2="1534.0" y2="281.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1515.0" y="284.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PA1</text>
+<text x="1523.0" y="278.0" font-size="7.5" fill="#777777" text-anchor="start">40</text>
+<line x1="1520.0" y1="306.0" x2="1534.0" y2="306.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1515.0" y="309.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PA2</text>
+<text x="1523.0" y="303.0" font-size="7.5" fill="#777777" text-anchor="start">41</text>
+<line x1="1520.0" y1="331.0" x2="1534.0" y2="331.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1515.0" y="334.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PA3</text>
+<text x="1523.0" y="328.0" font-size="7.5" fill="#777777" text-anchor="start">42</text>
+<line x1="1520.0" y1="356.0" x2="1534.0" y2="356.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1515.0" y="359.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PB8</text>
+<text x="1523.0" y="353.0" font-size="7.5" fill="#777777" text-anchor="start">8</text>
+<line x1="1326.0" y1="156.0" x2="1318.0" y2="156.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1318.0,156.0 1311.0,148.0 1287.0,148.0 1287.0,164.0 1311.0,164.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1299.0" y="159.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">SCK</text>
+<line x1="1326.0" y1="184.0" x2="1318.0" y2="184.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1318.0,184.0 1311.0,176.0 1287.0,176.0 1287.0,192.0 1311.0,192.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1299.0" y="187.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">PB1</text>
+<line x1="1326.0" y1="212.0" x2="1318.0" y2="212.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1318.0,212.0 1311.0,204.0 1276.4,204.0 1276.4,220.0 1311.0,220.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1293.7" y="215.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">DATA1</text>
+<line x1="1326.0" y1="240.0" x2="1318.0" y2="240.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1318.0,240.0 1311.0,232.0 1276.4,232.0 1276.4,248.0 1311.0,248.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1293.7" y="243.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">DATA2</text>
+<line x1="1326.0" y1="268.0" x2="1318.0" y2="268.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1318.0,268.0 1311.0,260.0 1276.4,260.0 1276.4,276.0 1311.0,276.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1293.7" y="271.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">DATA3</text>
+<line x1="1326.0" y1="296.0" x2="1318.0" y2="296.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1318.0,296.0 1311.0,288.0 1276.4,288.0 1276.4,304.0 1311.0,304.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1293.7" y="299.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">DATA4</text>
+<line x1="1326.0" y1="324.0" x2="1318.0" y2="324.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1318.0,324.0 1311.0,316.0 1276.4,316.0 1276.4,332.0 1311.0,332.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1293.7" y="327.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">DATA5</text>
+<line x1="1326.0" y1="352.0" x2="1318.0" y2="352.0" stroke="#e65100" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1318.0,352.0 1311.0,344.0 1249.8,344.0 1249.8,360.0 1311.0,360.0" fill="#ffffff" stroke="#e65100" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1280.4" y="355.4" font-size="9.5" fill="#e65100" text-anchor="middle" font-weight="bold">VBAT_SENSE</text>
+<line x1="1534.0" y1="156.0" x2="1542.0" y2="156.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1542.0,156.0 1549.0,148.0 1599.6,148.0 1599.6,164.0 1549.0,164.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1574.3" y="159.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">FLASH_CS</text>
+<line x1="1534.0" y1="181.0" x2="1542.0" y2="181.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1542.0,181.0 1549.0,173.0 1604.9,173.0 1604.9,189.0 1549.0,189.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1576.9" y="184.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">FLASH_SCK</text>
 <line x1="1534.0" y1="206.0" x2="1542.0" y2="206.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
 <polygon points="1542.0,206.0 1549.0,198.0 1610.2,198.0 1610.2,214.0 1549.0,214.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1579.6" y="209.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">FLASH_MISO</text>
-<line x1="1520.0" y1="228.0" x2="1534.0" y2="228.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1514.0" y="231.5" font-size="9.0" fill="#2b2b2b" text-anchor="end">FLASH_CS</text>
-<text x="1523.0" y="225.0" font-size="7.0" fill="#777777" text-anchor="start">P?</text>
-<line x1="1534.0" y1="228.0" x2="1542.0" y2="228.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1542.0,228.0 1549.0,220.0 1599.6,220.0 1599.6,236.0 1549.0,236.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1574.3" y="231.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">FLASH_CS</text>
-<line x1="1520.0" y1="250.0" x2="1534.0" y2="250.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1514.0" y="253.5" font-size="9.0" fill="#2b2b2b" text-anchor="end">LCD_SCK</text>
-<text x="1523.0" y="247.0" font-size="7.0" fill="#777777" text-anchor="start">P?</text>
-<line x1="1534.0" y1="250.0" x2="1542.0" y2="250.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1542.0,250.0 1549.0,242.0 1594.2,242.0 1594.2,258.0 1549.0,258.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1571.6" y="253.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">LCD_SCK</text>
-<line x1="1520.0" y1="272.0" x2="1534.0" y2="272.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1514.0" y="275.5" font-size="9.0" fill="#2b2b2b" text-anchor="end">LCD_MOSI</text>
-<text x="1523.0" y="269.0" font-size="7.0" fill="#777777" text-anchor="start">P?</text>
-<line x1="1534.0" y1="272.0" x2="1542.0" y2="272.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1542.0,272.0 1549.0,264.0 1599.6,264.0 1599.6,280.0 1549.0,280.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1574.3" y="275.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">LCD_MOSI</text>
-<line x1="1520.0" y1="294.0" x2="1534.0" y2="294.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1514.0" y="297.5" font-size="9.0" fill="#2b2b2b" text-anchor="end">LCD_DC</text>
-<text x="1523.0" y="291.0" font-size="7.0" fill="#777777" text-anchor="start">P?</text>
-<line x1="1534.0" y1="294.0" x2="1542.0" y2="294.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1542.0,294.0 1549.0,286.0 1588.9,286.0 1588.9,302.0 1549.0,302.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1569.0" y="297.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">LCD_DC</text>
-<line x1="1520.0" y1="316.0" x2="1534.0" y2="316.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1514.0" y="319.5" font-size="9.0" fill="#2b2b2b" text-anchor="end">LCD_CS</text>
-<text x="1523.0" y="313.0" font-size="7.0" fill="#777777" text-anchor="start">P?</text>
-<line x1="1534.0" y1="316.0" x2="1542.0" y2="316.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1542.0,316.0 1549.0,308.0 1588.9,308.0 1588.9,324.0 1549.0,324.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1569.0" y="319.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">LCD_CS</text>
-<line x1="1520.0" y1="338.0" x2="1534.0" y2="338.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
-<text x="1514.0" y="341.5" font-size="9.0" fill="#2b2b2b" text-anchor="end">LCD_RST</text>
-<text x="1523.0" y="335.0" font-size="7.0" fill="#777777" text-anchor="start">P?</text>
-<line x1="1534.0" y1="338.0" x2="1542.0" y2="338.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
-<polygon points="1542.0,338.0 1549.0,330.0 1594.2,330.0 1594.2,346.0 1549.0,346.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
-<text x="1571.6" y="341.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">LCD_RST</text>
+<text x="1579.6" y="209.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">FLASH_MOSI</text>
+<line x1="1534.0" y1="231.0" x2="1542.0" y2="231.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1542.0,231.0 1549.0,223.0 1610.2,223.0 1610.2,239.0 1549.0,239.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1579.6" y="234.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">FLASH_MISO</text>
+<line x1="1534.0" y1="256.0" x2="1542.0" y2="256.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1542.0,256.0 1549.0,248.0 1594.2,248.0 1594.2,264.0 1549.0,264.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1571.6" y="259.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">LCD_SCK</text>
+<line x1="1534.0" y1="281.0" x2="1542.0" y2="281.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1542.0,281.0 1549.0,273.0 1599.6,273.0 1599.6,289.0 1549.0,289.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1574.3" y="284.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">LCD_MOSI</text>
+<line x1="1534.0" y1="306.0" x2="1542.0" y2="306.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1542.0,306.0 1549.0,298.0 1588.9,298.0 1588.9,314.0 1549.0,314.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1569.0" y="309.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">LCD_DC</text>
+<line x1="1534.0" y1="331.0" x2="1542.0" y2="331.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1542.0,331.0 1549.0,323.0 1588.9,323.0 1588.9,339.0 1549.0,339.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1569.0" y="334.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">LCD_CS</text>
+<line x1="1534.0" y1="356.0" x2="1542.0" y2="356.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1542.0,356.0 1549.0,348.0 1594.2,348.0 1594.2,364.0 1549.0,364.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1571.6" y="359.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">LCD_RST</text>
 <rect x="1660.0" y="128.0" width="124.0" height="126.0" rx="3" fill="#fffde7" stroke="#2b2b2b" stroke-width="1.8"/>
 <text x="1722.0" y="189.0" font-size="11.0" fill="#2b2b2b" text-anchor="middle" font-weight="bold">U2</text>
 <text x="1722.0" y="201.0" font-size="8.5" fill="#2b2b2b" text-anchor="middle">SPI Flash (TBD)</text>
@@ -1301,20 +1290,311 @@ th{background:#eceff1} .wrap{overflow-x:auto} nav a{margin-right:14px;color:#156
 <text x="1520.0" y="694.0" font-size="9.8" fill="#444444" text-anchor="start">V1.0 → V1.0-2 fix: NTC1 / C902 bottom was on a separate net &#x27;ACM&#x27; (not tied to ACM1).</text>
 <text x="1520.0" y="709.0" font-size="9.8" fill="#444444" text-anchor="start">Now merged into ACM1.</text>
 <text x="1520.0" y="728.0" font-size="9.8" fill="#444444" text-anchor="start">Place NTC1 at the centre of the T1–T5 jack row, on the same copper island (see docs).</text>
-<rect x="24.0" y="1470.0" width="1500.0" height="76.0" rx="6" fill="#fafafa" stroke="#9e9e9e" stroke-width="1.4"/>
-<text x="36.0" y="1488.0" font-size="11.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">NOTES  ·  備註</text>
-<text x="36.0" y="1506.0" font-size="9.2" fill="#444444" text-anchor="start">AFE netlist is the IC factory&#x27;s SDH260018 V1.0-2 verbatim (round-trip checked), only renumbered. Factory refdes ↔ ours: docs/FACTORY_V1_TO_V2.md.</text>
-<text x="36.0" y="1521.0" font-size="9.2" fill="#444444" text-anchor="start">DEVIATIONS from factory: C304 / C404 / C504 are 0.1 µF here (factory file has 10 µF on the second VDD cap of U3/U4/U5 — to be confirmed); R902 = 0.1 %.</text>
-<text x="36.0" y="1536.0" font-size="9.2" fill="#444444" text-anchor="start">OPEN: CH583 pins (incl. VBAT_ADC), SPI Flash / LCD part numbers, ADC range for VBAT_SENSE, AI1/AI7 left floating (confirm with SDIC).</text>
-<rect x="1540.0" y="1470.0" width="436.0" height="76.0" rx="0" fill="#ffffff" stroke="#2b2b2b" stroke-width="2.0"/>
-<line x1="1540.0" y1="1496.0" x2="1976.0" y2="1496.0" stroke="#2b2b2b" stroke-width="1.0" stroke-linecap="round"/>
-<line x1="1540.0" y1="1518.0" x2="1976.0" y2="1518.0" stroke="#2b2b2b" stroke-width="1.0" stroke-linecap="round"/>
-<text x="1550.0" y="1489.0" font-size="12.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">5-CH K-TYPE BLE DATA LOGGER</text>
-<text x="1550.0" y="1510.0" font-size="11.0" fill="#2b2b2b" text-anchor="start" font-weight="bold">SCHEMATIC  ·  線路圖</text>
-<text x="1550.0" y="1535.0" font-size="10.0" fill="#2b2b2b" text-anchor="start">Rev A (draft)   2026-11-15</text>
-<text x="1968.0" y="1535.0" font-size="10.0" fill="#2b2b2b" text-anchor="end">Sheet 1 of 1</text>
+<rect x="24.0" y="1470.0" width="1952.0" height="420.0" rx="10" fill="#e0f2f1" stroke="#00796b" stroke-width="2.2"/>
+<rect x="24.0" y="1470.0" width="1952.0" height="28.0" rx="10" fill="#00796b" stroke="#00796b" stroke-width="2.2"/>
+<rect x="24.0" y="1484.0" width="1952.0" height="14.0" rx="0" fill="#00796b" stroke="none" stroke-width="0.1"/>
+<text x="36.0" y="1489.5" font-size="13.0" fill="#ffffff" text-anchor="start" font-weight="bold">C  CH583M SUPPORT (U1B)  ·  power pins, DC-DC, crystals, antenna, reset / boot, SWD, UART1   (per WCH datasheet V1.9 + EVT schematic)</text>
+<rect x="870.0" y="1512.0" width="170.0" height="340.0" rx="3" fill="#fffde7" stroke="#2b2b2b" stroke-width="1.8"/>
+<text x="955.0" y="1866.0" font-size="10.5" fill="#2b2b2b" text-anchor="middle" font-weight="bold">U1</text>
+<text x="955.0" y="1878.0" font-size="9.0" fill="#2b2b2b" text-anchor="middle">CH583M  (QFN48)  ·  unit B: power / RF / debug</text>
+<line x1="856.0" y1="1552.0" x2="870.0" y2="1552.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="875.0" y="1555.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">VDD33/VIO33</text>
+<text x="867.0" y="1549.0" font-size="7.5" fill="#777777" text-anchor="end">3</text>
+<line x1="856.0" y1="1584.0" x2="870.0" y2="1584.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="875.0" y="1587.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">VDCID</text>
+<text x="867.0" y="1581.0" font-size="7.5" fill="#777777" text-anchor="end">1</text>
+<line x1="856.0" y1="1616.0" x2="870.0" y2="1616.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="875.0" y="1619.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">VDCIA</text>
+<text x="867.0" y="1613.0" font-size="7.5" fill="#777777" text-anchor="end">35</text>
+<line x1="856.0" y1="1648.0" x2="870.0" y2="1648.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="875.0" y="1651.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">VSW</text>
+<text x="867.0" y="1645.0" font-size="7.5" fill="#777777" text-anchor="end">2</text>
+<line x1="856.0" y1="1680.0" x2="870.0" y2="1680.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="875.0" y="1683.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">VINTA</text>
+<text x="867.0" y="1677.0" font-size="7.5" fill="#777777" text-anchor="end">33</text>
+<line x1="856.0" y1="1732.0" x2="870.0" y2="1732.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="875.0" y="1735.5" font-size="9.5" fill="#2b2b2b" text-anchor="start">EPAD (GND)</text>
+<text x="867.0" y="1729.0" font-size="7.5" fill="#777777" text-anchor="end">0</text>
+<line x1="1040.0" y1="1552.0" x2="1054.0" y2="1552.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1035.0" y="1555.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">ANT</text>
+<text x="1043.0" y="1549.0" font-size="7.5" fill="#777777" text-anchor="start">34</text>
+<line x1="1040.0" y1="1578.0" x2="1054.0" y2="1578.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1035.0" y="1581.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">X32MI</text>
+<text x="1043.0" y="1575.0" font-size="7.5" fill="#777777" text-anchor="start">32</text>
+<line x1="1040.0" y1="1604.0" x2="1054.0" y2="1604.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1035.0" y="1607.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">X32MO</text>
+<text x="1043.0" y="1601.0" font-size="7.5" fill="#777777" text-anchor="start">31</text>
+<line x1="1040.0" y1="1636.0" x2="1054.0" y2="1636.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1035.0" y="1639.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PA10/X32KI</text>
+<text x="1043.0" y="1633.0" font-size="7.5" fill="#777777" text-anchor="start">48</text>
+<line x1="1040.0" y1="1662.0" x2="1054.0" y2="1662.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1035.0" y="1665.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PA11/X32KO</text>
+<text x="1043.0" y="1659.0" font-size="7.5" fill="#777777" text-anchor="start">47</text>
+<line x1="1040.0" y1="1698.0" x2="1054.0" y2="1698.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1035.0" y="1701.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PB23/RST#</text>
+<text x="1043.0" y="1695.0" font-size="7.5" fill="#777777" text-anchor="start">25</text>
+<line x1="1040.0" y1="1724.0" x2="1054.0" y2="1724.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1035.0" y="1727.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PB22/BOOT</text>
+<text x="1043.0" y="1721.0" font-size="7.5" fill="#777777" text-anchor="start">26</text>
+<line x1="1040.0" y1="1760.0" x2="1054.0" y2="1760.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1035.0" y="1763.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PB14/SWDIO</text>
+<text x="1043.0" y="1757.0" font-size="7.5" fill="#777777" text-anchor="start">12</text>
+<line x1="1040.0" y1="1786.0" x2="1054.0" y2="1786.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1035.0" y="1789.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PB15/SWDCK</text>
+<text x="1043.0" y="1783.0" font-size="7.5" fill="#777777" text-anchor="start">11</text>
+<line x1="1040.0" y1="1818.0" x2="1054.0" y2="1818.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1035.0" y="1821.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PA8/RXD1</text>
+<text x="1043.0" y="1815.0" font-size="7.5" fill="#777777" text-anchor="start">5</text>
+<line x1="1040.0" y1="1842.0" x2="1054.0" y2="1842.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<text x="1035.0" y="1845.5" font-size="9.5" fill="#2b2b2b" text-anchor="end">PA9/TXD1</text>
+<text x="1043.0" y="1839.0" font-size="7.5" fill="#777777" text-anchor="start">6</text>
+<line x1="856.0" y1="1552.0" x2="848.0" y2="1552.0" stroke="#d32f2f" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="848.0,1552.0 841.0,1544.0 795.8,1544.0 795.8,1560.0 841.0,1560.0" fill="#ffffff" stroke="#d32f2f" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="818.4" y="1555.4" font-size="9.5" fill="#d32f2f" text-anchor="middle" font-weight="bold">VCC_3V3</text>
+<line x1="856.0" y1="1584.0" x2="848.0" y2="1584.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="848.0,1584.0 841.0,1576.0 806.4,1576.0 806.4,1592.0 841.0,1592.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="823.7" y="1587.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">VDCID</text>
+<line x1="856.0" y1="1616.0" x2="848.0" y2="1616.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="848.0,1616.0 841.0,1608.0 806.4,1608.0 806.4,1624.0 841.0,1624.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="823.7" y="1619.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">VDCID</text>
+<line x1="856.0" y1="1648.0" x2="848.0" y2="1648.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="848.0,1648.0 841.0,1640.0 817.0,1640.0 817.0,1656.0 841.0,1656.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="829.0" y="1651.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">VSW</text>
+<line x1="856.0" y1="1680.0" x2="848.0" y2="1680.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="848.0,1680.0 841.0,1672.0 806.4,1672.0 806.4,1688.0 841.0,1688.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="823.7" y="1683.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">VINTA</text>
+<line x1="856.0" y1="1732.0" x2="856.0" y2="1739.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="846.0" y1="1739.0" x2="866.0" y2="1739.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="849.5" y1="1743.0" x2="862.5" y2="1743.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="853.0" y1="1747.0" x2="859.0" y2="1747.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1054.0" y1="1552.0" x2="1062.0" y2="1552.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1062.0,1552.0 1069.0,1544.0 1093.0,1544.0 1093.0,1560.0 1069.0,1560.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1081.0" y="1555.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">ANT</text>
+<line x1="1054.0" y1="1578.0" x2="1062.0" y2="1578.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1062.0,1578.0 1069.0,1570.0 1103.6,1570.0 1103.6,1586.0 1069.0,1586.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1086.3" y="1581.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">X32MI</text>
+<line x1="1054.0" y1="1604.0" x2="1062.0" y2="1604.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1062.0,1604.0 1069.0,1596.0 1103.6,1596.0 1103.6,1612.0 1069.0,1612.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1086.3" y="1607.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">X32MO</text>
+<line x1="1054.0" y1="1636.0" x2="1062.0" y2="1636.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1062.0,1636.0 1069.0,1628.0 1103.6,1628.0 1103.6,1644.0 1069.0,1644.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1086.3" y="1639.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">X32KI</text>
+<line x1="1054.0" y1="1662.0" x2="1062.0" y2="1662.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1062.0,1662.0 1069.0,1654.0 1103.6,1654.0 1103.6,1670.0 1069.0,1670.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1086.3" y="1665.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">X32KO</text>
+<line x1="1054.0" y1="1698.0" x2="1062.0" y2="1698.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1062.0,1698.0 1069.0,1690.0 1103.6,1690.0 1103.6,1706.0 1069.0,1706.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1086.3" y="1701.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">RST_N</text>
+<line x1="1054.0" y1="1724.0" x2="1062.0" y2="1724.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1062.0,1724.0 1069.0,1716.0 1098.3,1716.0 1098.3,1732.0 1069.0,1732.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1083.6" y="1727.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">BOOT</text>
+<line x1="1054.0" y1="1760.0" x2="1062.0" y2="1760.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1062.0,1760.0 1069.0,1752.0 1103.6,1752.0 1103.6,1768.0 1069.0,1768.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1086.3" y="1763.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">SWDIO</text>
+<line x1="1054.0" y1="1786.0" x2="1062.0" y2="1786.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1062.0,1786.0 1069.0,1778.0 1103.6,1778.0 1103.6,1794.0 1069.0,1794.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1086.3" y="1789.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">SWDCK</text>
+<line x1="1054.0" y1="1818.0" x2="1062.0" y2="1818.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1062.0,1818.0 1069.0,1810.0 1119.6,1810.0 1119.6,1826.0 1069.0,1826.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1094.3" y="1821.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">UART1_RX</text>
+<line x1="1054.0" y1="1842.0" x2="1062.0" y2="1842.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1062.0,1842.0 1069.0,1834.0 1119.6,1834.0 1119.6,1850.0 1069.0,1850.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1094.3" y="1845.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">UART1_TX</text>
+<text x="60.0" y="1530.0" font-size="10.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">Decoupling at the pins (no vias between cap and pin)</text>
+<text x="100.0" y="1566.0" font-size="8.5" fill="#d32f2f" text-anchor="middle" font-weight="bold">VCC_3V3</text>
+<line x1="100.0" y1="1570.0" x2="100.0" y2="1580.0" stroke="#d32f2f" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="100.0" y1="1580.0" x2="100.0" y2="1599.5" stroke="#d32f2f" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="100.0" y1="1606.5" x2="100.0" y2="1626.0" stroke="#d32f2f" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="88.0" y1="1599.5" x2="112.0" y2="1599.5" stroke="#2b2b2b" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="88.0" y1="1606.5" x2="112.0" y2="1606.5" stroke="#2b2b2b" stroke-width="2.4" stroke-linecap="round"/>
+<text x="116.0" y="1602.0" font-size="10.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">C41</text>
+<text x="116.0" y="1614.0" font-size="9.0" fill="#2b2b2b" text-anchor="start">2.2 µF</text>
+<line x1="100.0" y1="1626.0" x2="100.0" y2="1633.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="90.0" y1="1633.0" x2="110.0" y2="1633.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="93.5" y1="1637.0" x2="106.5" y2="1637.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="97.0" y1="1641.0" x2="103.0" y2="1641.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<text x="200.0" y="1566.0" font-size="8.5" fill="#1565c0" text-anchor="middle" font-weight="bold">VDCID</text>
+<line x1="200.0" y1="1570.0" x2="200.0" y2="1580.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="200.0" y1="1580.0" x2="200.0" y2="1599.5" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="200.0" y1="1606.5" x2="200.0" y2="1626.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="188.0" y1="1599.5" x2="212.0" y2="1599.5" stroke="#2b2b2b" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="188.0" y1="1606.5" x2="212.0" y2="1606.5" stroke="#2b2b2b" stroke-width="2.4" stroke-linecap="round"/>
+<text x="216.0" y="1602.0" font-size="10.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">C42</text>
+<text x="216.0" y="1614.0" font-size="9.0" fill="#2b2b2b" text-anchor="start">2.2 µF</text>
+<line x1="200.0" y1="1626.0" x2="200.0" y2="1633.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="190.0" y1="1633.0" x2="210.0" y2="1633.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="193.5" y1="1637.0" x2="206.5" y2="1637.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="197.0" y1="1641.0" x2="203.0" y2="1641.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<text x="300.0" y="1566.0" font-size="8.5" fill="#1565c0" text-anchor="middle" font-weight="bold">VDCID</text>
+<line x1="300.0" y1="1570.0" x2="300.0" y2="1580.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="300.0" y1="1580.0" x2="300.0" y2="1599.5" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="300.0" y1="1606.5" x2="300.0" y2="1626.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="288.0" y1="1599.5" x2="312.0" y2="1599.5" stroke="#2b2b2b" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="288.0" y1="1606.5" x2="312.0" y2="1606.5" stroke="#2b2b2b" stroke-width="2.4" stroke-linecap="round"/>
+<text x="316.0" y="1602.0" font-size="10.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">C43</text>
+<text x="316.0" y="1614.0" font-size="9.0" fill="#2b2b2b" text-anchor="start">100 nF</text>
+<line x1="300.0" y1="1626.0" x2="300.0" y2="1633.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="290.0" y1="1633.0" x2="310.0" y2="1633.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="293.5" y1="1637.0" x2="306.5" y2="1637.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="297.0" y1="1641.0" x2="303.0" y2="1641.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<text x="400.0" y="1566.0" font-size="8.5" fill="#1565c0" text-anchor="middle" font-weight="bold">VINTA</text>
+<line x1="400.0" y1="1570.0" x2="400.0" y2="1580.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="400.0" y1="1580.0" x2="400.0" y2="1599.5" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="400.0" y1="1606.5" x2="400.0" y2="1626.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="388.0" y1="1599.5" x2="412.0" y2="1599.5" stroke="#2b2b2b" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="388.0" y1="1606.5" x2="412.0" y2="1606.5" stroke="#2b2b2b" stroke-width="2.4" stroke-linecap="round"/>
+<text x="416.0" y="1602.0" font-size="10.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">C44</text>
+<text x="416.0" y="1614.0" font-size="9.0" fill="#2b2b2b" text-anchor="start">1 µF</text>
+<line x1="400.0" y1="1626.0" x2="400.0" y2="1633.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="390.0" y1="1633.0" x2="410.0" y2="1633.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="393.5" y1="1637.0" x2="406.5" y2="1637.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="397.0" y1="1641.0" x2="403.0" y2="1641.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<text x="60.0" y="1660.0" font-size="9.0" fill="#777777" text-anchor="start">VDDx pins: C41 on VDD33/VIO33 (pin 3); C42 on VDCID; C43 on VDCIA (tied to VDCID); C44 on VINTA.</text>
+<text x="60.0" y="1700.0" font-size="10.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">On-chip DC-DC inductor (VSW → VDCID)</text>
+<polygon points="70.0,1740.0 77.0,1732.0 101.0,1732.0 101.0,1748.0 77.0,1748.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="89.0" y="1743.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">VSW</text>
+<line x1="101.0" y1="1740.0" x2="140.0" y2="1740.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="140.0" y1="1740.0" x2="150.0" y2="1740.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="200.0" y1="1740.0" x2="210.0" y2="1740.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="150.0,1740.0 151.9,1733.1 156.2,1731.2 160.6,1733.1 162.5,1740.0" fill="none" stroke="#2b2b2b" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="162.5,1740.0 164.4,1733.1 168.8,1731.2 173.1,1733.1 175.0,1740.0" fill="none" stroke="#2b2b2b" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="175.0,1740.0 176.9,1733.1 181.2,1731.2 185.6,1733.1 187.5,1740.0" fill="none" stroke="#2b2b2b" stroke-width="2.0" stroke-linejoin="round"/>
+<polygon points="187.5,1740.0 189.4,1733.1 193.8,1731.2 198.1,1733.1 200.0,1740.0" fill="none" stroke="#2b2b2b" stroke-width="2.0" stroke-linejoin="round"/>
+<text x="175.0" y="1718.0" font-size="10.5" fill="#2b2b2b" text-anchor="middle" font-weight="bold">L1</text>
+<text x="175.0" y="1756.0" font-size="9.0" fill="#2b2b2b" text-anchor="middle">10 µH</text>
+<line x1="210.0" y1="1740.0" x2="240.0" y2="1740.0" stroke="#d32f2f" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="240.0,1740.0 247.0,1732.0 281.6,1732.0 281.6,1748.0 247.0,1748.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="264.3" y="1743.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">VDCID</text>
+<text x="60.0" y="1768.0" font-size="9.0" fill="#777777" text-anchor="start">L1 fitted so the DC-DC can be enabled in software; with DC-DC off it is just a DC path VSW → VDCID.</text>
+<text x="1250.0" y="1530.0" font-size="10.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">Clocks</text>
+<polygon points="1316.0,1560.0 1309.0,1552.0 1274.4,1552.0 1274.4,1568.0 1309.0,1568.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1291.7" y="1563.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">X32MI</text>
+<line x1="1316.0" y1="1560.0" x2="1330.0" y2="1560.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1330.0" y1="1560.0" x2="1330.0" y2="1576.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1330.0" y1="1604.0" x2="1330.0" y2="1620.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1320.0" y1="1576.0" x2="1340.0" y2="1576.0" stroke="#2b2b2b" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="1320.0" y1="1604.0" x2="1340.0" y2="1604.0" stroke="#2b2b2b" stroke-width="2.4" stroke-linecap="round"/>
+<rect x="1325.0" y="1580.0" width="10.0" height="20.0" rx="0" fill="#ffffff" stroke="#2b2b2b" stroke-width="1.4"/>
+<text x="1346.0" y="1589.0" font-size="10.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">Y1</text>
+<text x="1346.0" y="1601.0" font-size="9.0" fill="#2b2b2b" text-anchor="start">32 MHz</text>
+<line x1="1330.0" y1="1620.0" x2="1316.0" y2="1620.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1316.0,1620.0 1309.0,1612.0 1274.4,1612.0 1274.4,1628.0 1309.0,1628.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1291.7" y="1623.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">X32MO</text>
+<polygon points="1486.0,1560.0 1479.0,1552.0 1444.4,1552.0 1444.4,1568.0 1479.0,1568.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1461.7" y="1563.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">X32KI</text>
+<line x1="1486.0" y1="1560.0" x2="1500.0" y2="1560.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1500.0" y1="1560.0" x2="1500.0" y2="1576.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1500.0" y1="1604.0" x2="1500.0" y2="1620.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1490.0" y1="1576.0" x2="1510.0" y2="1576.0" stroke="#2b2b2b" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="1490.0" y1="1604.0" x2="1510.0" y2="1604.0" stroke="#2b2b2b" stroke-width="2.4" stroke-linecap="round"/>
+<rect x="1495.0" y="1580.0" width="10.0" height="20.0" rx="0" fill="#ffffff" stroke="#2b2b2b" stroke-width="1.4"/>
+<text x="1516.0" y="1589.0" font-size="10.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">Y2</text>
+<text x="1516.0" y="1601.0" font-size="9.0" fill="#2b2b2b" text-anchor="start">32.768 kHz</text>
+<line x1="1500.0" y1="1620.0" x2="1486.0" y2="1620.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<polygon points="1486.0,1620.0 1479.0,1612.0 1444.4,1612.0 1444.4,1628.0 1479.0,1628.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1461.7" y="1623.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">X32KO</text>
+<text x="1250.0" y="1650.0" font-size="9.0" fill="#777777" text-anchor="start">32 MHz: internal load caps (10–24 pF), none external (as the WCH EVT).</text>
+<text x="1250.0" y="1664.0" font-size="9.0" fill="#777777" text-anchor="start">32.768 kHz: optional, for an accurate RTC / BLE sleep clock.</text>
+<text x="1700.0" y="1530.0" font-size="10.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">Antenna</text>
+<polygon points="1690.0,1565.0 1683.0,1557.0 1659.0,1557.0 1659.0,1573.0 1683.0,1573.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1671.0" y="1568.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">ANT</text>
+<line x1="1690.0" y1="1565.0" x2="1706.0" y2="1565.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<rect x="1706.0" y="1545.0" width="150.0" height="76.0" rx="3" fill="#fffde7" stroke="#2b2b2b" stroke-width="1.6"/>
+<text x="1781.0" y="1578.0" font-size="10.5" fill="#2b2b2b" text-anchor="middle" font-weight="bold">E1  2.4 GHz</text>
+<text x="1781.0" y="1592.0" font-size="9.0" fill="#2b2b2b" text-anchor="middle">PCB trace antenna</text>
+<text x="1781.0" y="1606.0" font-size="8.5" fill="#777777" text-anchor="middle">(WCH ANT-F-2.4G-FR4)</text>
+<line x1="1781.0" y1="1621.0" x2="1781.0" y2="1631.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1781.0" y1="1631.0" x2="1781.0" y2="1638.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1771.0" y1="1638.0" x2="1791.0" y2="1638.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1774.5" y1="1642.0" x2="1787.5" y2="1642.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1778.0" y1="1646.0" x2="1784.0" y2="1646.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<text x="1714.0" y="1561.0" font-size="8.0" fill="#777777" text-anchor="start">1</text>
+<text x="1250.0" y="1700.0" font-size="10.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">Reset / download</text>
+<polygon points="1290.0,1730.0 1297.0,1722.0 1331.6,1722.0 1331.6,1738.0 1297.0,1738.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1314.3" y="1733.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">RST_N</text>
+<line x1="1290.0" y1="1730.0" x2="1290.0" y2="1750.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1290.0" y1="1750.0" x2="1290.0" y2="1768.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1290.0" y1="1788.0" x2="1290.0" y2="1806.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="1290.0" cy="1768.0" r="2.4" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.4"/>
+<circle cx="1290.0" cy="1788.0" r="2.4" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.4"/>
+<line x1="1281.0" y1="1763.0" x2="1299.0" y2="1763.0" stroke="#2b2b2b" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1290.0" y1="1763.0" x2="1290.0" y2="1767.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="1290.0" y1="1806.0" x2="1290.0" y2="1813.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1280.0" y1="1813.0" x2="1300.0" y2="1813.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1283.5" y1="1817.0" x2="1296.5" y2="1817.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1287.0" y1="1821.0" x2="1293.0" y2="1821.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<text x="1304.0" y="1792.0" font-size="8.5" fill="#2b2b2b" text-anchor="start">RESET (PB23)</text>
+<polygon points="1440.0,1730.0 1447.0,1722.0 1476.3,1722.0 1476.3,1738.0 1447.0,1738.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1461.6" y="1733.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">BOOT</text>
+<line x1="1440.0" y1="1730.0" x2="1440.0" y2="1750.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1440.0" y1="1750.0" x2="1440.0" y2="1768.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1440.0" y1="1788.0" x2="1440.0" y2="1806.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="1440.0" cy="1768.0" r="2.4" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.4"/>
+<circle cx="1440.0" cy="1788.0" r="2.4" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="1.4"/>
+<line x1="1431.0" y1="1763.0" x2="1449.0" y2="1763.0" stroke="#2b2b2b" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1440.0" y1="1763.0" x2="1440.0" y2="1767.0" stroke="#2b2b2b" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="1440.0" y1="1806.0" x2="1440.0" y2="1813.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1430.0" y1="1813.0" x2="1450.0" y2="1813.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1433.5" y1="1817.0" x2="1446.5" y2="1817.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1437.0" y1="1821.0" x2="1443.0" y2="1821.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<text x="1454.0" y="1792.0" font-size="8.5" fill="#2b2b2b" text-anchor="start">BOOT (PB22)</text>
+<rect x="1560.0" y="1710.0" width="84.0" height="92.0" rx="3" fill="#fffde7" stroke="#2b2b2b" stroke-width="1.6"/>
+<text x="1602.0" y="1728.0" font-size="10.5" fill="#2b2b2b" text-anchor="middle" font-weight="bold">P1  SWD</text>
+<line x1="1644.0" y1="1746.0" x2="1658.0" y2="1746.0" stroke="#d32f2f" stroke-width="1.6" stroke-linecap="round"/>
+<text x="1568.0" y="1749.4" font-size="9.0" fill="#2b2b2b" text-anchor="start">1 3V3</text>
+<polygon points="1658.0,1746.0 1665.0,1738.0 1710.2,1738.0 1710.2,1754.0 1665.0,1754.0" fill="#ffffff" stroke="#d32f2f" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1687.6" y="1749.4" font-size="9.5" fill="#d32f2f" text-anchor="middle" font-weight="bold">VCC_3V3</text>
+<line x1="1644.0" y1="1762.0" x2="1658.0" y2="1762.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<text x="1568.0" y="1765.4" font-size="9.0" fill="#2b2b2b" text-anchor="start">2 SWDIO</text>
+<polygon points="1658.0,1762.0 1665.0,1754.0 1699.6,1754.0 1699.6,1770.0 1665.0,1770.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1682.3" y="1765.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">SWDIO</text>
+<line x1="1644.0" y1="1778.0" x2="1658.0" y2="1778.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<text x="1568.0" y="1781.4" font-size="9.0" fill="#2b2b2b" text-anchor="start">3 SWDCK</text>
+<polygon points="1658.0,1778.0 1665.0,1770.0 1699.6,1770.0 1699.6,1786.0 1665.0,1786.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1682.3" y="1781.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">SWDCK</text>
+<line x1="1644.0" y1="1794.0" x2="1658.0" y2="1794.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
+<text x="1568.0" y="1797.4" font-size="9.0" fill="#2b2b2b" text-anchor="start">4 GND</text>
+<line x1="1658.0" y1="1794.0" x2="1658.0" y2="1801.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1648.0" y1="1801.0" x2="1668.0" y2="1801.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1651.5" y1="1805.0" x2="1664.5" y2="1805.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1655.0" y1="1809.0" x2="1661.0" y2="1809.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<rect x="1790.0" y="1710.0" width="84.0" height="92.0" rx="3" fill="#fffde7" stroke="#2b2b2b" stroke-width="1.6"/>
+<text x="1832.0" y="1728.0" font-size="10.5" fill="#2b2b2b" text-anchor="middle" font-weight="bold">P2  UART1</text>
+<line x1="1874.0" y1="1746.0" x2="1888.0" y2="1746.0" stroke="#d32f2f" stroke-width="1.6" stroke-linecap="round"/>
+<text x="1798.0" y="1749.4" font-size="9.0" fill="#2b2b2b" text-anchor="start">1 3V3</text>
+<polygon points="1888.0,1746.0 1895.0,1738.0 1940.2,1738.0 1940.2,1754.0 1895.0,1754.0" fill="#ffffff" stroke="#d32f2f" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1917.6" y="1749.4" font-size="9.5" fill="#d32f2f" text-anchor="middle" font-weight="bold">VCC_3V3</text>
+<line x1="1874.0" y1="1762.0" x2="1888.0" y2="1762.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<text x="1798.0" y="1765.4" font-size="9.0" fill="#2b2b2b" text-anchor="start">2 RX</text>
+<polygon points="1888.0,1762.0 1895.0,1754.0 1945.6,1754.0 1945.6,1770.0 1895.0,1770.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1920.3" y="1765.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">UART1_RX</text>
+<line x1="1874.0" y1="1778.0" x2="1888.0" y2="1778.0" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+<text x="1798.0" y="1781.4" font-size="9.0" fill="#2b2b2b" text-anchor="start">3 TX</text>
+<polygon points="1888.0,1778.0 1895.0,1770.0 1945.6,1770.0 1945.6,1786.0 1895.0,1786.0" fill="#ffffff" stroke="#1565c0" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="1920.3" y="1781.4" font-size="9.5" fill="#1565c0" text-anchor="middle" font-weight="bold">UART1_TX</text>
+<line x1="1874.0" y1="1794.0" x2="1888.0" y2="1794.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
+<text x="1798.0" y="1797.4" font-size="9.0" fill="#2b2b2b" text-anchor="start">4 GND</text>
+<line x1="1888.0" y1="1794.0" x2="1888.0" y2="1801.0" stroke="#333333" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="1878.0" y1="1801.0" x2="1898.0" y2="1801.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1881.5" y1="1805.0" x2="1894.5" y2="1805.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="1885.0" y1="1809.0" x2="1891.0" y2="1809.0" stroke="#333333" stroke-width="2.2" stroke-linecap="round"/>
+<text x="60.0" y="1812.0" font-size="9.0" fill="#777777" text-anchor="start">Unused GPIO (no connect, free for expansion): PA5, PA6, PA7, PB7, PB9–PB13, PB16–PB21.</text>
+<text x="60.0" y="1826.0" font-size="9.0" fill="#777777" text-anchor="start">ADC: PA4 = AIN0, 12-bit, Vref 1.05 V, 0 dB, input buffer ON (3.4 MΩ source). DATA1–5 = PB2–PB6 (one port read samples all five).</text>
+<text x="60.0" y="1840.0" font-size="9.0" fill="#777777" text-anchor="start">VIO ≤ VIO33 + 0.4 V (abs. max): VBAT_SENSE may precede VCC_3V3 for ~ms at battery insertion; current is &lt; 1 µA through 2.4 MΩ.</text>
+<rect x="24.0" y="1910.0" width="1500.0" height="76.0" rx="6" fill="#fafafa" stroke="#9e9e9e" stroke-width="1.4"/>
+<text x="36.0" y="1928.0" font-size="11.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">NOTES  ·  備註</text>
+<text x="36.0" y="1946.0" font-size="9.2" fill="#444444" text-anchor="start">AFE netlist is the IC factory&#x27;s SDH260018 V1.0-2 verbatim (round-trip checked), only renumbered. Factory refdes ↔ ours: docs/FACTORY_V1_TO_V2.md.</text>
+<text x="36.0" y="1961.0" font-size="9.2" fill="#444444" text-anchor="start">DEVIATIONS from factory: C304 / C404 / C504 are 0.1 µF here (factory file has 10 µF on the second VDD cap of U3/U4/U5 — to be confirmed); R902 = 0.1 %.</text>
+<text x="36.0" y="1976.0" font-size="9.2" fill="#444444" text-anchor="start">OPEN: SPI Flash / LCD part numbers, Y1/Y2 crystal specs and antenna tuning (WCH EVT BOM / PCB notes), AI1/AI7 of U12–U15 left floating (confirm with SDIC).</text>
+<rect x="1540.0" y="1910.0" width="436.0" height="76.0" rx="0" fill="#ffffff" stroke="#2b2b2b" stroke-width="2.0"/>
+<line x1="1540.0" y1="1936.0" x2="1976.0" y2="1936.0" stroke="#2b2b2b" stroke-width="1.0" stroke-linecap="round"/>
+<line x1="1540.0" y1="1958.0" x2="1976.0" y2="1958.0" stroke="#2b2b2b" stroke-width="1.0" stroke-linecap="round"/>
+<text x="1550.0" y="1929.0" font-size="12.5" fill="#2b2b2b" text-anchor="start" font-weight="bold">5-CH K-TYPE BLE DATA LOGGER</text>
+<text x="1550.0" y="1950.0" font-size="11.0" fill="#2b2b2b" text-anchor="start" font-weight="bold">SCHEMATIC  ·  線路圖</text>
+<text x="1550.0" y="1975.0" font-size="10.0" fill="#2b2b2b" text-anchor="start">Rev A (draft)   2026-11-15</text>
+<text x="1968.0" y="1975.0" font-size="10.0" fill="#2b2b2b" text-anchor="end">Sheet 1 of 1</text>
 </svg></div>
-<h2 id="n">Netlist (41 nets)</h2><div class="wrap"><table><tr><th>Net</th><th>Pins</th><th>REF.PIN</th></tr><tr><td>ACM1</td><td>6</td><td>C101.1 C902.1 NTC1.2 R102.1 T1.2 U11.3</td></tr><tr><td>ACM2</td><td>4</td><td>C201.1 R202.1 T2.2 U12.3</td></tr><tr><td>ACM3</td><td>4</td><td>C301.1 R302.1 T3.2 U13.3</td></tr><tr><td>ACM4</td><td>4</td><td>C401.1 R402.1 T4.2 U14.3</td></tr><tr><td>ACM5</td><td>4</td><td>C501.1 R502.1 T5.2 U15.3</td></tr><tr><td>AI10</td><td>5</td><td>C101.2 R101.1 R102.2 T1.1 U11.1</td></tr><tr><td>AI11</td><td>5</td><td>C901.1 C902.2 NTC1.1 R902.1 U11.2</td></tr><tr><td>AI17</td><td>4</td><td>C901.2 R901.1 R902.2 U11.4</td></tr><tr><td>AI20</td><td>5</td><td>C201.2 R201.1 R202.2 T2.1 U12.1</td></tr><tr><td>AI30</td><td>5</td><td>C301.2 R301.1 R302.2 T3.1 U13.1</td></tr><tr><td>AI40</td><td>5</td><td>C401.2 R401.1 R402.2 T4.1 U14.1</td></tr><tr><td>AI50</td><td>5</td><td>C501.2 R501.1 R502.2 T5.1 U15.1</td></tr><tr><td>AVDDR1</td><td>4</td><td>C102.2 R101.2 R901.2 U11.6</td></tr><tr><td>AVDDR2</td><td>3</td><td>C202.2 R201.2 U12.6</td></tr><tr><td>AVDDR3</td><td>3</td><td>C302.2 R301.2 U13.6</td></tr><tr><td>AVDDR4</td><td>3</td><td>C402.2 R401.2 U14.6</td></tr><tr><td>AVDDR5</td><td>3</td><td>C502.2 R501.2 U15.6</td></tr><tr><td>BAT_IN</td><td>2</td><td>BT1.1 Q1.3</td></tr><tr><td>DATA1</td><td>3</td><td>R103.1 U1.DATA1 U11.10</td></tr><tr><td>DATA2</td><td>3</td><td>R203.1 U1.DATA2 U12.10</td></tr><tr><td>DATA3</td><td>3</td><td>R303.1 U1.DATA3 U13.10</td></tr><tr><td>DATA4</td><td>3</td><td>R403.1 U1.DATA4 U14.10</td></tr><tr><td>DATA5</td><td>3</td><td>R503.1 U1.DATA5 U15.10</td></tr><tr><td>FB</td><td>4</td><td>C38.2 R29.2 R30.1 U3.5</td></tr><tr><td>FLASH_CS</td><td>2</td><td>U1.FLASH_CS U2.1</td></tr><tr><td>FLASH_MISO</td><td>2</td><td>U1.FLASH_MISO U2.2</td></tr><tr><td>FLASH_MOSI</td><td>2</td><td>U1.FLASH_MOSI U2.5</td></tr><tr><td>FLASH_SCK</td><td>2</td><td>U1.FLASH_SCK U2.6</td></tr><tr><td>GND</td><td>40</td><td>BT1.2 C16.2 C22.2 C23.2 C27.2 C39.2 C40.2 C102.1 C103.1 C104.1 C202.1 C203.1 C204.1 C302.1 C303.1 C304.1 C402.1 C403.1 C404.1 C502.1 C503.1 C504.1 C801.2 LCD1.GND R30.2 R32.2 R34.2 U1.GND U2.4 U3.2 U11.5 U11.8 U12.5 U12.8 U13.5 U13.8 U14.5 U14.8 U15.5 U15.8</td></tr><tr><td>LCD_CS</td><td>2</td><td>LCD1.CS U1.LCD_CS</td></tr><tr><td>LCD_DC</td><td>2</td><td>LCD1.DC U1.LCD_DC</td></tr><tr><td>LCD_MOSI</td><td>2</td><td>LCD1.MOSI U1.LCD_MOSI</td></tr><tr><td>LCD_RST</td><td>2</td><td>LCD1.RES U1.LCD_RST</td></tr><tr><td>LCD_SCK</td><td>2</td><td>LCD1.SCK U1.LCD_SCK</td></tr><tr><td>LX</td><td>2</td><td>L3.1 U3.3</td></tr><tr><td>PB1</td><td>3</td><td>R31.2 U1.PB1 U3.1</td></tr><tr><td>PG</td><td>2</td><td>Q1.1 R32.1</td></tr><tr><td>SCK</td><td>6</td><td>U1.SCK U11.9 U12.9 U13.9 U14.9 U15.9</td></tr><tr><td>SYS_PWR</td><td>6</td><td>C22.1 C27.1 Q1.2 R31.1 R33.1 U3.4</td></tr><tr><td>VBAT_SENSE</td><td>4</td><td>C40.1 R33.2 R34.1 U1.VBAT_ADC</td></tr><tr><td>VCC_3V3</td><td>32</td><td>C16.1 C23.1 C38.1 C39.1 C103.2 C104.2 C203.2 C204.2 C303.2 C304.2 C403.2 C404.2 C503.2 C504.2 C801.1 L3.2 LCD1.VCC R29.1 R103.2 R203.2 R303.2 R403.2 R503.2 U1.VCC U2.3 U2.7 U2.8 U11.7 U12.7 U13.7 U14.7 U15.7</td></tr></table></div>
-<h2 id="b">BOM</h2><div class="wrap"><table><tr><th>#</th><th>Ref</th><th>Qty</th><th>Value</th><th>Package</th><th>Description</th><th>Category</th><th>Notes</th></tr><tr><td>1</td><td>U1</td><td>1</td><td>CH583</td><td>TBD (QFN48/QFN28)</td><td>WCH RISC-V BLE 5.3 MCU</td><td>IC</td><td>PIN NUMBERS TBD - need WCH datasheet. Signals listed below are required connections.</td></tr><tr><td>2</td><td>U2</td><td>1</td><td>SPI Flash (TBD)</td><td>SOIC-8 (typical)</td><td>Data-logging flash on SPI0</td><td>IC</td><td>Typical 25-series SOIC-8 pinout assumed: 1 CS, 2 SO, 3 WP, 4 GND, 5 SI, 6 SCK, 7 HOLD, 8 VCC. Verify for the chosen part.</td></tr><tr><td>3</td><td>U3</td><td>1</td><td>CE8503AM</td><td>SOT-23-5</td><td>800 mA 1.5 MHz synchronous buck, VIN 2-6.5 V (Chipower)</td><td>IC</td><td>&#x27;M&#x27; pinout: 1 EN, 2 VSS, 3 SW, 4 VIN, 5 FB. Vout = 0.6 x (1+R29/R30) = 3.32 V</td></tr><tr><td>4</td><td>U11</td><td>1</td><td>SD6500</td><td>MSOP-10</td><td>24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)</td><td>IC</td><td>Channel 1</td></tr><tr><td>5</td><td>U12</td><td>1</td><td>SD6500</td><td>MSOP-10</td><td>24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)</td><td>IC</td><td>Channel 2</td></tr><tr><td>6</td><td>U13</td><td>1</td><td>SD6500</td><td>MSOP-10</td><td>24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)</td><td>IC</td><td>Channel 3</td></tr><tr><td>7</td><td>U14</td><td>1</td><td>SD6500</td><td>MSOP-10</td><td>24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)</td><td>IC</td><td>Channel 4</td></tr><tr><td>8</td><td>U15</td><td>1</td><td>SD6500</td><td>MSOP-10</td><td>24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)</td><td>IC</td><td>Channel 5</td></tr><tr><td>9</td><td>Q1</td><td>1</td><td>P-MOSFET (e.g. AO3401A)</td><td>SOT-23</td><td>Reverse-polarity protection, series high-side switch</td><td>Discrete</td><td>Drain = battery side, source = load side, gate to GND via R32. Need Vds &gt;= 20 V, Vgs(max) &gt;= 12 V, Rds(on) &lt; 100 mOhm @ -4.5 V. SOT-23 pinout assumed 1 G / 2 S / 3 D (AO3401A): verify for the chosen part.</td></tr><tr><td>10</td><td>C16</td><td>1</td><td>100 nF</td><td>TBD</td><td>VCC_3V3 HF cap</td><td>Passive</td><td>From user&#x27;s schematic</td></tr><tr><td>11</td><td>C22</td><td>1</td><td>10 µF</td><td>TBD</td><td>U3 VIN bulk</td><td>Passive</td><td>From user&#x27;s schematic</td></tr><tr><td>12</td><td>C23</td><td>1</td><td>10 µF</td><td>TBD</td><td>VCC_3V3 output cap</td><td>Passive</td><td>From user&#x27;s schematic</td></tr><tr><td>13</td><td>C27</td><td>1</td><td>1 µF</td><td>TBD</td><td>U3 VIN HF</td><td>Passive</td><td>From user&#x27;s schematic</td></tr><tr><td>14</td><td>C38</td><td>1</td><td>10 pF</td><td>0603</td><td>FB feed-forward (datasheet: optional)</td><td>Passive</td><td>Changed from 22 pF to keep the datasheet example&#x27;s feed-forward zero (200 k x 22 pF = 4.4 us; 453 k x 10 pF = 4.5 us). Computed, not tested: check load-step/ripple on the prototype.</td></tr><tr><td>15</td><td>C39</td><td>1</td><td>100 µF / 10 V polymer</td><td>TBD</td><td>VCC_3V3 bulk (low-ESR polymer aluminium)</td><td>Passive</td><td>Changed from tantalum (failure mode with battery inrush). Check that the buck stays stable with the lower ESR.</td></tr><tr><td>16</td><td>C40</td><td>1</td><td>100 nF</td><td>0603</td><td>Battery sense filter / ADC sample reservoir</td><td>Passive</td><td></td></tr><tr><td>17</td><td>C101</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>Thermocouple input filter, K+ node to ACM1</td><td>Passive</td><td></td></tr><tr><td>18</td><td>C102</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>AVDDR1 filter to AVSS (datasheet requires 0.1 uF)</td><td>Passive</td><td></td></tr><tr><td>19</td><td>C103, C203, C303, C403, C503</td><td>5</td><td>10 µF X7R</td><td>0603</td><td>VDD bulk decoupling (datasheet: 10 uF VDD-AVSS)</td><td>Passive</td><td>Factory file: 0402 10 uF 50 V</td></tr><tr><td>20</td><td>C104, C204</td><td>2</td><td>100 nF X7R 50V</td><td>0402</td><td>VDD HF decoupling</td><td>Passive</td><td></td></tr><tr><td>21</td><td>C201</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>Thermocouple input filter, K+ node to ACM2</td><td>Passive</td><td></td></tr><tr><td>22</td><td>C202</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>AVDDR2 filter to AVSS (datasheet requires 0.1 uF)</td><td>Passive</td><td></td></tr><tr><td>23</td><td>C301</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>Thermocouple input filter, K+ node to ACM3</td><td>Passive</td><td></td></tr><tr><td>24</td><td>C302</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>AVDDR3 filter to AVSS (datasheet requires 0.1 uF)</td><td>Passive</td><td></td></tr><tr><td>25</td><td>C304</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>VDD HF decoupling</td><td>Passive</td><td>DEVIATION: factory file has 10 uF here (C22); we use 0.1 uF to match the brief. Confirm with factory.</td></tr><tr><td>26</td><td>C401</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>Thermocouple input filter, K+ node to ACM4</td><td>Passive</td><td></td></tr><tr><td>27</td><td>C402</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>AVDDR4 filter to AVSS (datasheet requires 0.1 uF)</td><td>Passive</td><td></td></tr><tr><td>28</td><td>C404</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>VDD HF decoupling</td><td>Passive</td><td>DEVIATION: factory file has 10 uF here (C29); we use 0.1 uF to match the brief. Confirm with factory.</td></tr><tr><td>29</td><td>C501</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>Thermocouple input filter, K+ node to ACM5</td><td>Passive</td><td></td></tr><tr><td>30</td><td>C502</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>AVDDR5 filter to AVSS (datasheet requires 0.1 uF)</td><td>Passive</td><td></td></tr><tr><td>31</td><td>C504</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>VDD HF decoupling</td><td>Passive</td><td>DEVIATION: factory file has 10 uF here (C36); we use 0.1 uF to match the brief. Confirm with factory.</td></tr><tr><td>32</td><td>C801</td><td>1</td><td>100 nF</td><td>TBD</td><td>U2 bypass</td><td>Passive</td><td></td></tr><tr><td>33</td><td>C901</td><td>1</td><td>100 nF X7R</td><td>0603</td><td>CJC filter across R902</td><td>Passive</td><td></td></tr><tr><td>34</td><td>C902</td><td>1</td><td>100 nF X7R</td><td>0603</td><td>CJC filter across NTC1</td><td>Passive</td><td></td></tr><tr><td>35</td><td>L3</td><td>1</td><td>2.2 µH</td><td>TBD</td><td>Buck inductor (datasheet 1-4.7 uH)</td><td>Passive</td><td>From user&#x27;s schematic</td></tr><tr><td>36</td><td>NTC1</td><td>1</td><td>NTC 10 kΩ 1%</td><td>0603</td><td>Cold-junction sensor (shared by all 5 channels)</td><td>Passive</td><td>Factory footprint is LED-0603 (wrong). Place at the isothermal block centre.</td></tr><tr><td>37</td><td>R29</td><td>1</td><td>453 kΩ 1%</td><td>0603</td><td>FB divider, top</td><td>Passive</td><td>Changed from 180 k: Vout = 0.6 x (1 + 453/100) = 3.32 V, divider current 6 uA (was 15 uA). Datasheet: R2 &lt;= 100 k</td></tr><tr><td>38</td><td>R30</td><td>1</td><td>100 kΩ 1%</td><td>0603</td><td>FB divider, bottom</td><td>Passive</td><td>Changed from 39 k</td></tr><tr><td>39</td><td>R31</td><td>1</td><td>100 kΩ</td><td>0603</td><td>U3 EN pull-up to SYS_PWR (added)</td><td>Passive</td><td>CE8503 EN must not float and must be &gt; 1.5 V to start; PB1 is high-Z at power-up. MCU pulls PB1 low to shut the buck down.</td></tr><tr><td>40</td><td>R32</td><td>1</td><td>100 kΩ</td><td>0603</td><td>Q1 gate pull-down to GND</td><td>Passive</td><td>Vgs = -(battery voltage) when conducting (max -6.4 V)</td></tr><tr><td>41</td><td>R33</td><td>1</td><td>1.5 MΩ 1%</td><td>0603</td><td>Battery sense divider, top</td><td>Passive</td><td>Ratio 0.4: 6.4 V -&gt; 2.56 V. RE-CHECK against the CH583 ADC reference/range (WCH datasheet)</td></tr><tr><td>42</td><td>R34</td><td>1</td><td>1.0 MΩ 1%</td><td>0603</td><td>Battery sense divider, bottom</td><td>Passive</td><td>Divider drain 6.4 V / 2.5 MΩ = 2.6 uA</td></tr><tr><td>43</td><td>R101</td><td>1</td><td>22 MΩ</td><td>0603</td><td>K+ bias pull-up to AVDDR1 (open-TC detect)</td><td>Passive</td><td>Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1</td></tr><tr><td>44</td><td>R102</td><td>1</td><td>5.1 MΩ</td><td>0603</td><td>K+ bias pull-down to ACM1</td><td>Passive</td><td>Factory file: 5 %</td></tr><tr><td>45</td><td>R103</td><td>1</td><td>10 kΩ</td><td>0603</td><td>DATA1 pull-up to VCC_3V3 (datasheet typical application)</td><td>Passive</td><td>Factory footprint is R1/8W (axial) - replace by 0603</td></tr><tr><td>46</td><td>R201</td><td>1</td><td>22 MΩ</td><td>0603</td><td>K+ bias pull-up to AVDDR2 (open-TC detect)</td><td>Passive</td><td>Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1</td></tr><tr><td>47</td><td>R202</td><td>1</td><td>5.1 MΩ</td><td>0603</td><td>K+ bias pull-down to ACM2</td><td>Passive</td><td>Factory file: 5 %</td></tr><tr><td>48</td><td>R203</td><td>1</td><td>10 kΩ</td><td>0603</td><td>DATA2 pull-up to VCC_3V3 (datasheet typical application)</td><td>Passive</td><td>Factory footprint is R1/8W (axial) - replace by 0603</td></tr><tr><td>49</td><td>R301</td><td>1</td><td>22 MΩ</td><td>0603</td><td>K+ bias pull-up to AVDDR3 (open-TC detect)</td><td>Passive</td><td>Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1</td></tr><tr><td>50</td><td>R302</td><td>1</td><td>5.1 MΩ</td><td>0603</td><td>K+ bias pull-down to ACM3</td><td>Passive</td><td>Factory file: 5 %</td></tr><tr><td>51</td><td>R303</td><td>1</td><td>10 kΩ</td><td>0603</td><td>DATA3 pull-up to VCC_3V3 (datasheet typical application)</td><td>Passive</td><td>Factory footprint is R1/8W (axial) - replace by 0603</td></tr><tr><td>52</td><td>R401</td><td>1</td><td>22 MΩ</td><td>0603</td><td>K+ bias pull-up to AVDDR4 (open-TC detect)</td><td>Passive</td><td>Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1</td></tr><tr><td>53</td><td>R402</td><td>1</td><td>5.1 MΩ</td><td>0603</td><td>K+ bias pull-down to ACM4</td><td>Passive</td><td>Factory file: 5 %</td></tr><tr><td>54</td><td>R403</td><td>1</td><td>10 kΩ</td><td>0603</td><td>DATA4 pull-up to VCC_3V3 (datasheet typical application)</td><td>Passive</td><td>Factory footprint is R1/8W (axial) - replace by 0603</td></tr><tr><td>55</td><td>R501</td><td>1</td><td>22 MΩ</td><td>0603</td><td>K+ bias pull-up to AVDDR5 (open-TC detect)</td><td>Passive</td><td>Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1</td></tr><tr><td>56</td><td>R502</td><td>1</td><td>5.1 MΩ</td><td>0603</td><td>K+ bias pull-down to ACM5</td><td>Passive</td><td>Factory file: 5 %</td></tr><tr><td>57</td><td>R503</td><td>1</td><td>10 kΩ</td><td>0603</td><td>DATA5 pull-up to VCC_3V3 (datasheet typical application)</td><td>Passive</td><td>Factory footprint is R1/8W (axial) - replace by 0603</td></tr><tr><td>58</td><td>R901</td><td>1</td><td>1 MΩ</td><td>0603</td><td>CJC chain: top resistor from AVDDR1</td><td>Passive</td><td>Factory file: 5 %</td></tr><tr><td>59</td><td>R902</td><td>1</td><td>100 kΩ 0.1%</td><td>0603</td><td>CJC chain: ratiometric reference</td><td>Passive</td><td>DEVIATION: factory file 5 %; CJC accuracy depends on this resistor -&gt; 0.1 % 25 ppm recommended</td></tr><tr><td>60</td><td>BT1</td><td>1</td><td>4 x AA holder</td><td>TBD</td><td>Battery pack, 6.0 V fresh / 3.6 V empty (net BAT_IN, before Q1)</td><td>Connector</td><td>Alkaline only: 4 x lithium AA = 7.2 V exceeds the CE8503 6.5 V limit</td></tr><tr><td>61</td><td>LCD1</td><td>1</td><td>SPI LCD module (TBD)</td><td>TBD</td><td>LCD on SPI1</td><td>Connector</td><td>Module and pinout TBD; typical 7-wire interface assumed.</td></tr><tr><td>62</td><td>T1</td><td>1</td><td>K-type mini jack</td><td>TBD</td><td>Thermocouple connector 1 (pin 1 = K+, pin 2 = K-)</td><td>Connector</td><td>Part not chosen yet</td></tr><tr><td>63</td><td>T2</td><td>1</td><td>K-type mini jack</td><td>TBD</td><td>Thermocouple connector 2 (pin 1 = K+, pin 2 = K-)</td><td>Connector</td><td>Part not chosen yet</td></tr><tr><td>64</td><td>T3</td><td>1</td><td>K-type mini jack</td><td>TBD</td><td>Thermocouple connector 3 (pin 1 = K+, pin 2 = K-)</td><td>Connector</td><td>Part not chosen yet</td></tr><tr><td>65</td><td>T4</td><td>1</td><td>K-type mini jack</td><td>TBD</td><td>Thermocouple connector 4 (pin 1 = K+, pin 2 = K-)</td><td>Connector</td><td>Part not chosen yet</td></tr><tr><td>66</td><td>T5</td><td>1</td><td>K-type mini jack</td><td>TBD</td><td>Thermocouple connector 5 (pin 1 = K+, pin 2 = K-)</td><td>Connector</td><td>Part not chosen yet</td></tr></table></div>
+<h2 id="n">Netlist (55 nets)</h2><div class="wrap"><table><tr><th>Net</th><th>Pins</th><th>REF.PIN</th></tr><tr><td>ACM1</td><td>6</td><td>C101.1 C902.1 NTC1.2 R102.1 T1.2 U11.3</td></tr><tr><td>ACM2</td><td>4</td><td>C201.1 R202.1 T2.2 U12.3</td></tr><tr><td>ACM3</td><td>4</td><td>C301.1 R302.1 T3.2 U13.3</td></tr><tr><td>ACM4</td><td>4</td><td>C401.1 R402.1 T4.2 U14.3</td></tr><tr><td>ACM5</td><td>4</td><td>C501.1 R502.1 T5.2 U15.3</td></tr><tr><td>AI10</td><td>5</td><td>C101.2 R101.1 R102.2 T1.1 U11.1</td></tr><tr><td>AI11</td><td>5</td><td>C901.1 C902.2 NTC1.1 R902.1 U11.2</td></tr><tr><td>AI17</td><td>4</td><td>C901.2 R901.1 R902.2 U11.4</td></tr><tr><td>AI20</td><td>5</td><td>C201.2 R201.1 R202.2 T2.1 U12.1</td></tr><tr><td>AI30</td><td>5</td><td>C301.2 R301.1 R302.2 T3.1 U13.1</td></tr><tr><td>AI40</td><td>5</td><td>C401.2 R401.1 R402.2 T4.1 U14.1</td></tr><tr><td>AI50</td><td>5</td><td>C501.2 R501.1 R502.2 T5.1 U15.1</td></tr><tr><td>ANT</td><td>2</td><td>E1.1 U1.34</td></tr><tr><td>AVDDR1</td><td>4</td><td>C102.2 R101.2 R901.2 U11.6</td></tr><tr><td>AVDDR2</td><td>3</td><td>C202.2 R201.2 U12.6</td></tr><tr><td>AVDDR3</td><td>3</td><td>C302.2 R301.2 U13.6</td></tr><tr><td>AVDDR4</td><td>3</td><td>C402.2 R401.2 U14.6</td></tr><tr><td>AVDDR5</td><td>3</td><td>C502.2 R501.2 U15.6</td></tr><tr><td>BAT_IN</td><td>2</td><td>BT1.1 Q1.3</td></tr><tr><td>BOOT</td><td>2</td><td>SW2.1 U1.26</td></tr><tr><td>DATA1</td><td>3</td><td>R103.1 U1.22 U11.10</td></tr><tr><td>DATA2</td><td>3</td><td>R203.1 U1.21 U12.10</td></tr><tr><td>DATA3</td><td>3</td><td>R303.1 U1.20 U13.10</td></tr><tr><td>DATA4</td><td>3</td><td>R403.1 U1.19 U14.10</td></tr><tr><td>DATA5</td><td>3</td><td>R503.1 U1.18 U15.10</td></tr><tr><td>FB</td><td>4</td><td>C38.2 R29.2 R30.1 U3.5</td></tr><tr><td>FLASH_CS</td><td>2</td><td>U1.46 U2.1</td></tr><tr><td>FLASH_MISO</td><td>2</td><td>U1.43 U2.2</td></tr><tr><td>FLASH_MOSI</td><td>2</td><td>U1.44 U2.5</td></tr><tr><td>FLASH_SCK</td><td>2</td><td>U1.45 U2.6</td></tr><tr><td>GND</td><td>49</td><td>BT1.2 C16.2 C22.2 C23.2 C27.2 C39.2 C40.2 C41.2 C42.2 C43.2 C44.2 C102.1 C103.1 C104.1 C202.1 C203.1 C204.1 C302.1 C303.1 C304.1 C402.1 C403.1 C404.1 C502.1 C503.1 C504.1 C801.2 E1.2 LCD1.GND P1.4 P2.4 R30.2 R32.2 R34.2 SW1.2 SW2.2 U1.0 U2.4 U3.2 U11.5 U11.8 U12.5 U12.8 U13.5 U13.8 U14.5 U14.8 U15.5 U15.8</td></tr><tr><td>LCD_CS</td><td>2</td><td>LCD1.CS U1.42</td></tr><tr><td>LCD_DC</td><td>2</td><td>LCD1.DC U1.41</td></tr><tr><td>LCD_MOSI</td><td>2</td><td>LCD1.MOSI U1.40</td></tr><tr><td>LCD_RST</td><td>2</td><td>LCD1.RES U1.8</td></tr><tr><td>LCD_SCK</td><td>2</td><td>LCD1.SCK U1.39</td></tr><tr><td>LX</td><td>2</td><td>L3.1 U3.3</td></tr><tr><td>PB1</td><td>3</td><td>R31.2 U1.23 U3.1</td></tr><tr><td>PG</td><td>2</td><td>Q1.1 R32.1</td></tr><tr><td>RST_N</td><td>2</td><td>SW1.1 U1.25</td></tr><tr><td>SCK</td><td>6</td><td>U1.24 U11.9 U12.9 U13.9 U14.9 U15.9</td></tr><tr><td>SWDCK</td><td>2</td><td>P1.3 U1.11</td></tr><tr><td>SWDIO</td><td>2</td><td>P1.2 U1.12</td></tr><tr><td>SYS_PWR</td><td>6</td><td>C22.1 C27.1 Q1.2 R31.1 R33.1 U3.4</td></tr><tr><td>UART1_RX</td><td>2</td><td>P2.2 U1.5</td></tr><tr><td>UART1_TX</td><td>2</td><td>P2.3 U1.6</td></tr><tr><td>VBAT_SENSE</td><td>4</td><td>C40.1 R33.2 R34.1 U1.36</td></tr><tr><td>VCC_3V3</td><td>35</td><td>C16.1 C23.1 C38.1 C39.1 C41.1 C103.2 C104.2 C203.2 C204.2 C303.2 C304.2 C403.2 C404.2 C503.2 C504.2 C801.1 L3.2 LCD1.VCC P1.1 P2.1 R29.1 R103.2 R203.2 R303.2 R403.2 R503.2 U1.3 U2.3 U2.7 U2.8 U11.7 U12.7 U13.7 U14.7 U15.7</td></tr><tr><td>VDCID</td><td>5</td><td>C42.1 C43.1 L1.2 U1.1 U1.35</td></tr><tr><td>VINTA</td><td>2</td><td>C44.1 U1.33</td></tr><tr><td>VSW</td><td>2</td><td>L1.1 U1.2</td></tr><tr><td>X32KI</td><td>2</td><td>U1.48 Y2.1</td></tr><tr><td>X32KO</td><td>2</td><td>U1.47 Y2.2</td></tr><tr><td>X32MI</td><td>2</td><td>U1.32 Y1.1</td></tr><tr><td>X32MO</td><td>2</td><td>U1.31 Y1.2</td></tr></table></div>
+<h2 id="b">BOM</h2><div class="wrap"><table><tr><th>#</th><th>Ref</th><th>Qty</th><th>Value</th><th>Package</th><th>Description</th><th>Category</th><th>Notes</th></tr><tr><td>1</td><td>U1</td><td>1</td><td>CH583M</td><td>QFN48 5x5</td><td>WCH RISC-V BLE 5.3 MCU (448 KB flash, 30 KB RAM, 2 SPI, 14-ch 12-bit ADC)</td><td>IC</td><td>Pin numbers from the WCH CH583 datasheet V1.9 section 1.2. PB1 exists only on QFN48 (not QFN28). EPAD = GND.</td></tr><tr><td>2</td><td>U2</td><td>1</td><td>SPI Flash (TBD)</td><td>SOIC-8 (typical)</td><td>Data-logging flash on SPI0</td><td>IC</td><td>Typical 25-series SOIC-8 pinout assumed: 1 CS, 2 SO, 3 WP, 4 GND, 5 SI, 6 SCK, 7 HOLD, 8 VCC. Verify for the chosen part.</td></tr><tr><td>3</td><td>U3</td><td>1</td><td>CE8503AM</td><td>SOT-23-5</td><td>800 mA 1.5 MHz synchronous buck, VIN 2-6.5 V (Chipower)</td><td>IC</td><td>&#x27;M&#x27; pinout: 1 EN, 2 VSS, 3 SW, 4 VIN, 5 FB. Vout = 0.6 x (1+R29/R30) = 3.32 V</td></tr><tr><td>4</td><td>U11</td><td>1</td><td>SD6500</td><td>MSOP-10</td><td>24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)</td><td>IC</td><td>Channel 1</td></tr><tr><td>5</td><td>U12</td><td>1</td><td>SD6500</td><td>MSOP-10</td><td>24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)</td><td>IC</td><td>Channel 2</td></tr><tr><td>6</td><td>U13</td><td>1</td><td>SD6500</td><td>MSOP-10</td><td>24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)</td><td>IC</td><td>Channel 3</td></tr><tr><td>7</td><td>U14</td><td>1</td><td>SD6500</td><td>MSOP-10</td><td>24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)</td><td>IC</td><td>Channel 4</td></tr><tr><td>8</td><td>U15</td><td>1</td><td>SD6500</td><td>MSOP-10</td><td>24-bit Sigma-Delta ADC + PGIA, 2-wire interface (SDIC)</td><td>IC</td><td>Channel 5</td></tr><tr><td>9</td><td>Q1</td><td>1</td><td>P-MOSFET (e.g. AO3401A)</td><td>SOT-23</td><td>Reverse-polarity protection, series high-side switch</td><td>Discrete</td><td>Drain = battery side, source = load side, gate to GND via R32. Need Vds &gt;= 20 V, Vgs(max) &gt;= 12 V, Rds(on) &lt; 100 mOhm @ -4.5 V. SOT-23 pinout assumed 1 G / 2 S / 3 D (AO3401A): verify for the chosen part.</td></tr><tr><td>10</td><td>C16</td><td>1</td><td>100 nF</td><td>TBD</td><td>VCC_3V3 HF cap</td><td>Passive</td><td>From user&#x27;s schematic</td></tr><tr><td>11</td><td>C22</td><td>1</td><td>10 µF</td><td>TBD</td><td>U3 VIN bulk</td><td>Passive</td><td>From user&#x27;s schematic</td></tr><tr><td>12</td><td>C23</td><td>1</td><td>10 µF</td><td>TBD</td><td>VCC_3V3 output cap</td><td>Passive</td><td>From user&#x27;s schematic</td></tr><tr><td>13</td><td>C27</td><td>1</td><td>1 µF</td><td>TBD</td><td>U3 VIN HF</td><td>Passive</td><td>From user&#x27;s schematic</td></tr><tr><td>14</td><td>C38</td><td>1</td><td>10 pF</td><td>0603</td><td>FB feed-forward (datasheet: optional)</td><td>Passive</td><td>Changed from 22 pF to keep the datasheet example&#x27;s feed-forward zero (200 k x 22 pF = 4.4 us; 453 k x 10 pF = 4.5 us). Computed, not tested: check load-step/ripple on the prototype.</td></tr><tr><td>15</td><td>C39</td><td>1</td><td>100 µF / 10 V polymer</td><td>TBD</td><td>VCC_3V3 bulk (low-ESR polymer aluminium)</td><td>Passive</td><td>Changed from tantalum (failure mode with battery inrush). Check that the buck stays stable with the lower ESR.</td></tr><tr><td>16</td><td>C40</td><td>1</td><td>100 nF</td><td>0603</td><td>Battery sense filter / ADC sample reservoir</td><td>Passive</td><td></td></tr><tr><td>17</td><td>C41</td><td>1</td><td>2.2 µF</td><td>0603</td><td>U1 VDD33/VIO33 decoupling (pin 3)</td><td>Passive</td><td>EVT: 2.2 uF; datasheet: 2.2 uF with DC-DC, 0.1 uF without</td></tr><tr><td>18</td><td>C42</td><td>1</td><td>2.2 µF</td><td>0603</td><td>U1 VDCID decoupling (pin 1)</td><td>Passive</td><td>Datasheet: 2.2 uF recommended with DC-DC enabled</td></tr><tr><td>19</td><td>C43</td><td>1</td><td>100 nF</td><td>0402</td><td>U1 VDCIA decoupling (pin 35)</td><td>Passive</td><td>VDCIA is tied to VDCID (datasheet recommendation)</td></tr><tr><td>20</td><td>C44</td><td>1</td><td>1 µF</td><td>0603</td><td>U1 VINTA decoupling (pin 33)</td><td>Passive</td><td>Datasheet: 1 uF with DC-DC enabled (0.47-2.2 uF)</td></tr><tr><td>21</td><td>C101</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>Thermocouple input filter, K+ node to ACM1</td><td>Passive</td><td></td></tr><tr><td>22</td><td>C102</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>AVDDR1 filter to AVSS (datasheet requires 0.1 uF)</td><td>Passive</td><td></td></tr><tr><td>23</td><td>C103, C203, C303, C403, C503</td><td>5</td><td>10 µF X7R</td><td>0603</td><td>VDD bulk decoupling (datasheet: 10 uF VDD-AVSS)</td><td>Passive</td><td>Factory file: 0402 10 uF 50 V</td></tr><tr><td>24</td><td>C104, C204</td><td>2</td><td>100 nF X7R 50V</td><td>0402</td><td>VDD HF decoupling</td><td>Passive</td><td></td></tr><tr><td>25</td><td>C201</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>Thermocouple input filter, K+ node to ACM2</td><td>Passive</td><td></td></tr><tr><td>26</td><td>C202</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>AVDDR2 filter to AVSS (datasheet requires 0.1 uF)</td><td>Passive</td><td></td></tr><tr><td>27</td><td>C301</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>Thermocouple input filter, K+ node to ACM3</td><td>Passive</td><td></td></tr><tr><td>28</td><td>C302</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>AVDDR3 filter to AVSS (datasheet requires 0.1 uF)</td><td>Passive</td><td></td></tr><tr><td>29</td><td>C304</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>VDD HF decoupling</td><td>Passive</td><td>DEVIATION: factory file has 10 uF here (C22); we use 0.1 uF to match the brief. Confirm with factory.</td></tr><tr><td>30</td><td>C401</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>Thermocouple input filter, K+ node to ACM4</td><td>Passive</td><td></td></tr><tr><td>31</td><td>C402</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>AVDDR4 filter to AVSS (datasheet requires 0.1 uF)</td><td>Passive</td><td></td></tr><tr><td>32</td><td>C404</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>VDD HF decoupling</td><td>Passive</td><td>DEVIATION: factory file has 10 uF here (C29); we use 0.1 uF to match the brief. Confirm with factory.</td></tr><tr><td>33</td><td>C501</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>Thermocouple input filter, K+ node to ACM5</td><td>Passive</td><td></td></tr><tr><td>34</td><td>C502</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>AVDDR5 filter to AVSS (datasheet requires 0.1 uF)</td><td>Passive</td><td></td></tr><tr><td>35</td><td>C504</td><td>1</td><td>100 nF X7R 50V</td><td>0402</td><td>VDD HF decoupling</td><td>Passive</td><td>DEVIATION: factory file has 10 uF here (C36); we use 0.1 uF to match the brief. Confirm with factory.</td></tr><tr><td>36</td><td>C801</td><td>1</td><td>100 nF</td><td>TBD</td><td>U2 bypass</td><td>Passive</td><td></td></tr><tr><td>37</td><td>C901</td><td>1</td><td>100 nF X7R</td><td>0603</td><td>CJC filter across R902</td><td>Passive</td><td></td></tr><tr><td>38</td><td>C902</td><td>1</td><td>100 nF X7R</td><td>0603</td><td>CJC filter across NTC1</td><td>Passive</td><td></td></tr><tr><td>39</td><td>L1</td><td>1</td><td>10 µH</td><td>TBD</td><td>U1 on-chip DC-DC inductor, VSW (pin 2) to VDCID (pin 1)</td><td>Passive</td><td>Datasheet: 10 uH recommended (3.3-33 uH supported); EVT uses 22 uH. Also works as a DC short when DC-DC is disabled.</td></tr><tr><td>40</td><td>L3</td><td>1</td><td>2.2 µH</td><td>TBD</td><td>Buck inductor (datasheet 1-4.7 uH)</td><td>Passive</td><td>From user&#x27;s schematic</td></tr><tr><td>41</td><td>NTC1</td><td>1</td><td>NTC 10 kΩ 1%</td><td>0603</td><td>Cold-junction sensor (shared by all 5 channels)</td><td>Passive</td><td>Factory footprint is LED-0603 (wrong). Place at the isothermal block centre.</td></tr><tr><td>42</td><td>R29</td><td>1</td><td>453 kΩ 1%</td><td>0603</td><td>FB divider, top</td><td>Passive</td><td>Changed from 180 k: Vout = 0.6 x (1 + 453/100) = 3.32 V, divider current 6 uA (was 15 uA). Datasheet: R2 &lt;= 100 k</td></tr><tr><td>43</td><td>R30</td><td>1</td><td>100 kΩ 1%</td><td>0603</td><td>FB divider, bottom</td><td>Passive</td><td>Changed from 39 k</td></tr><tr><td>44</td><td>R31</td><td>1</td><td>100 kΩ</td><td>0603</td><td>U3 EN pull-up to SYS_PWR (added)</td><td>Passive</td><td>CE8503 EN must not float and must be &gt; 1.5 V to start; PB1 is high-Z at power-up. MCU pulls PB1 low to shut the buck down.</td></tr><tr><td>45</td><td>R32</td><td>1</td><td>100 kΩ</td><td>0603</td><td>Q1 gate pull-down to GND</td><td>Passive</td><td>Vgs = -(battery voltage) when conducting (max -6.4 V)</td></tr><tr><td>46</td><td>R33</td><td>1</td><td>2.4 MΩ 1%</td><td>0603</td><td>Battery sense divider, top</td><td>Passive</td><td>Ratio 1/3.4 = 0.294: 6.4 V -&gt; 1.88 V (CH583 ADC 0 dB: recommended 0-2 V, Vref 1.05 V); 3.6 V -&gt; 1.06 V. ADC input buffer ON.</td></tr><tr><td>47</td><td>R34</td><td>1</td><td>1.0 MΩ 1%</td><td>0603</td><td>Battery sense divider, bottom</td><td>Passive</td><td>Divider drain 6.4 V / 3.4 MΩ = 1.9 uA</td></tr><tr><td>48</td><td>R101</td><td>1</td><td>22 MΩ</td><td>0603</td><td>K+ bias pull-up to AVDDR1 (open-TC detect)</td><td>Passive</td><td>Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1</td></tr><tr><td>49</td><td>R102</td><td>1</td><td>5.1 MΩ</td><td>0603</td><td>K+ bias pull-down to ACM1</td><td>Passive</td><td>Factory file: 5 %</td></tr><tr><td>50</td><td>R103</td><td>1</td><td>10 kΩ</td><td>0603</td><td>DATA1 pull-up to VCC_3V3 (datasheet typical application)</td><td>Passive</td><td>Factory footprint is R1/8W (axial) - replace by 0603</td></tr><tr><td>51</td><td>R201</td><td>1</td><td>22 MΩ</td><td>0603</td><td>K+ bias pull-up to AVDDR2 (open-TC detect)</td><td>Passive</td><td>Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1</td></tr><tr><td>52</td><td>R202</td><td>1</td><td>5.1 MΩ</td><td>0603</td><td>K+ bias pull-down to ACM2</td><td>Passive</td><td>Factory file: 5 %</td></tr><tr><td>53</td><td>R203</td><td>1</td><td>10 kΩ</td><td>0603</td><td>DATA2 pull-up to VCC_3V3 (datasheet typical application)</td><td>Passive</td><td>Factory footprint is R1/8W (axial) - replace by 0603</td></tr><tr><td>54</td><td>R301</td><td>1</td><td>22 MΩ</td><td>0603</td><td>K+ bias pull-up to AVDDR3 (open-TC detect)</td><td>Passive</td><td>Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1</td></tr><tr><td>55</td><td>R302</td><td>1</td><td>5.1 MΩ</td><td>0603</td><td>K+ bias pull-down to ACM3</td><td>Passive</td><td>Factory file: 5 %</td></tr><tr><td>56</td><td>R303</td><td>1</td><td>10 kΩ</td><td>0603</td><td>DATA3 pull-up to VCC_3V3 (datasheet typical application)</td><td>Passive</td><td>Factory footprint is R1/8W (axial) - replace by 0603</td></tr><tr><td>57</td><td>R401</td><td>1</td><td>22 MΩ</td><td>0603</td><td>K+ bias pull-up to AVDDR4 (open-TC detect)</td><td>Passive</td><td>Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1</td></tr><tr><td>58</td><td>R402</td><td>1</td><td>5.1 MΩ</td><td>0603</td><td>K+ bias pull-down to ACM4</td><td>Passive</td><td>Factory file: 5 %</td></tr><tr><td>59</td><td>R403</td><td>1</td><td>10 kΩ</td><td>0603</td><td>DATA4 pull-up to VCC_3V3 (datasheet typical application)</td><td>Passive</td><td>Factory footprint is R1/8W (axial) - replace by 0603</td></tr><tr><td>60</td><td>R501</td><td>1</td><td>22 MΩ</td><td>0603</td><td>K+ bias pull-up to AVDDR5 (open-TC detect)</td><td>Passive</td><td>Factory file: 5 %%. Open-circuit node = ACM + (AVDDR-ACM) x 5.1/27.1</td></tr><tr><td>61</td><td>R502</td><td>1</td><td>5.1 MΩ</td><td>0603</td><td>K+ bias pull-down to ACM5</td><td>Passive</td><td>Factory file: 5 %</td></tr><tr><td>62</td><td>R503</td><td>1</td><td>10 kΩ</td><td>0603</td><td>DATA5 pull-up to VCC_3V3 (datasheet typical application)</td><td>Passive</td><td>Factory footprint is R1/8W (axial) - replace by 0603</td></tr><tr><td>63</td><td>R901</td><td>1</td><td>1 MΩ</td><td>0603</td><td>CJC chain: top resistor from AVDDR1</td><td>Passive</td><td>Factory file: 5 %</td></tr><tr><td>64</td><td>R902</td><td>1</td><td>100 kΩ 0.1%</td><td>0603</td><td>CJC chain: ratiometric reference</td><td>Passive</td><td>DEVIATION: factory file 5 %; CJC accuracy depends on this resistor -&gt; 0.1 % 25 ppm recommended</td></tr><tr><td>65</td><td>Y1</td><td>1</td><td>32 MHz crystal</td><td>SMD 3225/2016</td><td>BLE high-frequency crystal (HSE) on X32MI/X32MO</td><td>Crystal</td><td>No external load caps (internal 10-24 pF selectable). Crystal specs TBD from WCH EVT BOM. 4-pad package: other pads to GND.</td></tr><tr><td>66</td><td>Y2</td><td>1</td><td>32.768 kHz crystal</td><td>SMD 3215</td><td>RTC / BLE sleep-clock crystal on PA10/PA11 (optional)</td><td>Crystal</td><td>Internal load caps selectable (12-27 pF); EVT fits it without external caps.</td></tr><tr><td>67</td><td>BT1</td><td>1</td><td>4 x AA holder</td><td>TBD</td><td>Battery pack, 6.0 V fresh / 3.6 V empty (net BAT_IN, before Q1)</td><td>Connector</td><td>Alkaline only: 4 x lithium AA = 7.2 V exceeds the CE8503 6.5 V limit</td></tr><tr><td>68</td><td>E1</td><td>1</td><td>2.4 GHz PCB antenna</td><td>PCB trace</td><td>BLE antenna fed directly from ANT (pin 34)</td><td>Connector</td><td>Use WCH template ANT-F-2.4G-FR4.PcbDoc; antenna needs a ground end; keep ground clear around it.</td></tr><tr><td>69</td><td>LCD1</td><td>1</td><td>SPI LCD module (TBD)</td><td>TBD</td><td>LCD on SPI1</td><td>Connector</td><td>Module and pinout TBD; typical 7-wire interface assumed.</td></tr><tr><td>70</td><td>P1</td><td>1</td><td>1x4 header</td><td>2.54 mm</td><td>SWD debug: 3V3, SWDIO (PB14), SWDCK (PB15), GND</td><td>Connector</td><td>While the debug interface is enabled PB14/PB15 are used only as TIO/TCK</td></tr><tr><td>71</td><td>P2</td><td>1</td><td>1x4 header</td><td>2.54 mm</td><td>UART1 debug: 3V3, RXD1 (PA8), TXD1 (PA9), GND</td><td>Connector</td><td></td></tr><tr><td>72</td><td>T1</td><td>1</td><td>K-type mini jack</td><td>TBD</td><td>Thermocouple connector 1 (pin 1 = K+, pin 2 = K-)</td><td>Connector</td><td>Part not chosen yet</td></tr><tr><td>73</td><td>T2</td><td>1</td><td>K-type mini jack</td><td>TBD</td><td>Thermocouple connector 2 (pin 1 = K+, pin 2 = K-)</td><td>Connector</td><td>Part not chosen yet</td></tr><tr><td>74</td><td>T3</td><td>1</td><td>K-type mini jack</td><td>TBD</td><td>Thermocouple connector 3 (pin 1 = K+, pin 2 = K-)</td><td>Connector</td><td>Part not chosen yet</td></tr><tr><td>75</td><td>T4</td><td>1</td><td>K-type mini jack</td><td>TBD</td><td>Thermocouple connector 4 (pin 1 = K+, pin 2 = K-)</td><td>Connector</td><td>Part not chosen yet</td></tr><tr><td>76</td><td>T5</td><td>1</td><td>K-type mini jack</td><td>TBD</td><td>Thermocouple connector 5 (pin 1 = K+, pin 2 = K-)</td><td>Connector</td><td>Part not chosen yet</td></tr><tr><td>77</td><td>SW1</td><td>1</td><td>Tact switch</td><td>SMD</td><td>Reset (RST# = PB23, active low, internal pull-up)</td><td>Electromech</td><td></td></tr><tr><td>78</td><td>SW2</td><td>1</td><td>Tact switch</td><td>SMD</td><td>BOOT / download (PB22)</td><td>Electromech</td><td>EVT: PB22 &#x27;Download BOOT&#x27;</td></tr></table></div>
 <h2 id="m">Factory refdes → ours</h2><div class="wrap"><table><tr><th>Factory (SDH260018)</th><th>This design</th></tr><tr><td>C1</td><td>C301</td></tr><tr><td>C2</td><td>C401</td></tr><tr><td>C3</td><td>C101</td></tr><tr><td>C4</td><td>C902</td></tr><tr><td>C5</td><td>C901</td></tr><tr><td>C6</td><td>C103</td></tr><tr><td>C7</td><td>C104</td></tr><tr><td>C8</td><td>C102</td></tr><tr><td>C9</td><td>C203</td></tr><tr><td>C10</td><td>C202</td></tr><tr><td>C11</td><td>C501</td></tr><tr><td>C13</td><td>C201</td></tr><tr><td>C15</td><td>C204</td></tr><tr><td>C16</td><td>C303</td></tr><tr><td>C17</td><td>C302</td></tr><tr><td>C22</td><td>C304</td></tr><tr><td>C23</td><td>C403</td></tr><tr><td>C24</td><td>C402</td></tr><tr><td>C29</td><td>C404</td></tr><tr><td>C30</td><td>C503</td></tr><tr><td>C31</td><td>C502</td></tr><tr><td>C36</td><td>C504</td></tr><tr><td>NTC1</td><td>NTC1</td></tr><tr><td>R1</td><td>R101</td></tr><tr><td>R2</td><td>R102</td></tr><tr><td>R3</td><td>R902</td></tr><tr><td>R4</td><td>R201</td></tr><tr><td>R5</td><td>R901</td></tr><tr><td>R6</td><td>R202</td></tr><tr><td>R7</td><td>R301</td></tr><tr><td>R8</td><td>R302</td></tr><tr><td>R9</td><td>R203</td></tr><tr><td>R10</td><td>R401</td></tr><tr><td>R11</td><td>R103</td></tr><tr><td>R12</td><td>R402</td></tr><tr><td>R13</td><td>R501</td></tr><tr><td>R14</td><td>R502</td></tr><tr><td>R15</td><td>R303</td></tr><tr><td>R20</td><td>R403</td></tr><tr><td>R25</td><td>R503</td></tr><tr><td>T1</td><td>T1</td></tr><tr><td>T2</td><td>T2</td></tr><tr><td>T3</td><td>T3</td></tr><tr><td>T4</td><td>T4</td></tr><tr><td>T5</td><td>T5</td></tr><tr><td>U1</td><td>U11</td></tr><tr><td>U2</td><td>U12</td></tr><tr><td>U3</td><td>U13</td></tr><tr><td>U4</td><td>U14</td></tr><tr><td>U5</td><td>U15</td></tr></table></div>
 </body></html>
